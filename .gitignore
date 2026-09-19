@@ -1,0 +1,5 @@
+node_modules/
+.vite/
+*.tsbuildinfo
+work/
+.DS_Store
