@@ -9,7 +9,7 @@ import {
   activeLines, activeScene, advance, applyEffects, blankMeta, candidates, choose,
   commonBad, completeActivity, currentActivity, freeTalk, haremChance, haremEligible,
   ids, isGameState, locationOf, newGame, nextDay, resolveEnding, routes, seededRoll,
-  selectRoute, validName, visit,
+  selectRoute, validName, visit, restoreGame,
   type GameState, type Meta,
 } from '../src/engine/game';
 import type { CharacterId, Effect, Line, Scene } from '../src/types';
@@ -487,18 +487,57 @@ test('hangout scenes keep the calendar date of the common chapter that opened th
   }
 });
 
-test('runtime story director triples dialogue and expands every main decision to five or six choices', () => {
-  let authoredLines=0,directedLines=0,authoredResponses=0,directedResponses=0;
-  for(const scene of allScenes()){
+test('dialogue proceeds without padding while authored events and choices remain intact', () => {
+  for(const scene of [...allScenes(),...ids.map(id=>hangoutScene(id,0,1))]){
     const expanded=directedScene(scene);
-    authoredLines+=scene.lines.length;directedLines+=expanded.lines.length;
-    authoredResponses+=scene.choices.reduce((sum,choice)=>sum+choice.response.length,0);
-    directedResponses+=expanded.choices.slice(0,scene.choices.length).reduce((sum,choice)=>sum+choice.response.length,0);
-    assert.equal(expanded.lines.length,scene.lines.length*3,scene.id);
-    assert.ok(expanded.choices.length>=5&&expanded.choices.length<=6,`${scene.id}: ${expanded.choices.length}`);
+    assert.deepEqual(expanded.lines,scene.lines,scene.id);
+    assert.deepEqual(expanded.choices.slice(0,scene.choices.length),scene.choices);
+    assert.equal(expanded.choices.length,scene.choices.length+2);
   }
-  assert.equal(directedLines,authoredLines*3);
-  assert.equal(directedResponses,authoredResponses*3);
+  const state=newGame('지문확인',1);
+  const next=advance(state,blankMeta());
+  assert.equal(activeLines(next)[next.line].text,commonScenes[0].lines[1].text);
+  assert.equal(activeLines(next)[next.line].speaker,'player');
+});
+
+test('padded saves resume at the next authored line and keep choices reachable', () => {
+  const original=commonScenes[0].lines;
+  const atmosphere:Line={speaker:'narrator',text:'교문 너머의 버스 소리이(가) 방금 전보다 또렷해졌다.'};
+  const thought:Line={speaker:'player',text:'나는 대답을 서두르지 않고 그 변화부터 기억했다.'};
+  const legacy=newGame('이어읽기',3);
+  delete legacy.dialogueRevision;
+  legacy.backlog=[original[0],atmosphere,thought];
+  legacy.line=3;
+  const restored=restoreGame(legacy)!;
+  assert.equal(restored.line,1);
+  assert.deepEqual(restored.backlog,[original[0]]);
+  assert.equal(activeLines(restored)[restored.line].text,original[1].text);
+  assert.deepEqual(restoreGame(restored),restored,'migration is applied only once');
+  const atChoices=restoreGame({...legacy,line:original.length*3})!;
+  assert.equal(atChoices.line,original.length);
+  assert.ok(choose(atChoices,0).response,'existing saved choice screen still works');
+  const duringPadding=restoreGame({...legacy,line:2})!;
+  assert.equal(duringPadding.line,1);
+  assert.deepEqual(legacy.backlog,[original[0],atmosphere,thought],'original save is not mutated');
+});
+
+test('saved responses shed padding without losing original dialogue or free-form replies', () => {
+  const legacy=newGame('선택반응',7);
+  delete legacy.dialogueRevision;
+  const first:Line={speaker:'player',text:'오늘 같이 연습할래?'};
+  const second:Line={speaker:'world',text:'좋아. 기타 가져올게.'};
+  const padding:Line={speaker:'narrator',text:'앰프의 낮은 잡음이(가) 한 박자 늦게 흔들렸다.'};
+  const thought:Line={speaker:'narrator',text:'세계는 화면보다 내 표정에 오래 시선을 두었다.'};
+  const restored=restoreGame({...legacy,response:[first,padding,thought,second,padding,thought],line:2})!;
+  assert.deepEqual(restored.response,[first,second]);
+  assert.equal(restored.line,1);
+  assert.equal(advance(restored,blankMeta()).phase,'map');
+  const freeReply={...legacy,response:[first,second],line:1};
+  assert.deepEqual(restoreGame(freeReply)?.response,freeReply.response);
+  assert.equal(restoreGame(freeReply)?.line,1);
+  const preExpansion={...legacy,line:5,backlog:commonScenes[0].lines.slice(0,5)};
+  assert.equal(restoreGame(preExpansion)?.line,5,'original pre-expansion saves keep their cursor');
+  assert.equal(restoreGame({...legacy,line:99999}),null,'invalid indices remain rejected');
 });
 
 test('main-story bonus decisions are tagged location actions, not repeated generic advice', () => {
