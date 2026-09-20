@@ -1,56 +1,9 @@
 import {locationById} from '../data/characters';
-import type {CharacterId,Choice,Line,LocationId,Scene} from '../types';
+import type {CharacterId,Choice,LocationId,Scene} from '../types';
 
 const ids:CharacterId[]=['world','junyeon','hyunsol','taewoo','taehun','seoyul'];
-const locationNouns:Record<LocationId,string[]>={
- gate:['정문 경비실의 시계','교문 너머의 버스 소리','운동장을 건너온 바람','신발장 앞의 발소리'],
- classroom:['창가의 긴 햇빛','칠판에 남은 분필가루','책상 사이를 도는 선풍기','복도에서 멀어지는 발소리'],
- garden:['화단 사이의 바람','벤치 아래의 나뭇잎','농구장 쪽 웃음소리','급식실에서 흘러온 냄새'],
- cafeteria:['식판이 포개지는 소리','창가 자리에 남은 햇빛','자판기 냉각음','늦은 당번의 발소리'],
- library:['책장을 넘기는 소리','반납대의 작은 스탬프','창틀에 쌓인 빛','멀리서 울린 폐관 안내음'],
- chemistry:['초시계의 붉은 숫자','유리기구에 번진 노을','환풍기의 낮은 진동','정리대의 체크리스트'],
- media:['편집 화면의 재생 막대','헤드폰 밖으로 샌 박자','꺼진 카메라의 렌즈','저장 장치의 작은 불빛'],
- computer:['모니터의 푸른 대기 화면','키보드 사이의 짧은 침묵','자동 저장 알림','창가와 화면에 겹친 노을'],
- observatory:['돔 천장의 느린 그림자','관측 시각을 알리는 진동','렌즈에 맺힌 얇은 김','구름 사이의 작은 틈'],
- band:['앰프의 낮은 잡음','보면대 위의 연필 자국','멈춘 메트로놈','건반에 남은 손의 온기'],
- art:['물통에 번지는 색','마르지 않은 종이 모서리','석고상에 걸린 노을','겹쳐 놓은 팔레트'],
- dance:['거울 벽의 긴 반사','바닥에 붙은 대형 표시','스피커가 남긴 잔향','정리되지 않은 한 박자'],
- auditorium:['빈 객석의 희미한 반향','무대 가장자리의 안전선','천천히 식는 조명','막 뒤의 작은 움직임'],
- roof:['난간을 스치는 바람','도시 위로 켜지는 불빛','멀리 지나가는 비행기','옥상문이 닫히는 소리'],
- walk:['담장 아래 길어진 그림자','나란히 맞춰진 두 걸음','나뭇가지 사이의 가로등','갈림길 앞의 표지판'],
-};
-const movements=['한 박자 늦게 흔들렸다','방금 전보다 또렷해졌다','말 사이의 빈칸을 천천히 채웠다','다음 대답을 기다리듯 잠잠해졌다','서로 다른 표정을 한 화면에 묶었다','조금 전의 긴장을 부드럽게 흩뜨렸다'];
-const observations=['나는 대답을 서두르지 않고 그 변화부터 기억했다.','말의 뜻만큼 말하기까지 걸린 시간도 중요해 보였다.','누가 옳은지보다 지금 무엇을 확인해야 하는지가 선명해졌다.','작은 침묵은 거절이 아니라 생각할 시간을 달라는 신호일 수 있었다.','같은 장면을 보고도 서로 다른 이유로 멈춰 있었다.','다음 말은 호감보다 신뢰를 선택해야 이어질 것 같았다.'];
-const characterBeats:Record<CharacterId,string[]>={
- world:['세계는 웃음 뒤의 불안을 숨기지 않으려 했다.','세계는 대답을 재촉하려다 스스로 한 걸음 물러났다.','세계는 화면보다 내 표정에 오래 시선을 두었다.'],
- junyeon:['준연은 작아진 목소리를 포기하지 않고 끝까지 이어 갔다.','준연은 지웠던 자기 이름을 다시 천천히 적었다.','준연은 도움이 아니라 들어 줄 시간을 먼저 구했다.'],
- hyunsol:['현솔은 정답을 말하기 전에 그 말이 남길 상처를 계산했다.','현솔은 틀린 부분과 틀리게 말한 부분을 나누어 보았다.','현솔은 반박할 근거와 사과할 이유를 동시에 찾았다.'],
- taewoo:['태우는 멋진 동작보다 멈춰야 할 신호를 먼저 살폈다.','태우는 거울 속 점수 대신 내 반응을 기다렸다.','태우는 경쟁심을 숨기지 않되 그것으로 답을 강요하지 않았다.'],
- taehun:['태훈은 관측값 옆에 마음이 머물 여백을 남겼다.','태훈은 보이지 않는다고 없다고 쓰지 않았다.','태훈은 과학의 문장과 시의 문장을 서로 지우지 않았다.'],
- seoyul:['서율은 완성 여부보다 누구에게 보여 줄지를 먼저 정했다.','서율은 불편한 화음을 지우지 않고 이유를 설명했다.','서율은 내 감상을 기다리되 작품의 결정권은 놓지 않았다.'],
-};
-
 const hash=(text:string)=>{let h=0;for(const c of text)h=(Math.imul(h,31)+c.charCodeAt(0))>>>0;return h;};
-const pick=<T,>(items:T[],key:string)=>items[hash(key)%items.length];
 const castOf=(scene:Scene)=>[...new Set(scene.lines.map(l=>l.speaker).filter((s):s is CharacterId=>ids.includes(s as CharacterId)))];
-
-function enrichLines(lines:Line[],scene:Scene):Line[]{
- const cast=castOf(scene),fallback=cast[0];
- return lines.flatMap((original,index)=>{
-  const key=`${scene.id}:${index}:${original.text}`,noun=pick(locationNouns[scene.location],key+'n'),movement=pick(movements,key+'m');
-  const atmosphere:Line={speaker:'narrator',text:`${noun}이(가) ${movement}.`};
-  if(ids.includes(original.speaker as CharacterId)){
-   const id=original.speaker as CharacterId;
-   return [original,atmosphere,{speaker:'narrator',text:pick(characterBeats[id],key+'c')}];
-  }
-  if(fallback&&original.speaker==='player')return [original,atmosphere,{speaker:fallback,text:pick([
-   '응. 그 말의 뜻을 내가 멋대로 바꾸지 않고 들어 볼게.',
-   '조금 더 구체적으로 말해 줘. 나도 솔직하게 답하고 싶어.',
-   '지금처럼 확인해 주면, 내 선택도 내 말로 설명할 수 있을 것 같아.',
-  ],key+'reply')}];
-  return [original,atmosphere,{speaker:'player',text:pick(observations,key+'o')}];
- });
-}
 
 type SceneMove={key:string;label:string;text:string;player:string;reply:string;kind:'observe'|'prototype'|'perform'};
 const sceneMoves:Record<LocationId,SceneMove[]>={
@@ -143,20 +96,19 @@ function contextualChoices(scene:Scene):Choice[]{
  const place=locationById[scene.location].name,deck=sceneMoves[scene.location],start=hash(scene.id)%deck.length;
  return [deck[start],deck[(start+1)%deck.length]].map(move=>{
   const fill=(value:string)=>value.replaceAll('{title}',scene.title).replaceAll('{place}',place);
-  return {id:`director-${move.key}`,label:move.label,text:move.text.includes('{title}')?fill(move.text):`‘${scene.title}’에서 ${fill(move.text)}`,response:enrichLines([
+  return {id:`director-${move.key}`,label:move.label,text:move.text.includes('{title}')?fill(move.text):`‘${scene.title}’에서 ${fill(move.text)}`,response:[
    {speaker:'player',text:fill(move.player)},
    {speaker:id,text:fill(move.reply)},
-   {speaker:'narrator',text:`${place}에서 말로만 남아 있던 갈등이 ‘${move.label}’이라는 행동으로 바뀌었다.`},
-  ],scene),effects:sceneMoveEffects(id,move.kind),flags:[`director-${move.key}:${scene.id}`]};
+  ],effects:sceneMoveEffects(id,move.kind),flags:[`director-${move.key}:${scene.id}`]};
  });
 }
 
 const cache=new Map<string,Scene>();
-/** Triples authored dialogue at runtime and adds two context-aware decisions to every main scene. */
+/** Keeps authored dialogue intact and adds two location-specific decisions. */
 export function directedScene(scene:Scene,{addChoices=true,cacheable=true}:{addChoices?:boolean;cacheable?:boolean}={}):Scene{
  const key=`${scene.id}:${addChoices}`;
  if(cacheable&&cache.has(key))return cache.get(key)!;
- const expanded={...scene,lines:enrichLines(scene.lines,scene),choices:[...scene.choices.map(choice=>({...choice,response:enrichLines(choice.response,scene)})),...(addChoices?contextualChoices(scene):[])]};
+ const expanded={...scene,choices:[...scene.choices,...(addChoices?contextualChoices(scene):[])]};
  if(cacheable)cache.set(key,expanded);
  return expanded;
 }
