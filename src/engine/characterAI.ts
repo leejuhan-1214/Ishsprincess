@@ -4,7 +4,6 @@ import type {CharacterId,Choice,Effect,Line,LocationId,Scene} from '../types';
 
 export type Relationship={affection:number;trust:number;jealousy:number;special:number};
 export type TalkContext={id:CharacterId;location:LocationId;chapter:number;visit:number;stats:Relationship;flags:string[];seed:number};
-type Intent='comfort'|'compliment'|'question'|'help'|'promise'|'boundary'|'jealousy'|'joke'|'school';
 export type EventKind='closeness'|'confidence'|'jealousy'|'boundary'|'chance';
 
 const persona:Record<CharacterId,{
@@ -57,50 +56,6 @@ const persona:Record<CharacterId,{
 const hash=(text:string)=>{let h=2166136261;for(const c of text){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;};
 const pick=<T,>(items:T[],key:string)=>items[hash(key)%items.length];
 const line=(speaker:Line['speaker'],text:string):Line=>({speaker,text});
-
-function intentOf(input:string):Intent{
- const tests:[Intent,RegExp][]=[
-  ['comfort',/괜찮|힘들|걱정|미안|울|쉬어|아프/],['compliment',/좋아|예뻐|멋|잘했|대단|사랑/],
-  ['help',/도와|같이|해줄|필요|어떻게/],['promise',/약속|항상|전부|뭐든|절대/],
-  ['boundary',/싫|그만|부담|거리|혼자|안 돼/],['jealousy',/다른|누구|질투|둘이|왜 걔/],
-  ['joke',/ㅋㅋ|농담|장난|웃|재밌/],['question',/[?？]|왜|뭐|어때|궁금/],
- ];
- return tests.find(([,pattern])=>pattern.test(input))?.[0]??'school';
-}
-
-function tier(stats:Relationship){return stats.trust>=70&&stats.affection>=65?'close':stats.trust>=35||stats.affection>=40?'warm':'guarded';}
-
-export function characterReply(ctx:TalkContext,input:string):Line[]{
- const p=persona[ctx.id],intent=intentOf(input),level=tier(ctx.stats),key=`${ctx.seed}:${ctx.chapter}:${ctx.visit}:${ctx.location}:${input}`;
- const place=locationById[ctx.location].name,topic=pick(p.topics,key+'topic'),gesture=pick(p.gestures,key+'gesture');
- const stage=pick(level==='guarded'?p.guarded:p.soft,key+'stage');
- const opening:Record<Intent,string>={
-  comfort:`위로부터 서두르지 않고 ${topic} 이야기를 조금 더 해 볼게.`,
-  compliment:`고맙지만 결과만 칭찬하면 조금 아쉬워. 어떤 순간이 그렇게 보였는지 말해 줘.`,
-  question:`그 질문이라면 ${topic}부터 설명하는 게 맞겠다.`,
-  help:`대신 해 주기보다 옆에서 확인해 줘. 그러면 내가 내 몫을 해 볼게.`,
-  promise:`'언제나'보다 오늘 ${place}에서 지킬 수 있는 약속부터 말해 줘.`,
-  boundary:`알겠어. 멈춰 달라는 말을 가볍게 넘기지 않을게.`,
-  jealousy:`누구와 비교해서 답하고 싶지는 않아. 지금 우리 대화만 정확히 보자.`,
-  joke:`그건 조금 웃겼어. 그래도 장난 뒤에 숨긴 말이 있으면 놓치고 싶진 않아.`,
-  school:`오늘 ${place}에서 있었던 일과 연결하면, ${topic}이 제일 먼저 떠올라.`,
- };
- const tail=pick(p.voice,key+'voice');
- return [line('narrator',`${stage} ${characterById[ctx.id].name}은(는) ${gesture}.`),line(ctx.id,opening[intent]),line(ctx.id,tail)];
-}
-
-export function freeTalkResult(ctx:TalkContext,input:string):{lines:Line[];effects:Effect[];flags:string[]}{
- const intent=intentOf(input),good=['comfort','help','boundary','question','school'].includes(intent);
- const risky=intent==='promise'||intent==='jealousy';
- const positiveSpecial=['taehun','seoyul'].includes(ctx.id);
- const effects:Effect[]=[
-  {target:ctx.id,stat:'affection',amount:good?7:risky?2:5},
-  {target:ctx.id,stat:'trust',amount:good?9:risky?-5:3},
-  {target:ctx.id,stat:'jealousy',amount:intent==='jealousy'?7:intent==='boundary'?-4:0},
-  {target:ctx.id,stat:'special',amount:positiveSpecial?(good?5:-2):(good?-4:risky?6:1)},
- ];
- return {lines:[line('player',input),...characterReply(ctx,input),line('narrator','정해진 선택지 대신 건넨 말은, 그날의 관계와 장소에 맞는 대답으로 돌아왔다.')],effects,flags:[`free-talk:${ctx.id}:${intent}`]};
-}
 
 const eventTitles:Record<EventKind,string>={closeness:'예고 없는 둘만의 시간',confidence:'처음 맡기는 부탁',jealousy:'시선이 멈춘 곳',boundary:'넘지 말아야 할 선',chance:'갑작스러운 방송'};
 

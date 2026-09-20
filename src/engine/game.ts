@@ -4,7 +4,7 @@ import { routesA } from '../data/routesA';
 import { routesB } from '../data/routesB';
 import { haremScenes } from '../data/harem';
 import { endingById } from '../data/endings';
-import {freeTalkResult,hangoutScene,pendingEvent,selectSuddenEvent,type TalkContext} from './characterAI';
+import {hangoutScene,pendingEvent,selectSuddenEvent,type TalkContext} from './characterAI';
 import {activityFor} from './activities';
 import {directedScene} from './storyDirector';
 import {cleanLegacyLines,hasLegacyPadding} from './legacyDialogue';
@@ -45,13 +45,6 @@ export function choose(s:GameState,index:number):GameState{
  const flags=(c.flags??[]).map(f=>countedFlags.includes(f)?`${f}:${scene.id}`:f);
  let out=applyEffects(s,c.effects,[...flags,`choice:${scene.id}:${c.id}`]);
  out.response=c.response;out.line=0;out.backlog=[...out.backlog,{speaker:'player' as const,text:`〈선택〉 ${c.text}`}].slice(-800);return out;
-}
-export function freeTalk(s:GameState,input:string):GameState{
- const message=input.trim().slice(0,160);
- if(!message||s.phase!=='story'||s.segment!=='hangout'||!s.visitor||s.response||s.line<activeScene(s).lines.length)return s;
- const result=freeTalkResult(talkContext(s),message);
- let out=applyEffects(s,result.effects,[...result.flags,`choice:${activeScene(s).id}:free-${s.visits[s.visitor]}`]);
- out.response=result.lines;out.line=0;out.backlog=[...out.backlog,{speaker:'player' as const,text:`〈직접 말하기〉 ${message}`}].slice(-800);return out;
 }
 export const currentActivity=(s:GameState)=>s.visitor?activityFor(s.visitor,s.visitLocation??characterById[s.visitor].location,s.seed,s.chapter,s.visits[s.visitor]):null;
 export function completeActivity(s:GameState,score:number):GameState{
