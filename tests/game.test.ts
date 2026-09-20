@@ -7,11 +7,15 @@ import { haremScenes } from '../src/data/harem';
 import { hangoutScene } from '../src/data/hangouts';
 import {
   activeLines, activeScene, advance, applyEffects, blankMeta, candidates, choose,
-  commonBad, haremChance, haremEligible, ids, isGameState, newGame, nextDay,
-  resolveEnding, routes, seededRoll, selectRoute, validName, visit,
+  commonBad, completeActivity, currentActivity, freeTalk, haremChance, haremEligible,
+  ids, isGameState, locationOf, newGame, nextDay, resolveEnding, routes, seededRoll,
+  selectRoute, validName, visit,
   type GameState, type Meta,
 } from '../src/engine/game';
 import type { CharacterId, Effect, Line, Scene } from '../src/types';
+import {directedScene} from '../src/engine/storyDirector';
+import {characterReply,selectSuddenEvent,type TalkContext} from '../src/engine/characterAI';
+import {endingCutscene,eventCutscene,eventKindFromScene} from '../src/engine/cutscenes';
 
 const heroStats = ['affection', 'trust', 'jealousy', 'special'];
 const globalStats = ['harmony', 'fair', 'reputation', 'ethics', 'safety'];
@@ -177,8 +181,11 @@ test('choice effects apply once and a full response returns a hangout to the map
   state = visit(state, 'world');
   while (state.line < activeScene(state).lines.length) state = advance(state, blankMeta());
   const before = state.stats.world.affection;
+  const affectionChange = activeScene(state).choices[0].effects
+    .filter(effect => effect.target === 'world' && effect.stat === 'affection')
+    .reduce((sum, effect) => sum + effect.amount, 0);
   state = choose(state, 0);
-  assert.equal(state.stats.world.affection, before + 12);
+  assert.equal(state.stats.world.affection, Math.max(0, Math.min(100, before + affectionChange)));
   assert.strictEqual(choose(state, 0), state, 'clicking twice cannot apply a response twice');
   while (state.phase === 'story') state = advance(state, blankMeta());
   assert.equal(state.phase, 'map');
@@ -320,11 +327,15 @@ test('team successes and secret promises count distinct scenes rather than colla
     });
     assert.ok(indexed.length >= 2, `${tag}: multiple real authored events`);
     for (const { scene, index, choiceIndex } of indexed) {
-      state = choose({ ...state, phase: 'story', segment: 'common', chapter: index, line: scene.lines.length, response: null }, choiceIndex);
+      const atChoice={ ...state, phase: 'story' as const, segment: 'common' as const, chapter: index, line: 0, response: null };
+      atChoice.line=activeScene(atChoice).lines.length;
+      state = choose(atChoice, choiceIndex);
     }
     assert.equal(state.flags.filter(flag => flag.startsWith(`${tag}:`)).length, indexed.length, tag);
     const first = indexed[0];
-    state = choose({ ...state, phase: 'story', segment: 'common', chapter: first.index, line: first.scene.lines.length, response: null }, first.choiceIndex);
+    const repeated={ ...state, phase: 'story' as const, segment: 'common' as const, chapter: first.index, line: 0, response: null };
+    repeated.line=activeScene(repeated).lines.length;
+    state = choose(repeated, first.choiceIndex);
     assert.equal(state.flags.filter(flag => flag.startsWith(`${tag}:`)).length, indexed.length, 'same scene cannot double-count');
   }
 });
@@ -450,6 +461,21 @@ test('every rotating hangout produces valid uniquely addressed scenes and finite
   }
 });
 
+test('after-school decisions use five tagged character actions without repeated copy across twelve visits', () => {
+  for (const character of characters) {
+    const texts = new Set<string>();
+    for (let visit = 0; visit < 12; visit++) {
+      const scene = hangoutScene(character.id, visit, visit + 1);
+      assert.equal(scene.choices.length, 5, `${character.id}/${visit}: five actions`);
+      for (const choice of scene.choices) {
+        assert.ok(choice.label?.trim(), `${character.id}/${visit}/${choice.id}: action label`);
+        assert.ok(!texts.has(choice.text), `${character.id}: repeated choice copy: ${choice.text}`);
+        texts.add(choice.text);
+      }
+    }
+  }
+});
+
 test('hangout scenes keep the calendar date of the common chapter that opened the map', () => {
   for (let chapter = 0; chapter < commonScenes.length - 1; chapter++) {
     const map = { ...newGame('날짜검증', 1), phase: 'map' as const, chapter };
@@ -459,4 +485,122 @@ test('hangout scenes keep the calendar date of the common chapter that opened th
       assert.ok(isGameState(state));
     }
   }
+});
+
+test('runtime story director triples dialogue and expands every main decision to five or six choices', () => {
+  let authoredLines=0,directedLines=0,authoredResponses=0,directedResponses=0;
+  for(const scene of allScenes()){
+    const expanded=directedScene(scene);
+    authoredLines+=scene.lines.length;directedLines+=expanded.lines.length;
+    authoredResponses+=scene.choices.reduce((sum,choice)=>sum+choice.response.length,0);
+    directedResponses+=expanded.choices.slice(0,scene.choices.length).reduce((sum,choice)=>sum+choice.response.length,0);
+    assert.equal(expanded.lines.length,scene.lines.length*3,scene.id);
+    assert.ok(expanded.choices.length>=5&&expanded.choices.length<=6,`${scene.id}: ${expanded.choices.length}`);
+  }
+  assert.equal(directedLines,authoredLines*3);
+  assert.equal(directedResponses,authoredResponses*3);
+});
+
+test('main-story bonus decisions are tagged location actions, not repeated generic advice', () => {
+  const copy = new Set<string>();
+  for (const scene of allScenes()) {
+    const extras = directedScene(scene).choices.slice(scene.choices.length);
+    assert.equal(extras.length, 2, `${scene.id}: two location actions`);
+    for (const choice of extras) {
+      assert.ok(choice.label?.trim(), `${scene.id}/${choice.id}: action label`);
+      assert.doesNotMatch(choice.text, /말을 요약해|지금 할 수 있는 일과 다음에 해야 할 일/);
+      assert.ok(!copy.has(choice.text), `repeated director copy: ${choice.text}`);
+      copy.add(choice.text);
+    }
+  }
+});
+
+test('living timetable moves every heroine and uses the new computer and dedicated dance rooms', () => {
+  const state={...newGame('시간표',123),phase:'map' as const};
+  const all=new Set<string>();
+  for(const id of ids){
+    const own=new Set<string>();
+    for(let chapter=0;chapter<13;chapter++)for(const actions of [3,2,1]){
+      const place=locationOf({...state,chapter,actions},id);own.add(place);all.add(place);
+    }
+    assert.ok(own.size>=7,`${id}: ${[...own]}`);
+  }
+  assert.ok(all.has('computer'));
+  assert.ok(all.has('dance'));
+  assert.equal(locations.find(place=>place.id==='dance')?.bg,'dance');
+  assert.equal(locations.find(place=>place.id==='computer')?.bg,'computer');
+});
+
+test('map visits start a situational three-round mini game and its score changes the relationship', () => {
+  const map={...newGame('활동',77),phase:'map' as const};
+  const place=locationOf(map,'taewoo');
+  let state=visit(map,'taewoo',place);
+  assert.equal(state.phase,'activity');
+  const activity=currentActivity(state)!;
+  assert.equal(activity.questions.length,3);
+  assert.match(activity.subtitle,new RegExp(locations.find(item=>item.id===place)!.name));
+  const before=state.stats.taewoo.trust;
+  state=completeActivity(state,3);
+  assert.equal(state.phase,'story');
+  assert.equal(state.stats.taewoo.trust,before+10);
+  assert.ok(state.flags.some(flag=>flag.startsWith(`activity:taewoo:${place}:`)));
+  assert.ok(isGameState(state));
+});
+
+test('free-form character AI changes voice by heroine, intent, relationship, and current location', () => {
+  const base={...newGame('대화',91),phase:'map' as const,chapter:4};
+  const replies=new Set<string>();
+  for(const id of ids){
+    const ctx:TalkContext={id,location:'computer',chapter:4,visit:2,stats:{affection:70,trust:75,jealousy:5,special:30},flags:[],seed:91};
+    replies.add(characterReply(ctx,'오늘 힘들어 보여. 같이 오류를 찾아볼까?').map(item=>item.text).join(' '));
+  }
+  assert.equal(replies.size,ids.length,'each heroine has an independent voice');
+  const place=locationOf(base,'seoyul');
+  let state=visit(base,'seoyul');
+  state={...state,line:activeScene(state).lines.length};
+  const before=state.stats.seoyul.trust;
+  state=freeTalk(state,'미완성 그림은 허락 없이 찍지 않을게. 어떤 부분을 같이 볼까?');
+  assert.ok(state.response?.some(item=>item.text.includes('미완성 그림')));
+  assert.ok(state.response?.some(item=>item.speaker==='seoyul'));
+  assert.ok(state.stats.seoyul.trust>before);
+  assert.equal(activeScene(state).location,place);
+});
+
+test('relationship thresholds deterministically unlock one-time sudden events', () => {
+  const base=newGame('돌발',13);
+  const ctx:TalkContext={id:'world',location:'band',chapter:3,visit:1,stats:{affection:70,trust:60,jealousy:10,special:30},flags:[],seed:13};
+  const first=selectSuddenEvent(ctx);
+  assert.equal(first,'confidence');
+  assert.notEqual(selectSuddenEvent({...ctx,flags:['event-seen:world:confidence']}),'confidence');
+  assert.equal(selectSuddenEvent({...ctx,stats:{...ctx.stats,jealousy:60}}),'jealousy');
+  const map={...base,phase:'map' as const,stats:{...base.stats,world:ctx.stats}};
+  const place=locationOf(map,'world');
+  const started=visit(map,'world',place);
+  assert.ok(started.flags.some(flag=>flag.startsWith('pending-event:world:')));
+  assert.equal(started.phase,'activity');
+});
+
+test('all 34 endings and every surprise-event combination have playable cutscene data', () => {
+  for(const ending of endings){
+    const cutscene=endingCutscene(ending.id);
+    assert.equal(cutscene.key,`ending:${ending.id}`);
+    assert.equal(cutscene.title,ending.title);
+    assert.equal(cutscene.beats.length,3);
+    assert.ok(cutscene.beats.every(beat=>beat.trim().length>0));
+  }
+  const kinds=['closeness','confidence','jealousy','boundary','chance'] as const;
+  for(const id of ids)for(const kind of kinds){
+    const cutscene=eventCutscene(id,kind,id==='taewoo'?'dance':'classroom',`${id}-${kind}`);
+    assert.equal(cutscene.beats.length,3);
+    assert.equal(eventKindFromScene(`visit-${id}-event-${kind}`),kind);
+  }
+  const eventArt={world:'event-world',junyeon:'event-junyeon',hyunsol:'event-hyunsol',taewoo:'event-taewoo-fall',taehun:'event-taehun',seoyul:'event-seoyul'} as const;
+  for(const id of ids)assert.equal(eventCutscene(id,'chance',id==='taewoo'?'dance':'classroom').art,eventArt[id]);
+  assert.equal(eventKindFromScene('ordinary-visit'),null);
+});
+
+test('legacy version-one saves without a visit location remain loadable', () => {
+  const legacy=newGame('예전세이브',5) as GameState;
+  delete legacy.visitLocation;
+  assert.ok(isGameState(legacy));
 });
