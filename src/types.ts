@@ -1,9 +1,9 @@
 export type CharacterId = 'world' | 'junyeon' | 'hyunsol' | 'taewoo' | 'taehun' | 'seoyul';
 export type StatKey = 'affection' | 'trust' | 'jealousy' | 'special';
 export type GlobalKey = 'harmony' | 'fair' | 'reputation' | 'ethics' | 'safety';
-export type LocationId = 'gate' | 'classroom' | 'garden' | 'cafeteria' | 'library' | 'chemistry' | 'media' | 'observatory' | 'band' | 'art' | 'dance' | 'auditorium' | 'roof' | 'walk';
+export type LocationId = 'gate' | 'classroom' | 'garden' | 'cafeteria' | 'library' | 'chemistry' | 'media' | 'computer' | 'observatory' | 'band' | 'art' | 'dance' | 'auditorium' | 'roof' | 'walk';
 export type Line = { speaker: CharacterId | 'player' | 'narrator' | 'teacher' | 'student'; text: string };
 export type Effect = { target: CharacterId | 'global'; stat: StatKey | GlobalKey; amount: number };
-export type Choice = { id: string; text: string; response: Line[]; effects: Effect[]; flags?: string[] };
+export type Choice = { id: string; text: string; response: Line[]; effects: Effect[]; flags?: string[]; label?: string };
 export type Scene = { id: string; title: string; location: LocationId; day: number; lines: Line[]; choices: Choice[] };
 export type Character = { id: CharacterId; name: string; role: string; tag: string; color: string; specialLabel: string; bio: string; quote: string; location: LocationId };
