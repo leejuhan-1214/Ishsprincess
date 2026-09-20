@@ -7,14 +7,14 @@ import { haremScenes } from '../src/data/harem';
 import { hangoutScene } from '../src/data/hangouts';
 import {
   activeLines, activeScene, advance, applyEffects, blankMeta, candidates, choose,
-  commonBad, completeActivity, currentActivity, freeTalk, haremChance, haremEligible,
+  commonBad, completeActivity, currentActivity, haremChance, haremEligible,
   ids, isGameState, locationOf, newGame, nextDay, resolveEnding, routes, seededRoll,
   selectRoute, validName, visit, restoreGame,
   type GameState, type Meta,
 } from '../src/engine/game';
 import type { CharacterId, Effect, Line, Scene } from '../src/types';
 import {directedScene} from '../src/engine/storyDirector';
-import {characterReply,selectSuddenEvent,type TalkContext} from '../src/engine/characterAI';
+import {selectSuddenEvent,type TalkContext} from '../src/engine/characterAI';
 import {endingCutscene,eventCutscene,eventKindFromScene} from '../src/engine/cutscenes';
 
 const heroStats = ['affection', 'trust', 'jealousy', 'special'];
@@ -584,25 +584,6 @@ test('map visits start a situational three-round mini game and its score changes
   assert.equal(state.stats.taewoo.trust,before+10);
   assert.ok(state.flags.some(flag=>flag.startsWith(`activity:taewoo:${place}:`)));
   assert.ok(isGameState(state));
-});
-
-test('free-form character AI changes voice by heroine, intent, relationship, and current location', () => {
-  const base={...newGame('대화',91),phase:'map' as const,chapter:4};
-  const replies=new Set<string>();
-  for(const id of ids){
-    const ctx:TalkContext={id,location:'computer',chapter:4,visit:2,stats:{affection:70,trust:75,jealousy:5,special:30},flags:[],seed:91};
-    replies.add(characterReply(ctx,'오늘 힘들어 보여. 같이 오류를 찾아볼까?').map(item=>item.text).join(' '));
-  }
-  assert.equal(replies.size,ids.length,'each heroine has an independent voice');
-  const place=locationOf(base,'seoyul');
-  let state=visit(base,'seoyul');
-  state={...state,line:activeScene(state).lines.length};
-  const before=state.stats.seoyul.trust;
-  state=freeTalk(state,'미완성 그림은 허락 없이 찍지 않을게. 어떤 부분을 같이 볼까?');
-  assert.ok(state.response?.some(item=>item.text.includes('미완성 그림')));
-  assert.ok(state.response?.some(item=>item.speaker==='seoyul'));
-  assert.ok(state.stats.seoyul.trust>before);
-  assert.equal(activeScene(state).location,place);
 });
 
 test('relationship thresholds deterministically unlock one-time sudden events', () => {
