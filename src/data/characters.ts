@@ -16,12 +16,29 @@ export const locations: {id:LocationId;name:string;sub:string;bg:string;x:number
  {id:'library',name:'도서관',sub:'조용한 문장들',bg:'classroom',x:76,y:31},
  {id:'chemistry',name:'화학실',sub:'실험과 작은 실수',bg:'lab',x:23,y:36},
  {id:'media',name:'미디어실',sub:'남겨 두는 순간',bg:'band',x:23,y:61},
+ {id:'computer',name:'컴퓨터실',sub:'코드와 마음의 디버깅',bg:'computer',x:34,y:20},
  {id:'observatory',name:'천문대',sub:'별을 기다리는 시간',bg:'night',x:21,y:14},
  {id:'band',name:'밴드연습실',sub:'둘만의 앙코르',bg:'band',x:74,y:53},
  {id:'art',name:'미술준비실',sub:'아직 마르지 않은 색',bg:'band',x:88,y:13},
- {id:'dance',name:'댄스연습실',sub:'여덟 번의 카운트',bg:'band',x:10,y:79},
+ {id:'dance',name:'댄스연습실',sub:'여덟 번의 카운트',bg:'dance',x:10,y:79},
  {id:'auditorium',name:'대강당',sub:'조명이 켜지는 곳',bg:'band',x:8,y:52},
  {id:'roof',name:'옥상 휴게공간',sub:'밤에만 들리는 이야기',bg:'night',x:51,y:17},
  {id:'walk',name:'학교 뒤 산책로',sub:'조금 더 걸을까',bg:'night',x:91,y:94},
 ];
 export const locationById = Object.fromEntries(locations.map(l=>[l.id,l])) as Record<LocationId,typeof locations[number]>;
+
+const schedules: Record<CharacterId,LocationId[]> = {
+ world:['band','media','computer','garden','classroom','roof','cafeteria','auditorium'],
+ junyeon:['chemistry','library','computer','cafeteria','classroom','garden','media','walk'],
+ hyunsol:['chemistry','computer','classroom','library','media','garden','roof','cafeteria'],
+ taewoo:['dance','auditorium','computer','garden','cafeteria','walk','classroom','media'],
+ taehun:['observatory','library','computer','roof','garden','classroom','walk','cafeteria'],
+ seoyul:['art','band','computer','media','garden','library','classroom','roof'],
+};
+
+/** A deterministic timetable: it changes with chapter, remaining action, and playthrough seed. */
+export function scheduledLocation(id:CharacterId,chapter:number,actions:number,seed:number):LocationId{
+ const list=schedules[id],hero=characters.findIndex(c=>c.id===id);
+ const slot=Math.max(0,3-actions);
+ return list[(chapter*3+slot*2+hero+(seed%7))%list.length];
+}
