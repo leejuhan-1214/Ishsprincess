@@ -3,6 +3,7 @@ import {characterById,locationById} from '../data/characters';
 import type {TalkContext} from './characterAI';
 import type {CutsceneSpec} from './cutscenes';
 import type {Scene} from '../types';
+import {episodeMotionAsset} from './motion';
 
 export const episodeSeenFlag=(id:string)=>`episode-seen:${id}`;
 export const episodePendingFlag=(id:string)=>`pending-episode:${id}`;
@@ -46,6 +47,7 @@ export function episodeCutscene(id:string):CutsceneSpec{
   subtitle:`${characterById[episode.character].name} · ${locationById[episode.location].name}`,
   beats:episode.beats,background:locationById[episode.location].bg,mood:'event',character:episode.character,
   motif:episode.motif,props:episode.props,
+  motion:episodeMotionAsset(episode.id),
  };
 }
 export function episodeHint(episode:CutsceneEpisode){

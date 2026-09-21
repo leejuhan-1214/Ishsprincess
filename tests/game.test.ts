@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync,statSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
 import { characters, locations } from '../src/data/characters';
 import { commonScenes } from '../src/data/common';
 import { endings } from '../src/data/endings';
@@ -18,8 +20,51 @@ import {selectSuddenEvent,type TalkContext} from '../src/engine/characterAI';
 import {endingCutscene,eventCutscene,eventKindFromScene} from '../src/engine/cutscenes';
 import {cutsceneEpisodes} from '../src/data/cutsceneEpisodes';
 import {episodeCutscene,episodeEligible,episodePendingFlag,episodeScene,episodeSeenFlag,pendingEpisode,selectEpisode} from '../src/engine/episodes';
+import {cutsceneDuration,motionFrameAt,motionPosition,episodeMotionAsset} from '../src/engine/motion';
 
 const heroStats = ['affection', 'trust', 'jealousy', 'special'];
+
+test('motion timeline visits twelve distinct poses in order and holds the final pose',()=>{
+ const frames=[];
+ for(let beat=0;beat<3;beat++){
+  for(const progress of [0,.2,.5,.8])frames.push(motionFrameAt(beat,progress*3000,3000));
+  assert.equal(motionFrameAt(beat,3000,3000),beat*4+3);
+ }
+ assert.deepEqual(frames,Array.from({length:12},(_,i)=>i));
+ assert.equal(motionFrameAt(3,0,2300),11);
+ assert.equal(motionFrameAt(99,9999,0),11);
+ assert.equal(motionFrameAt(0,-100,3000),0);
+ assert.equal(motionPosition(0),'0% 0%');
+ assert.equal(motionPosition(2),'100% 0%');
+ assert.equal(motionPosition(11),'100% 100%');
+ assert.equal(motionPosition(-1),'0% 0%');
+ assert.equal(new Set(frames.map(motionPosition)).size,12);
+ assert.equal(cutsceneDuration(undefined,true),2300);
+ assert.equal(cutsceneDuration('짧은 장면',true),2400);
+ assert.equal(cutsceneDuration('긴 장면'.repeat(100),true),3400);
+ assert.equal(cutsceneDuration('기존 장면',false),4500);
+ for(const kind of ['closeness','chance'] as const)assert.equal(eventCutscene('taewoo',kind,'dance').motion,'motion/event-taewoo-fall');
+ assert.equal(eventCutscene('world','chance','band').motion,undefined,'other existing cutscenes stay unchanged');
+});
+
+test('all 42 episodes point to unique shipped twelve-frame atlases and thumbnails',()=>{
+ const directory=new URL('../public/assets/motion/',import.meta.url);
+ const manifest=JSON.parse(readFileSync(new URL('manifest.json',directory),'utf8'));
+ assert.equal(manifest.length,42);
+ assert.equal(new Set(manifest.map((x:{sourceHash:string})=>x.sourceHash)).size,42);
+ for(const episode of cutsceneEpisodes){
+  const film=episodeCutscene(episode.id);
+  assert.equal(film.motion,episodeMotionAsset(episode.id));
+  const entry=manifest.find((x:{id:string})=>x.id===episode.id);
+  assert.ok(entry,episode.id);assert.equal(entry.frames,12);assert.equal(entry.columns,3);assert.equal(entry.rows,4);
+  assert.equal(entry.delays.length,12);assert.ok(entry.delays.every((ms:number)=>ms>0));
+  for(const suffix of ['.webp','-poster.webp']){
+   const file=new URL(episode.id+suffix,directory),bytes=readFileSync(file);
+   assert.equal(bytes.toString('ascii',0,4),'RIFF');assert.equal(bytes.toString('ascii',8,12),'WEBP');
+   assert.ok(statSync(fileURLToPath(file)).size>5000);
+  }
+ }
+});
 const globalStats = ['harmony', 'fair', 'reputation', 'ethics', 'safety'];
 const legalSpeakers = new Set<string>([...ids, 'player', 'narrator', 'teacher', 'student']);
 const legalLocations = new Set(locations.map(location => location.id));

@@ -15,6 +15,8 @@ export type CutsceneSpec={
  mood:CutsceneMood;
  character?:CharacterId;
  art?:string;
+ /** A 3 × 4 atlas of twelve distinct character-action keyframes. */
+ motion?:string;
  motif?:EpisodeMotif;
  props?:[string,string,string];
 };
@@ -115,6 +117,7 @@ export function eventCutscene(id:CharacterId,kind:EventKind,location:LocationId,
   key:`event:${instance}:${id}:${kind}`,label:'SURPRISE EVENT CUTSCENE',title:illustrated?signature.title:eventLabels[kind],
   subtitle:`${characterById[id].name} · ${locationById[location].name}`,beats:eventLines[id][kind],
   background:locationById[location].bg,mood:'event',character:id,art:illustrated?signature.art:undefined,
+  motion:id==='taewoo'&&illustrated?'motion/event-taewoo-fall':undefined,
  };
 }
 

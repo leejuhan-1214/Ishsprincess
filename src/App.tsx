@@ -10,6 +10,7 @@ import {endingCutscene,eventCutscene,eventKindFromScene,type CutsceneSpec} from 
 import type {CharacterId,LocationId,Line} from './types';
 import {episodeCutscene} from './engine/episodes';
 import {CutsceneProps,EpisodeGallery} from './CutsceneDetails';
+import {cutsceneDuration,motionFrameAt,motionPosition} from './engine/motion';
 
 const asset=(name:string)=>`${import.meta.env.BASE_URL}assets/${name}.webp`;
 const label=(speaker:Line['speaker'],name:string)=>speaker==='player'?name:speaker==='narrator'?'':speaker==='teacher'?'담임 선생님':speaker==='student'?'1반 친구':characterById[speaker].name;
@@ -36,11 +37,34 @@ function Meter({name,value,color}:{name:string;value:number;color?:string}){retu
 
 function CutsceneScreen({spec,onDone}:{spec:CutsceneSpec;onDone:()=>void}){
  const [beat,setBeat]=useState(0),[paused,setPaused]=useState(false);
+ const [elapsed,setElapsed]=useState(0),[imageState,setImageState]=useState<'loading'|'ready'|'error'>(spec.motion?'loading':'ready');
+ const elapsedRef=useRef(0),doneRef=useRef(onDone);doneRef.current=onDone;
  const screen=useRef<HTMLElement>(null);
  useEffect(()=>{const overflow=document.body.style.overflow;document.body.style.overflow='hidden';screen.current?.querySelector('button')?.focus();return()=>{document.body.style.overflow=overflow;};},[]);
- useEffect(()=>{setBeat(0);setPaused(false);},[spec.key]);
- useEffect(()=>{if(paused)return;const duration=beat<spec.beats.length?Math.max(4500,Math.min(8500,spec.beats[beat].length*105)):2300;const timer=setTimeout(()=>beat<spec.beats.length?setBeat(value=>value+1):onDone(),duration);return()=>clearTimeout(timer);},[beat,paused,onDone,spec]);
+ useEffect(()=>{
+  setBeat(0);setPaused(!!spec.motion&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);setElapsed(0);elapsedRef.current=0;
+  if(!spec.motion){setImageState('ready');return;}
+  let active=true;const img=new Image();setImageState('loading');
+  img.onload=()=>{if(active)setImageState('ready');};img.onerror=()=>{if(active)setImageState('error');};img.src=asset(spec.motion);
+  return()=>{active=false;};
+ },[spec.key,spec.motion]);
+ const duration=cutsceneDuration(spec.beats[beat],!!spec.motion);
+ useEffect(()=>{setElapsed(0);elapsedRef.current=0;},[beat]);
+ useEffect(()=>{
+  if(paused||imageState!=='ready')return;
+  let previous=performance.now();
+  const timer=window.setInterval(()=>{
+   const now=performance.now(),delta=now-previous;previous=now;
+   // Returning from a background tab must not skip the entire film.
+   if(document.hidden)return;
+   elapsedRef.current+=Math.min(delta,100);setElapsed(elapsedRef.current);
+   if(elapsedRef.current>=duration){window.clearInterval(timer);if(beat<3)setBeat(value=>value+1);else doneRef.current();}
+  },40);
+  return()=>window.clearInterval(timer);
+ },[beat,paused,duration,imageState,spec.key]);
  const final=beat===spec.beats.length;
+ const frame=motionFrameAt(beat,elapsed,duration);
+ const replay=()=>{elapsedRef.current=0;setElapsed(0);setBeat(0);setPaused(false);};
  return <section ref={screen} onKeyDown={event=>{
   if(event.key==='Escape'){event.preventDefault();onDone();}
   if(event.key==='Tab'){
@@ -48,15 +72,17 @@ function CutsceneScreen({spec,onDone}:{spec:CutsceneSpec;onDone:()=>void}){
    if(event.shiftKey&&document.activeElement===buttons[0]){event.preventDefault();buttons[buttons.length-1].focus();}
    else if(!event.shiftKey&&document.activeElement===buttons[buttons.length-1]){event.preventDefault();buttons[0].focus();}
   }
- }} className={`cutscene cutscene-${spec.mood} ${paused?'cutscene-paused':''}`} role="dialog" aria-modal="true" aria-label={`${spec.title} 컷신`}>
-  <div className="cutscene-image" key={`${spec.key}:${beat}`} style={{backgroundImage:`url(${asset(spec.art??spec.background)})`}}/>
-  {!spec.art&&spec.character&&<div className="cutscene-actor"><Portrait id={spec.character}/></div>}
-  {spec.motif&&spec.props&&!final&&<CutsceneProps key={`${spec.key}:prop:${beat}`} motif={spec.motif} caption={spec.props[beat]} beat={beat}/>}
+ }} className={`cutscene cutscene-${spec.mood} ${spec.motion?'cutscene-motion':''} ${paused?'cutscene-paused':''}`} role="dialog" aria-modal="true" aria-label={`${spec.title} 컷신`}>
+  {spec.motion?<div className="motion-stage">
+   {imageState==='ready'?<div className="motion-frame" role="img" aria-label={`${spec.title} · 연속 동작 장면`} data-frame={frame} style={{backgroundImage:`url(${asset(spec.motion)})`,backgroundPosition:motionPosition(frame)}}/>:<p className="motion-loading" role="status">{imageState==='error'?'장면을 불러오지 못했어요. 돌아간 뒤 다시 재생해 주세요.':'새 장면을 불러오는 중…'}</p>}
+  </div>:<div className="cutscene-image" key={`${spec.key}:${beat}`} style={{backgroundImage:`url(${asset(spec.art??spec.background)})`}}/>}
+  {!spec.motion&&!spec.art&&spec.character&&<div className="cutscene-actor"><Portrait id={spec.character}/></div>}
+  {!spec.motion&&spec.motif&&spec.props&&!final&&<CutsceneProps key={`${spec.key}:prop:${beat}`} motif={spec.motif} caption={spec.props[beat]} beat={beat}/>}
   <div className="cutscene-vignette"/><div className="cutscene-flare"/><div className="cutscene-letterbox top"/><div className="cutscene-letterbox bottom"/>
   <div className={`cutscene-copy ${final?'final':''}`} key={`copy:${spec.key}:${beat}`} aria-live="polite">
    <span>{spec.label}</span>{final?<><h1>{spec.title}</h1><p>{spec.subtitle}</p></>:<><small>SCENE {String(beat+1).padStart(2,'0')}</small><p>{spec.beats[beat]}</p></>}
   </div>
-  <div className="cutscene-controls"><div className="cutscene-progress">{spec.beats.map((_,index)=><i key={index} className={index<=beat?'active':''}/>)}</div><button onClick={()=>setPaused(value=>!value)}>{paused?<Play size={15}/>:<Pause size={15}/>} {paused?'재생':'일시정지'}</button><button onClick={()=>final?onDone():setBeat(value=>value+1)}><ArrowRight size={15}/>{final?'돌아가기':'다음 장면'}</button><button onClick={onDone}><SkipForward size={15}/>건너뛰기</button></div>
+  <div className="cutscene-controls"><div className="cutscene-progress">{spec.beats.map((_,index)=><i key={index} className={index<=beat?'active':''}/>)}</div>{spec.motion&&<button onClick={replay}><RotateCcw size={15}/>처음부터</button>}<button onClick={()=>setPaused(value=>!value)}>{paused?<Play size={15}/>:<Pause size={15}/>} {paused?'재생':'일시정지'}</button><button onClick={()=>final?onDone():setBeat(value=>value+1)}><ArrowRight size={15}/>{final?'돌아가기':'다음 장면'}</button><button onClick={onDone}><SkipForward size={15}/>건너뛰기</button></div>
  </section>;
 }
 

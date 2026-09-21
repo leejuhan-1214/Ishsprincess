@@ -24,3 +24,36 @@
 @media(max-width:720px){.cinema-prop{top:10%;left:4%;width:52vw}.cinema-prop>span{font-size:15px}.cinema-prop>small{font-size:6px;letter-spacing:.13em}.cutscene-copy{bottom:22%;width:auto}.cutscene-copy.final h1{font-size:32px}.cutscene-copy>p{font-size:16px}.cutscene-controls{flex-wrap:wrap;bottom:7%;gap:3px}.cutscene-controls button{padding:8px 6px;font-size:10px}.episode-grid{grid-template-columns:1fr}.episode-intro{font-size:11px}.episode-thumbnail{height:95px}}
 @media(max-height:550px) and (min-width:721px){.cinema-prop{width:22vw;top:5%;left:5%}.cinema-prop>small{display:none}.cutscene-copy{left:33%;width:60vw;bottom:23%}.cutscene-copy>p{font-size:18px}.cutscene-copy.final h1{font-size:36px}}
 @media(prefers-reduced-motion:reduce){.cinema-prop *{animation:none!important;stroke-dashoffset:0}.cutscene *{animation:none!important}}
+
+/* New episodes use full illustrated poses, never the stationary cast portrait. */
+.cutscene.cutscene-motion{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#101518;padding:22px 4% 112px;gap:16px;overflow-y:auto}
+.cutscene-motion .motion-stage{position:relative;width:min(100%,calc((100svh - 330px)*16/9),1100px);aspect-ratio:16/9;flex-shrink:0;overflow:hidden;background:#192125;border:1px solid #d5c3a529;box-shadow:0 24px 90px #0007;border-radius:5px}
+.motion-frame{position:absolute;inset:0;background-size:300% 400%;background-repeat:no-repeat;animation:none!important;transition:none!important}
+.motion-loading{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:24px;font-size:14px;color:#d8c9b8}
+.cutscene-motion .cutscene-vignette,.cutscene-motion .cutscene-flare,.cutscene-motion .cutscene-letterbox{display:none}
+.cutscene.cutscene-motion .cutscene-copy{position:relative;left:auto;right:auto;bottom:auto;width:min(100%,950px);min-height:126px;text-align:center;animation:none;padding:0 12px}
+.cutscene.cutscene-motion .cutscene-copy>small{margin:8px 0 6px;font-size:10px}
+.cutscene.cutscene-motion .cutscene-copy>p{max-width:none;font-size:clamp(14px,1.45vw,19px);line-height:1.75}
+.cutscene.cutscene-motion .cutscene-copy.final h1{margin:12px 0 8px;font-size:clamp(25px,3vw,40px)}
+.cutscene.cutscene-motion .cutscene-controls{bottom:max(20px,env(safe-area-inset-bottom));left:4%;right:4%;justify-content:center;flex-wrap:wrap;gap:12px}
+.cutscene-motion .cutscene-progress{margin-right:8px}
+.episode-motion-thumbnail{height:auto;aspect-ratio:16/9;background-size:cover;background-position:center;padding:15px;align-items:flex-end}
+.episode-motion-thumbnail::before{background:linear-gradient(0deg,#111c1caa,transparent 70%)}
+.episode-motion-thumbnail>span{font-size:30px;color:#fff8e8}
+@media(max-width:720px){
+ .cutscene.cutscene-motion{padding:35px 0 110px;gap:24px;justify-content:center}
+ .cutscene-motion .motion-stage{width:100%;border-radius:0;border-left:0;border-right:0}
+ .cutscene.cutscene-motion .cutscene-copy{width:90%;padding:0;min-height:150px}
+ .cutscene.cutscene-motion .cutscene-copy>p{font-size:16px;line-height:1.85}
+ .cutscene.cutscene-motion .cutscene-controls{gap:5px;bottom:max(23px,env(safe-area-inset-bottom))}
+ .cutscene-motion .cutscene-progress{width:100%;justify-content:center;margin:0 0 8px}
+ .episode-motion-thumbnail{height:auto;min-height:150px}
+}
+@media(max-height:550px) and (orientation:landscape){
+ .cutscene.cutscene-motion{flex-direction:row;gap:20px;padding:16px 4% 62px}
+ .cutscene-motion .motion-stage{width:56%;max-height:none}
+ .cutscene.cutscene-motion .cutscene-copy{width:40%;min-height:0}
+ .cutscene.cutscene-motion .cutscene-copy>p{font-size:14px}
+ .cutscene.cutscene-motion .cutscene-copy.final h1{font-size:26px}
+ .cutscene-motion .cutscene-progress{width:auto;margin:0 12px 0 0}
+}
