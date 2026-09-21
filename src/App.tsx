@@ -8,6 +8,8 @@ import {getSave,saveGame,getMeta,storeMeta,readJSON,writeJSON} from './engine/st
 import {music} from './engine/audio';
 import {endingCutscene,eventCutscene,eventKindFromScene,type CutsceneSpec} from './engine/cutscenes';
 import type {CharacterId,LocationId,Line} from './types';
+import {episodeCutscene} from './engine/episodes';
+import {CutsceneProps,EpisodeGallery} from './CutsceneDetails';
 
 const asset=(name:string)=>`${import.meta.env.BASE_URL}assets/${name}.webp`;
 const label=(speaker:Line['speaker'],name:string)=>speaker==='player'?name:speaker==='narrator'?'':speaker==='teacher'?'담임 선생님':speaker==='student'?'1반 친구':characterById[speaker].name;
@@ -34,17 +36,27 @@ function Meter({name,value,color}:{name:string;value:number;color?:string}){retu
 
 function CutsceneScreen({spec,onDone}:{spec:CutsceneSpec;onDone:()=>void}){
  const [beat,setBeat]=useState(0),[paused,setPaused]=useState(false);
+ const screen=useRef<HTMLElement>(null);
+ useEffect(()=>{const overflow=document.body.style.overflow;document.body.style.overflow='hidden';screen.current?.querySelector('button')?.focus();return()=>{document.body.style.overflow=overflow;};},[]);
  useEffect(()=>{setBeat(0);setPaused(false);},[spec.key]);
- useEffect(()=>{if(paused)return;const timer=setTimeout(()=>beat<2?setBeat(value=>value+1):onDone(),beat<2?1900:2500);return()=>clearTimeout(timer);},[beat,paused,onDone]);
- const final=beat===2;
- return <section className={`cutscene cutscene-${spec.mood}`} aria-label={`${spec.title} 컷신`}>
+ useEffect(()=>{if(paused)return;const duration=beat<spec.beats.length?Math.max(4500,Math.min(8500,spec.beats[beat].length*105)):2300;const timer=setTimeout(()=>beat<spec.beats.length?setBeat(value=>value+1):onDone(),duration);return()=>clearTimeout(timer);},[beat,paused,onDone,spec]);
+ const final=beat===spec.beats.length;
+ return <section ref={screen} onKeyDown={event=>{
+  if(event.key==='Escape'){event.preventDefault();onDone();}
+  if(event.key==='Tab'){
+   const buttons=screen.current?.querySelectorAll('button');if(!buttons?.length)return;
+   if(event.shiftKey&&document.activeElement===buttons[0]){event.preventDefault();buttons[buttons.length-1].focus();}
+   else if(!event.shiftKey&&document.activeElement===buttons[buttons.length-1]){event.preventDefault();buttons[0].focus();}
+  }
+ }} className={`cutscene cutscene-${spec.mood} ${paused?'cutscene-paused':''}`} role="dialog" aria-modal="true" aria-label={`${spec.title} 컷신`}>
   <div className="cutscene-image" key={`${spec.key}:${beat}`} style={{backgroundImage:`url(${asset(spec.art??spec.background)})`}}/>
   {!spec.art&&spec.character&&<div className="cutscene-actor"><Portrait id={spec.character}/></div>}
+  {spec.motif&&spec.props&&!final&&<CutsceneProps key={`${spec.key}:prop:${beat}`} motif={spec.motif} caption={spec.props[beat]} beat={beat}/>}
   <div className="cutscene-vignette"/><div className="cutscene-flare"/><div className="cutscene-letterbox top"/><div className="cutscene-letterbox bottom"/>
   <div className={`cutscene-copy ${final?'final':''}`} key={`copy:${spec.key}:${beat}`} aria-live="polite">
    <span>{spec.label}</span>{final?<><h1>{spec.title}</h1><p>{spec.subtitle}</p></>:<><small>SCENE {String(beat+1).padStart(2,'0')}</small><p>{spec.beats[beat]}</p></>}
   </div>
-  <div className="cutscene-controls"><div className="cutscene-progress">{spec.beats.map((_,index)=><i key={index} className={index<=beat?'active':''}/>)}</div><button onClick={()=>setPaused(value=>!value)}>{paused?<Play size={15}/>:<Pause size={15}/>} {paused?'재생':'일시정지'}</button><button onClick={onDone}><SkipForward size={15}/>건너뛰기</button></div>
+  <div className="cutscene-controls"><div className="cutscene-progress">{spec.beats.map((_,index)=><i key={index} className={index<=beat?'active':''}/>)}</div><button onClick={()=>setPaused(value=>!value)}>{paused?<Play size={15}/>:<Pause size={15}/>} {paused?'재생':'일시정지'}</button><button onClick={()=>final?onDone():setBeat(value=>value+1)}><ArrowRight size={15}/>{final?'돌아가기':'다음 장면'}</button><button onClick={onDone}><SkipForward size={15}/>건너뛰기</button></div>
  </section>;
 }
 
@@ -63,8 +75,9 @@ export default function App(){
  const [meta,setMeta]=useState<Meta>(getMeta),[panel,setPanel]=useState<Panel>('none'),[toast,setToast]=useState('');
  const [options,setOptions]=useState<Options>(()=>{const x=readJSON('options') as Partial<Options>|null;return {speed:typeof x?.speed==='number'?Math.max(0,Math.min(60,x.speed)):24,volume:typeof x?.volume==='number'?Math.max(0,Math.min(1,x.volume)):.3,sound:false,showStats:!!x?.showStats};});
  const [auto,setAuto]=useState(false),[skip,setSkip]=useState(false),[visible,setVisible]=useState(0),[selectedPlace,setSelectedPlace]=useState<LocationId>('classroom');
- const [slotMode,setSlotMode]=useState<'save'|'load'>('save'),[confirmSlot,setConfirmSlot]=useState<string|null>(null),[galleryType,setGalleryType]=useState<'endings'|'art'>('endings'),[profile,setProfile]=useState<CharacterId>('world');
- const [cutscene,setCutscene]=useState<CutsceneSpec|null>(null),playedCutscenes=useRef(new Set<string>());
+ const [slotMode,setSlotMode]=useState<'save'|'load'>('save'),[confirmSlot,setConfirmSlot]=useState<string|null>(null),[galleryType,setGalleryType]=useState<'endings'|'art'|'episodes'>('endings'),[profile,setProfile]=useState<CharacterId>('world');
+ const [cutscene,setCutscene]=useState<CutsceneSpec|null>(null),playedCutscenes=useRef(new Set<string>()),returnToGallery=useRef(false);
+ const [galleryCharacter,setGalleryCharacter]=useState<CharacterId>('world');
  const gameRef=useRef(game),metaRef=useRef(meta);gameRef.current=game;metaRef.current=meta;
  const scene=game?activeScene(game):null,lines=game?activeLines(game):[],line=game?lines[game.line]:null;
  const formatted=(text:string)=>text.replaceAll('{name}',game?.name??'당신');
@@ -89,25 +102,37 @@ export default function App(){
   if(!game||cutscene)return;
   let nextCutscene:CutsceneSpec|null=null;
   if(game.phase==='ending'&&game.ending)nextCutscene=endingCutscene(game.ending);
-  else if(game.phase==='story'&&game.segment==='hangout'&&game.visitor&&scene){const kind=eventKindFromScene(scene.id);if(kind)nextCutscene=eventCutscene(game.visitor,kind,scene.location,scene.id);}
+  else if(game.phase==='story'&&game.segment==='hangout'&&game.visitor&&scene&&game.line===0&&!game.response){
+   if(scene.cutsceneId&&!game.flags.includes(`episode-watched:${scene.cutsceneId}`))nextCutscene=episodeCutscene(scene.cutsceneId);
+   else if(!scene.cutsceneId){const kind=eventKindFromScene(scene.id);if(kind)nextCutscene=eventCutscene(game.visitor,kind,scene.location,scene.id);}
+  }
   if(nextCutscene&&!playedCutscenes.current.has(nextCutscene.key)){playedCutscenes.current.add(nextCutscene.key);setCutscene(nextCutscene);}
  },[game,scene,cutscene]);
  useEffect(()=>{setVisible(options.speed===0?lineText.length:0);if(options.speed===0)return;const t=setInterval(()=>setVisible(v=>{if(v>=lineText.length){clearInterval(t);return v;}return v+2;}),options.speed);return()=>clearInterval(t);},[lineId,lineText,options.speed]);
- function next(){const g=gameRef.current;if(!g||g.phase!=='story'||panel!=='none')return;if(visible<lineText.length){setVisible(lineText.length);return;}if(g.line<activeLines(g).length){const key=readKey(g);setMeta(m=>m.read.includes(key)?m:{...m,read:[...m.read,key]});}setGame(advance(g,metaRef.current));}
+ function next(){const g=gameRef.current;if(!g||g.phase!=='story'||panel!=='none'||cutscene)return;if(visible<lineText.length){setVisible(lineText.length);return;}if(g.line<activeLines(g).length){const key=readKey(g);setMeta(m=>m.read.includes(key)?m:{...m,read:[...m.read,key]});}setGame(advance(g,metaRef.current));}
  function pick(index:number){if(!game)return;const c=activeScene(game).choices[index];if(!c)return;setGame(choose(game,index));if(options.showStats)showToast(c.effects.slice(0,4).map(e=>`${e.target==='global'?({harmony:'조화',fair:'완성',ethics:'윤리',safety:'안전',reputation:'평판'} as Record<string,string>)[e.stat]:characterById[e.target].name+' '+({affection:'호감',trust:'신뢰',jealousy:'질투',special:characterById[e.target].specialLabel} as Record<string,string>)[e.stat]} ${e.amount>0?'+':''}${e.amount}`).join(' · '));}
- useEffect(()=>{if(!game||game.phase!=='story'||panel!=='none'||choiceVisible)return;const isRead=meta.read.includes(lineId);if(skip&&!isRead){setSkip(false);return;}if(!auto&&!skip)return;const t=setTimeout(()=>{setVisible(lineText.length);if(visible>=lineText.length||skip){if(game.line<lines.length)setMeta(m=>m.read.includes(lineId)?m:{...m,read:[...m.read,lineId]});setGame(advance(game,metaRef.current));}},skip?50:Math.max(1400,lineText.length*55));return()=>clearTimeout(t);},[auto,skip,game,lineId,visible,lineText,panel,choiceVisible]);
+ useEffect(()=>{if(!game||game.phase!=='story'||panel!=='none'||choiceVisible||cutscene)return;const isRead=meta.read.includes(lineId);if(skip&&!isRead){setSkip(false);return;}if(!auto&&!skip)return;const t=setTimeout(()=>{setVisible(lineText.length);if(visible>=lineText.length||skip){if(game.line<lines.length)setMeta(m=>m.read.includes(lineId)?m:{...m,read:[...m.read,lineId]});setGame(advance(game,metaRef.current));}},skip?50:Math.max(1400,lineText.length*55));return()=>clearTimeout(t);},[auto,skip,game,lineId,visible,lineText,panel,choiceVisible,cutscene]);
  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(cutscene||(e.target as HTMLElement)?.matches('input,textarea,select')||e.isComposing)return;if(e.key==='Escape'){e.preventDefault();setPanel(p=>p==='none'?'menu':'none');return;}if(panel!=='none'||gameRef.current?.phase==='activity')return;if(e.key==='Enter'||e.code==='Space'){e.preventDefault();next();}if(/^[1-6]$/.test(e.key)&&choiceVisible){e.preventDefault();pick(Number(e.key)-1);}if(e.key==='Control')setSkip(true);};const up=(e:KeyboardEvent)=>{if(e.key==='Control')setSkip(false);};window.addEventListener('keydown',key);window.addEventListener('keyup',up);return()=>{window.removeEventListener('keydown',key);window.removeEventListener('keyup',up);};});
 
- function start(e:FormEvent){e.preventDefault();if(!validName(name)){setError('이름을 1~12자로 입력해 주세요. 한글·영문·숫자를 사용할 수 있어요.');return;}const seed=crypto.getRandomValues(new Uint32Array(1))[0];setGame(newGame(name,seed,meta.endings.length>0));setError('');setAuto(false);setSkip(false);}
- function load(slot:string){const saved=getSave(slot);if(saved){setGame(saved.state);setPanel('none');setAuto(false);setSkip(false);showToast('그날의 이야기를 불러왔어요.');}else showToast('유효한 저장 기록이 없어요.');}
+ function start(e:FormEvent){e.preventDefault();if(!validName(name)){setError('이름을 1~12자로 입력해 주세요. 한글·영문·숫자를 사용할 수 있어요.');return;}const seed=crypto.getRandomValues(new Uint32Array(1))[0];playedCutscenes.current.clear();setGame(newGame(name,seed,meta.endings.length>0));setError('');setAuto(false);setSkip(false);}
+ function load(slot:string){const saved=getSave(slot);if(saved){playedCutscenes.current.clear();setGame(saved.state);setPanel('none');setAuto(false);setSkip(false);showToast('그날의 이야기를 불러왔어요.');}else showToast('유효한 저장 기록이 없어요.');}
  function goHome(){setGame(null);setName('');setPanel('none');setAuto(false);setSkip(false);}
  function fullscreen(){if(document.fullscreenElement)void document.exitFullscreen();else void document.documentElement.requestFullscreen().catch(()=>showToast('이 브라우저에서는 전체화면을 지원하지 않아요.'));}
  const dayLabel=scene?scene.day>0?`D − ${scene.day}`:scene.day===0?'FAIR DAY':`AFTER + ${-scene.day}`:'D − 64';
  function residents(place:LocationId){if(!game)return [];return characters.filter(c=>locationOf(game,c.id)===place);}
  function locked(place:LocationId){if(!game)return false;return (place==='walk'&&!ids.some(id=>game.stats[id].affection>=40))||(place==='roof'&&!ids.some(id=>game.stats[id].trust>=50));}
 
+ function previewEpisode(spec:CutsceneSpec){returnToGallery.current=true;setPanel('none');setCutscene(spec);}
+ function finishCutscene(){
+  if(returnToGallery.current){returnToGallery.current=false;setPanel('gallery');}
+  else if(cutscene?.key.startsWith('episode:')){
+   const flag='episode-watched:'+cutscene.key.slice('episode:'.length);
+   setGame(current=>current&&!current.flags.includes(flag)?{...current,flags:[...current.flags,flag]}:current);
+  }
+  setCutscene(null);
+ }
  return <main className={`app ${game?'in-game':'on-title'}`}>
-  {cutscene&&<CutsceneScreen spec={cutscene} onDone={()=>setCutscene(null)}/>}
+  {cutscene&&<CutsceneScreen spec={cutscene} onDone={finishCutscene}/>}
   <div className={`scene-background bg-${bg}`} style={{backgroundImage:`url(${asset(bg)})`}}/><div className="scene-wash"/><div className="grain"/>
   <header className="topbar"><button className="brand" onClick={()=>game?setPanel('menu'):setPanel('none')} aria-label="RE:ACTION 메뉴"><FlaskConical size={23}/><span>RE:ACTION<i>인천과학고 연애실험</i></span></button><div className="topbar-right">{game?<span className="date-badge"><Sun size={14}/>{dayLabel}<span>1학년 1반</span></span>:<span className="edition">A SUMMER OF POSSIBILITIES</span>}<button className="icon-button" aria-label={options.sound?'배경음 끄기':'배경음 켜기'} onClick={()=>setOptions(o=>({...o,sound:!o.sound}))}>{options.sound?<Volume2 size={18}/>:<VolumeX size={18}/>}</button><button className="icon-button" aria-label="설정" onClick={()=>setPanel('settings')}><Settings size={18}/></button><button className="icon-button fullscreen" aria-label="전체화면" onClick={fullscreen}><Maximize size={18}/></button>{game&&<button className="icon-button" aria-label="게임 메뉴" onClick={()=>setPanel('menu')}><Menu size={20}/></button>}</div></header>
 
@@ -133,7 +158,7 @@ export default function App(){
  {panel==='backlog'&&<div className="backlog">{game?.backlog.length?game.backlog.map((l,i)=><div key={i}><b>{label(l.speaker,game.name)||'독백'}</b><p>{formatted(l.text)}</p></div>):<p>아직 기록된 대화가 없어요.</p>}</div>}
  {panel==='journal'&&game&&<><div className="journal-summary">{Object.entries(game.global).map(([key,val])=><Meter key={key} name={({harmony:'1반 조화',fair:'페어 완성도',reputation:'교내 평판',ethics:'연구 윤리',safety:'안전 관리'} as Record<string,string>)[key]} value={val}/>)}</div><div className="relationship-grid">{characters.map(c=><div className="relation-card" key={c.id}><div className="relation-top"><Portrait id={c.id}/><div><h3>{c.name}</h3><p>{c.role}</p></div></div><Meter name="호감" value={game.stats[c.id].affection} color={c.color}/><Meter name="신뢰" value={game.stats[c.id].trust}/><Meter name="질투" value={game.stats[c.id].jealousy} color="#bc8585"/><Meter name={c.specialLabel} value={game.stats[c.id].special} color={c.color}/><small>방과 후 함께한 시간 {game.visits[c.id]}회</small></div>)}</div><p className="muted-note">호감만으로는 충분하지 않아요. 지킬 수 있는 약속과 서로의 경계가 신뢰를 만듭니다.</p></>}
  {panel==='cast'&&<><div className="cast-tabs">{characters.map(c=><button className={profile===c.id?'active':''} key={c.id} onClick={()=>setProfile(c.id)}>{c.name}</button>)}</div><div className="profile-layout"><Portrait id={profile}/><div><span className="eyebrow">1학년 1반 / {characterById[profile].role}</span><h2>{characterById[profile].name}</h2><h3>{characterById[profile].tag}</h3><p>{characterById[profile].bio}</p><blockquote>“{characterById[profile].quote}”</blockquote></div></div></>}
- {panel==='gallery'&&<><div className="tabs"><button className={galleryType==='endings'?'active':''} onClick={()=>setGalleryType('endings')}>엔딩 {meta.endings.length} / {endings.length}</button><button className={galleryType==='art'?'active':''} onClick={()=>setGalleryType('art')}>풍경과 인물</button></div>{galleryType==='art'?<div className="art-gallery">{galleryArt.map(item=><figure key={item.key}><img src={asset(item.key)} alt={item.alt}/><figcaption>{item.label}</figcaption>{item.event&&<button className="secondary gallery-cutscene" onClick={()=>{setPanel('none');setCutscene(eventCutscene(item.event![0],'chance',item.event![1],`gallery-${item.event![0]}`));}}><Play size={15}/>돌발 컷신 재생</button>}</figure>)}</div>:<div className="ending-gallery">{endings.map(e=>{const unlocked=meta.endings.includes(e.id);return <details key={e.id} className={unlocked?'unlocked':''}><summary>{unlocked?<Star size={16}/>:<Lock size={15}/>}<span><small>{e.type} {e.character?`· ${characterById[e.character].name}`:''}</small><b>{unlocked?e.title:'아직 만나지 않은 결말'}</b></span><ChevronRight size={16}/></summary><div>{unlocked?<>{e.text.map((p,i)=><p key={i}>{formatted(p)}</p>)}<button className="secondary gallery-cutscene" onClick={()=>{setPanel('none');setCutscene(endingCutscene(e.id));}}><Play size={15}/>컷신 재생</button></>:<p>{e.hint}</p>}</div></details>;})}</div>}</>}
+ {panel==='gallery'&&<><div className="tabs"><button className={galleryType==='endings'?'active':''} onClick={()=>setGalleryType('endings')}>엔딩 {meta.endings.length} / {endings.length}</button><button className={galleryType==='art'?'active':''} onClick={()=>setGalleryType('art')}>풍경과 인물</button><button className={galleryType==='episodes'?'active':''} onClick={()=>setGalleryType('episodes')}>새 컷씬 42</button></div>{galleryType==='episodes'?<EpisodeGallery flags={game?.flags??[]} onPlay={previewEpisode} character={galleryCharacter} onCharacter={setGalleryCharacter}/>:galleryType==='art'?<div className="art-gallery">{galleryArt.map(item=><figure key={item.key}><img src={asset(item.key)} alt={item.alt}/><figcaption>{item.label}</figcaption>{item.event&&<button className="secondary gallery-cutscene" onClick={()=>{setPanel('none');setCutscene(eventCutscene(item.event![0],'chance',item.event![1],`gallery-${item.event![0]}`));}}><Play size={15}/>돌발 컷신 재생</button>}</figure>)}</div>:<div className="ending-gallery">{endings.map(e=>{const unlocked=meta.endings.includes(e.id);return <details key={e.id} className={unlocked?'unlocked':''}><summary>{unlocked?<Star size={16}/>:<Lock size={15}/>}<span><small>{e.type} {e.character?`· ${characterById[e.character].name}`:''}</small><b>{unlocked?e.title:'아직 만나지 않은 결말'}</b></span><ChevronRight size={16}/></summary><div>{unlocked?<>{e.text.map((p,i)=><p key={i}>{formatted(p)}</p>)}<button className="secondary gallery-cutscene" onClick={()=>{setPanel('none');setCutscene(endingCutscene(e.id));}}><Play size={15}/>컷신 재생</button></>:<p>{e.hint}</p>}</div></details>;})}</div>}</>}
  {panel==='menu'&&<div className="pause-menu">{game&&<><button onClick={()=>setPanel('none')}><Play size={18}/>계속하기</button><button onClick={()=>{setSlotMode('save');setPanel('save');}}><Save size={18}/>저장 · 불러오기</button><button onClick={()=>setPanel('journal')}><Heart size={18}/>관계 수첩</button></>}<button onClick={()=>setPanel('gallery')}><Star size={18}/>기억의 서랍</button><button onClick={()=>setPanel('settings')}><Settings size={18}/>설정</button><button onClick={goHome}><Home size={18}/>처음 화면으로</button><p>진행 상황은 자동 저장됩니다.<br/>저장 기록은 지금 사용하는 브라우저에 보관돼요.</p></div>}
  </Modal>}
  </main>;
