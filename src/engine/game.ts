@@ -8,6 +8,7 @@ import {hangoutScene,pendingEvent,selectSuddenEvent,type TalkContext} from './ch
 import {activityFor} from './activities';
 import {directedScene} from './storyDirector';
 import {cleanLegacyLines,hasLegacyPadding} from './legacyDialogue';
+import {selectEpisode,pendingEpisode,episodeScene,episodePendingFlag,episodeSeenFlag} from './episodes';
 import type { CharacterId, GlobalKey, StatKey, Line, Effect, Scene, LocationId } from '../types';
 
 export const routes = {...routesA,...routesB} as Record<CharacterId,Scene[]>;
@@ -25,7 +26,10 @@ export function newGame(name:string,seed:number,ngPlus=false):GameState{
 }
 function talkContext(s:GameState,id=s.visitor!):TalkContext{return {id,location:s.visitLocation??characterById[id].location,chapter:s.chapter,visit:s.visits[id],stats:s.stats[id],flags:s.flags,seed:s.seed};}
 export function activeScene(s:GameState):Scene{
- if(s.segment==='hangout'&&s.visitor)return directedScene({...hangoutScene(talkContext(s)),day:commonScenes[s.chapter].day},{addChoices:false,cacheable:false});
+ if(s.segment==='hangout'&&s.visitor){
+  const ctx=talkContext(s),episode=pendingEpisode(s.flags,s.visitor);
+  return directedScene({...(episode?episodeScene(episode,ctx):hangoutScene(ctx)),day:commonScenes[s.chapter].day},{addChoices:false,cacheable:false});
+ }
  if(s.segment==='route'&&s.route)return directedScene(routes[s.route][s.routeChapter]);
  if(s.segment==='harem')return directedScene(haremScenes[s.routeChapter]);
  return directedScene(commonScenes[Math.min(s.chapter,commonScenes.length-1)]);
@@ -72,8 +76,10 @@ export function commonBad(s:GameState):string|null{
 export function finishScene(s:GameState,meta:Meta):GameState{
  let out=structuredClone(s);out.line=0;out.response=null;
  if(s.segment==='hangout'){
+  const episode=pendingEpisode(out.flags,s.visitor!);
+  if(episode){out.flags=out.flags.filter(flag=>flag!==episodePendingFlag(episode.id));out.flags.push(episodeSeenFlag(episode.id));}
   const event=pendingEvent(out.flags,s.visitor!);
-  if(event){const [, ,id,kind]=event.split(':');out.flags=out.flags.filter(flag=>flag!==event);out.flags.push(`event-seen:${id}:${kind}`);}
+  if(event){const [,id,kind]=event.split(':');out.flags=out.flags.filter(flag=>flag!==event);out.flags.push(`event-seen:${id}:${kind}`);}
   out.visits[s.visitor!]+=1;out.visitedToday.push(s.visitor!);out.actions-=1;out.visitor=null;out.visitLocation=null;out.segment='common';out.phase='map';return out;
  }
  if(s.segment==='common'){
@@ -101,7 +107,8 @@ export function visit(s:GameState,id:CharacterId,place?:LocationId):GameState{
  if(s.phase!=='map'||s.actions<=0||s.visitedToday.includes(id))return s;
  const expected=locationOf(s,id),location=place??expected;if(place&&place!==expected)return s;
  const ctx:TalkContext={id,location,chapter:s.chapter,visit:s.visits[id],stats:s.stats[id],flags:s.flags,seed:s.seed};
- const event=selectSuddenEvent(ctx),flags=event?[...s.flags,`pending-event:${id}:${event}`]:s.flags;
+ const episode=selectEpisode(ctx),event=episode?null:selectSuddenEvent(ctx);
+ const flags=episode?[...s.flags,episodePendingFlag(episode.id)]:event?[...s.flags,`pending-event:${id}:${event}`]:s.flags;
  return {...s,phase:place?'activity':'story',segment:'hangout',visitor:id,visitLocation:location,flags,line:0,response:null};
 }
 export const candidates=(s:GameState)=>ids.filter(id=>s.stats[id].affection>=50&&s.stats[id].trust>=40).sort((a,b)=>(s.stats[b].affection+s.stats[b].trust)-(s.stats[a].affection+s.stats[a].trust)).slice(0,2);

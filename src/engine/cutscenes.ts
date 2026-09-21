@@ -2,6 +2,7 @@ import {characterById, locationById} from '../data/characters';
 import {endingById, type Ending} from '../data/endings';
 import type {CharacterId, LocationId} from '../types';
 import type {EventKind} from './characterAI';
+import type {EpisodeMotif} from '../data/cutsceneEpisodes';
 
 export type CutsceneMood='true'|'good'|'bad'|'normal'|'event';
 export type CutsceneSpec={
@@ -14,6 +15,8 @@ export type CutsceneSpec={
  mood:CutsceneMood;
  character?:CharacterId;
  art?:string;
+ motif?:EpisodeMotif;
+ props?:[string,string,string];
 };
 
 const characterBackground:Record<CharacterId,string>={
