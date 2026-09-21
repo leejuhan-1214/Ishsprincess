@@ -16,6 +16,8 @@ import type { CharacterId, Effect, Line, Scene } from '../src/types';
 import {directedScene} from '../src/engine/storyDirector';
 import {selectSuddenEvent,type TalkContext} from '../src/engine/characterAI';
 import {endingCutscene,eventCutscene,eventKindFromScene} from '../src/engine/cutscenes';
+import {cutsceneEpisodes} from '../src/data/cutsceneEpisodes';
+import {episodeCutscene,episodeEligible,episodePendingFlag,episodeScene,episodeSeenFlag,pendingEpisode,selectEpisode} from '../src/engine/episodes';
 
 const heroStats = ['affection', 'trust', 'jealousy', 'special'];
 const globalStats = ['harmony', 'fair', 'reputation', 'ethics', 'safety'];
@@ -623,4 +625,83 @@ test('legacy version-one saves without a visit location remain loadable', () => 
   const legacy=newGame('예전세이브',5) as GameState;
   delete legacy.visitLocation;
   assert.ok(isGameState(legacy));
+});
+
+test('42 new cutscenes have seven unique situations per character and 126 specific decisions',()=>{
+ assert.equal(cutsceneEpisodes.length,42);
+ assert.equal(new Set(cutsceneEpisodes.map(e=>e.id)).size,42);
+ assert.equal(new Set(cutsceneEpisodes.map(e=>e.title)).size,42);
+ const decisions=new Set<string>(),beats=new Set<string>();
+ for(const id of ids)assert.equal(cutsceneEpisodes.filter(e=>e.character===id).length,7);
+ for(const episode of cutsceneEpisodes){
+  assert.ok(legalLocations.has(episode.location));
+  const film=episodeCutscene(episode.id);
+  assert.equal(film.beats.length,3);
+  assert.equal(film.props?.length,3);
+  assert.equal(film.motif,episode.motif);
+  for(const beat of film.beats){assert.ok(beat.length>20);assert.ok(!beats.has(beat));beats.add(beat);}
+  for(const choice of episode.choices){assert.ok(!decisions.has(choice.text));decisions.add(choice.text);assert.ok(choice.reply.length>10);}
+  assert.ok(episode.choices.some(c=>c.trust<0),'risky decisions have real consequences');
+ }
+ assert.equal(decisions.size,126);
+});
+
+test('every new situation obeys location and relationship gates and becomes ineligible once completed',()=>{
+ for(const episode of cutsceneEpisodes){
+  const ctx:TalkContext={id:episode.character,location:episode.location,chapter:5,visit:3,stats:{affection:episode.affection,trust:episode.trust,jealousy:0,special:30},flags:[],seed:7};
+  assert.ok(episodeEligible(episode,ctx));
+  assert.equal(episodeEligible(episode,{...ctx,location:'gate'}),false);
+  assert.equal(episodeEligible(episode,{...ctx,flags:[episodeSeenFlag(episode.id)]}),false);
+  if(episode.affection>0)assert.equal(episodeEligible(episode,{...ctx,stats:{...ctx.stats,affection:episode.affection-1}}),false);
+  if(episode.trust>0)assert.equal(episodeEligible(episode,{...ctx,stats:{...ctx.stats,trust:episode.trust-1}}),false);
+  assert.deepEqual(selectEpisode(ctx),selectEpisode(structuredClone(ctx)));
+ }
+});
+
+test('all 42 cutscenes trigger through an actual timetable visit and survive saving during the activity',()=>{
+ for(const episode of cutsceneEpisodes){
+  let fixture:GameState|null=null;
+  for(let seed=0;seed<7&&!fixture;seed++)for(let chapter=0;chapter<13&&!fixture;chapter++)for(const actions of [3,2,1]){
+   const map={...newGame('새로운순간',seed),phase:'map' as const,chapter,actions};
+   if(locationOf(map,episode.character)!==episode.location)continue;
+   map.stats[episode.character]={affection:100,trust:100,jealousy:0,special:30};
+   map.flags=cutsceneEpisodes.filter(e=>e.id!==episode.id).map(e=>episodeSeenFlag(e.id));
+   fixture=map;break;
+  }
+  assert.ok(fixture,`reachable location: ${episode.id}`);
+  const started=visit(fixture,episode.character,episode.location);
+  assert.equal(started.phase,'activity');
+  assert.ok(started.flags.includes(episodePendingFlag(episode.id)));
+  assert.ok(!started.flags.some(f=>f.startsWith('pending-event:')),'no double cutscene trigger');
+  const restored=restoreGame(JSON.parse(JSON.stringify(started)))!;
+  assert.ok(restored,episode.id);
+  const story=completeActivity(restored,0);
+  assert.equal(activeScene(story).cutsceneId,episode.id);
+  assert.equal(activeScene(story).location,episode.location);
+  assert.equal(activeScene(story).lines[0].text,episode.question);
+  assert.equal(activeScene(story).choices.length,3);
+  const ended=playScene(story,0);
+  assert.equal(ended.phase,'map');
+  assert.ok(ended.flags.includes(episodeSeenFlag(episode.id)));
+  assert.ok(!ended.flags.includes(episodePendingFlag(episode.id)));
+  assert.equal(ended.actions,fixture.actions-1);
+  assert.equal(ended.visits[episode.character],1);
+ }
+});
+
+test('every new decision has valid effects and an authored response; old event flags now prevent repeats',()=>{
+ for(const episode of cutsceneEpisodes){
+  const ctx:TalkContext={id:episode.character,location:episode.location,chapter:0,visit:0,stats:{affection:70,trust:70,jealousy:0,special:30},flags:[],seed:1};
+  const scene=episodeScene(episode,ctx);
+  for(const choice of scene.choices){
+   assertFiniteState(applyEffects(newGame('선택확인',1),choice.effects,choice.flags));
+   assert.equal(choice.response[0].speaker,episode.character);
+  }
+ }
+ const state={...newGame('반복방지',11),phase:'story' as const,segment:'hangout' as const,visitor:'world' as const,visitLocation:'band' as const,flags:['pending-event:world:confidence']};
+ const ended=playScene(state);
+ assert.ok(ended.flags.includes('event-seen:world:confidence'));
+ assert.ok(!ended.flags.some(f=>f.includes('undefined')));
+ assert.equal(pendingEpisode(['pending-episode:missing'],'world'),null);
+ assert.throws(()=>episodeCutscene('missing'),/Unknown cutscene/);
 });
