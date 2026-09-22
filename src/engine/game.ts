@@ -7,6 +7,7 @@ import { endingById } from '../data/endings';
 import {hangoutScene,pendingEvent,selectSuddenEvent,type TalkContext} from './characterAI';
 import {activityFor} from './activities';
 import {directedScene} from './storyDirector';
+import {relationshipScene} from './relationshipDirector';
 import {cleanLegacyLines,hasLegacyPadding} from './legacyDialogue';
 import {selectEpisode,pendingEpisode,episodeScene,episodePendingFlag,episodeSeenFlag} from './episodes';
 import type { CharacterId, GlobalKey, StatKey, Line, Effect, Scene, LocationId } from '../types';
@@ -30,9 +31,9 @@ export function activeScene(s:GameState):Scene{
   const ctx=talkContext(s),episode=pendingEpisode(s.flags,s.visitor);
   return directedScene({...(episode?episodeScene(episode,ctx):hangoutScene(ctx)),day:commonScenes[s.chapter].day},{addChoices:false,cacheable:false});
  }
- if(s.segment==='route'&&s.route)return directedScene(routes[s.route][s.routeChapter]);
- if(s.segment==='harem')return directedScene(haremScenes[s.routeChapter]);
- return directedScene(commonScenes[Math.min(s.chapter,commonScenes.length-1)]);
+ if(s.segment==='route'&&s.route)return relationshipScene(directedScene(routes[s.route][s.routeChapter]),s);
+ if(s.segment==='harem')return relationshipScene(directedScene(haremScenes[s.routeChapter]),s);
+ return relationshipScene(directedScene(commonScenes[Math.min(s.chapter,commonScenes.length-1)]),s);
 }
 export const activeLines=(s:GameState)=>s.response??activeScene(s).lines;
 export const readKey=(s:GameState)=>`dialogue2:${activeScene(s).id}:${s.response?'r'+s.flags.filter(f=>f.startsWith('choice:')).slice(-1)[0]:'l'}:${s.line}`;

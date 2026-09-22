@@ -33,12 +33,12 @@ export function CutsceneProps({motif,caption,beat}:{motif:EpisodeMotif;caption:s
 export function EpisodeGallery({flags,onPlay,character,onCharacter}:{flags:string[];onPlay:(spec:CutsceneSpec)=>void;character:CharacterId;onCharacter:(id:CharacterId)=>void}){
  const episodes=cutsceneEpisodes.filter(item=>item.character===character);
  return <div className="episode-gallery">
-  <p className="episode-intro">움직이는 순간 42개 · 캐릭터별 7개 · 장면마다 새로 그린 12가지 동작<br/>미리보기는 관계 수치나 게임 진행을 바꾸지 않습니다. 게임에서는 아래 장소·관계 조건을 만족하면 한 번씩 발생합니다.</p>
+  <p className="episode-intro">장면 일러스트 42개 · 캐릭터별 7개 · 이야기의 결정적인 한순간을 담은 정지 컷<br/>미리보기는 관계 수치나 게임 진행을 바꾸지 않습니다. 게임에서는 아래 장소·관계 조건을 만족하면 한 번씩 발생합니다.</p>
   <div className="cast-tabs" aria-label="컷씬 캐릭터">{characters.map(c=><button key={c.id} className={character===c.id?'active':''} onClick={()=>onCharacter(c.id)} aria-pressed={character===c.id}>{c.name}</button>)}</div>
   <div className="episode-grid">{episodes.map((episode,index)=>{
    const seen=flags.includes(episodeSeenFlag(episode.id));
    return <article className="episode-card" key={episode.id} style={{'--episode-color':characterById[character].color} as CSSProperties}>
-    <div className="episode-thumbnail episode-motion-thumbnail" style={{backgroundImage:`url(${import.meta.env.BASE_URL}assets/motion/${episode.id}-poster.webp)`}}><span>{String(index+1).padStart(2,'0')}</span><small>12 KEYFRAMES</small></div>
+    <div className="episode-thumbnail episode-still-thumbnail" style={{backgroundImage:`url(${import.meta.env.BASE_URL}assets/cutscenes/${episode.id}.webp)`}}><span>{String(index+1).padStart(2,'0')}</span><small>SCENE STILL</small></div>
     <div><small>{seen?<><Check size={12}/> 이 회차에서 완료</>:'SPECIAL MOMENT'}</small><h3>{episode.title}</h3><p>{episodeHint(episode)}</p><button className="secondary" onClick={()=>onPlay(episodeCutscene(episode.id))} aria-label={`${episode.title} 컷씬 재생`}><Play size={14}/>컷씬 재생</button></div>
    </article>;
   })}</div>

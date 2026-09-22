@@ -15,8 +15,6 @@ export type CutsceneSpec={
  mood:CutsceneMood;
  character?:CharacterId;
  art?:string;
- /** A 3 × 4 atlas of twelve distinct character-action keyframes. */
- motion?:string;
  motif?:EpisodeMotif;
  props?:[string,string,string];
 };
@@ -48,7 +46,7 @@ export function endingCutscene(id:string):CutsceneSpec{
   key:`ending:${id}`,label:`${ending.type} ENDING CUTSCENE`,title:ending.title,subtitle:ending.subtitle,
   beats:[intro,ending.text[0]??ending.subtitle,closing],
   background:character?characterBackground[character]:(commonBackground[id]??'classroom'),
-  mood:moodOf(ending),character,
+  mood:moodOf(ending),character,art:`endings/${id}`,
  };
 }
 
@@ -63,6 +61,15 @@ const signatureEvent:Record<CharacterId,{title:string;art:string}>={
  taewoo:{title:'여덟 번째 카운트의 사고',art:'event-taewoo-fall'},
  taehun:{title:'예보에 없던 소나기',art:'event-taehun'},
  seoyul:{title:'기울어진 캔버스',art:'event-seoyul'},
+};
+
+const illustratedEvent:Record<CharacterId,Record<EventKind,string>>={
+ world:{closeness:'cutscenes/world-two-tickets',confidence:'cutscenes/world-unposted',jealousy:'cutscenes/world-reflection',boundary:'cutscenes/world-pick',chance:'event-world'},
+ junyeon:{closeness:'cutscenes/junyeon-first-invitation',confidence:'cutscenes/junyeon-title-slide',jealousy:'cutscenes/junyeon-empty-chair',boundary:'cutscenes/junyeon-label',chance:'event-junyeon'},
+ hyunsol:{closeness:'cutscenes/hyunsol-pause',confidence:'cutscenes/hyunsol-ungraded',jealousy:'cutscenes/hyunsol-cursor',boundary:'cutscenes/hyunsol-correction',chance:'event-hyunsol'},
+ taewoo:{closeness:'cutscenes/taewoo-walking-duet',confidence:'cutscenes/taewoo-silent-count',jealousy:'cutscenes/taewoo-back-row',boundary:'cutscenes/taewoo-shoelace',chance:'event-taewoo-fall'},
+ taehun:{closeness:'cutscenes/taehun-overcast',confidence:'cutscenes/taehun-pressed-leaf',jealousy:'cutscenes/taehun-shadow',boundary:'cutscenes/taehun-red-light',chance:'event-taehun'},
+ seoyul:{closeness:'cutscenes/seoyul-two-signatures',confidence:'cutscenes/seoyul-unfinished-portrait',jealousy:'cutscenes/seoyul-sound-color',boundary:'cutscenes/seoyul-layer',chance:'event-seoyul'},
 };
 
 const eventLines:Record<CharacterId,Record<EventKind,[string,string,string]>>={
@@ -111,13 +118,11 @@ const eventLines:Record<CharacterId,Record<EventKind,[string,string,string]>>={
 };
 
 export function eventCutscene(id:CharacterId,kind:EventKind,location:LocationId,instance='preview'):CutsceneSpec{
- const illustrated=kind==='chance'||(id==='taewoo'&&kind==='closeness');
  const signature=signatureEvent[id];
  return {
-  key:`event:${instance}:${id}:${kind}`,label:'SURPRISE EVENT CUTSCENE',title:illustrated?signature.title:eventLabels[kind],
+  key:`event:${instance}:${id}:${kind}`,label:'SURPRISE EVENT CUTSCENE',title:kind==='chance'?signature.title:eventLabels[kind],
   subtitle:`${characterById[id].name} · ${locationById[location].name}`,beats:eventLines[id][kind],
-  background:locationById[location].bg,mood:'event',character:id,art:illustrated?signature.art:undefined,
-  motion:id==='taewoo'&&illustrated?'motion/event-taewoo-fall':undefined,
+  background:locationById[location].bg,mood:'event',character:id,art:illustratedEvent[id][kind],
  };
 }
 

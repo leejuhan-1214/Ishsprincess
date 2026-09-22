@@ -16,53 +16,31 @@ import {
 } from '../src/engine/game';
 import type { CharacterId, Effect, Line, Scene } from '../src/types';
 import {directedScene} from '../src/engine/storyDirector';
-import {selectSuddenEvent,type TalkContext} from '../src/engine/characterAI';
+import {hangoutScene as adaptiveHangoutScene,selectSuddenEvent,type TalkContext} from '../src/engine/characterAI';
 import {endingCutscene,eventCutscene,eventKindFromScene} from '../src/engine/cutscenes';
 import {cutsceneEpisodes} from '../src/data/cutsceneEpisodes';
 import {episodeCutscene,episodeEligible,episodePendingFlag,episodeScene,episodeSeenFlag,pendingEpisode,selectEpisode} from '../src/engine/episodes';
-import {cutsceneDuration,motionFrameAt,motionPosition,episodeMotionAsset} from '../src/engine/motion';
+import {bondTier,expressionFor,relationshipScene} from '../src/engine/relationshipDirector';
 
 const heroStats = ['affection', 'trust', 'jealousy', 'special'];
 
-test('motion timeline visits twelve distinct poses in order and holds the final pose',()=>{
- const frames=[];
- for(let beat=0;beat<3;beat++){
-  for(const progress of [0,.2,.5,.8])frames.push(motionFrameAt(beat,progress*3000,3000));
-  assert.equal(motionFrameAt(beat,3000,3000),beat*4+3);
+test('all surprise cutscenes use a single scene illustration without motion data',()=>{
+ for(const id of ids)for(const kind of ['closeness','confidence','jealousy','boundary','chance'] as const){
+  const film=eventCutscene(id,kind,id==='taewoo'?'dance':'classroom');
+  assert.equal('motion' in film,false);
+  assert.ok(film.art,`${id}/${kind}: illustrated still`);
  }
- assert.deepEqual(frames,Array.from({length:12},(_,i)=>i));
- assert.equal(motionFrameAt(3,0,2300),11);
- assert.equal(motionFrameAt(99,9999,0),11);
- assert.equal(motionFrameAt(0,-100,3000),0);
- assert.equal(motionPosition(0),'0% 0%');
- assert.equal(motionPosition(2),'100% 0%');
- assert.equal(motionPosition(11),'100% 100%');
- assert.equal(motionPosition(-1),'0% 0%');
- assert.equal(new Set(frames.map(motionPosition)).size,12);
- assert.equal(cutsceneDuration(undefined,true),2300);
- assert.equal(cutsceneDuration('짧은 장면',true),2400);
- assert.equal(cutsceneDuration('긴 장면'.repeat(100),true),3400);
- assert.equal(cutsceneDuration('기존 장면',false),4500);
- for(const kind of ['closeness','chance'] as const)assert.equal(eventCutscene('taewoo',kind,'dance').motion,'motion/event-taewoo-fall');
- assert.equal(eventCutscene('world','chance','band').motion,undefined,'other existing cutscenes stay unchanged');
 });
 
-test('all 42 episodes point to unique shipped twelve-frame atlases and thumbnails',()=>{
- const directory=new URL('../public/assets/motion/',import.meta.url);
- const manifest=JSON.parse(readFileSync(new URL('manifest.json',directory),'utf8'));
- assert.equal(manifest.length,42);
- assert.equal(new Set(manifest.map((x:{sourceHash:string})=>x.sourceHash)).size,42);
+test('all 42 episodes point to unique shipped scene illustrations',()=>{
+ const directory=new URL('../public/assets/cutscenes/',import.meta.url);
  for(const episode of cutsceneEpisodes){
   const film=episodeCutscene(episode.id);
-  assert.equal(film.motion,episodeMotionAsset(episode.id));
-  const entry=manifest.find((x:{id:string})=>x.id===episode.id);
-  assert.ok(entry,episode.id);assert.equal(entry.frames,12);assert.equal(entry.columns,3);assert.equal(entry.rows,4);
-  assert.equal(entry.delays.length,12);assert.ok(entry.delays.every((ms:number)=>ms>0));
-  for(const suffix of ['.webp','-poster.webp']){
-   const file=new URL(episode.id+suffix,directory),bytes=readFileSync(file);
-   assert.equal(bytes.toString('ascii',0,4),'RIFF');assert.equal(bytes.toString('ascii',8,12),'WEBP');
-   assert.ok(statSync(fileURLToPath(file)).size>5000);
-  }
+  assert.equal('motion' in film,false);
+  assert.equal(film.art,`cutscenes/${episode.id}`);
+  const file=new URL(episode.id+'.webp',directory),bytes=readFileSync(file);
+  assert.equal(bytes.toString('ascii',0,4),'RIFF');assert.equal(bytes.toString('ascii',8,12),'WEBP');
+  assert.ok(statSync(fileURLToPath(file)).size>5000);
  }
 });
 const globalStats = ['harmony', 'fair', 'reputation', 'ethics', 'safety'];
@@ -749,4 +727,47 @@ test('every new decision has valid effects and an authored response; old event f
  assert.ok(!ended.flags.some(f=>f.includes('undefined')));
  assert.equal(pendingEpisode(['pending-episode:missing'],'world'),null);
  assert.throws(()=>episodeCutscene('missing'),/Unknown cutscene/);
+});
+
+test('main scenes change relationship dialogue, romance choice, and expression art by affection tier',()=>{
+ const low=newGame('관계분기',91),high=structuredClone(low);
+ high.stats.world={affection:90,trust:90,jealousy:5,special:20};
+ assert.equal(bondTier(low.stats.world),'distant');
+ assert.equal(bondTier(high.stats.world),'close');
+ const scene=commonScenes[4];
+ const distant=relationshipScene(scene,low),close=relationshipScene(scene,high);
+ const distantChoice=distant.choices.at(-1)!,closeChoice=close.choices.at(-1)!;
+ assert.notEqual(distantChoice.text,closeChoice.text);
+ assert.equal(distantChoice.label,'거리 확인');
+ assert.equal(closeChoice.label,'둘만의 약속');
+ assert.notDeepEqual(distant.lines,close.lines);
+ const guarded=expressionFor('world','아직 네 마음을 잘 모르겠어.',scene.id,low.stats.world);
+ const fond=expressionFor('world','좋아해. 둘만의 다음 약속을 잡자.',scene.id,high.stats.world);
+ assert.notEqual(guarded.asset,fond.asset);
+ assert.notEqual(guarded.name,fond.name);
+});
+
+test('after-school dialogue follows the current main chapter and relationship voice',()=>{
+ const base:TalkContext={id:'taewoo',location:'dance',chapter:1,visit:0,stats:{affection:10,trust:5,jealousy:0,special:35},flags:[],seed:17};
+ const early=adaptiveHangoutScene(base);
+ const late=adaptiveHangoutScene({...base,chapter:10,stats:{...base.stats,affection:80,trust:75}});
+ assert.match(early.title,/깨진 비커 이후/);
+ assert.match(late.title,/세 개의 방과 후/);
+ assert.ok(early.lines.some(line=>line.text.includes('화학실 사고')));
+ assert.ok(late.lines.some(line=>line.text.includes('동시에 지킬 수 없는 약속')));
+ assert.notDeepEqual(early.lines,late.lines);
+ assert.notDeepEqual(early.choices[0].response,late.choices[0].response);
+});
+
+test('every ending cutscene uses its own shipped static illustration',()=>{
+ const directory=new URL('../public/assets/endings/',import.meta.url);
+ for(const ending of endings){
+  const film=endingCutscene(ending.id);
+  assert.equal('motion' in film,false);
+  assert.equal(film.art,`endings/${ending.id}`);
+  const file=new URL(ending.id+'.webp',directory),bytes=readFileSync(file);
+  assert.equal(bytes.toString('ascii',0,4),'RIFF');
+  assert.equal(bytes.toString('ascii',8,12),'WEBP');
+  assert.ok(statSync(fileURLToPath(file)).size>5000);
+ }
 });

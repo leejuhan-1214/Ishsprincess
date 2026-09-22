@@ -10,7 +10,7 @@ import {endingCutscene,eventCutscene,eventKindFromScene,type CutsceneSpec} from 
 import type {CharacterId,LocationId,Line} from './types';
 import {episodeCutscene} from './engine/episodes';
 import {CutsceneProps,EpisodeGallery} from './CutsceneDetails';
-import {cutsceneDuration,motionFrameAt,motionPosition} from './engine/motion';
+import {expressionFor,type RelationshipStats} from './engine/relationshipDirector';
 
 const asset=(name:string)=>`${import.meta.env.BASE_URL}assets/${name}.webp`;
 const label=(speaker:Line['speaker'],name:string)=>speaker==='player'?name:speaker==='narrator'?'':speaker==='teacher'?'담임 선생님':speaker==='student'?'1반 친구':characterById[speaker].name;
@@ -32,39 +32,19 @@ const galleryArt:{key:string;label:string;alt:string;event?:[CharacterId,Locatio
  {key:'cast',label:'여섯 명의 친구',alt:'여섯 명의 친구'},
 ];
 function Portrait({id,className=''}:{id:CharacterId;className?:string}){return <div role="img" aria-label={characterById[id].name} className={`portrait ${className}`} style={{backgroundImage:`url(${asset('cast')})`,backgroundPosition:`${ids.indexOf(id)*20}% 25%`}}/>;}
+function StoryPortrait({id,sceneKey,text,stats}:{id:CharacterId;sceneKey:string;text:string;stats:RelationshipStats}){
+ const expression=expressionFor(id,text,sceneKey,stats);
+ return <div role="img" aria-label={`${characterById[id].name} · ${expression.name} 표정`} className="portrait actor-portrait story-expression" data-expression={expression.name} style={{backgroundImage:`url(${asset(expression.asset)})`}}/>;
+}
 function Modal({title,onClose,children}:{title:string;onClose:()=>void;children:ReactNode}){const ref=useRef<HTMLDialogElement>(null);useEffect(()=>{ref.current?.showModal();},[]);return <dialog ref={ref} className="modal" onCancel={e=>{e.preventDefault();onClose();}} onClick={e=>{if(e.target===ref.current)onClose();}}><div className="modal-shell"><div className="modal-head"><div><span className="eyebrow">RE:ACTION / NOTEBOOK</span><h2>{title}</h2></div><button className="icon-button" aria-label="닫기" onClick={onClose}><X size={22}/></button></div><div className="modal-body">{children}</div></div></dialog>;}
 function Meter({name,value,color}:{name:string;value:number;color?:string}){return <div className="meter"><div><span>{name}</span><span>{value}</span></div><div className="meter-track"><i style={{width:`${value}%`,background:color}}/></div></div>;}
 
 function CutsceneScreen({spec,onDone}:{spec:CutsceneSpec;onDone:()=>void}){
- const [beat,setBeat]=useState(0),[paused,setPaused]=useState(false);
- const [elapsed,setElapsed]=useState(0),[imageState,setImageState]=useState<'loading'|'ready'|'error'>(spec.motion?'loading':'ready');
- const elapsedRef=useRef(0),doneRef=useRef(onDone);doneRef.current=onDone;
+ const [beat,setBeat]=useState(0);
  const screen=useRef<HTMLElement>(null);
  useEffect(()=>{const overflow=document.body.style.overflow;document.body.style.overflow='hidden';screen.current?.querySelector('button')?.focus();return()=>{document.body.style.overflow=overflow;};},[]);
- useEffect(()=>{
-  setBeat(0);setPaused(!!spec.motion&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);setElapsed(0);elapsedRef.current=0;
-  if(!spec.motion){setImageState('ready');return;}
-  let active=true;const img=new Image();setImageState('loading');
-  img.onload=()=>{if(active)setImageState('ready');};img.onerror=()=>{if(active)setImageState('error');};img.src=asset(spec.motion);
-  return()=>{active=false;};
- },[spec.key,spec.motion]);
- const duration=cutsceneDuration(spec.beats[beat],!!spec.motion);
- useEffect(()=>{setElapsed(0);elapsedRef.current=0;},[beat]);
- useEffect(()=>{
-  if(paused||imageState!=='ready')return;
-  let previous=performance.now();
-  const timer=window.setInterval(()=>{
-   const now=performance.now(),delta=now-previous;previous=now;
-   // Returning from a background tab must not skip the entire film.
-   if(document.hidden)return;
-   elapsedRef.current+=Math.min(delta,100);setElapsed(elapsedRef.current);
-   if(elapsedRef.current>=duration){window.clearInterval(timer);if(beat<3)setBeat(value=>value+1);else doneRef.current();}
-  },40);
-  return()=>window.clearInterval(timer);
- },[beat,paused,duration,imageState,spec.key]);
+ useEffect(()=>{setBeat(0);},[spec.key]);
  const final=beat===spec.beats.length;
- const frame=motionFrameAt(beat,elapsed,duration);
- const replay=()=>{elapsedRef.current=0;setElapsed(0);setBeat(0);setPaused(false);};
  return <section ref={screen} onKeyDown={event=>{
   if(event.key==='Escape'){event.preventDefault();onDone();}
   if(event.key==='Tab'){
@@ -72,17 +52,15 @@ function CutsceneScreen({spec,onDone}:{spec:CutsceneSpec;onDone:()=>void}){
    if(event.shiftKey&&document.activeElement===buttons[0]){event.preventDefault();buttons[buttons.length-1].focus();}
    else if(!event.shiftKey&&document.activeElement===buttons[buttons.length-1]){event.preventDefault();buttons[0].focus();}
   }
- }} className={`cutscene cutscene-${spec.mood} ${spec.motion?'cutscene-motion':''} ${paused?'cutscene-paused':''}`} role="dialog" aria-modal="true" aria-label={`${spec.title} 컷신`}>
-  {spec.motion?<div className="motion-stage">
-   {imageState==='ready'?<div className="motion-frame" role="img" aria-label={`${spec.title} · 연속 동작 장면`} data-frame={frame} style={{backgroundImage:`url(${asset(spec.motion)})`,backgroundPosition:motionPosition(frame)}}/>:<p className="motion-loading" role="status">{imageState==='error'?'장면을 불러오지 못했어요. 돌아간 뒤 다시 재생해 주세요.':'새 장면을 불러오는 중…'}</p>}
-  </div>:<div className="cutscene-image" key={`${spec.key}:${beat}`} style={{backgroundImage:`url(${asset(spec.art??spec.background)})`}}/>}
-  {!spec.motion&&!spec.art&&spec.character&&<div className="cutscene-actor"><Portrait id={spec.character}/></div>}
-  {!spec.motion&&spec.motif&&spec.props&&!final&&<CutsceneProps key={`${spec.key}:prop:${beat}`} motif={spec.motif} caption={spec.props[beat]} beat={beat}/>}
+ }} className={`cutscene cutscene-${spec.mood}`} role="dialog" aria-modal="true" aria-label={`${spec.title} 컷신`}>
+  <div className="cutscene-image" key={spec.key} style={{backgroundImage:`url(${asset(spec.art??spec.background)})`}}/>
+  {!spec.art&&spec.character&&<div className="cutscene-actor"><Portrait id={spec.character}/></div>}
+  {!spec.art&&spec.motif&&spec.props&&!final&&<CutsceneProps key={`${spec.key}:prop:${beat}`} motif={spec.motif} caption={spec.props[beat]} beat={beat}/>}
   <div className="cutscene-vignette"/><div className="cutscene-flare"/><div className="cutscene-letterbox top"/><div className="cutscene-letterbox bottom"/>
   <div className={`cutscene-copy ${final?'final':''}`} key={`copy:${spec.key}:${beat}`} aria-live="polite">
    <span>{spec.label}</span>{final?<><h1>{spec.title}</h1><p>{spec.subtitle}</p></>:<><small>SCENE {String(beat+1).padStart(2,'0')}</small><p>{spec.beats[beat]}</p></>}
   </div>
-  <div className="cutscene-controls"><div className="cutscene-progress">{spec.beats.map((_,index)=><i key={index} className={index<=beat?'active':''}/>)}</div>{spec.motion&&<button onClick={replay}><RotateCcw size={15}/>처음부터</button>}<button onClick={()=>setPaused(value=>!value)}>{paused?<Play size={15}/>:<Pause size={15}/>} {paused?'재생':'일시정지'}</button><button onClick={()=>final?onDone():setBeat(value=>value+1)}><ArrowRight size={15}/>{final?'돌아가기':'다음 장면'}</button><button onClick={onDone}><SkipForward size={15}/>건너뛰기</button></div>
+  <div className="cutscene-controls"><div className="cutscene-progress">{spec.beats.map((_,index)=><i key={index} className={index<=beat?'active':''}/>)}</div><button onClick={()=>final?onDone():setBeat(value=>value+1)}><ArrowRight size={15}/>{final?'돌아가기':'다음 장면'}</button><button onClick={onDone}><SkipForward size={15}/>건너뛰기</button></div>
  </section>;
 }
 
@@ -165,7 +143,7 @@ export default function App(){
   {!game?<section className="title-screen"><div className="title-content"><div className="tiny-label"><span/> OUR STORY STARTS HERE</div><h1><small>인천과학고 연애실험</small>RE<span>:</span>ACTION<span className="title-flower">✳</span></h1><p className="title-kicker">아직 증명하지 못한, 우리 사이의 반응.</p><p className="title-description">낯선 교실, 여섯 번의 만남.<br/>사이언스 페어까지 남은 64일,<br/>이 이야기는 당신의 이름으로 시작됩니다.</p><form className="name-form" onSubmit={start}><label htmlFor="player-name">새로 온 전학생, 이름이 뭐야?<span>01 / INTRODUCTION</span></label><div className={`name-field ${error?'invalid':''}`}><input id="player-name" autoComplete="off" value={name} onChange={e=>{setName(e.target.value);setError('');}} maxLength={12} placeholder="당신의 이름을 입력해 주세요" aria-invalid={!!error} aria-describedby="name-help"/><NotebookPen size={19}/></div><p id="name-help" className={error?'form-error':'form-hint'}>{error||'이름은 1~12자 · 이야기 속 모든 대사에 반영돼요'}</p><button className="primary start-button" type="submit" disabled={!name.trim()}>우리의 이야기 시작하기<ArrowRight size={19}/></button></form><div className="title-links"><button onClick={()=>{setSlotMode('load');setPanel('load');}}><BookOpen size={15}/>이어서 하기</button><span/><button onClick={()=>setPanel('gallery')}><Star size={15}/>기억의 서랍 <small>{meta.endings.length}</small></button></div></div><div className="title-note"><span>MEMORY NO. 001</span><p>마음은, 실험처럼<br/>예측할 수 없어서.</p><i>— 방과 후의 1학년 1반</i></div><div className="meet-strip"><div><span className="eyebrow">SIX DIFFERENT REACTIONS</span><p>너를 기다리는 여섯 가지 이야기</p></div><div className="meet-faces">{characters.map(c=><button key={c.id} aria-label={`${c.name} 소개`} onClick={()=>{setProfile(c.id);setPanel('cast');}}><Portrait id={c.id}/><span>{c.name}</span></button>)}</div><button className="meet-more" aria-label="등장인물 소개" onClick={()=>setPanel('cast')}><ArrowRight size={22}/></button></div><footer className="title-footer"><span>FICTIONAL SCHOOL ROMANCE · CHAPTER 01–14</span><span>등장인물·사건·시설 배치는 모두 허구입니다.</span></footer></section>:
   <>
   {game.phase==='activity'&&<ActivityScreen game={game} onFinish={score=>{setGame(completeActivity(game,score));showToast(score===3?'완벽한 호흡! 관계가 크게 깊어졌어요.':score>0?'함께한 활동이 대화의 문을 열었어요.':'결과보다 함께 시도한 시간이 남았어요.');}}/>}
-  {game.phase==='story'&&<section className="story-screen"><div className="scene-meta"><span className="eyebrow">{game.segment==='common'?'COMMON ROUTE':game.segment==='hangout'?(scene!.id.includes('-event-')?'SURPRISE EVENT':'AFTER SCHOOL'):game.segment==='harem'?'HIDDEN ROUTE':`${characterById[game.route!].name} ROUTE`}</span><h2>{scene!.title}</h2><span><MapPin size={13}/>{locationById[scene!.location].name}</span></div><div className="chapter-ribbon">{game.segment==='common'?String(game.chapter).padStart(2,'0'):String(game.routeChapter+1).padStart(2,'0')}<span>CHAPTER</span></div>{actor&&<div className="actor-panel" key={actor}><Portrait id={actor} className="actor-portrait"/><div className="actor-caption"><span style={{background:characterById[actor].color}}/>{characterById[actor].role}</div></div>}
+  {game.phase==='story'&&<section className="story-screen"><div className="scene-meta"><span className="eyebrow">{game.segment==='common'?'COMMON ROUTE':game.segment==='hangout'?(scene!.id.includes('-event-')?'SURPRISE EVENT':'AFTER SCHOOL'):game.segment==='harem'?'HIDDEN ROUTE':`${characterById[game.route!].name} ROUTE`}</span><h2>{scene!.title}</h2><span><MapPin size={13}/>{locationById[scene!.location].name}</span></div><div className="chapter-ribbon">{game.segment==='common'?String(game.chapter).padStart(2,'0'):String(game.routeChapter+1).padStart(2,'0')}<span>CHAPTER</span></div>{actor&&<div className="actor-panel" key={`${actor}:${scene!.id}:${game.line}`}><StoryPortrait id={actor} sceneKey={`${scene!.id}:${game.line}`} text={lineText} stats={game.stats[actor]}/><div className="actor-caption"><span style={{background:characterById[actor].color}}/>{characterById[actor].role}<small>{expressionFor(actor,lineText,`${scene!.id}:${game.line}`,game.stats[actor]).name}</small></div></div>}
    {choiceVisible?<div className="choice-block"><div className="choice-prompt"><span/><Sparkles size={15}/>{game.segment==='hangout'?`‘${scene!.title}’을 어떻게 이어갈까?`:'이 선택으로 무엇을 바꿀까?'}<span/></div>{scene!.choices.map((c,i)=><button key={c.id} onClick={()=>pick(i)}><small className={c.label?'choice-tag':undefined}>{c.label??String(i+1).padStart(2,'0')}</small><span>{formatted(c.text)}</span><ChevronRight size={19}/></button>)}</div>:<button className="dialogue" onClick={next} aria-label="다음 대사"><div className="speaker-line"><span style={{borderColor:actor?characterById[actor].color:undefined}}>{line?label(line.speaker,game.name)||'마음의 기록':'이어서'}</span><i>1학년 1반</i></div><p>{lineText.slice(0,visible)}<span className="type-cursor">{visible<lineText.length?'▏':''}</span></p><div className="dialogue-bottom"><span>{visible<lineText.length?'CLICK TO REVEAL':'CLICK OR PRESS SPACE'}</span><ChevronRight size={17}/></div></button>}
    <nav className="story-toolbar" aria-label="대화 도구"><button onClick={()=>setPanel('backlog')}><BookOpen size={14}/>기록</button><button className={auto?'active':''} onClick={()=>{setAuto(!auto);setSkip(false);}}>{auto?<Pause size={14}/>:<Play size={14}/>}자동</button><button className={skip?'active':''} onClick={()=>{if(!meta.read.includes(lineId)){showToast('이미 읽은 대사만 빠르게 넘길 수 있어요.');return;}setSkip(!skip);setAuto(false);}}><SkipForward size={14}/>읽은 대사</button><span/><button onClick={()=>setPanel('journal')}><Heart size={14}/>관계</button><button onClick={()=>{setSlotMode('save');setPanel('save');}}><Save size={14}/>저장</button></nav>
   </section>}

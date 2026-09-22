@@ -1,5 +1,6 @@
 import {characterById,locationById} from '../data/characters';
 import {hangoutMoments,hangoutMoves,type ChoiceMood} from '../data/hangoutMoments';
+import {bondTier,mainStoryThreads,relationshipLine} from './relationshipDirector';
 import type {CharacterId,Choice,Effect,Line,LocationId,Scene} from '../types';
 
 export type Relationship={affection:number;trust:number;jealousy:number;special:number};
@@ -128,9 +129,18 @@ export function hangoutScene(ctx:TalkContext):Scene{
  const moment=hangoutMoments[ctx.id][ctx.visit%hangoutMoments[ctx.id].length];
  const cycle=Math.floor(ctx.visit/hangoutMoments[ctx.id].length);
  const scene=cycle===0?moment.scene:`${moment.scene} · ${cycle===1?'리프라이즈':`${cycle+1}번째 변주`}`;
+ const tier=bondTier(ctx.stats),thread=mainStoryThreads[Math.min(ctx.chapter,mainStoryThreads.length-1)];
  const fill=(value:string)=>value.replaceAll('{scene}',scene).replaceAll('{topic}',topic).replaceAll('{place}',place.name);
  const opening=`${place.name}. ${fill(moment.setup)}`;
- const base:Line[]=[line('narrator',opening),line('narrator',pick(p.soft,`${ctx.chapter}:${ctx.visit}:soft`)),line(ctx.id,fill(moment.line)),line('narrator',`${topic}은(는) 말로만 끝낼 질문이 아니었다. 무엇을 하느냐에 따라 이 장면의 결말이 달라질 것 같았다.`)];
+ const mood=tier==='distant'?pick(p.guarded,`${ctx.chapter}:${ctx.visit}:guarded`):pick(p.soft,`${ctx.chapter}:${ctx.visit}:soft`);
+ const base:Line[]=[
+  line('narrator',opening),
+  line('narrator',`메인 이야기의 ‘${thread.title}’가 이어지는 날이었다. ${thread.detail}`),
+  line('narrator',mood),
+  line(ctx.id,fill(moment.line)),
+  line(ctx.id,relationshipLine(ctx.id,tier,`${ctx.chapter}:${ctx.visit}:after-school`)),
+  line('narrator',`${topic}은(는) 말로만 끝낼 질문이 아니었다. 지금까지의 선택과 오늘 무엇을 하느냐가 둘 사이의 다음 장면을 바꿀 것 같았다.`),
+ ];
  const intro=event?[...eventIntro(ctx,event),...base]:base;
  const deck=hangoutMoves[ctx.id],start=(hash(`${ctx.seed}:${ctx.chapter}:${ctx.visit}:${ctx.location}:moves`)+ctx.visit*7)%deck.length;
  const selected=Array.from({length:5},(_,index)=>deck[(start+index*5)%deck.length]);
@@ -138,11 +148,11 @@ export function hangoutScene(ctx:TalkContext):Scene{
   id:`moment-${ctx.visit}-${move.key}`,
   label:move.tag,
   text:move.text.includes('{scene}')?fill(move.text):`‘${scene}’에서 ${fill(move.text)}`,
-  response:[line('player',fill(move.player)),line(ctx.id,fill(move.reply)),line('narrator',aftermath(move.mood,ctx.id,place.name,topic,scene,`${ctx.seed}:${ctx.chapter}:${ctx.visit}:${move.key}`))],
+  response:[line('player',fill(move.player)),line(ctx.id,fill(move.reply)),line(ctx.id,relationshipLine(ctx.id,tier,`${ctx.chapter}:${ctx.visit}:${move.key}:reply`)),line('narrator',aftermath(move.mood,ctx.id,place.name,topic,scene,`${ctx.seed}:${ctx.chapter}:${ctx.visit}:${move.key}`))],
   effects:moveEffects(ctx.id,move.mood),
   flags:[`personal:${ctx.id}`,`hangout-move:${ctx.id}:${move.key}`],
  }));
- return {id:`visit-${ctx.id}-${ctx.chapter}-${ctx.visit}-${ctx.location}${event?`-event-${event}`:''}`,title:event?`돌발 · ${eventTitles[event]} · ${moment.title}`:moment.title,location:ctx.location,day:0,lines:intro,choices};
+ return {id:`visit-${ctx.id}-${ctx.chapter}-${ctx.visit}-${ctx.location}${event?`-event-${event}`:''}`,title:event?`돌발 · ${eventTitles[event]} · ${moment.title}`:`${moment.title} · ${thread.title}`,location:ctx.location,day:0,lines:intro,choices};
 }
 
 export function pendingEvent(flags:string[],id:CharacterId){return flags.find(flag=>flag.startsWith(`pending-event:${id}:`))??null;}
