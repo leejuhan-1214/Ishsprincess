@@ -73,29 +73,54 @@ const voice:Record<CharacterId,Record<BondTier,string[]>>={
 
 export function relationshipLine(id:CharacterId,tier:BondTier,key:string){return pick(voice[id][tier],`${id}:${tier}:${key}`);}
 
-const choiceCopy:Record<BondTier,(name:string,title:string)=>string>={
- distant:(name,title)=>`‘${title}’이 끝난 뒤 ${name}에게 오늘 불편했던 순간이 있었는지 조용히 묻는다.`,
- curious:(name,title)=>`‘${title}’에서 가장 기억에 남은 순간을 ${name}와 하나씩 골라 서로에게 말한다.`,
- warm:(name,title)=>`‘${title}’이 끝나도 바로 헤어지지 말자고 ${name}에게 둘만의 10분을 제안한다.`,
- close:(name,title)=>`${name}의 손 가까이에 손을 놓고 ‘${title}’ 다음의 약속을 둘만의 일정으로 정한다.`,
-};
-
-const playerCopy:Record<BondTier,string>={
- distant:'가까워지기 전에 내가 놓친 선부터 알고 싶어. 오늘 불편했던 순간이 있었어?',
- curious:'오늘 장면에서 네가 가장 오래 기억하고 싶은 순간은 뭐야? 나도 하나 말할게.',
- warm:'아직 할 말이 남았어. 괜찮다면 우리 둘만 10분 더 같이 있을래?',
- close:'다음 약속은 행사 때문이 아니라, 그냥 너를 만나기 위한 시간으로 잡고 싶어.',
+type RomanceMove={label:string;text:string;player:string};
+const romanceMoves:Record<CharacterId,Record<BondTier,RomanceMove>>={
+ world:{
+  distant:{label:'카메라 끄기',text:'‘{title}’에서 촬영하지 않기로 한 순간을 세계에게 직접 확인한다.',player:'이건 기록보다 네 마음을 먼저 듣고 싶어. 카메라 꺼도 될까?'},
+  curious:{label:'한쪽 이어폰',text:'세계가 고른 곡을 이어폰 한쪽씩 나눠 듣고 오늘 장면의 제목을 붙인다.',player:'이 곡 끝날 때까지만, 다른 사람 반응 말고 우리 둘이 들은 것만 말하자.'},
+  warm:{label:'비공개 앙코르',text:'‘{title}’ 뒤에 공개하지 않을 둘만의 앙코르를 제안한다.',player:'누구에게도 올리지 않을 한 곡, 나한테만 들려줄래?'},
+  close:{label:'화면 밖 약속',text:'세계의 휴대전화를 뒤집어 놓고 행사와 무관한 다음 약속을 정한다.',player:'다음에는 찍을 것도, 올릴 것도 없이 너를 만나고 싶어.'},
+ },
+ junyeon:{
+  distant:{label:'끝까지 듣기',text:'‘{title}’에서 준연이 삼킨 문장을 재촉하지 않고 기다린다.',player:'정리해서 말하지 않아도 돼. 네 문장이 끝날 때까지 안 끊을게.'},
+  curious:{label:'공동 메모',text:'준연의 설명을 대신 고치지 않고 서로 모르는 부분을 다른 색으로 적는다.',player:'네 답을 고치는 대신 내가 모르는 곳도 같이 표시할게.'},
+  warm:{label:'첫 번째 독자',text:'준연이 자기 이름으로 저장한 초안을 가장 먼저 읽어 보겠다고 말한다.',player:'완성본 아니어도 좋아. 네가 쓴 첫 버전을 내가 먼저 읽고 싶어.'},
+  close:{label:'먼저 내민 손',text:'‘{title}’이 끝난 뒤 준연이 선택할 수 있도록 손바닥을 조용히 펼친다.',player:'잡고 싶으면 잡아. 이번 대답은 네 속도로 해 줘.'},
+ },
+ hyunsol:{
+  distant:{label:'판단 보류',text:'‘{title}’에 대한 현솔의 결론보다 아직 확인하지 못한 사실을 함께 적는다.',player:'지금 결론 내리지 말고, 우리 둘 다 모르는 칸부터 남겨 두자.'},
+  curious:{label:'말투 재검토',text:'같은 지적을 상처 없이 전달하는 문장으로 둘이 다시 써 본다.',player:'맞는 말인지 확인했으니, 이번엔 닿는 방식도 같이 고쳐 보자.'},
+  warm:{label:'오차 인정',text:'현솔에게 완벽하지 않은 마음도 지우지 않고 말해 달라고 부탁한다.',player:'정확하지 않아도 괜찮아. 지금 네 마음을 오차처럼 지우진 말아 줘.'},
+  close:{label:'검증 없는 고백',text:'체크리스트를 접고 ‘{title}’ 이후에도 곁에 있고 싶다고 말한다.',player:'이번 말에는 근거표 없어. 그래도 나는 네 곁에 있고 싶어.'},
+ },
+ taewoo:{
+  distant:{label:'멈춤 신호',text:'‘{title}’의 다음 동작보다 태우가 쉬고 싶은 순간의 신호부터 정한다.',player:'잘하는 것보다 멈추고 싶을 때 말해 주는 게 먼저야.'},
+  curious:{label:'거울 밖 시선',text:'거울을 가린 뒤 태우의 동작이 아니라 표정을 보고 카운트를 맞춘다.',player:'이번엔 발 말고 네 표정 보고 박자 잡아 볼게.'},
+  warm:{label:'둘만의 8박',text:'평가도 촬영도 없는 여덟 박자를 태우와 즉흥으로 만든다.',player:'점수 없는 한 세트만 더 하자. 틀리면 같이 웃는 걸로.'},
+  close:{label:'아홉 번째 박자',text:'여덟 카운트가 끝난 뒤에도 놓지 않을 다음 약속을 태우에게 건넨다.',player:'여덟 다음은 카운트 말고 우리 약속으로 남기자.'},
+ },
+ taehun:{
+  distant:{label:'관측과 감상',text:'‘{title}’에서 확인한 사실과 서로 다르게 느낀 마음을 두 칸에 나눠 적는다.',player:'같이 본 것과 내가 느낀 걸 섞지 않고 둘 다 남겨 볼게.'},
+  curious:{label:'여백의 답장',text:'태훈의 짧은 문장 아래 정답 대신 내 감상을 한 줄 덧붙인다.',player:'설명은 못 해도, 네 문장을 읽고 떠오른 건 적어도 될까?'},
+  warm:{label:'흐린 날 약속',text:'날씨와 상관없이 만날 수 있는 다음 장소를 태훈과 정한다.',player:'별이 안 보여도 만나자. 흐리면 도서관으로 가면 되니까.'},
+  close:{label:'동행 한 명',text:'태훈의 다음 관측일지에 내 자리를 미리 예약해 달라고 말한다.',player:'다음 기록에도 동행 한 명, 내 이름으로 남겨 줘.'},
+ },
+ seoyul:{
+  distant:{label:'보여 준 만큼',text:'서율이 공개한 부분 안에서만 ‘{title}’의 색과 구도를 이야기한다.',player:'가린 부분은 묻지 않을게. 네가 보여 준 이 색부터 말해도 돼?'},
+  curious:{label:'네 번째 색',text:'서율의 팔레트에 오늘 기억을 닮은 색 하나를 함께 만든다.',player:'네 색을 고치진 않고, 내 기억의 색을 옆에 놓아 볼게.'},
+  warm:{label:'첫 관객',text:'완성 평가 없이 미완성 장면의 첫 관객이 되겠다고 제안한다.',player:'고치라고 말하지 않을게. 변하고 있는 지금을 옆에서 보고 싶어.'},
+  close:{label:'함께 긋는 선',text:'서율이 허락한 다음 선을 같은 붓으로 천천히 이어 그린다.',player:'이 빈자리가 내 자리라면, 다음 선은 같이 그어도 될까?'},
+ },
 };
 
 function castOf(scene:Scene){return [...new Set(scene.lines.map(line=>line.speaker).filter((speaker):speaker is CharacterId=>ids.includes(speaker as CharacterId)))];}
 
 function relationshipChoice(scene:Scene,id:CharacterId,tier:BondTier):Choice{
- const name={world:'세계',junyeon:'준연',hyunsol:'현솔',taewoo:'태우',taehun:'태훈',seoyul:'서율'}[id];
+ const move=romanceMoves[id][tier],fill=(value:string)=>value.replaceAll('{title}',scene.title);
  const gain={distant:[2,5],curious:[5,5],warm:[8,5],close:[10,6]}[tier];
  return {
-  id:`relationship-${scene.id}-${id}-${tier}`,label:tier==='close'?'둘만의 약속':tier==='warm'?'조금 더 가까이':tier==='curious'?'마음 확인':'거리 확인',
-  text:choiceCopy[tier](name,scene.title),
-  response:[{speaker:'player',text:playerCopy[tier]},{speaker:id,text:relationshipLine(id,tier,`${scene.id}:choice`)}],
+  id:`relationship-${scene.id}-${id}-${tier}`,label:move.label,text:fill(move.text),
+  response:[{speaker:'player',text:fill(move.player)},{speaker:id,text:relationshipLine(id,tier,`${scene.id}:choice`)}],
   effects:[{target:id,stat:'affection',amount:gain[0]},{target:id,stat:'trust',amount:gain[1]},{target:id,stat:'jealousy',amount:tier==='distant'?0:-2}],
   flags:[`relationship-beat:${scene.id}:${id}:${tier}`],
  };

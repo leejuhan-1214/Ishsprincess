@@ -3,6 +3,7 @@ import {characterById,locationById} from '../data/characters';
 import type {TalkContext} from './characterAI';
 import type {CutsceneSpec} from './cutscenes';
 import type {Scene} from '../types';
+import {mainStoryThreads} from './relationshipDirector';
 
 export const episodeSeenFlag=(id:string)=>`episode-seen:${id}`;
 export const episodePendingFlag=(id:string)=>`pending-episode:${id}`;
@@ -15,7 +16,10 @@ export function pendingEpisode(flags:string[],character:TalkContext['id']):Cutsc
  return null;
 }
 export function episodeEligible(episode:CutsceneEpisode,ctx:TalkContext){
- return episode.character===ctx.id&&episode.location===ctx.location
+ const sequence=cutsceneEpisodes.filter(item=>item.character===episode.character),index=sequence.findIndex(item=>item.id===episode.id);
+ const chapterGate=[0,1,3,5,7,9,11][index]??0;
+ const previous=index<=0||ctx.flags.includes(episodeSeenFlag(sequence[index-1].id));
+ return episode.character===ctx.id&&episode.location===ctx.location&&ctx.chapter>=chapterGate&&previous
   &&ctx.stats.affection>=episode.affection&&ctx.stats.trust>=episode.trust
   &&!ctx.flags.includes(episodeSeenFlag(episode.id));
 }
@@ -24,11 +28,19 @@ export function selectEpisode(ctx:TalkContext):CutsceneEpisode|null{
  return cutsceneEpisodes.find(episode=>episodeEligible(episode,ctx))??null;
 }
 export function episodeScene(episode:CutsceneEpisode,ctx:TalkContext):Scene{
- const id=episode.character;
+ const id=episode.character,thread=mainStoryThreads[Math.min(ctx.chapter,mainStoryThreads.length-1)],place=locationById[episode.location].name;
+ const bridge:Record<TalkContext['id'],string>={
+  world:`“‘${thread.title}’ 때는 남들한테 보일 장면만 골랐지. 지금부터는 너한테만 보여 줄게.”`,
+  junyeon:`“‘${thread.title}’ 뒤에 계속 연습했어. 이번에는 내 말로 끝까지 설명해 보고 싶어.”`,
+  hyunsol:`“‘${thread.title}’에서 내 판단이 전부 맞았던 건 아니야. 확인할 장면이 하나 더 있어.”`,
+  taewoo:`“‘${thread.title}’ 끝나고 만든 동작이야. 점수 말고 네 반응을 첫 기준으로 삼을래.”`,
+  taehun:`“‘${thread.title}’의 기록 옆에 값으로 남지 않는 문장이 하나 생겼어. 같이 읽을래?”`,
+  seoyul:`“‘${thread.title}’에서 지우지 못한 색이 있어. 완성하기 전에 네가 먼저 봐 줬으면 해.”`,
+ };
  return {
   id:`episode:${episode.id}:${ctx.chapter}:${ctx.visit}`,cutsceneId:episode.id,title:episode.title,
   location:episode.location,day:0,
-  lines:[{speaker:id,text:episode.question}],
+  lines:[{speaker:'narrator',text:`${thread.detail} 그날의 일이 끝난 뒤의 ${place}. ${characterById[id].name} 쪽에서 먼저 조용히 나를 불렀다.`},{speaker:id,text:bridge[id]},{speaker:id,text:episode.question}],cutsceneAt:2,
   choices:episode.choices.map((choice,index)=>({
    id:`${episode.id}-${index}`,label:choice.label,text:choice.text,
    response:[{speaker:id,text:choice.reply}],

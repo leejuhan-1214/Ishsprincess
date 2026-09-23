@@ -486,12 +486,13 @@ test('every rotating hangout produces valid uniquely addressed scenes and finite
   }
 });
 
-test('after-school decisions use five tagged character actions without repeated copy across twelve visits', () => {
+test('after-school decisions use four contextual character actions without repeated copy across twelve visits', () => {
   for (const character of characters) {
     const texts = new Set<string>();
     for (let visit = 0; visit < 12; visit++) {
       const scene = hangoutScene(character.id, visit, visit + 1);
-      assert.equal(scene.choices.length, 5, `${character.id}/${visit}: five actions`);
+      assert.equal(scene.choices.length, 4, `${character.id}/${visit}: one story reaction and three personal actions`);
+      assert.ok(scene.choices[0].id.startsWith('story-thread-'));
       for (const choice of scene.choices) {
         assert.ok(choice.label?.trim(), `${character.id}/${visit}/${choice.id}: action label`);
         assert.ok(!texts.has(choice.text), `${character.id}: repeated choice copy: ${choice.text}`);
@@ -601,7 +602,9 @@ test('map visits start a situational three-round mini game and its score changes
   let state=visit(map,'taewoo',place);
   assert.equal(state.phase,'activity');
   const activity=currentActivity(state)!;
-  assert.equal(activity.questions.length,3);
+  assert.equal(activity.rounds.length,3);
+  assert.ok(activity.rounds.every(round=>['timing','memory','order','balance'].includes(round.mode)));
+  assert.match(activity.context,/오늘의 활동/);
   assert.match(activity.subtitle,new RegExp(locations.find(item=>item.id===place)!.name));
   const before=state.stats.taewoo.trust;
   state=completeActivity(state,3);
@@ -613,12 +616,12 @@ test('map visits start a situational three-round mini game and its score changes
 
 test('relationship thresholds deterministically unlock one-time sudden events', () => {
   const base=newGame('돌발',13);
-  const ctx:TalkContext={id:'world',location:'band',chapter:3,visit:1,stats:{affection:70,trust:60,jealousy:10,special:30},flags:[],seed:13};
+  const ctx:TalkContext={id:'world',location:'band',chapter:6,visit:2,stats:{affection:70,trust:60,jealousy:10,special:30},flags:[],seed:13};
   const first=selectSuddenEvent(ctx);
   assert.equal(first,'confidence');
   assert.notEqual(selectSuddenEvent({...ctx,flags:['event-seen:world:confidence']}),'confidence');
   assert.equal(selectSuddenEvent({...ctx,stats:{...ctx.stats,jealousy:60}}),'jealousy');
-  const map={...base,phase:'map' as const,stats:{...base.stats,world:ctx.stats}};
+  const map={...base,phase:'map' as const,chapter:6,stats:{...base.stats,world:ctx.stats},visits:{...base.visits,world:2},flags:cutsceneEpisodes.filter(e=>e.character==='world').map(e=>episodeSeenFlag(e.id))};
   const place=locationOf(map,'world');
   const started=visit(map,'world',place);
   assert.ok(started.flags.some(flag=>flag.startsWith('pending-event:world:')));
@@ -671,7 +674,9 @@ test('42 new cutscenes have seven unique situations per character and 126 specif
 
 test('every new situation obeys location and relationship gates and becomes ineligible once completed',()=>{
  for(const episode of cutsceneEpisodes){
-  const ctx:TalkContext={id:episode.character,location:episode.location,chapter:5,visit:3,stats:{affection:episode.affection,trust:episode.trust,jealousy:0,special:30},flags:[],seed:7};
+  const sequence=cutsceneEpisodes.filter(item=>item.character===episode.character),index=sequence.findIndex(item=>item.id===episode.id);
+  const prior=sequence.slice(0,index).map(item=>episodeSeenFlag(item.id));
+  const ctx:TalkContext={id:episode.character,location:episode.location,chapter:13,visit:7,stats:{affection:episode.affection,trust:episode.trust,jealousy:0,special:30},flags:prior,seed:7};
   assert.ok(episodeEligible(episode,ctx));
   assert.equal(episodeEligible(episode,{...ctx,location:'gate'}),false);
   assert.equal(episodeEligible(episode,{...ctx,flags:[episodeSeenFlag(episode.id)]}),false);
@@ -689,6 +694,7 @@ test('all 42 cutscenes trigger through an actual timetable visit and survive sav
    if(locationOf(map,episode.character)!==episode.location)continue;
    map.stats[episode.character]={affection:100,trust:100,jealousy:0,special:30};
    map.flags=cutsceneEpisodes.filter(e=>e.id!==episode.id).map(e=>episodeSeenFlag(e.id));
+   if(!episodeEligible(episode,{id:episode.character,location:episode.location,chapter,visit:6,stats:map.stats[episode.character],flags:map.flags,seed}))continue;
    fixture=map;break;
   }
   assert.ok(fixture,`reachable location: ${episode.id}`);
@@ -701,7 +707,8 @@ test('all 42 cutscenes trigger through an actual timetable visit and survive sav
   const story=completeActivity(restored,0);
   assert.equal(activeScene(story).cutsceneId,episode.id);
   assert.equal(activeScene(story).location,episode.location);
-  assert.equal(activeScene(story).lines[0].text,episode.question);
+  assert.equal(activeScene(story).cutsceneAt,2);
+  assert.equal(activeScene(story).lines[2].text,episode.question);
   assert.equal(activeScene(story).choices.length,3);
   const ended=playScene(story,0);
   assert.equal(ended.phase,'map');
@@ -738,8 +745,8 @@ test('main scenes change relationship dialogue, romance choice, and expression a
  const distant=relationshipScene(scene,low),close=relationshipScene(scene,high);
  const distantChoice=distant.choices.at(-1)!,closeChoice=close.choices.at(-1)!;
  assert.notEqual(distantChoice.text,closeChoice.text);
- assert.equal(distantChoice.label,'거리 확인');
- assert.equal(closeChoice.label,'둘만의 약속');
+ assert.equal(distantChoice.label,'카메라 끄기');
+ assert.equal(closeChoice.label,'화면 밖 약속');
  assert.notDeepEqual(distant.lines,close.lines);
  const guarded=expressionFor('world','아직 네 마음을 잘 모르겠어.',scene.id,low.stats.world);
  const fond=expressionFor('world','좋아해. 둘만의 다음 약속을 잡자.',scene.id,high.stats.world);

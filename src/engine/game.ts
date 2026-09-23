@@ -31,9 +31,9 @@ export function activeScene(s:GameState):Scene{
   const ctx=talkContext(s),episode=pendingEpisode(s.flags,s.visitor);
   return directedScene({...(episode?episodeScene(episode,ctx):hangoutScene(ctx)),day:commonScenes[s.chapter].day},{addChoices:false,cacheable:false});
  }
- if(s.segment==='route'&&s.route)return relationshipScene(directedScene(routes[s.route][s.routeChapter]),s);
- if(s.segment==='harem')return relationshipScene(directedScene(haremScenes[s.routeChapter]),s);
- return relationshipScene(directedScene(commonScenes[Math.min(s.chapter,commonScenes.length-1)]),s);
+ if(s.segment==='route'&&s.route)return relationshipScene(directedScene(routes[s.route][s.routeChapter],{addChoices:false}),s);
+ if(s.segment==='harem')return relationshipScene(directedScene(haremScenes[s.routeChapter],{addChoices:false}),s);
+ return relationshipScene(directedScene(commonScenes[Math.min(s.chapter,commonScenes.length-1)],{addChoices:false}),s);
 }
 export const activeLines=(s:GameState)=>s.response??activeScene(s).lines;
 export const readKey=(s:GameState)=>`dialogue2:${activeScene(s).id}:${s.response?'r'+s.flags.filter(f=>f.startsWith('choice:')).slice(-1)[0]:'l'}:${s.line}`;
@@ -56,7 +56,7 @@ export function completeActivity(s:GameState,score:number):GameState{
  if(s.phase!=='activity'||!s.visitor)return s;
  const points=Math.max(0,Math.min(3,Math.floor(score))),id=s.visitor,positiveSpecial=['taehun','seoyul'].includes(id);
  const effects:Effect[]=[{target:id,stat:'affection',amount:3+points*2},{target:id,stat:'trust',amount:1+points*3},{target:id,stat:'special',amount:positiveSpecial?points*2:-points*2},{target:'global',stat:'fair',amount:points},{target:'global',stat:'safety',amount:points===3?2:0}];
- return {...applyEffects(s,effects,[`activity:${id}:${s.visitLocation??characterById[id].location}:${s.chapter}:${points}`]),phase:'story',line:0,response:null};
+ return {...applyEffects(s,effects,[`activity:${id}:${s.visitLocation??characterById[id].location}:${s.chapter}:${points}`,`activity-result:${id}:${s.chapter}:${points}`]),phase:'story',line:0,response:null};
 }
 export function haremEligible(s:GameState){return ids.every(id=>s.stats[id].affection>=60&&s.stats[id].trust>=70&&s.stats[id].jealousy<=30&&s.visits[id]>=1)&&s.global.harmony>=80&&s.global.fair>=85&&s.global.ethics>=70&&s.stats.world.special<=60&&s.stats.junyeon.special<=50&&s.stats.hyunsol.special<=60&&!s.flags.some(f=>f.startsWith('exclusive:'));}
 export function haremChance(s:GameState,failures=0){

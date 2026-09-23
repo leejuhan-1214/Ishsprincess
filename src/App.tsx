@@ -66,12 +66,32 @@ function CutsceneScreen({spec,onDone}:{spec:CutsceneSpec;onDone:()=>void}){
 
 function ActivityScreen({game,onFinish}:{game:GameState;onFinish:(score:number)=>void}){
  const activity=currentActivity(game)!;
- const [round,setRound]=useState(0),[score,setScore]=useState(0),[selected,setSelected]=useState<number|null>(null);
- useEffect(()=>{setRound(0);setScore(0);setSelected(null);},[activity.id]);
- const question=activity.questions[round],done=round===activity.questions.length-1&&selected!==null;
- function answer(index:number){if(selected!==null)return;setSelected(index);if(index===question.answer)setScore(value=>value+1);}
- function proceed(){if(done){onFinish(score);return;}setRound(value=>value+1);setSelected(null);}
- return <section className="activity-screen"><div className="activity-card"><div className="activity-person"><Portrait id={game.visitor!}/><span><small>AFTER SCHOOL MINI GAME</small><b>{activity.title}</b></span><i>{activity.icon}</i></div><div className="activity-progress">{activity.questions.map((_,index)=><span key={index} className={`${index<round?'done':''} ${index===round?'current':''}`}/>)}</div><p className="activity-subtitle">{activity.subtitle}</p><h2>{question.prompt}</h2><div className="activity-options">{question.options.map((option,index)=><button key={option} disabled={selected!==null} className={selected===null?'':index===question.answer?'correct':index===selected?'wrong':''} onClick={()=>answer(index)}><small>{index+1}</small>{option}</button>)}</div>{selected!==null&&<div className="activity-feedback"><b>{selected===question.answer?'좋아, 호흡이 맞았어.':'괜찮아, 다음에는 확인할 수 있어.'}</b><p>{question.explain}</p><button className="primary" onClick={proceed}>{done?'결과와 함께 대화하기':'다음 문제'}<ArrowRight size={16}/></button></div>}{selected===null&&<button className="text-button activity-skip" onClick={()=>onFinish(0)}>미니게임을 건너뛰고 대화한다</button>}</div></section>;
+ const [round,setRound]=useState(0),[score,setScore]=useState(0),[result,setResult]=useState<boolean|null>(null);
+ const [position,setPosition]=useState(0),[balance,setBalance]=useState(50),[entered,setEntered]=useState<number[]>([]),[ordered,setOrdered]=useState<string[]>([]),[showPattern,setShowPattern]=useState(false),[memoryReady,setMemoryReady]=useState(false);
+ const challenge=activity.rounds[round],done=round===activity.rounds.length-1&&result!==null;
+ useEffect(()=>{setRound(0);setScore(0);},[activity.id]);
+ useEffect(()=>{setResult(null);setBalance(50);setEntered([]);setOrdered([]);setShowPattern(false);setMemoryReady(false);setPosition(0);},[activity.id,round]);
+ useEffect(()=>{
+  if(challenge.mode!=='timing'||result!==null)return;
+  let frame=0;const started=performance.now();
+  const tick=(now:number)=>{const phase=((now-started)%2200)/1100;setPosition(phase<=1?phase*100:(2-phase)*100);frame=requestAnimationFrame(tick);};
+  frame=requestAnimationFrame(tick);return()=>cancelAnimationFrame(frame);
+ },[activity.id,round,challenge.mode,result]);
+ function settle(ok:boolean){if(result!==null)return;setResult(ok);if(ok)setScore(value=>value+1);}
+ function proceed(){if(done){onFinish(score);return;}setRound(value=>value+1);}
+ function hearPattern(){if(challenge.mode!=='memory'||showPattern)return;setEntered([]);setMemoryReady(false);setShowPattern(true);window.setTimeout(()=>{setShowPattern(false);setMemoryReady(true);},1300+challenge.pattern.length*170);}
+ function pressMemory(index:number){if(challenge.mode!=='memory'||!memoryReady||result!==null)return;const next=[...entered,index];setEntered(next);if(next.length===challenge.pattern.length)settle(next.every((value,i)=>value===challenge.pattern[i]));}
+ function pressOrder(item:string){if(challenge.mode!=='order'||result!==null||ordered.includes(item))return;const next=[...ordered,item];setOrdered(next);if(next.length===challenge.answer.length)settle(next.every((value,i)=>value===challenge.answer[i]));}
+ return <section className="activity-screen"><div className="activity-card"><div className="activity-person"><Portrait id={game.visitor!}/><span><small>STORY-LINKED ACTIVITY</small><b>{activity.title}</b></span><i>{activity.icon}</i></div><div className="activity-progress">{activity.rounds.map((_,index)=><span key={index} className={`${index<round?'done':''} ${index===round?'current':''}`}/>)}</div><p className="activity-subtitle">{activity.subtitle}</p><p className="activity-context">{activity.context}</p><h2>{challenge.prompt}</h2>
+  <div className={`activity-play activity-${challenge.mode}`}>
+   {challenge.mode==='timing'&&<><div className="timing-track"><i className="target" style={{left:`${challenge.target-challenge.tolerance}%`,width:`${challenge.tolerance*2}%`}}/><i className="timing-marker" style={{left:`${position}%`}}/></div><button className="activity-action" disabled={result!==null} onClick={()=>settle(Math.abs(position-challenge.target)<=challenge.tolerance)}>{challenge.action}</button></>}
+   {challenge.mode==='memory'&&<><div className={`memory-display ${showPattern?'showing':''}`}>{showPattern?challenge.pattern.map((value,index)=><i key={index}>{challenge.symbols[value]}</i>):entered.map((value,index)=><i key={index}>{challenge.symbols[value]}</i>)}</div>{!memoryReady&&result===null?<button className="activity-action" onClick={hearPattern}>{challenge.action}</button>:<div className="memory-keys">{challenge.symbols.map((symbol,index)=><button key={symbol} disabled={result!==null} onClick={()=>pressMemory(index)}>{symbol}</button>)}</div>}</>}
+   {challenge.mode==='order'&&<><div className="order-slots">{challenge.answer.map((_,index)=><span key={index}>{ordered[index]??`${index+1}단계`}</span>)}</div><div className="order-cards">{challenge.items.map(item=><button key={item} disabled={result!==null||ordered.includes(item)} onClick={()=>pressOrder(item)}>{item}</button>)}</div></>}
+   {challenge.mode==='balance'&&<><div className="balance-labels"><span>{challenge.left}</span><span>{challenge.right}</span></div><div className="balance-wrap"><i style={{left:`${challenge.target-challenge.tolerance}%`,width:`${challenge.tolerance*2}%`}}/><input aria-label="균형 조절" type="range" min="0" max="100" value={balance} disabled={result!==null} onChange={event=>setBalance(Number(event.target.value))}/></div><button className="activity-action" disabled={result!==null} onClick={()=>settle(Math.abs(balance-challenge.target)<=challenge.tolerance)}>{challenge.action}</button></>}
+  </div>
+  {result!==null&&<div className={`activity-feedback ${result?'success':'miss'}`}><b>{result?'둘의 호흡이 맞았다.':'이번에는 어긋났다.'}</b><p>{challenge.explain}</p><button className="primary" onClick={proceed}>{done?'이 결과로 대화 이어가기':'다음 장면'}<ArrowRight size={16}/></button></div>}
+  {result===null&&<button className="text-button activity-skip" onClick={()=>onFinish(score)}>활동을 멈추고 지금 결과로 대화한다</button>}
+ </div></section>;
 }
 
 export default function App(){
@@ -106,9 +126,9 @@ export default function App(){
   if(!game||cutscene)return;
   let nextCutscene:CutsceneSpec|null=null;
   if(game.phase==='ending'&&game.ending)nextCutscene=endingCutscene(game.ending);
-  else if(game.phase==='story'&&game.segment==='hangout'&&game.visitor&&scene&&game.line===0&&!game.response){
+  else if(game.phase==='story'&&game.segment==='hangout'&&game.visitor&&scene&&scene.cutsceneAt!==undefined&&game.line===scene.cutsceneAt&&!game.response){
    if(scene.cutsceneId&&!game.flags.includes(`episode-watched:${scene.cutsceneId}`))nextCutscene=episodeCutscene(scene.cutsceneId);
-   else if(!scene.cutsceneId){const kind=eventKindFromScene(scene.id);if(kind)nextCutscene=eventCutscene(game.visitor,kind,scene.location,scene.id);}
+   else if(!scene.cutsceneId&&!game.flags.includes(`cutscene-watched:${scene.id}`)){const kind=eventKindFromScene(scene.id);if(kind)nextCutscene=eventCutscene(game.visitor,kind,scene.location,scene.id);}
   }
   if(nextCutscene&&!playedCutscenes.current.has(nextCutscene.key)){playedCutscenes.current.add(nextCutscene.key);setCutscene(nextCutscene);}
  },[game,scene,cutscene]);
@@ -131,6 +151,10 @@ export default function App(){
   if(returnToGallery.current){returnToGallery.current=false;setPanel('gallery');}
   else if(cutscene?.key.startsWith('episode:')){
    const flag='episode-watched:'+cutscene.key.slice('episode:'.length);
+   setGame(current=>current&&!current.flags.includes(flag)?{...current,flags:[...current.flags,flag]}:current);
+  }
+  else if(cutscene?.key.startsWith('event:')&&scene){
+   const flag=`cutscene-watched:${scene.id}`;
    setGame(current=>current&&!current.flags.includes(flag)?{...current,flags:[...current.flags,flag]}:current);
   }
   setCutscene(null);
