@@ -540,11 +540,19 @@ test('padded saves resume at the next authored line and keep choices reachable',
   assert.equal(activeLines(restored)[restored.line].text,original[1].text);
   assert.deepEqual(restoreGame(restored),restored,'migration is applied only once');
   const atChoices=restoreGame({...legacy,line:original.length*3})!;
-  assert.equal(atChoices.line,original.length);
+  assert.equal(atChoices.line,activeScene(atChoices).lines.length);
   assert.ok(choose(atChoices,0).response,'existing saved choice screen still works');
   const duringPadding=restoreGame({...legacy,line:2})!;
   assert.equal(duringPadding.line,1);
   assert.deepEqual(legacy.backlog,[original[0],atmosphere,thought],'original save is not mutated');
+});
+
+test('revision-two saves at a common-route choice resume after the new scene beat',()=>{
+ const old={...newGame('이전기록',42),dialogueRevision:2 as const,line:commonScenes[4].lines.length,chapter:4};
+ const current=restoreGame(old)!;
+ assert.equal(current.dialogueRevision,3);
+ assert.equal(current.line,activeScene(current).lines.length);
+ assert.ok(choose(current,0).response);
 });
 
 test('saved responses shed padding without losing original dialogue or free-form replies', () => {
@@ -736,22 +744,52 @@ test('every new decision has valid effects and an authored response; old event f
  assert.throws(()=>episodeCutscene('missing'),/Unknown cutscene/);
 });
 
-test('main scenes change relationship dialogue, romance choice, and expression art by affection tier',()=>{
+test('main scenes change their chapter-specific response and expression art by affection tier',()=>{
  const low=newGame('관계분기',91),high=structuredClone(low);
- high.stats.world={affection:90,trust:90,jealousy:5,special:20};
- assert.equal(bondTier(low.stats.world),'distant');
- assert.equal(bondTier(high.stats.world),'close');
+ high.stats.seoyul={affection:90,trust:90,jealousy:5,special:75};
+ assert.equal(bondTier(low.stats.seoyul),'distant');
+ assert.equal(bondTier(high.stats.seoyul),'close');
  const scene=commonScenes[4];
  const distant=relationshipScene(scene,low),close=relationshipScene(scene,high);
  const distantChoice=distant.choices.at(-1)!,closeChoice=close.choices.at(-1)!;
  assert.notEqual(distantChoice.text,closeChoice.text);
- assert.equal(distantChoice.label,'카메라 끄기');
- assert.equal(closeChoice.label,'화면 밖 약속');
+ assert.equal(distantChoice.label,'공개 폴더');
+ assert.equal(closeChoice.label,'이어폰 한쪽');
  assert.notDeepEqual(distant.lines,close.lines);
- const guarded=expressionFor('world','아직 네 마음을 잘 모르겠어.',scene.id,low.stats.world);
- const fond=expressionFor('world','좋아해. 둘만의 다음 약속을 잡자.',scene.id,high.stats.world);
+ const guarded=expressionFor('seoyul','아직 네 마음을 잘 모르겠어.',scene.id,low.stats.seoyul);
+ const fond=expressionFor('seoyul','좋아해. 둘만의 다음 약속을 잡자.',scene.id,high.stats.seoyul);
  assert.notEqual(guarded.asset,fond.asset);
  assert.notEqual(guarded.name,fond.name);
+});
+
+test('the fourteen common decisions are chapter-specific and remember earlier mistakes',()=>{
+ const state=newGame('기록자',29);
+ const labels=commonScenes.map(scene=>relationshipScene(scene,state).choices.at(-1)!.text);
+ assert.equal(new Set(labels).size,commonScenes.length);
+ const regretted=relationshipScene(commonScenes[9],{...state,flags:['choice:common-4:band-share']});
+ assert.ok(regretted.lines.some(line=>line.speaker==='seoyul'&&line.text.includes('몰래 보낸 일')));
+ const trusted=relationshipScene(commonScenes[9],{...state,flags:['choice:common-4:band-permission']});
+ assert.ok(trusted.lines.some(line=>line.speaker==='seoyul'&&line.text.includes('공개 범위')));
+ assert.ok(!trusted.lines.some(line=>line.text.includes('몰래 보낸 일')));
+});
+
+test('personal routes have distinct staged dialogue instead of a repeated bonus answer',()=>{
+ const state=newGame('루트검수',30);
+ for(const id of ids){
+  const extras=routes[id].map(scene=>relationshipScene(scene,{...state,segment:'route',route:id}).lines.at(-1)!.text);
+  assert.equal(new Set(extras).size,routes[id].length,id);
+  assert.deepEqual(relationshipScene(routes[id][0],{...state,segment:'route',route:id}).choices,routes[id][0].choices);
+ }
+});
+
+test('map visits can skip the activity and open the current conversation directly',()=>{
+ const state={...newGame('대화선택',31),phase:'map' as const,chapter:4};
+ const direct=visit(state,'world');
+ const activity=visit(state,'world',locationOf(state,'world'));
+ assert.equal(direct.phase,'story');
+ assert.equal(activity.phase,'activity');
+ assert.equal(direct.visitor,activity.visitor);
+ assert.equal(activeScene(direct).id,activeScene(activity).id);
 });
 
 test('after-school dialogue follows the current main chapter and relationship voice',()=>{
