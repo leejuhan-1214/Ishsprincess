@@ -17,6 +17,7 @@ import {
 import type { CharacterId, Effect, Line, Scene } from '../src/types';
 import {directedScene} from '../src/engine/storyDirector';
 import {hangoutScene as adaptiveHangoutScene,selectSuddenEvent,type TalkContext} from '../src/engine/characterAI';
+import {activityFor} from '../src/engine/activities';
 import {endingCutscene,eventCutscene,eventKindFromScene} from '../src/engine/cutscenes';
 import {cutsceneEpisodes} from '../src/data/cutsceneEpisodes';
 import {episodeCutscene,episodeEligible,episodePendingFlag,episodeScene,episodeSeenFlag,pendingEpisode,selectEpisode} from '../src/engine/episodes';
@@ -760,6 +761,24 @@ test('main scenes change their chapter-specific response and expression art by a
  const fond=expressionFor('seoyul','좋아해. 둘만의 다음 약속을 잡자.',scene.id,high.stats.seoyul);
  assert.notEqual(guarded.asset,fond.asset);
  assert.notEqual(guarded.name,fond.name);
+});
+
+test('mini games grow harder without changing seeded answers',()=>{
+ const first=activityFor('world','band',77,0,0),later=activityFor('world','band',77,12,0);
+ assert.deepEqual(first,activityFor('world','band',77,0,0));
+ assert.deepEqual(first.rounds.map(round=>round.mode==='memory'?round.pattern.length:0),[5,6,7]);
+ assert.deepEqual(later.rounds.map(round=>round.mode==='memory'?round.pattern.length:0),[7,8,9]);
+ const order=activityFor('junyeon','chemistry',77,0,0).rounds;
+ for(const round of order){assert.equal(round.mode,'order');if(round.mode!=='order')continue;assert.equal(round.answer.length,4);assert.notDeepEqual(round.items,round.answer);assert.deepEqual([...round.items].sort(),[...round.answer].sort());}
+ for(const id of ['taewoo','taehun','hyunsol','seoyul'] as const){
+  const early=activityFor(id,id==='taewoo'?'dance':id==='taehun'?'observatory':id==='hyunsol'?'chemistry':'art',77,0,0).rounds;
+  const late=activityFor(id,id==='taewoo'?'dance':id==='taehun'?'observatory':id==='hyunsol'?'chemistry':'art',77,12,0).rounds;
+  for(let index=0;index<3;index++){
+   const a=early[index],b=late[index];
+   assert.ok((a.mode==='timing'||a.mode==='balance')&&(b.mode==='timing'||b.mode==='balance'));
+   if((a.mode==='timing'||a.mode==='balance')&&(b.mode==='timing'||b.mode==='balance'))assert.ok(b.tolerance<a.tolerance,`${id}/${index}: later tolerance should shrink`);
+  }
+ }
 });
 
 test('the fourteen common decisions are chapter-specific and remember earlier mistakes',()=>{
