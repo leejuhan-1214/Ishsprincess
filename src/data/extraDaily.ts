@@ -1,5 +1,5 @@
 import type {BondEpisode,ExtraId} from './classroomMystery';
-import type {Activity} from '../engine/activities';
+import {activityRoundsFor,type Activity} from '../engine/activities';
 import {extraById,script} from './classroomMystery';
 import {locationById} from './characters';
 import type {LocationId} from '../types';
@@ -31,16 +31,5 @@ narrator|마무리하자는 말과 함께 끝난 건 작업만이 아니었다.`
  ]};
 }
 export function schoolActivity(id:ExtraId,chapter:number,location:LocationId,seed:number):Activity{
- const n=(seed+chapter*97+(id==='juhan'?11:23))>>>0;
- const shuffle=(items:string[])=>{const shift=1+n%(items.length-1);return [...items.slice(shift),...items.slice(0,shift)].reverse();};
- const orders=id==='juhan'?[
-  ['버그를 고치기 전, 재현 가능한 기록을 남긴다.',['원본 보존','재현 단계 기록','원인 분리','수정 후 재검증']],
-  ['다른 학생의 파일을 분석할 때 지킬 순서를 정한다.',['동의 확인','읽기 전용 열기','차이 비교','공개 범위 확인']],
-  ['예약 작업을 복구할 때 실행을 되살리지 않도록 확인한다.',['대기열 중지','복구 항목 검토','시험 환경 실행','승인 후 반영']],
- ]:[
-  ['동급생이 다쳤을 때 소문보다 먼저 할 일을 정한다.',['안전 확인','교사 연락','필요한 사실 전달','사생활 보호']],
-  ['출입 센서 점검 중 학급 안내를 바꾸는 순서를 정한다.',['점검 범위 확인','통행 가능 여부 확인','안내문 정정','전달 확인']],
-  ['누군가의 규칙 위반을 판단할 때 확인 순서를 정한다.',['직접 관찰','당사자 설명','규정 범위 확인','공정한 조정']],
- ];
- return {id:`school-${id}-${chapter}-${location}`,title:`${extraById[id].name} · ${id==='juhan'?'페어 디버깅':'현장 규율 점검'}`,subtitle:locationById[location].name,icon:id==='juhan'?'⌨':'✓',context:id==='juhan'?'주한과 함께 기록의 순서를 확인한다. 결과에 따라 이어지는 대화의 호감과 신뢰가 달라진다.':'민혁과 함께 사람을 지키는 절차를 점검한다. 무조건 빨리 끝내기보다 확인 순서가 중요하다.',rounds:orders.map(([prompt,items])=>({mode:'order',prompt:prompt as string,items:shuffle(items as string[]),answer:items as string[],action:'함께 확인',explain:'정답을 대신 말하기보다 서로 확인한 근거를 함께 남겼다.'}))};
+ return {id:`school-${id}-${chapter}-${location}`,title:`${extraById[id].name} · ${id==='juhan'?'페어 디버깅':'현장 규율 점검'}`,subtitle:locationById[location].name,icon:id==='juhan'?'⌨':'✓',context:'서로 다른 세 가지 활동을 함께한다. 다시 시도하거나 한 활동만 건너뛰어도 대화는 이어진다.',rounds:activityRoundsFor(id,`${seed}:${chapter}:${location}`,chapter)};
 }

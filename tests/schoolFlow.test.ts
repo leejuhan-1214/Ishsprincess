@@ -116,13 +116,16 @@ test('all eight classmates share moving locations and the additional two consume
   assert.strictEqual(startSchoolBond(returned,id,schoolLocation(returned,id)),returned);
  }
 });
-test('school activity has meaningful shuffled challenges and awards only once after save/reload',()=>{
+test('school activity offers three genres and awards only once after save/reload',()=>{
  for(const id of ['juhan','minhyuk'] as ExtraId[]){
   const g=safeMap(),where=schoolLocation(g,id);
   const started=startSchoolBond(g,id,where,true),saved=restoreGame(JSON.parse(JSON.stringify(started)))!;
   assert.ok(saved);const game=schoolActivity(id,0,where,37);
   assert.equal(game.rounds.length,3);
-  for(const round of game.rounds){assert.equal(round.mode,'order');if(round.mode==='order'){assert.notDeepEqual(round.items,round.answer);assert.deepEqual([...round.items].sort(),[...round.answer].sort());}}
+  assert.equal(new Set(game.rounds.map(round=>round.mode)).size,3,'school friends use the same varied activity system');
+  assert.ok(game.rounds.every(round=>['timing','memory','order','balance','matching','path','search'].includes(round.mode)));
+  const pending=saved.classroom!.activity!;
+  assert.deepEqual(schoolActivity(pending.id,pending.chapter,pending.location,saved.seed),game,'the saved encounter restores its genres and answers');
   const result=completeSchoolActivity(saved,3);assert.equal(result.actions,2);assert.equal(result.classroom?.activity,undefined);
   assert.equal(result.classroom!.bonds[id].trust,saved.classroom!.bonds[id].trust+10);
   assert.strictEqual(completeSchoolActivity(result,3),result);

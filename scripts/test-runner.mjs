@@ -11,3 +11,6 @@ await import('../tests/portraitFrames.test.ts');
 await import('../tests/campusMap.test.ts');
 await import('../tests/evidenceVisuals.test.ts');
 await import('../tests/investigationUI.test.ts');
+await import('../tests/choiceOrder.test.ts');
+await import('../tests/activities.test.ts');
+await import('../tests/trialPresentation.test.ts');

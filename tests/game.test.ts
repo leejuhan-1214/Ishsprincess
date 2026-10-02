@@ -613,8 +613,10 @@ test('map visits start a situational three-round mini game and its score changes
   assert.equal(state.phase,'activity');
   const activity=currentActivity(state)!;
   assert.equal(activity.rounds.length,3);
-  assert.ok(activity.rounds.every(round=>['timing','memory','order','balance'].includes(round.mode)));
-  assert.match(activity.context,/오늘의 활동/);
+  assert.equal(new Set(activity.rounds.map(round=>round.mode)).size,3,'one visit offers three distinct genres');
+  assert.ok(activity.rounds.every(round=>['timing','memory','order','balance','matching','path','search'].includes(round.mode)));
+  assert.ok(activity.context.trim().length>0,'the activity explains the shared task');
+  assert.deepEqual(currentActivity(restoreGame(JSON.parse(JSON.stringify(state)))!),activity,'saving preserves the selected genres and answers');
   assert.match(activity.subtitle,new RegExp(locations.find(item=>item.id===place)!.name));
   const before=state.stats.taewoo.trust;
   state=completeActivity(state,3);
@@ -764,22 +766,23 @@ test('main scenes change their chapter-specific response and expression art by a
  assert.notEqual(guarded.name,fond.name);
 });
 
-test('mini games grow harder without changing seeded answers',()=>{
- const first=activityFor('world','band',77,0,0),later=activityFor('world','band',77,12,0);
- assert.deepEqual(first,activityFor('world','band',77,0,0));
- assert.deepEqual(first.rounds.map(round=>round.mode==='memory'?round.pattern.length:0),[5,6,7]);
- assert.deepEqual(later.rounds.map(round=>round.mode==='memory'?round.pattern.length:0),[7,8,9]);
- const order=activityFor('junyeon','chemistry',77,0,0).rounds;
- for(const round of order){assert.equal(round.mode,'order');if(round.mode!=='order')continue;assert.equal(round.answer.length,4);assert.notDeepEqual(round.items,round.answer);assert.deepEqual([...round.items].sort(),[...round.answer].sort());}
- for(const id of ['taewoo','taehun','hyunsol','seoyul'] as const){
-  const early=activityFor(id,id==='taewoo'?'dance':id==='taehun'?'observatory':id==='hyunsol'?'chemistry':'art',77,0,0).rounds;
-  const late=activityFor(id,id==='taewoo'?'dance':id==='taehun'?'observatory':id==='hyunsol'?'chemistry':'art',77,12,0).rounds;
-  for(let index=0;index<3;index++){
-   const a=early[index],b=late[index];
-   assert.ok((a.mode==='timing'||a.mode==='balance')&&(b.mode==='timing'||b.mode==='balance'));
-   if((a.mode==='timing'||a.mode==='balance')&&(b.mode==='timing'||b.mode==='balance'))assert.ok(b.tolerance<a.tolerance,`${id}/${index}: later tolerance should shrink`);
+test('mini games vary by visit while later chapters keep approachable challenges and reproducible answers',()=>{
+ const modes=new Set<string>();
+ for(const id of ids)for(const chapter of [0,4])for(let visit=0;visit<4;visit++){
+  const place=locationOf({...newGame('활동난이도',77),chapter},id);
+  const activity=activityFor(id,place,77,chapter,visit);
+  assert.deepEqual(activity,activityFor(id,place,77,chapter,visit));
+  assert.equal(activity.rounds.length,3);
+  assert.equal(new Set(activity.rounds.map(round=>round.mode)).size,3,`${id}/${chapter}/${visit}: distinct tasks within a visit`);
+  for(const round of activity.rounds){
+   modes.add(round.mode);
+   if(round.mode==='memory')assert.ok(round.pattern.length>=3&&round.pattern.length<=4,'later chapters do not require long memory chains');
+   if(round.mode==='timing'){assert.ok(round.tolerance>=14,'timing retains a forgiving hit window');assert.ok(round.cycleMs>=4000,'the marker stays slow enough to follow');}
+   if(round.mode==='balance')assert.ok(round.tolerance>=12,'fine motor precision is not required');
+   if(round.mode==='order'){assert.ok(round.answer.length<=3);assert.deepEqual([...round.items].sort(),[...round.answer].sort());}
   }
  }
+ assert.deepEqual([...modes].sort(),['balance','matching','memory','order','path','search','timing']);
 });
 
 test('the fifteen main act decisions are chapter-specific and remember earlier mistakes',()=>{
