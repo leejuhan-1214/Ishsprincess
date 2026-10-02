@@ -1,0 +1,68 @@
+.school-trial-theme{--ink:#f7f1e8;--muted:#c0b4cb;--line:#61526e;--paper:#201b28;--green:#ff347f;--rose:#ff73a8;color:var(--ink);background:#17131e}
+.school-trial-theme .scene-background{filter:saturate(.6) contrast(1.13)}
+.school-trial-theme .scene-wash{background:linear-gradient(90deg,#15101ff5 0%,#15101fee 38%,#1811226e 80%),linear-gradient(0deg,#120d1d,transparent 70%)}
+.school-trial-theme.in-game .scene-wash{background:linear-gradient(0deg,#130c2399,transparent 70%),linear-gradient(180deg,#110d20d9,transparent 45%)}
+.school-trial-theme .topbar{color:#fff5ec;background:#0e0b16cc;border-bottom:2px solid #ff347f}
+.school-trial-theme .brand>svg,.school-trial-theme .brand>span{color:#ff73a8}
+.school-trial-theme .brand i{color:#f5e5f7;font-size:8px}
+.school-trial-theme .edition,.school-trial-theme .eyebrow,.school-trial-theme .tiny-label{color:#ffe36e}
+.school-trial-theme h1,.school-trial-theme h2{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;font-weight:900}
+.school-trial-theme .title-content h1{font-family:Arial,sans-serif;font-weight:900;font-style:italic;letter-spacing:-.075em;text-shadow:6px 6px 0 #000}
+.school-trial-theme .title-content h1>small{font-family:inherit;color:#ffe36e;font-size:18px;font-style:normal}
+.school-trial-theme .title-content h1>span:not(.title-flower){color:#ff347f}
+.school-trial-theme .title-flower{color:#ff347f}
+.school-trial-theme .title-description,.school-trial-theme .title-kicker{color:#e5d7eb}
+.school-trial-theme .title-note{padding:24px;border:2px solid #ffe36e;transform:rotate(4deg);background:#131019b3}
+.school-trial-theme .name-form>label span,.school-trial-theme .form-hint{color:#bcaaca}
+.school-trial-theme .name-field{border:2px solid #77617f;background:#221a2c;box-shadow:5px 5px 0 #08050e}
+.school-trial-theme .name-field input{color:#fff3ef}
+.school-trial-theme .name-field input::placeholder{color:#bcacc8}
+.school-trial-theme .name-field:focus-within{border-color:#ff347f}
+.school-trial-theme .primary{border-color:#ff347f;background:#ff347f;color:#fff5ee;box-shadow:5px 5px 0 #0c0715;border-radius:0}
+.school-trial-theme .primary:hover:not(:disabled){background:#cb075c}
+.school-trial-theme .secondary{background:#30253e;color:#ffeafa;border-color:#8b6d99;border-radius:0}
+.school-trial-theme .title-links button,.school-trial-theme .text-button,.school-trial-theme .title-footer{color:#d5c2df}
+.school-trial-theme .title-links small{background:#3c2a4d}
+.school-trial-theme .meet-strip{border-top:2px solid #ff347f;gap:22px}
+.school-trial-theme .meet-faces{gap:15px;flex-wrap:wrap}
+.school-trial-theme .meet-faces .portrait{width:50px;height:60px;border-radius:0;border:2px solid #ffe36e;background-color:#13101a;background-size:auto 150%!important;background-position:center top!important;box-shadow:4px 4px #ff347f}
+.school-trial-theme .meet-faces button>span{color:#f5e7fb}
+.school-trial-theme .school-portrait{background-color:#18131e;background-position:center top!important}
+.school-trial-theme .actor-panel{border-color:#fff3e1;background:#fff3e1;box-shadow:8px 8px 0 #ff347f;width:225px;right:13%;bottom:240px;transform:rotate(2deg)}
+.school-trial-theme .actor-panel .actor-portrait{height:330px;background-size:contain!important;background-position:center top!important;filter:none}
+.school-trial-theme .actor-caption{color:#292031;font-weight:700}
+.school-trial-theme .dialogue{background:#f8f0e4;color:#241725;border:0;border-left:7px solid #ff347f;border-radius:0;box-shadow:8px 8px 0 #07050e}
+.school-trial-theme .dialogue>p{color:#241725;font-size:18px}
+.school-trial-theme .dialogue .speaker-line>span{color:#b50049;font-weight:800}
+.school-trial-theme .dialogue-bottom{color:#816a85}
+.school-trial-theme .story-toolbar button{color:#fbe6f9}
+.school-trial-theme .choice-block>button{background:#f9f1e6;color:#241725;border:0;border-left:6px solid #ff347f;border-radius:0;box-shadow:5px 5px #08050e}
+.school-trial-theme .choice-block>button:hover{background:#ffe4f0}
+.school-trial-theme .choice-block small{color:#bb004c}
+.school-trial-theme .choice-block small.choice-tag{color:#ac0046;border-color:#b9839e}
+.school-trial-theme .choice-prompt{color:#ffe36e}
+.school-trial-theme .map-screen,.school-trial-theme .route-screen,.school-trial-theme .ending-screen{color:#f6eaf9}
+.school-trial-theme .map-heading p,.school-trial-theme .schedule-note{color:#c5afce}
+.school-trial-theme .campus-map{background:repeating-linear-gradient(0deg,transparent 0 34px,#ffffff07 34px 35px),#221b2d;border:1px solid #7e6288}
+.school-trial-theme .map-court{background:#392a48;border-color:#8d6d9d}
+.school-trial-theme .map-pin{color:#eee0f6}.school-trial-theme .map-pin>span{background:#382744;color:#ffe36e;border-color:#8f679e}.school-trial-theme .map-pin.selected>span{background:#ff347f;color:#fff}
+.school-trial-theme .map-roads path{stroke:#776081}
+.school-trial-theme .map-caption,.school-trial-theme .north{color:#ddc6e9}
+.school-trial-theme .place-card,.school-trial-theme .relation-card,.school-trial-theme .route-letter{background:#221c2d;color:#f7ecfa;border-color:#776182}
+.school-trial-theme .empty-place,.school-trial-theme .resident small,.school-trial-theme .relation-top p,.school-trial-theme .relation-card>small,.school-trial-theme .route-letter i{color:#cdb4d9}
+.school-trial-theme .resident-actions button{background:#362742;color:#ffcae0;border-color:#88659c}
+.school-trial-theme .action-points{color:#ffe36e}.school-trial-theme .action-points i.filled{background:#ff347f}
+.casebook-banner{width:100%;display:flex;align-items:center;gap:18px;background:#ff347f;color:#fff9ec;padding:20px 25px;text-align:left;border:2px solid #ff90b8;box-shadow:7px 7px #0d0817;margin:20px 0 24px}
+.casebook-banner>span{flex:1}.casebook-banner small{display:block;font-size:8px;letter-spacing:.13em;color:#fff9ba}.casebook-banner b{display:block;font-size:22px;margin:7px 0}.casebook-banner i{font-size:11px;font-style:normal}
+.new-classmates{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:30px}.new-classmates button{display:flex;align-items:center;gap:16px;background:#241c30;color:#ffedf7;border:1px solid #9774a7;text-align:left;padding:12px}.new-classmates .portrait{width:65px;height:85px;background-size:auto 130%!important;background-position:center top!important}.new-classmates>button>span{flex:1}.new-classmates b,.new-classmates small,.new-classmates i{display:block}.new-classmates small{font-size:9px;color:#ffe36e;margin:7px 0}.new-classmates i{font-size:9px;font-style:normal;color:#cbb5d8}
+.school-trial-theme .modal{background:#1d1627;color:#f9eaf8;border:2px solid #ff347f;box-shadow:10px 10px #07040d}
+.school-trial-theme .modal-head{border-color:#7e588c;background:#140d20}
+.school-trial-theme .modal .tabs,.school-trial-theme .cast-tabs{border-color:#725480}.school-trial-theme .tabs button,.school-trial-theme .cast-tabs button{color:#bda1ce;background:#281a37}.school-trial-theme .tabs button.active,.school-trial-theme .cast-tabs button.active{background:#ff347f;color:#fff}
+.school-trial-theme .save-slot,.school-trial-theme .pause-menu button,.school-trial-theme .ending-gallery details{background:#2c1e3c;color:#f4e5fa;border-color:#795689}
+.school-trial-theme .settings-list label,.school-trial-theme .settings-list span,.school-trial-theme .backlog p{color:#eedff5}
+.school-trial-theme .profile-layout .portrait{background-size:contain!important;background-position:center top!important}.school-trial-theme .profile-layout p{color:#d9c5e4}.school-trial-theme .profile-layout h3{color:#ffe36e}.school-trial-theme .profile-layout blockquote{color:#ff90bb}
+.school-trial-theme .meter-track{background:#483153}.school-trial-theme .meter-track i{background:#ff73a8}.school-trial-theme .muted-note{color:#dbc2e6}
+.school-trial-theme .activity-card{background:#f8f0e4;color:#24162a;border:4px solid #ff347f;border-radius:0}
+.school-trial-theme .activity-person .portrait{background-size:cover!important;background-position:center top!important}
+.school-trial-theme .toast{background:#291736;color:#ffe36e;border:1px solid #ff347f}
+@media(max-width:720px){.school-trial-theme .brand i{font-size:7px}.school-trial-theme .title-content h1>small{font-size:15px}.school-trial-theme .meet-strip{gap:16px;flex-wrap:wrap}.school-trial-theme .meet-faces{gap:13px;flex:1}.school-trial-theme .meet-faces .portrait{width:43px;height:55px}.school-trial-theme .actor-panel{width:154px;right:8%;bottom:230px;border-width:3px;box-shadow:6px 6px #ff347f}.school-trial-theme .actor-panel .actor-portrait{height:225px}.school-trial-theme .dialogue>p{font-size:15px}.new-classmates{grid-template-columns:1fr}.casebook-banner{padding:16px;gap:12px}.casebook-banner b{font-size:19px}.casebook-banner i{font-size:9px}.school-trial-theme .profile-layout .portrait{background-size:cover!important}}

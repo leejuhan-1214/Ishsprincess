@@ -12,10 +12,12 @@ import {cleanLegacyLines,hasLegacyPadding} from './legacyDialogue';
 import {selectEpisode,pendingEpisode,episodeScene,episodePendingFlag,episodeSeenFlag} from './episodes';
 import type { CharacterId, GlobalKey, StatKey, Line, Effect, Scene, LocationId } from '../types';
 
+import {isClassroomState,type ClassroomState} from './classroomMystery';
+
 export const routes = {...routesA,...routesB} as Record<CharacterId,Scene[]>;
 export const ids=characters.map(c=>c.id);
 export type Stats=Record<StatKey,number>;
-export type GameState={version:1;dialogueRevision?:2|3;name:string;seed:number;phase:'story'|'activity'|'map'|'routeSelect'|'ending';segment:'common'|'route'|'hangout'|'harem';chapter:number;route:CharacterId|null;routeChapter:number;line:number;response:Line[]|null;stats:Record<CharacterId,Stats>;global:Record<GlobalKey,number>;flags:string[];visits:Record<CharacterId,number>;visitor:CharacterId|null;visitLocation?:LocationId|null;actions:number;visitedToday:CharacterId[];backlog:Line[];ending:string|null;haremOffered:boolean;haremChance:number;ngPlus:boolean;date:string;};
+export type GameState={version:1;classroom?:ClassroomState;dialogueRevision?:2|3;name:string;seed:number;phase:'story'|'activity'|'map'|'routeSelect'|'ending';segment:'common'|'route'|'hangout'|'harem';chapter:number;route:CharacterId|null;routeChapter:number;line:number;response:Line[]|null;stats:Record<CharacterId,Stats>;global:Record<GlobalKey,number>;flags:string[];visits:Record<CharacterId,number>;visitor:CharacterId|null;visitLocation?:LocationId|null;actions:number;visitedToday:CharacterId[];backlog:Line[];ending:string|null;haremOffered:boolean;haremChance:number;ngPlus:boolean;date:string;};
 export type Meta={endings:string[];read:string[];failures:number;attempted:number[]};
 export const blankMeta=():Meta=>({endings:[],read:[],failures:0,attempted:[]});
 export const clamp=(n:number)=>Math.max(0,Math.min(100,n));
@@ -154,6 +156,7 @@ export function isGameState(s:unknown):s is GameState{
   return [...ids,'player','narrator','teacher','student'].includes(line.speaker)&&typeof line.text==='string';
  };
  if(v.version!==1||typeof v.name!=='string'||!validName(v.name)||!integer(v.seed,0,0xffffffff)
+  ||(v.classroom!==undefined&&!isClassroomState(v.classroom))
   ||!(v.dialogueRevision===undefined||v.dialogueRevision===2||v.dialogueRevision===3)
   ||!integer(v.chapter,0,commonScenes.length-1)||!integer(v.line,0,100000)
   ||!['story','activity','map','routeSelect','ending'].includes(v.phase)||!['common','route','hangout','harem'].includes(v.segment)

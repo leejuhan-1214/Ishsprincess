@@ -5,3 +5,4 @@ try { os.userInfo(); } catch { if(typeof process.geteuid!=='function') process.g
 const {register}=await import('tsx/esm/api');
 register();
 await import('../tests/game.test.ts');
+await import('../tests/classroom.test.ts');
