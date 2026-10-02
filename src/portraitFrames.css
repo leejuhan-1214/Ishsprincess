@@ -1,0 +1,55 @@
+/* Full portraits must match their source, not a fixed 330px letterbox.
+   Keep the card in normal flow so it cannot escape behind the top bar. */
+.school-trial-theme .story-screen{
+ padding-top:140px;
+ gap:0;
+}
+.school-trial-theme .story-screen>.actor-panel{
+ position:relative;
+ inset:auto;
+ align-self:flex-end;
+ flex:none;
+ width:225px;
+ height:auto;
+ margin:0 7% 24px 0;
+ overflow:hidden;
+ transform:none;
+ animation:portrait-enter .25s ease-out both;
+}
+.school-trial-theme .actor-panel>.actor-portrait{
+ width:100%;
+ height:auto;
+ aspect-ratio:var(--portrait-ratio);
+ background-size:contain!important;
+ background-position:center!important;
+}
+.school-trial-theme .actor-caption{
+ min-height:28px;
+ padding:7px 5px;
+ line-height:1.5;
+ text-align:center;
+}
+.school-trial-theme .story-screen>.dialogue,
+.school-trial-theme .story-screen>.choice-block{
+ margin-top:0;
+ flex-shrink:0;
+}
+.school-trial-theme .classroom-standing,
+.school-trial-theme .classroom-ending>.school-portrait,
+.school-trial-theme .profile-layout>.school-portrait{
+ height:auto;
+ min-height:0;
+ aspect-ratio:var(--portrait-ratio);
+ background-size:contain!important;
+ background-position:center!important;
+}
+.school-trial-theme .profile-layout{align-items:start}
+@keyframes portrait-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:720px){
+ .school-trial-theme .story-screen{padding-top:130px}
+ .school-trial-theme .story-screen>.actor-panel{width:154px;margin-right:4%;margin-bottom:22px}
+ .school-trial-theme .actor-caption{min-height:24px;padding:5px 3px}
+}
+@media(prefers-reduced-motion:reduce){
+ .school-trial-theme .story-screen>.actor-panel{animation:none}
+}

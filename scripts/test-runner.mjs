@@ -7,3 +7,4 @@ register();
 await import('../tests/game.test.ts');
 await import('../tests/classroom.test.ts');
 await import('../tests/schoolFlow.test.ts');
+await import('../tests/portraitFrames.test.ts');
