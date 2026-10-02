@@ -1,9 +1,13 @@
 import {bondEpisodes,caseFiles,type ExtraId,type SchoolId,type SchoolLine} from '../data/classroomMystery';
 
+import {dailyBond} from '../data/extraDaily';
+import {locationById} from '../data/characters';
+import type {LocationId} from '../types';
+
 export type CasePhase='opening'|'investigation'|'debate'|'reconstruction'|'verdict'|'motive'|'closing'|'failed'|'solved';
 export type CaseProgress={phase:CasePhase;line:number;round:number;clues:string[];order:string[];health:number;feedback:{ok:boolean;text:string}|null};
 export type ExtraBond={affection:number;trust:number;visits:number;days:number[];ending:'true'|'friend'|'distance'|null};
-export type ClassroomState={version:1;cases:Record<string,CaseProgress>;bonds:Record<ExtraId,ExtraBond>;active:{kind:'case';id:string}|{kind:'bond';id:ExtraId;episode:number;line:number;choice:number|null}|null};
+export type ClassroomState={version:1;activity?:{id:ExtraId;chapter:number;location:LocationId};cases:Record<string,CaseProgress>;bonds:Record<ExtraId,ExtraBond>;active:{kind:'case';id:string}|{kind:'bond';id:ExtraId;episode:number;line:number;choice:number|null;location?:LocationId}|null};
 const freshCase=():CaseProgress=>({phase:'opening',line:0,round:0,clues:[],order:[],health:5,feedback:null});
 export const newClassroomState=():ClassroomState=>({version:1,cases:Object.fromEntries(caseFiles.map(c=>[c.id,freshCase()])),bonds:{juhan:{affection:8,trust:8,visits:0,days:[],ending:null},minhyuk:{affection:8,trust:8,visits:0,days:[],ending:null}},active:null});
 const clamp=(n:number)=>Math.min(100,Math.max(0,n));
@@ -52,22 +56,24 @@ export function explainMotive(state:ClassroomState,index:number):ClassroomState{
 export function retryTrial(state:ClassroomState):ClassroomState{return updateCase(state,p=>p.phase==='failed'?{...p,phase:'debate',round:0,order:[],health:5,feedback:null}:p);}
 
 export function bondRequirement(state:ClassroomState,id:ExtraId){const visits=state.bonds[id].visits;return id==='minhyuk'&&visits===2?'absence':id==='juhan'&&visits===3?'echo':null;}
-export function bondAvailable(state:ClassroomState,id:ExtraId,chapter:number){const b=state.bonds[id],episode=bondEpisodes[id][b.visits],required=bondRequirement(state,id);return !!episode&&chapter>=episode.chapter&&(!required||state.cases[required].phase==='solved')&&!b.days.includes(chapter)&&state.active===null;}
+export function mainBondAvailable(state:ClassroomState,id:ExtraId,chapter:number){const b=state.bonds[id],episode=bondEpisodes[id][b.visits],required=bondRequirement(state,id);return !!episode&&chapter>=episode.chapter&&(!required||state.cases[required].phase==='solved');}
+export function bondAvailable(state:ClassroomState,id:ExtraId,chapter:number){return chapter>=0&&chapter<=4&&!state.bonds[id].days.includes(chapter)&&state.active===null;}
+export function currentBondEpisode(state:ClassroomState,id?:ExtraId){const a=state.active,bid=id??(a?.kind==='bond'?a.id:'juhan'),b=state.bonds[bid];const episode=a?.kind==='bond'&&a.id===bid?a.episode:b.visits;return episode<4?bondEpisodes[bid][episode]:dailyBond(bid,b.days.at(-1)??0,b.affection,b.trust);}
 export function beginBond(state:ClassroomState,id:ExtraId,chapter:number):ClassroomState{
  if(!bondAvailable(state,id,chapter))return state;
- return {...state,bonds:{...state.bonds,[id]:{...state.bonds[id],days:[...state.bonds[id].days,chapter]}},active:{kind:'bond',id,episode:state.bonds[id].visits,line:0,choice:null}};
+ return {...state,bonds:{...state.bonds,[id]:{...state.bonds[id],days:[...state.bonds[id].days,chapter]}},active:{kind:'bond',id,episode:mainBondAvailable(state,id,chapter)?state.bonds[id].visits:4,line:0,choice:null}};
 }
-export function bondLines(state:ClassroomState):SchoolLine[]{const a=state.active;if(a?.kind!=='bond')return [];const e=bondEpisodes[a.id][a.episode],b=state.bonds[a.id];if(a.episode===3&&a.choice===0&&(b.affection<55||b.trust<50))return [{speaker:a.id,text:'말해 줘서 고마워. 하지만 그동안 지켜지지 않은 약속도 있어. 오늘 한 번의 고백으로 그 시간을 없앨 수는 없을 것 같아.'},{speaker:'player',text:'네 마음을 재촉하지 않을게. 내가 했던 말도 함께 기억할게.'}];return a.choice===null?e.lines:e.choices[a.choice].reply;}
+export function bondLines(state:ClassroomState):SchoolLine[]{const a=state.active;if(a?.kind!=='bond')return [];const e=currentBondEpisode(state),b=state.bonds[a.id];if(a.episode===3&&a.choice===0&&(b.affection<55||b.trust<50))return [{speaker:a.id,text:'말해 줘서 고마워. 하지만 그동안 지켜지지 않은 약속도 있어. 오늘 한 번의 고백으로 그 시간을 없앨 수는 없을 것 같아.'},{speaker:'player',text:'네 마음을 재촉하지 않을게. 내가 했던 말도 함께 기억할게.'}];return a.choice===null?e.lines:e.choices[a.choice].reply;}
 export function selectBondChoice(state:ClassroomState,index:number):ClassroomState{
  const a=state.active;if(!Number.isInteger(index)||a?.kind!=='bond'||a.choice!==null||a.line<bondLines(state).length)return state;
- const choice=bondEpisodes[a.id][a.episode].choices[index];if(!choice)return state;
+ const choice=currentBondEpisode(state).choices[index];if(!choice)return state;
  const b=state.bonds[a.id];return {...state,bonds:{...state.bonds,[a.id]:{...b,affection:clamp(b.affection+choice.affection),trust:clamp(b.trust+choice.trust)}},active:{...a,line:0,choice:index}};
 }
 export function continueBond(state:ClassroomState):ClassroomState{
  const a=state.active;if(a?.kind!=='bond')return state;const length=bondLines(state).length;
  if(a.line+1<length||a.choice===null)return {...state,active:{...a,line:Math.min(length,a.line+1)}};
- const b=state.bonds[a.id],ending=a.episode===3?(a.choice===0&&b.affection>=55&&b.trust>=50?'true':a.choice===1?'friend':'distance'):null;
- return {...state,bonds:{...state.bonds,[a.id]:{...b,visits:a.episode+1,ending}},active:null};
+ const b=state.bonds[a.id],ending=a.episode===3?(a.choice===0&&b.affection>=55&&b.trust>=50?'true':a.choice===1?'friend':'distance'):b.ending;
+ return {...state,bonds:{...state.bonds,[a.id]:{...b,visits:a.episode===4?b.visits:a.episode+1,ending}},active:null};
 }
 export function isClassroomState(value:unknown):value is ClassroomState{
  if(!value||typeof value!=='object')return false;const s=value as ClassroomState;
@@ -75,9 +81,10 @@ export function isClassroomState(value:unknown):value is ClassroomState{
  if(s.version!==1||!s.cases||!s.bonds)return false;
  for(const id of ['juhan','minhyuk'] as const){const b=s.bonds[id];if(!b||!integer(b.affection,0,100)||!integer(b.trust,0,100)||!integer(b.visits,0,4)||!Array.isArray(b.days)||!b.days.every(n=>integer(n,0,13))||new Set(b.days).size!==b.days.length||![null,'true','friend','distance'].includes(b.ending))return false;}
  for(const c of caseFiles){const p=s.cases[c.id];if(!p||!['opening','investigation','debate','reconstruction','verdict','motive','closing','failed','solved'].includes(p.phase)||!integer(p.line,0,p.phase==='opening'?c.opening.length-1:p.phase==='closing'?c.closing.length-1:0)||!integer(p.round,0,c.debates.length-1)||!integer(p.health,0,5)||!Array.isArray(p.clues)||!p.clues.every(id=>c.evidence.some(e=>e.id===id))||new Set(p.clues).size!==p.clues.length||!Array.isArray(p.order)||!p.order.every(e=>c.sequence.includes(e))||new Set(p.order).size!==p.order.length||!(p.feedback===null||(p.feedback&&typeof p.feedback.ok==='boolean'&&typeof p.feedback.text==='string')))return false;}
+ if(s.activity!==undefined&&(!s.activity||!['juhan','minhyuk'].includes(s.activity.id)||!integer(s.activity.chapter,0,13)||!Object.hasOwn(locationById,s.activity.location)||s.active?.kind!=='bond'||s.active.id!==s.activity.id||!s.bonds[s.activity.id].days.includes(s.activity.chapter)))return false;
  if(s.active===null)return true;
  const a=s.active;if(!a||typeof a!=='object')return false;
  if(a.kind==='case')return caseFiles.some(c=>c.id===a.id);
- if(a.kind!=='bond'||!['juhan','minhyuk'].includes(a.id)||!integer(a.episode,0,3)||a.episode!==s.bonds[a.id].visits||!integer(a.line,0,bondEpisodes[a.id][a.episode].lines.length)||!(a.choice===null||integer(a.choice,0,2)))return false;
- return a.choice===null||a.line<=bondEpisodes[a.id][a.episode].choices[a.choice].reply.length;
+ if(a.kind!=='bond'||!['juhan','minhyuk'].includes(a.id)||!integer(a.episode,0,4)||(a.episode!==4&&a.episode!==s.bonds[a.id].visits)||!integer(a.line,0,a.episode===4?dailyBond(a.id,s.bonds[a.id].days.at(-1)??0,s.bonds[a.id].affection,s.bonds[a.id].trust).lines.length:bondEpisodes[a.id][a.episode].lines.length)||!(a.choice===null||integer(a.choice,0,2)))return false;
+ return (a.location===undefined||Object.hasOwn(locationById,a.location))&&(a.choice===null||a.line<=currentBondEpisode(s).choices[a.choice].reply.length);
 }

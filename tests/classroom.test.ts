@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {statSync,readFileSync} from 'node:fs';
 import {schoolCharacters,schoolById,caseFiles,bondEpisodes,type ExtraId} from '../src/data/classroomMystery';
-import {newClassroomState,caseAvailable,openCase,activeCase,continueCase,collectEvidence,beginTrial,rebut,addSequence,submitSequence,vote,explainMotive,retryTrial,solvedCases,beginBond,bondAvailable,bondLines,continueBond,selectBondChoice,isClassroomState,type ClassroomState} from '../src/engine/classroomMystery';
+import {newClassroomState,caseAvailable,openCase,activeCase,continueCase,collectEvidence,beginTrial,rebut,addSequence,submitSequence,vote,explainMotive,retryTrial,solvedCases,beginBond,bondAvailable,mainBondAvailable,bondLines,continueBond,selectBondChoice,isClassroomState,type ClassroomState} from '../src/engine/classroomMystery';
 import {isGameState,newGame,restoreGame} from '../src/engine/game';
 
 function investigate(s:ClassroomState,id:string){
@@ -45,16 +45,16 @@ test('case and romance evidence identifiers are internally consistent',()=>{
  assert.equal(bondEpisodes.juhan.length,4);assert.equal(bondEpisodes.minhyuk.length,4);
 });
 test('cases unlock chronologically and require every evidence before trial',()=>{
- let s=newClassroomState();assert.equal(caseAvailable(s,'credit',1),false);assert.equal(caseAvailable(s,'credit',2),true);assert.equal(caseAvailable(s,'absence',13),false);
+ let s=newClassroomState();assert.equal(caseAvailable(s,'credit',-1),false);assert.equal(caseAvailable(s,'credit',2),true);assert.equal(caseAvailable(s,'absence',13),false);
  s=openCase(s,'credit',2);while(s.cases.credit.phase==='opening')s=continueCase(s);
  s=beginTrial(s);assert.equal(s.cases.credit.phase,'investigation');
  s=collectEvidence(s,'credit-source');s=collectEvidence(s,'credit-source');assert.equal(s.cases.credit.clues.length,1);
  s=collectEvidence(s,'unknown');assert.equal(s.cases.credit.clues.length,1);
 });
-test('all three cases solve through evidence, testimony, timeline and responsibility',()=>{
+test('all five cases solve through evidence, testimony, timeline and responsibility',()=>{
  let s=newClassroomState();
  for(const c of caseFiles){s=solve(s,c.id);assert.equal(s.cases[c.id].phase,'solved');assert.equal(s.cases[c.id].health,5);assert.equal(isClassroomState(s),true);}
- assert.equal(solvedCases(s),3);assert.equal(s.bonds.juhan.trust,32);
+ assert.equal(solvedCases(s),5);assert.equal(s.bonds.juhan.trust,48);
  const before=s;assert.deepEqual(continueCase(openCase(s,'echo',13)).bonds,before.bonds);
 });
 test('incorrect rebuttals cannot advance and five mistakes cause failed verdict',()=>{
@@ -78,14 +78,14 @@ test('wrong chronology, accusation and motive lose argument health',()=>{
 });
 test('personal stories cannot repeat the same day or skip story-linked cases',()=>{
  let s=visitBond(newClassroomState(),'minhyuk',0,0);assert.equal(bondAvailable(s,'minhyuk',0),false);
- s=visitBond(s,'minhyuk',3,0);assert.equal(bondAvailable(s,'minhyuk',7),false);
- s=solve(s,'credit');s=solve(s,'absence');assert.equal(bondAvailable(s,'minhyuk',7),true);
- s=beginBond(s,'minhyuk',7);assert.equal(isClassroomState(s),true);
+ s=visitBond(s,'minhyuk',1,0);assert.equal(mainBondAvailable(s,'minhyuk',2),false);
+ s=solve(s,'credit');s=solve(s,'score');s=solve(s,'absence');assert.equal(bondAvailable(s,'minhyuk',2),true);
+ s=beginBond(s,'minhyuk',2);assert.equal(isClassroomState(s),true);
 });
 test('both new characters have true romance, friendship and distance endings',()=>{
  for(const id of ['juhan','minhyuk'] as const)for(const finalChoice of [0,1,2]){
   let s=newClassroomState();for(const c of caseFiles)s=solve(s,c.id);
-  for(const [episode,day] of [0,3,7,10].entries())s=visitBond(s,id,day,episode===3?finalChoice:0);
+  for(const [episode,day] of [0,1,2,4].entries())s=visitBond(s,id,day,episode===3?finalChoice:0);
   assert.equal(s.bonds[id].visits,4);assert.equal(s.bonds[id].ending,finalChoice===0?'true':finalChoice===1?'friend':'distance');assert.equal(isClassroomState(s),true);
  }
 });

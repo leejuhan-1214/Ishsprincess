@@ -1,3 +1,4 @@
+import {revisedRelationshipScene} from '../data/storyContinuity';
 import type {CharacterId,Choice,Line,Scene} from '../types';
 
 export type RelationshipStats={affection:number;trust:number;jealousy:number;special:number};
@@ -16,20 +17,11 @@ export function bondTier(stats:RelationshipStats):BondTier{
 }
 
 export const mainStoryThreads=[
- {title:'전학생의 첫날',detail:'아직 서로를 잘 모르는 1학년 1반의 첫인상이 오늘 대화의 거리감을 정하고 있었다.'},
- {title:'깨진 비커 이후',detail:'화학실 사고에서 누가 누구를 먼저 살폈는지가 방과 후에도 쉽게 잊히지 않았다.'},
- {title:'첫 번째 지도',detail:'점심시간에 누구와 어디로 갔는지에 따라 기다린 사람들의 표정이 조금씩 달라져 있었다.'},
- {title:'RE:ACTION의 시작',detail:'사이언스 페어의 역할이 정해지면서 둘이 함께 보낼 시간이 구체적인 일정이 되었다.'},
- {title:'두 사람의 밴드',detail:'세계와 서율의 편곡 충돌은 음악뿐 아니라 서로를 대하는 방식까지 다시 생각하게 했다.'},
- {title:'여덟 번의 카운트',detail:'댄스실에서 맞춘 박자와 멈춰야 할 신호가 다른 활동에서도 둘만의 기준처럼 남았다.'},
- {title:'구름과 문장',detail:'예보와 감상을 함께 남기는 방법을 두고 생긴 의견 차이가 아직 완전히 끝나지 않았다.'},
- {title:'야간 자습',detail:'늦은 시간까지 남은 교실에서 누구 곁에 앉았는지가 평소보다 크게 느껴지는 날이었다.'},
- {title:'재현되지 않는 반응',detail:'같은 실험을 다시 해도 결과가 달랐고, 사람의 마음도 한 번의 대답으로 단정할 수 없었다.'},
- {title:'잘라 붙인 장면',detail:'편집된 영상과 원본 사이의 차이가 커지면서 믿고 보여 줄 수 있는 사람이 중요해졌다.'},
- {title:'세 개의 방과 후',detail:'동시에 지킬 수 없는 약속들이 생겨 누구를 먼저 찾아갔는지가 관계의 온도를 바꾸고 있었다.'},
- {title:'세 갈래의 위기',detail:'발표·공연·안전 문제가 한꺼번에 겹쳐, 도움보다 곁에 남는 방식이 더 중요해진 시점이었다.'},
- {title:'사라진 최종본',detail:'최종 파일이 사라진 뒤 서로를 의심할지 믿을지에 따라 말투부터 달라질 수밖에 없었다.'},
- {title:'페어 당일',detail:'오랫동안 준비한 행사가 시작되자 미뤄 둔 마음도 더는 다음 일정 뒤로 숨기기 어려워졌다.'},
+ {title:'지워진 크레딧',detail:'두 이름으로 저장한 노래의 공개본에서 한 이름이 사라졌다. 첫 재판 뒤에도 사과와 관계 회복은 같은 일이 아니었다.'},
+ {title:'멈춘 영상의 99점',detail:'같지 않은 기준으로 만든 점수 표를 고쳤다. 태우에게 필요한 시선이 순위 밖에서도 남을지가 새로운 질문이 됐다.'},
+ {title:'닫힌 교실의 결석자',detail:'민혁과 준연의 안전을 확인하고 기록의 빈칸을 설명했다. 업무가 아닌 이름으로 서로를 부를 시간이 생겼다.'},
+ {title:'전시에 걸린 비공개 한 줄',detail:'시의 출처를 아는 것과 공개 허락을 받은 것은 달랐다. 전시의 빈칸과 아직 하지 않은 고백이 각자의 선택으로 남았다.'},
+ {title:'빌린 얼굴과 마지막 약속',detail:'얼터에고의 얼굴을 쓴 협박 발송기를 분리했다. 페어 첫날 이후의 약속은 더 이상 프로그램이나 점수판이 대신 정하지 않았다.'},
 ] as const;
 
 const voice:Record<CharacterId,Record<BondTier,string[]>>={
@@ -219,6 +211,7 @@ const routePulse:Record<CharacterId,[string,string][]>={
 
 /** Main-story beats follow the current chapter and prior decisions, not a reusable romance template. */
 export function relationshipScene(scene:Scene,state:RelationshipState):Scene{
+ if(scene.narrative===2)return revisedRelationshipScene(scene,state);
  if(scene.id.startsWith('common-')){
   const moment=sceneMoments[scene.id];if(!moment)return scene;
   const close=['warm','close'].includes(bondTier(state.stats[moment.focus]));

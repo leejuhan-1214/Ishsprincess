@@ -17,7 +17,7 @@ export function pendingEpisode(flags:string[],character:TalkContext['id']):Cutsc
 }
 export function episodeEligible(episode:CutsceneEpisode,ctx:TalkContext){
  const sequence=cutsceneEpisodes.filter(item=>item.character===episode.character),index=sequence.findIndex(item=>item.id===episode.id);
- const chapterGate=[0,1,3,5,7,9,11][index]??0;
+ const chapterGate=[0,0,1,1,2,3,4][index]??0;
  const previous=index<=0||ctx.flags.includes(episodeSeenFlag(sequence[index-1].id));
  return episode.character===ctx.id&&episode.location===ctx.location&&ctx.chapter>=chapterGate&&previous
   &&ctx.stats.affection>=episode.affection&&ctx.stats.trust>=episode.trust

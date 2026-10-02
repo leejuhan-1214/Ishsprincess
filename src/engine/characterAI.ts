@@ -1,3 +1,4 @@
+import {caseAfterthought,schoolAfterthought} from '../data/storyContinuity';
 import {characterById,locationById} from '../data/characters';
 import {hangoutMoves,type ChoiceMood} from '../data/hangoutMoments';
 import {bondTier,mainStoryThreads,relationshipLine} from './relationshipDirector';
@@ -61,105 +62,6 @@ const subject=(name:string)=>{const code=name.charCodeAt(name.length-1)-0xac00;r
 
 const eventTitles:Record<EventKind,string>={closeness:'예고 없는 둘만의 시간',confidence:'처음 맡기는 부탁',jealousy:'시선이 멈춘 곳',boundary:'넘지 말아야 할 선',chance:'예상 밖의 순간'};
 
-const chapterReactions:Record<CharacterId,string[]>={
- world:[
-  '“전학생 첫날부터 내 카메라를 똑바로 보더라. 연출인지 진심인지 아직 확인 중이야.”',
-  '“화학실 사고는 조회 수 나올 장면이어도 올리지 않을 거야. 놀란 얼굴엔 허락을 못 받았으니까.”',
-  '“첫 번째 지도에서 네 동선만 이상하게 기억나. 누구를 먼저 찾았는지도.”',
-  '“페어 홍보 영상, 멋진 척만 하지 말자. 네가 망설인 순간도 원본에는 남길래.”',
-  '“서율이랑 편곡으로 부딪힌 건 사실이야. 네가 누구 편을 드는지보다 끝까지 들어 줬는지가 더 신경 쓰였어.”',
-  '“댄스실에서 태우 카운트 맞춰 줬다며? 나랑 합주할 때도 그렇게 집중했는지 궁금한데.”',
-  '“구름 예보는 빗나가도 되지만, 오늘 온다는 네 답장은 빗나가면 싫어.”',
-  '“야간 자습 때 네 옆자리가 계속 비어 보였어. 내가 늦게 온 탓인데도.”',
-  '“재현 안 되는 반응이라도 네 표정은 원본에 남았어. 그건 조작하지 않을게.”',
-  '“잘라 붙인 영상보다 편집실에서 네가 한 말이 더 솔직했어. 그래서 그 부분은 공개 안 했어.”',
-  '“약속 세 개가 겹쳤던 날, 내가 몇 번째였는지 묻고 싶었는데 숫자로 듣기는 싫더라.”',
-  '“위기가 겹치니까 카메라부터 켜던 버릇이 나왔어. 네가 먼저 사람을 보라고 해서 멈췄고.”',
-  '“최종본이 사라졌을 때 네 메시지만 안 지웠어. 의심보다 먼저 다시 와 달라고 쓰고 싶어서.”',
-  '“오늘 페어가 끝나도 우리 영상은 엔딩 아니야. 다음 장면은 공개하지 않고 찍고 싶어.”',
- ],
- junyeon:[
-  '“첫날엔 자기소개도 버벅였는데, 네가 기다려 줘서 내 이름까지는 끝까지 말했어.”',
-  '“깨진 비커 소리만 생각하면 아직 손이 굳어. 그래도 이번엔 내가 무슨 실수를 했는지 직접 설명할게.”',
-  '“지도에 내 동선은 짧았는데 네가 찾아온 길은 길더라. 그게 조금… 고마웠어.”',
-  '“페어 역할표에 내 이름이 있는 게 아직 무서워. 지우지 않고 발표까지 가 보고 싶어.”',
-  '“밴드 충돌을 보면서 나도 말을 안 하면 없는 의견이 된다는 걸 알았어.”',
-  '“태우처럼 큰 목소리는 못 내도, 멈춰 달라는 신호 정도는 내가 직접 말해 볼게.”',
-  '“태훈이 관측과 감상을 나눠 적는 걸 보고, 나도 사실과 겁난 마음을 따로 적었어.”',
-  '“야간 자습 때 네가 옆에 있으니까 모르는 문제에 빈칸을 남겨도 덜 창피했어.”',
-  '“같은 반응이 안 나와도 실패를 숨기지 말자고 했잖아. 그 말, 내 발표 첫 문장으로 써도 될까?”',
-  '“영상 편집에서 내 목소리가 잘릴 뻔했는데 네가 원본을 확인해 줬어. 이번에는 내가 다시 녹음할래.”',
-  '“약속이 겹쳤을 때 날 먼저 고르라고는 못 하겠어. 대신 못 온다는 말은 직접 듣고 싶어.”',
-  '“세 가지 문제가 동시에 터지니까 또 숨고 싶었어. 그래도 네가 맡겨 준 한 부분은 놓지 않았어.”',
-  '“최종본이 사라졌을 때 내가 덮어쓴 줄 알았지? 의심받을까 겁났지만 수정 기록부터 열었어.”',
-  '“페어 당일에 내 이름으로 질문을 받을 거야. 끝나고 나면… 네가 제일 먼저 와 줬으면 해.”',
- ],
- hyunsol:[
-  '“전학생이라는 이유로 봐주지는 않을 거야. 대신 아직 모르는 너를 단정하지도 않겠어.”',
-  '“비커를 깬 건 준연이지만, 사람들 앞에서 몰아붙인 건 내 잘못이야. 두 사실을 섞지 않을게.”',
-  '“첫 번째 지도는 동선 자료였지 인기투표가 아니야. 그런데 네가 어디 있었는지는 기억나.”',
-  '“페어 역할은 능력만으로 정하면 빠르지만 공정하진 않아. 네가 맡고 싶은 것도 말해.”',
-  '“세계와 서율의 편곡엔 정답이 둘이었어. 그걸 인정하는 데 내가 제일 늦었고.”',
-  '“태우의 정지 신호는 합리적이었어. 감정도 같은 방식으로 중단을 요청할 수 있겠지.”',
-  '“태훈의 예보가 틀렸다고 관측이 무효가 되진 않아. 네 예상이 빗나간 것도 마찬가지고.”',
-  '“야간 자습에서 집중 못 한 이유를 조도 탓으로 썼다가 지웠어. 네가 옆에 있었거든.”',
-  '“재현되지 않는 값은 버리는 게 아니라 조건을 더 적어야 해. 우리 사이도 지금은 그 단계야.”',
-  '“편집본만 보면 내 말이 맞아 보였지. 원본까지 본 네가 반박해 줘서 오히려 안심했어.”',
-  '“세 약속 중 하나를 고르는 건 배신이 아니야. 말없이 사라지는 게 신뢰를 깎는 거지.”',
-  '“위기 세 개를 혼자 처리하려던 건 효율이 아니라 통제욕이었어. 네 도움을 배분해 줘.”',
-  '“최종본 삭제 원인을 찾기 전까지 누구도 범인으로 부르지 않을 거야. 너도 그래 줘.”',
-  '“페어 결과보다 먼저 확인할 게 있어. 끝난 뒤에도 네가 내 옆에 남을 의사가 있는지.”',
- ],
- taewoo:[
-  '“첫날부터 날 제대로 봤는지 테스트하고 싶었어. 지금은 네가 본 게 동작만은 아니길 바라고.”',
-  '“화학실 사고 뒤에 다들 긴장했잖아. 그래서 오늘 카운트는 멈춤부터 맞출 거야.”',
-  '“지도에서 네가 다른 쪽으로 가는 걸 봤어. 질투는 아니고… 다음 동선은 내가 먼저 잡을래.”',
-  '“페어 무대 동선은 내가 맡았어. 그런데 마지막 위치는 네가 보는 쪽으로 정하고 싶다.”',
-  '“세계랑 서율이 박자 때문에 싸운 날, 난 누가 센터인지보다 누가 상대 소리를 듣는지 봤어.”',
-  '“여덟 번의 카운트, 기억하지? 네가 멈춤 신호를 지켜 줘서 다시 춤출 수 있었어.”',
-  '“구름 때문에 일정이 바뀌었으면 즉흥으로 가자. 못 맞춰도 네가 있으면 무대는 되니까.”',
-  '“야간 자습 때 발로 박자 세다가 네가 쳐다봐서 멈췄어. 공부보다 그 표정이 더 기억나.”',
-  '“재현 안 되는 반응이면 어때. 오늘 한 번뿐인 동작으로 만들면 되지.”',
-  '“편집 영상엔 완벽한 부분만 남았는데, 네가 웃은 건 내가 틀린 장면이더라.”',
-  '“세 약속이 겹쳐도 날 무조건 고르라는 말은 안 할게. 대신 다음 차례를 확실히 줘.”',
-  '“위기 때 혼자 무대로 뛰어든 건 멋진 게 아니라 위험했어. 다음엔 네 신호를 보고 움직일게.”',
-  '“최종본이 사라졌으니 처음부터 다시 출까 했는데, 네가 백업보다 먼저 내 발목을 확인했어.”',
-  '“페어 무대가 끝나면 박수도 점수도 없어져. 그때도 나를 보고 있을 거지?”',
- ],
- taehun:[
-  '“전학생의 첫날은 관측 시작 시각 같아. 아직 결론보다 처음 본 빛을 적어 두고 싶어.”',
-  '“깨진 비커는 사고 기록이고, 그때 놀란 사람들의 마음은 다른 칸에 써야 해.”',
-  '“첫 번째 지도에서 네 길과 내 길이 한 번 겹쳤어. 우연이어도 표시해 두고 싶더라.”',
-  '“페어 주제에는 지구과학을 쓰고, 발표 마지막 문장에는 네가 본 하늘을 빌리고 싶어.”',
-  '“두 사람의 화음이 다르다고 하나가 틀린 건 아니겠지. 구름 이름과 내가 붙인 비유처럼.”',
-  '“태우의 카운트엔 멈추는 박자도 있었어. 기다리는 시간도 활동의 일부라는 뜻 같았어.”',
-  '“예보와 시는 섞으면 안 되지만 같은 페이지에는 둘 수 있어. 네 말도 그 옆에 두고 싶고.”',
-  '“야간 자습 창가에서 별은 안 보였는데 유리에 네 얼굴이 비쳤어. 그것도 관측일까?”',
-  '“재현되지 않는 반응을 실패라고 쓰지 않기로 했어. 다시 만나야 할 이유라고 적었어.”',
-  '“잘라 붙인 장면 사이의 빈칸이 진짜 시간일 때가 있어. 네가 말없이 기다린 부분처럼.”',
-  '“약속 세 개를 동시에 지킬 수는 없어도, 미안하다는 말은 제시간에 도착할 수 있잖아.”',
-  '“위기가 겹친 날 하늘은 평온했어. 그래서 사람의 날씨는 따로 기록해야 하나 봐.”',
-  '“최종본이 사라진 화면은 빈 하늘 같았어. 없는 걸 꾸며 내지 않고 다시 찾자.”',
-  '“페어 당일 구름량은 기록했어. 그런데 오늘 가장 신경 쓰이는 변수는 네 대답이야.”',
- ],
- seoyul:[
-  '“첫날의 너는 아직 밑그림 같았어. 선명하지 않아서 더 오래 보고 싶었고.”',
-  '“깨진 비커 조각이 빛을 예쁘게 반사해도 작품으로 보면 안 돼. 먼저 치우고 사람을 봐야지.”',
-  '“첫 번째 지도에서 네가 고른 길을 색으로 표시했어. 내 쪽으로 온 선은 아직 안 지웠고.”',
-  '“페어 전시는 결과만 거는 곳이 아니야. 네가 망설이다 고친 흔적도 남기고 싶어.”',
-  '“세계와 편곡으로 싸운 건 내 색을 지키고 싶어서였어. 하지만 세계의 소리까지 지울 필요는 없었지.”',
-  '“태우의 여덟 박자를 선 여덟 개로 그렸어. 네가 멈춰 준 순간만 여백으로 남겼고.”',
-  '“태훈의 구름 기록 옆에 감상 색을 붙였어. 네가 본 하늘은 무슨 색이었어?”',
-  '“야간 자습 때 네 그림자를 스케치했어. 얼굴보다 기다리는 자세가 더 너 같았거든.”',
-  '“재현되지 않는 반응이라서 한 번뿐인 색이 나왔어. 다시 만들지 말고 이름을 붙일래.”',
-  '“편집된 장면보다 잘린 프레임이 더 솔직했어. 네 시선이 머문 곳도 거기였고.”',
-  '“약속이 겹친 날 네가 못 온 자리를 비워 뒀어. 다른 사람으로 채우고 싶지 않았어.”',
-  '“위기가 겹치자 다들 완성부터 찾았어. 네가 먼저 망가진 부분을 가려 줘서 고마웠고.”',
-  '“최종본이 사라져도 레이어 기록은 남아. 우리도 없던 일처럼 덮어쓰지는 말자.”',
-  '“페어가 끝나면 작품은 철거돼. 그래서 오늘 네 앞에서만 보여 줄 그림이 하나 있어.”',
- ],
-};
-
 const activityEcho:Record<CharacterId,[string,string,string]>={
  world:['“리프가 엇갈렸네. 그래도 모르는 척 넘기진 않은 건 마음에 들어.”','“몇 음 놓쳤어도 내 박자를 다시 찾으려 한 건 알겠어.”','“전부 기억했네. 노래보다 내가 준 신호를 기억한 것 같아서 좀 설렌다.”'],
  junyeon:['“순서가 꼬였지만 같이 멈춰 확인해서 다행이야.”','“틀린 단계는 다시 말할 수 있어. 네가 기다려 주니까.”','“이번엔 내가 절차를 끝까지 설명했어. 네 앞이라 가능했던 것 같아.”'],
@@ -172,13 +74,13 @@ const activityEcho:Record<CharacterId,[string,string,string]>={
 export function selectSuddenEvent(ctx:TalkContext):EventKind|null{
  const seen=(kind:EventKind)=>ctx.flags.includes(`event-seen:${ctx.id}:${kind}`);
  const candidates:EventKind[]=[];
- if(ctx.chapter>=5&&ctx.visit>=2&&ctx.stats.jealousy>=45&&!seen('jealousy'))candidates.push('jealousy');
+ if(ctx.chapter>=2&&ctx.visit>=2&&ctx.stats.jealousy>=45&&!seen('jealousy'))candidates.push('jealousy');
  if(ctx.chapter>=2&&ctx.visit>=1&&ctx.stats.trust>=55&&!seen('confidence'))candidates.push('confidence');
- if(ctx.chapter>=4&&ctx.visit>=2&&ctx.stats.affection>=65&&!seen('closeness'))candidates.push('closeness');
+ if(ctx.chapter>=2&&ctx.visit>=2&&ctx.stats.affection>=65&&!seen('closeness'))candidates.push('closeness');
  const boundaryHigh=['world','junyeon','hyunsol','taewoo'].includes(ctx.id)?ctx.stats.special>=70:ctx.stats.special<=20;
- if(ctx.chapter>=6&&ctx.visit>=2&&boundaryHigh&&!seen('boundary'))candidates.push('boundary');
+ if(ctx.chapter>=2&&ctx.visit>=2&&boundaryHigh&&!seen('boundary'))candidates.push('boundary');
  const signaturePlace:Record<CharacterId,LocationId>={world:'band',junyeon:'chemistry',hyunsol:'chemistry',taewoo:'dance',taehun:'observatory',seoyul:'art'};
- if(ctx.chapter>=7&&ctx.visit>=2&&ctx.location===signaturePlace[ctx.id]&&(hash(`${ctx.seed}:${ctx.chapter}:${ctx.visit}:${ctx.id}`)%100)<14&&!seen('chance'))candidates.push('chance');
+ if(ctx.chapter>=1&&ctx.visit>=2&&ctx.location===signaturePlace[ctx.id]&&(hash(`${ctx.seed}:${ctx.chapter}:${ctx.visit}:${ctx.id}`)%100)<14&&!seen('chance'))candidates.push('chance');
  return candidates[0]??null;
 }
 
@@ -228,40 +130,6 @@ const locationGesture:Record<LocationId,string>={
  auditorium:'무대 가장자리의 안전 테이프 안쪽에 선다',roof:'난간에서 한 걸음 떨어진 자리에 관측 노트를 편다',walk:'갈림길 앞에서 걸음을 늦추고 내가 따라오는지 돌아본다',
 };
 
-const chapterAfterimage=[
- '전학 첫날 받은 교실 배치도는 접힌 선을 따라 여러 번 펴진 탓에 모서리가 벌써 닳아 있었다.',
- '화학실 사고 뒤 교체한 비커가 실험대에 놓였다. 깨진 순간을 누구의 실수로 적을지는 아직 정하지 못했다.',
- '점심에 들른 곳마다 다른 사람의 이름이 출석부 여백처럼 남았다. 먼저 찾아오기로 한 약속도 그중 하나였다.',
- '사이언스 페어 역할표에 둘의 이름이 나란히 적혔다. 담당 칸 아래에는 아직 비어 있는 준비 날짜가 있었다.',
- '세계와 서율이 고쳐 놓은 악보에는 서로 다른 필체의 수정 표시가 겹쳐 있었다.',
- '댄스실 거울에 붙은 여덟 박자 메모는 마지막 카운트 앞에서 한 번 멈추라고 알려 주었다.',
- '관측일지에는 구름량이 숫자로, 같은 하늘을 본 소감은 연필 글씨로 따로 남았다.',
- '야간 자습이 끝나기 전까지 제출할 표가 하나 남았다. 빈 옆자리에는 누가 앉을지 아직 몰랐다.',
- '반복 실험의 두 번째 결과가 첫 번째 그래프와 어긋났다. 지워 버리기엔 오차가 너무 분명했다.',
- '잘라 붙인 영상의 타임라인 아래에는 원본 파일이 그대로 있었다. 보여 줄 범위를 다시 정해야 했다.',
- '동시에 지킬 수 없는 약속 세 개가 같은 시간표에 적혔다. 미룬 약속에도 상대의 시간이 들어 있었다.',
- '발표 자료와 공연 장비, 안전 점검표가 한꺼번에 책상에 쌓였다. 무엇부터 살필지가 곧 누구를 돕는지가 됐다.',
- '사라진 최종본 대신 자동 저장된 복구 파일이 열렸다. 마지막 수정자 이름을 보기 전에 서로의 얼굴부터 확인했다.',
- '페어 당일, 복도 끝에서 발표 시작 안내가 들렸다. 준비해 온 결과와 아직 말하지 못한 마음이 같은 시각을 향했다.',
-];
-
-const chapterChoiceBeats:[string,string,string][]=[
- ['첫 인사를 다시 떠올리며,','교실 배치도를 접어 놓고,','아직 낯선 이름을 불러 보며,'],
- ['새 비커를 꺼내기 전에,','사고 기록의 빈칸을 가리키며,','실험대가 정리된 뒤,'],
- ['점심에 남긴 약속을 확인하고,','복도에서 기다리던 시간을 떠올리며,','서로 다른 동선을 비교하며,'],
- ['역할표의 담당 칸을 보며,','페어 일정의 빈 날짜를 짚고,','첫 준비 회의가 끝나기 전에,'],
- ['두 필체가 겹친 악보를 펴고,','편곡의 마지막 마디를 다시 들으며,','합주가 멈춘 사이,'],
- ['여덟 번째 박자를 세기 전에,','거울에 붙은 정지 신호를 보며,','음악을 잠시 끄고,'],
- ['관측일지의 여백을 펼쳐,','예보와 실제 구름을 비교한 뒤,','같은 하늘을 다시 올려다보며,'],
- ['자습 종료 종이 울리기 전에,','빈 옆자리를 남겨 둔 채,','제출 시각을 확인하고,'],
- ['두 그래프가 어긋난 지점을 짚으며,','지우지 않은 오차를 앞에 두고,','실험을 한 번 더 하기 전에,'],
- ['원본 영상의 재생을 멈추고,','편집 전후의 시간을 맞춰 보며,','공개 범위를 다시 고르기 전에,'],
- ['겹친 약속 세 개를 펼쳐 놓고,','먼저 기다린 사람의 시간을 생각하며,','미뤄 둔 일정을 다시 적고,'],
- ['발표와 공연 준비가 겹친 복도에서,','안전 점검표를 먼저 확인하고,','도움을 청할 순서를 정하며,'],
- ['복구 파일이 열린 화면 앞에서,','마지막 수정 기록을 보기 전에,','사라진 최종본의 흔적을 따라,'],
- ['페어 시작 방송을 들으며,','발표장 문이 열리기 전에,','오늘 이후의 약속을 생각하며,'],
-];
-
 const portableMoves:Record<CharacterId,string[]>={
  world:['room-sample','phones-down','lyric-trade','one-earbud','exit-time','silent-band'],
  junyeon:['thirty-seconds','question-cards','credit-card','one-variable','silence-minute','empty-audience'],
@@ -270,7 +138,6 @@ const portableMoves:Record<CharacterId,string[]>={
  taehun:['cloud-haiku','failed-forecast','humidity-metaphor','margin-trade','three-minutes','two-columns'],
  seoyul:['three-colors','sound-color','faceless-board','consent-card','filename-title','leave-unfinished'],
 };
-
 function moveEffects(id:CharacterId,mood:ChoiceMood):Effect[]{
  const positiveSpecial=id==='taehun'||id==='seoyul';
  const profile:Record<ChoiceMood,[number,number,number,number,number,number]>={
@@ -303,8 +170,8 @@ export function hangoutScene(ctx:TalkContext):Scene{
  const activityScore=activityFlag?Number(activityFlag.split(':').at(-1)):null;
  const lead:Line[]=[
   line('narrator',opening),
-  line('narrator',chapterAfterimage[Math.min(ctx.chapter,chapterAfterimage.length-1)]),
-  line(ctx.id,chapterReactions[ctx.id][Math.min(ctx.chapter,chapterReactions[ctx.id].length-1)]),
+  line('narrator',thread.detail),
+  line(ctx.id,caseAfterthought(ctx.id,Math.min(ctx.chapter,4),ctx.flags)),
   line('narrator',mood),
  ];
  const tail:Line[]=[
@@ -318,15 +185,15 @@ export function hangoutScene(ctx:TalkContext):Scene{
  const selected=Array.from({length:3},(_,index)=>deck[(start+index*2)%deck.length]);
  const situational:Choice={
   id:`story-thread-${ctx.chapter}-${ctx.id}`,label:'오늘의 사건',
-  text:({world:`‘${thread.title}’에서 공개하지 않기로 한 장면을 다시 보며, 세계가 숨긴 감정을 묻는다.`,junyeon:`‘${thread.title}’에서 준연이 끝내 설명하지 못한 자기 몫을 직접 말할 때까지 기다린다.`,hyunsol:`‘${thread.title}’의 사실과 추측을 두 칸으로 나눠 현솔과 서로의 판단을 다시 검토한다.`,taewoo:`‘${thread.title}’에서 느낀 감정을 여덟 박자 동작으로 만들어 태우와 번갈아 따라 한다.`,taehun:`‘${thread.title}’의 관측 사실과 감상을 나눠 적고 태훈의 문장 옆에 내 문장을 남긴다.`,seoyul:`‘${thread.title}’에서 가장 오래 남은 순간을 색 하나로 골라 서율의 팔레트 옆에 놓는다.`})[ctx.id],
-  response:[line('player',`아까 ${thread.title} 얘기, 네 생각을 더 듣고 싶어.`),line(ctx.id,relationshipLine(ctx.id,tier,`${ctx.chapter}:thread-choice`)),line('narrator',`${place.name}에서 나눈 이야기는 다음 준비 때 확인할 작은 약속으로 남았다.`)],
+  text:`${ctx.visit+1}번째 만남 · `+({world:`‘${thread.title}’에서 공개하지 않기로 한 장면을 다시 보며, 세계가 숨긴 감정을 묻는다.`,junyeon:`‘${thread.title}’에서 준연이 끝내 설명하지 못한 자기 몫을 직접 말할 때까지 기다린다.`,hyunsol:`‘${thread.title}’의 사실과 추측을 두 칸으로 나눠 현솔과 서로의 판단을 다시 검토한다.`,taewoo:`‘${thread.title}’에서 느낀 감정을 여덟 박자 동작으로 만들어 태우와 번갈아 따라 한다.`,taehun:`‘${thread.title}’의 관측 사실과 감상을 나눠 적고 태훈의 문장 옆에 내 문장을 남긴다.`,seoyul:`‘${thread.title}’에서 가장 오래 남은 순간을 색 하나로 골라 서율의 팔레트 옆에 놓는다.`})[ctx.id],
+  response:[line('player',`아까 ${thread.title} 얘기, 네 생각을 더 듣고 싶어.`),line(ctx.id,schoolAfterthought(ctx.id,Math.min(ctx.chapter,4),ctx.stats.affection,ctx.stats.trust,ctx.flags)),line('narrator',`${place.name}에서 나눈 이야기는 다음 준비 때 확인할 작은 약속으로 남았다.`)],
   effects:[{target:ctx.id,stat:'affection',amount:8},{target:ctx.id,stat:'trust',amount:10},{target:ctx.id,stat:'jealousy',amount:-2},{target:'global',stat:'fair',amount:2},{target:'global',stat:'harmony',amount:1}],flags:[`personal:${ctx.id}`,`story-thread:${ctx.id}:${ctx.chapter}`],
  };
- const choiceBeats=chapterChoiceBeats[Math.min(ctx.chapter,chapterChoiceBeats.length-1)];
+ const choiceBeats=['오늘 확인한 일 뒤에,','네가 남겨 둔 시간에,','다음 약속을 정하기 전에,'];
  const choices:Choice[]=[situational,...selected.map((move,index)=>({
   id:`moment-${ctx.visit}-${move.key}`,
   label:move.tag,
-   text:`${choiceBeats[index]} ${fill(move.text)}`,
+   text:`${thread.title} · ${ctx.visit+1}번째 만남: ${choiceBeats[index]} ${fill(move.text)}`,
   response:[line('player',fill(move.player)),line(ctx.id,fill(move.reply)),line(ctx.id,relationshipLine(ctx.id,tier,`${ctx.chapter}:${ctx.visit}:${move.key}:reply`)),line('narrator',aftermath(move.mood,ctx.id,place.name,topic,scene,`${ctx.seed}:${ctx.chapter}:${ctx.visit}:${move.key}`))],
   effects:moveEffects(ctx.id,move.mood),
   flags:[`personal:${ctx.id}`,`hangout-move:${ctx.id}:${move.key}`],

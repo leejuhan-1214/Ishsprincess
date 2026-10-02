@@ -22,7 +22,7 @@ const labels:Record<CharacterId,[string,string]>={
 };
 
 function roundsFor(id:CharacterId,key:string,chapter:number):ActivityRound[]{
- const n=hash(key),difficulty=Math.min(2,Math.floor(chapter/5));
+ const n=hash(key),difficulty=Math.min(2,Math.floor(chapter/2));
  if(id==='world'){
   const symbols=['♪','●','▲','◆'];
   return [5,6,7].map((base,index)=>{

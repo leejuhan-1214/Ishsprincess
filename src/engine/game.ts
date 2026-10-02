@@ -12,12 +12,12 @@ import {cleanLegacyLines,hasLegacyPadding} from './legacyDialogue';
 import {selectEpisode,pendingEpisode,episodeScene,episodePendingFlag,episodeSeenFlag} from './episodes';
 import type { CharacterId, GlobalKey, StatKey, Line, Effect, Scene, LocationId } from '../types';
 
-import {isClassroomState,type ClassroomState} from './classroomMystery';
+import {newClassroomState,isClassroomState,type ClassroomState} from './classroomMystery';
 
 export const routes = {...routesA,...routesB} as Record<CharacterId,Scene[]>;
 export const ids=characters.map(c=>c.id);
 export type Stats=Record<StatKey,number>;
-export type GameState={version:1;classroom?:ClassroomState;dialogueRevision?:2|3;name:string;seed:number;phase:'story'|'activity'|'map'|'routeSelect'|'ending';segment:'common'|'route'|'hangout'|'harem';chapter:number;route:CharacterId|null;routeChapter:number;line:number;response:Line[]|null;stats:Record<CharacterId,Stats>;global:Record<GlobalKey,number>;flags:string[];visits:Record<CharacterId,number>;visitor:CharacterId|null;visitLocation?:LocationId|null;actions:number;visitedToday:CharacterId[];backlog:Line[];ending:string|null;haremOffered:boolean;haremChance:number;ngPlus:boolean;date:string;};
+export type GameState={version:1;classroom?:ClassroomState;dialogueRevision?:2|3;storyRevision?:2;mainStep?:number;name:string;seed:number;phase:'story'|'activity'|'map'|'routeSelect'|'ending';segment:'common'|'route'|'hangout'|'harem';chapter:number;route:CharacterId|null;routeChapter:number;line:number;response:Line[]|null;stats:Record<CharacterId,Stats>;global:Record<GlobalKey,number>;flags:string[];visits:Record<CharacterId,number>;visitor:CharacterId|null;visitLocation?:LocationId|null;actions:number;visitedToday:CharacterId[];backlog:Line[];ending:string|null;haremOffered:boolean;haremChance:number;ngPlus:boolean;date:string;};
 export type Meta={endings:string[];read:string[];failures:number;attempted:number[]};
 export const blankMeta=():Meta=>({endings:[],read:[],failures:0,attempted:[]});
 export const clamp=(n:number)=>Math.max(0,Math.min(100,n));
@@ -25,20 +25,21 @@ export function validName(value:string){const n=value.trim();return /^[\p{L}\p{N
 export function newGame(name:string,seed:number,ngPlus=false):GameState{
  if(!validName(name))throw new Error('이름을 1~12자로 입력해 주세요.');
  const specials=[15,65,25,35,10,20];
- return {version:1,dialogueRevision:3,name:name.trim(),seed:seed>>>0,phase:'story',segment:'common',chapter:0,route:null,routeChapter:0,line:0,response:null,stats:Object.fromEntries(ids.map((id,i)=>[id,{affection:10,trust:5,jealousy:0,special:specials[i]}])) as Record<CharacterId,Stats>,global:{harmony:40,fair:10,reputation:0,ethics:50,safety:50},flags:[],visits:Object.fromEntries(ids.map(id=>[id,0])) as Record<CharacterId,number>,visitor:null,visitLocation:null,actions:3,visitedToday:[],backlog:[],ending:null,haremOffered:false,haremChance:0,ngPlus,date:new Date().toISOString()};
+ return {version:1,dialogueRevision:3,storyRevision:2,mainStep:0,name:name.trim(),seed:seed>>>0,phase:'story',segment:'common',chapter:0,route:null,routeChapter:0,line:0,response:null,stats:Object.fromEntries(ids.map((id,i)=>[id,{affection:10,trust:5,jealousy:0,special:specials[i]}])) as Record<CharacterId,Stats>,global:{harmony:40,fair:10,reputation:0,ethics:50,safety:50},flags:[],visits:Object.fromEntries(ids.map(id=>[id,0])) as Record<CharacterId,number>,visitor:null,visitLocation:null,actions:3,visitedToday:[],backlog:[],ending:null,haremOffered:false,haremChance:0,ngPlus,date:new Date().toISOString()};
 }
 function talkContext(s:GameState,id=s.visitor!):TalkContext{return {id,location:s.visitLocation??characterById[id].location,chapter:s.chapter,visit:s.visits[id],stats:s.stats[id],flags:s.flags,seed:s.seed};}
 export function activeScene(s:GameState):Scene{
  if(s.segment==='hangout'&&s.visitor){
   const ctx=talkContext(s),episode=pendingEpisode(s.flags,s.visitor);
-  return directedScene({...(episode?episodeScene(episode,ctx):hangoutScene(ctx)),day:commonScenes[s.chapter].day},{addChoices:false,cacheable:false});
+  return directedScene({...(episode?episodeScene(episode,ctx):hangoutScene(ctx)),day:commonScenes[Math.min(s.chapter,commonScenes.length-1)].day},{addChoices:false,cacheable:false});
  }
  if(s.segment==='route'&&s.route)return relationshipScene(directedScene(routes[s.route][s.routeChapter],{addChoices:false}),s);
  if(s.segment==='harem')return relationshipScene(directedScene(haremScenes[s.routeChapter],{addChoices:false}),s);
- return relationshipScene(directedScene(commonScenes[Math.min(s.chapter,commonScenes.length-1)],{addChoices:false}),s);
+ const chapter=commonScenes[Math.min(s.chapter,commonScenes.length-1)];
+ return relationshipScene(directedScene(chapter.acts?.[s.mainStep??0]??chapter,{addChoices:false}),s);
 }
 export const activeLines=(s:GameState)=>s.response??activeScene(s).lines;
-export const readKey=(s:GameState)=>`dialogue3:${activeScene(s).id}:${s.response?'r'+s.flags.filter(f=>f.startsWith('choice:')).slice(-1)[0]:'l'}:${s.line}`;
+export const readKey=(s:GameState)=>`story2:dialogue3:${activeScene(s).id}:${s.response?'r'+s.flags.filter(f=>f.startsWith('choice:')).slice(-1)[0]:'l'}:${s.line}`;
 export function applyEffects(s:GameState,effects:Effect[],flags:string[]=[]):GameState{
  const out=structuredClone(s);
  for(const e of effects){ if(e.target==='global'){const k=e.stat as GlobalKey;if(k in out.global)out.global[k]=clamp(out.global[k]+e.amount);}else{const k=e.stat as StatKey;if(k in out.stats[e.target])out.stats[e.target][k]=clamp(out.stats[e.target][k]+e.amount);}}
@@ -72,7 +73,7 @@ export function seededRoll(seed:number){let t=(seed+0x6D2B79F5)|0;t=Math.imul(t^
 export function commonBad(s:GameState):string|null{
  if(s.global.safety<=20&&s.flags.filter(f=>f.startsWith('safety-strike')).length>=3)return 'common-safety';
  if(s.global.ethics<=20&&s.flags.includes('data-fraud'))return 'common-fraud';
- if(ids.every(id=>s.stats[id].trust<25)&&s.chapter>=10)return 'common-alone';
+ if(ids.every(id=>s.stats[id].trust<25)&&s.chapter>=commonScenes.length-2)return 'common-alone';
  if(ids.reduce((n,id)=>n+s.stats[id].jealousy,0)/6>=70&&s.global.harmony<30)return 'common-war';
  return null;
 }
@@ -86,9 +87,10 @@ export function finishScene(s:GameState,meta:Meta):GameState{
   out.visits[s.visitor!]+=1;out.visitedToday.push(s.visitor!);out.actions-=1;out.visitor=null;out.visitLocation=null;out.segment='common';out.phase='map';return out;
  }
  if(s.segment==='common'){
+  const acts=commonScenes[s.chapter].acts;
+  if(acts&&(s.mainStep??0)+1<acts.length)return {...out,mainStep:(s.mainStep??0)+1};
   out=applyEffects(out,ids.flatMap(target=>[{target,stat:'trust' as const,amount:1},{target,stat:'affection' as const,amount:1}]),[]);
   const bad=commonBad(out);if(bad)return {...out,phase:'ending',ending:bad};
-  if(s.chapter===commonScenes.length-1){out.phase='routeSelect';out.haremChance=haremChance(out,meta.failures);out.haremOffered=out.haremChance>0&&seededRoll(out.seed)<out.haremChance;return out;}
   out.phase='map';out.actions=3;out.visitedToday=[];return out;
  }
  const scenes=s.segment==='harem'?haremScenes:routes[s.route!];
@@ -104,7 +106,11 @@ export function advance(s:GameState,meta:Meta):GameState{
  if(!out.response&&out.line>=lines.length&&activeScene(out).choices.length===0)return finishScene(out,meta);
  return out;
 }
-export const nextDay=(s:GameState):GameState=>s.phase!=='map'||s.chapter>=commonScenes.length-1?s:({...s,phase:'story',segment:'common',chapter:s.chapter+1,line:0,response:null,visitor:null,visitLocation:null});
+export const nextDay=(s:GameState,meta:Meta=blankMeta()):GameState=>{
+ if(s.phase!=='map')return s;
+ if(s.chapter===commonScenes.length-1){const chance=haremChance(s,meta.failures);return {...s,phase:'routeSelect',haremChance:chance,haremOffered:chance>0&&seededRoll(s.seed)<chance};}
+ return {...s,phase:'story',segment:'common',chapter:s.chapter+1,mainStep:0,line:0,response:null,visitor:null,visitLocation:null};
+};
 export const locationOf=(s:GameState,id:CharacterId)=>scheduledLocation(id,s.chapter,s.actions,s.seed);
 export function visit(s:GameState,id:CharacterId,place?:LocationId):GameState{
  if(s.phase!=='map'||s.actions<=0||s.visitedToday.includes(id))return s;
@@ -153,11 +159,12 @@ export function isGameState(s:unknown):s is GameState{
  const isLine=(value:unknown):value is Line=>{
   if(!value||typeof value!=='object'||Array.isArray(value))return false;
   const line=value as Line;
-  return [...ids,'player','narrator','teacher','student'].includes(line.speaker)&&typeof line.text==='string';
+  return [...ids,'juhan','minhyuk','alter','player','narrator','teacher','student'].includes(line.speaker)&&typeof line.text==='string';
  };
  if(v.version!==1||typeof v.name!=='string'||!validName(v.name)||!integer(v.seed,0,0xffffffff)
   ||(v.classroom!==undefined&&!isClassroomState(v.classroom))
   ||!(v.dialogueRevision===undefined||v.dialogueRevision===2||v.dialogueRevision===3)
+  ||(v.storyRevision!==undefined&&v.storyRevision!==2)||(v.mainStep!==undefined&&!integer(v.mainStep,0,2))
   ||!integer(v.chapter,0,commonScenes.length-1)||!integer(v.line,0,100000)
   ||!['story','activity','map','routeSelect','ending'].includes(v.phase)||!['common','route','hangout','harem'].includes(v.segment)
   ||!ids.every(id=>v.stats?.[id]&&(['affection','trust','jealousy','special'] as StatKey[]).every(k=>inRange(v.stats[id][k],0,100)))
@@ -167,7 +174,7 @@ export function isGameState(s:unknown):s is GameState{
   ||!(v.response===null||(Array.isArray(v.response)&&v.response.every(isLine)))
   ||!Array.isArray(v.visitedToday)||v.visitedToday.length>3||!v.visitedToday.every(id=>ids.includes(id))
   ||new Set(v.visitedToday).size!==v.visitedToday.length
-  ||!ids.every(id=>integer(v.visits?.[id],0,commonScenes.length))
+  ||!ids.every(id=>integer(v.visits?.[id],0,14))
   ||!(v.route===null||ids.includes(v.route))||!(v.visitor===null||ids.includes(v.visitor))
   ||!(v.visitLocation===undefined||v.visitLocation===null||(typeof v.visitLocation==='string'&&Object.hasOwn(locationById,v.visitLocation)))
   ||!integer(v.routeChapter,0,5)||!integer(v.actions,0,3)
@@ -185,6 +192,16 @@ export function isGameState(s:unknown):s is GameState{
 
 /** Updates saved cursors before the shorter dialogue is displayed. */
 export function restoreGame(value:unknown):GameState|null{
+ // Old 14-chapter saves restart their corresponding long chapter, preserving bonds and collected endings.
+ if(value&&typeof value==='object'&&!Array.isArray(value)){
+  const legacy=value as GameState;
+  if(legacy.storyRevision!==2&&Number.isInteger(legacy.chapter)&&legacy.chapter>=0&&legacy.chapter<=13&&legacy.dialogueRevision===3){
+   const chapter=[0,0,0,1,1,1,2,2,2,3,3,4,4,4][legacy.chapter];
+   const cases=newClassroomState();
+   if(legacy.classroom){for(const id of ['credit','absence','echo'])if(legacy.classroom.cases?.[id])cases.cases[id]=legacy.classroom.cases[id];cases.bonds=legacy.classroom.bonds;}
+   value={...legacy,storyRevision:2,mainStep:0,chapter,classroom:cases,...(legacy.segment==='common'?{phase:'story',line:0,response:null}:{} )};
+  }
+ }
  if(!isGameState(value))return null;
  if(value.dialogueRevision===3)return value;
  const legacyExpanded=value.dialogueRevision===undefined&&(hasLegacyPadding(value.backlog)||hasLegacyPadding(value.response??[]));

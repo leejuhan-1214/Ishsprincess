@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync,statSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import { characters, locations } from '../src/data/characters';
-import { commonScenes } from '../src/data/common';
+import { commonScenes,commonActs } from '../src/data/common';
 import { endings } from '../src/data/endings';
 import { haremScenes } from '../src/data/harem';
 import { hangoutScene } from '../src/data/hangouts';
@@ -45,9 +45,9 @@ test('all 42 episodes point to unique shipped scene illustrations',()=>{
  }
 });
 const globalStats = ['harmony', 'fair', 'reputation', 'ethics', 'safety'];
-const legalSpeakers = new Set<string>([...ids, 'player', 'narrator', 'teacher', 'student']);
+const legalSpeakers = new Set<string>([...ids,'juhan','minhyuk','alter', 'player', 'narrator', 'teacher', 'student']);
 const legalLocations = new Set(locations.map(location => location.id));
-const allScenes = () => [...commonScenes, ...ids.flatMap(id => routes[id]), ...haremScenes];
+const allScenes = () => [...commonActs.flat(), ...ids.flatMap(id => routes[id]), ...haremScenes];
 
 function assertFiniteState(state: GameState) {
   for (const [id, stats] of Object.entries(state.stats)) {
@@ -90,9 +90,8 @@ function playBalancedCommon(): GameState {
   let state = newGame('테스트학생', 42);
   for (let chapter = 0; chapter < commonScenes.length; chapter++) {
     assert.equal(state.chapter, chapter);
-    state = playScene(state, 0);
+    for(let act=0;act<3;act++)state = playScene(state, 0);
     assert.notEqual(state.phase, 'ending', `positive common path ended at ${chapter}: ${state.ending}`);
-    if (chapter === commonScenes.length - 1) break;
     assert.equal(state.phase, 'map');
     for (let action = 0; action < 3; action++) {
       const target = ids.filter(id => !state.visitedToday.includes(id)).sort((a, b) => {
@@ -129,7 +128,7 @@ function endingFixture(route: CharacterId = 'world'): GameState {
 test('authored content is complete, has valid references, and never supplies a default player name', () => {
   assert.equal(ids.length, 6);
   assert.equal(new Set(ids).size, 6);
-  assert.equal(commonScenes.length, 14, 'prologue plus thirteen common chapters');
+  assert.equal(commonScenes.length, 5, 'five long chapters with three acts each');
   assert.equal(haremScenes.length, 5);
   for (const id of ids) {
     assert.equal(routes[id].length, 6, `${id}: six complete route chapters`);
@@ -282,10 +281,11 @@ test('three real unsafe choices reach the safety bad ending through normal play'
   const chosenUnsafe: string[] = [];
   let state = newGame('안전경로', 42);
   for (let chapter = 0; chapter < commonScenes.length; chapter++) {
-    const scene = activeScene(state);
-    const unsafeIndex = scene.choices.findIndex(choice => unsafeIds.has(choice.id));
-    if (unsafeIndex >= 0) chosenUnsafe.push(scene.choices[unsafeIndex].id);
-    state = playScene(state, unsafeIndex >= 0 ? unsafeIndex : 0);
+    for(let act=0;act<3&&state.phase==='story';act++){
+     const scene=activeScene(state),unsafeIndex=scene.choices.findIndex(choice=>unsafeIds.has(choice.id));
+     if(unsafeIndex>=0)chosenUnsafe.push(scene.choices[unsafeIndex].id);
+     state=playScene(state,unsafeIndex>=0?unsafeIndex:0);
+    }
     if (state.phase === 'ending') break;
     if (chapter === commonScenes.length - 1) break;
     // Maintain real friendships so isolation cannot mask the safety outcome.
@@ -341,25 +341,26 @@ test('phase guards prevent skipping story or reentering a completed route', () =
   const map = { ...fresh, phase: 'map' as const };
   assert.equal(nextDay(map).chapter, 1, 'choosing to rest may leave some actions unused');
   const lastDay = { ...map, chapter: commonScenes.length - 1 };
-  assert.strictEqual(nextDay(lastDay), lastDay, 'no out-of-range common chapter');
+  assert.equal(nextDay(lastDay).phase,'routeSelect','final free time leads to route selection');
+  assert.equal(nextDay(lastDay).chapter,4,'no sixth main chapter');
 });
 
 test('team successes and secret promises count distinct scenes rather than collapsing to one flag', () => {
   let state = newGame('사건검증', 1);
   for (const tag of ['team-success', 'secret-promise']) {
-    const indexed = commonScenes.flatMap((scene, index) => {
-      const choiceIndex = scene.choices.findIndex(choice => choice.flags?.includes(tag));
-      return choiceIndex < 0 ? [] : [{ scene, index, choiceIndex }];
-    });
+    const indexed = commonActs.flatMap((acts,index)=>acts.flatMap((scene,mainStep)=>{
+      const choiceIndex=scene.choices.findIndex(choice=>choice.flags?.includes(tag));
+      return choiceIndex<0?[]:[{scene,index,mainStep,choiceIndex}];
+    }));
     assert.ok(indexed.length >= 2, `${tag}: multiple real authored events`);
-    for (const { scene, index, choiceIndex } of indexed) {
-      const atChoice={ ...state, phase: 'story' as const, segment: 'common' as const, chapter: index, line: 0, response: null };
+    for (const { scene, index,mainStep, choiceIndex } of indexed) {
+      const atChoice={ ...state, phase: 'story' as const, segment: 'common' as const, chapter: index,mainStep, line: 0, response: null };
       atChoice.line=activeScene(atChoice).lines.length;
       state = choose(atChoice, choiceIndex);
     }
     assert.equal(state.flags.filter(flag => flag.startsWith(`${tag}:`)).length, indexed.length, tag);
     const first = indexed[0];
-    const repeated={ ...state, phase: 'story' as const, segment: 'common' as const, chapter: first.index, line: 0, response: null };
+    const repeated={ ...state, phase: 'story' as const, segment: 'common' as const, chapter: first.index,mainStep:first.mainStep, line: 0, response: null };
     repeated.line=activeScene(repeated).lines.length;
     state = choose(repeated, first.choiceIndex);
     assert.equal(state.flags.filter(flag => flag.startsWith(`${tag}:`)).length, indexed.length, 'same scene cannot double-count');
@@ -524,7 +525,7 @@ test('dialogue proceeds without padding while authored events and choices remain
   const state=newGame('지문확인',1);
   const next=advance(state,blankMeta());
   assert.equal(activeLines(next)[next.line].text,commonScenes[0].lines[1].text);
-  assert.equal(activeLines(next)[next.line].speaker,'player');
+  assert.equal(activeLines(next)[next.line].speaker,'world');
 });
 
 test('padded saves resume at the next authored line and keep choices reachable', () => {
@@ -566,7 +567,7 @@ test('saved responses shed padding without losing original dialogue or free-form
   const restored=restoreGame({...legacy,response:[first,padding,thought,second,padding,thought],line:2})!;
   assert.deepEqual(restored.response,[first,second]);
   assert.equal(restored.line,1);
-  assert.equal(advance(restored,blankMeta()).phase,'map');
+  assert.equal(advance(restored,blankMeta()).mainStep,1);
   const freeReply={...legacy,response:[first,second],line:1};
   assert.deepEqual(restoreGame(freeReply)?.response,freeReply.response);
   assert.equal(restoreGame(freeReply)?.line,1);
@@ -594,7 +595,7 @@ test('living timetable moves every heroine and uses the new computer and dedicat
   const all=new Set<string>();
   for(const id of ids){
     const own=new Set<string>();
-    for(let chapter=0;chapter<13;chapter++)for(const actions of [3,2,1]){
+    for(let chapter=0;chapter<5;chapter++)for(const actions of [3,2,1]){
       const place=locationOf({...state,chapter,actions},id);own.add(place);all.add(place);
     }
     assert.ok(own.size>=7,`${id}: ${[...own]}`);
@@ -630,7 +631,7 @@ test('relationship thresholds deterministically unlock one-time sudden events', 
   assert.equal(first,'confidence');
   assert.notEqual(selectSuddenEvent({...ctx,flags:['event-seen:world:confidence']}),'confidence');
   assert.equal(selectSuddenEvent({...ctx,stats:{...ctx.stats,jealousy:60}}),'jealousy');
-  const map={...base,phase:'map' as const,chapter:6,stats:{...base.stats,world:ctx.stats},visits:{...base.visits,world:2},flags:cutsceneEpisodes.filter(e=>e.character==='world').map(e=>episodeSeenFlag(e.id))};
+  const map={...base,phase:'map' as const,chapter:2,stats:{...base.stats,world:ctx.stats},visits:{...base.visits,world:2},flags:cutsceneEpisodes.filter(e=>e.character==='world').map(e=>episodeSeenFlag(e.id))};
   const place=locationOf(map,'world');
   const started=visit(map,'world',place);
   assert.ok(started.flags.some(flag=>flag.startsWith('pending-event:world:')));
@@ -698,7 +699,7 @@ test('every new situation obeys location and relationship gates and becomes inel
 test('all 42 cutscenes trigger through an actual timetable visit and survive saving during the activity',()=>{
  for(const episode of cutsceneEpisodes){
   let fixture:GameState|null=null;
-  for(let seed=0;seed<7&&!fixture;seed++)for(let chapter=0;chapter<13&&!fixture;chapter++)for(const actions of [3,2,1]){
+  for(let seed=0;seed<7&&!fixture;seed++)for(let chapter=0;chapter<5&&!fixture;chapter++)for(const actions of [3,2,1]){
    const map={...newGame('새로운순간',seed),phase:'map' as const,chapter,actions};
    if(locationOf(map,episode.character)!==episode.location)continue;
    map.stats[episode.character]={affection:100,trust:100,jealousy:0,special:30};
@@ -750,12 +751,12 @@ test('main scenes change their chapter-specific response and expression art by a
  high.stats.seoyul={affection:90,trust:90,jealousy:5,special:75};
  assert.equal(bondTier(low.stats.seoyul),'distant');
  assert.equal(bondTier(high.stats.seoyul),'close');
- const scene=commonScenes[4];
+ const scene=commonActs[3][1];
  const distant=relationshipScene(scene,low),close=relationshipScene(scene,high);
  const distantChoice=distant.choices.at(-1)!,closeChoice=close.choices.at(-1)!;
  assert.notEqual(distantChoice.text,closeChoice.text);
- assert.equal(distantChoice.label,'공개 폴더');
- assert.equal(closeChoice.label,'이어폰 한쪽');
+ assert.equal(distantChoice.label,'지금의 거리');
+ assert.equal(closeChoice.label,'둘만의 다음');
  assert.notDeepEqual(distant.lines,close.lines);
  const guarded=expressionFor('seoyul','아직 네 마음을 잘 모르겠어.',scene.id,low.stats.seoyul);
  const fond=expressionFor('seoyul','좋아해. 둘만의 다음 약속을 잡자.',scene.id,high.stats.seoyul);
@@ -781,15 +782,15 @@ test('mini games grow harder without changing seeded answers',()=>{
  }
 });
 
-test('the fourteen common decisions are chapter-specific and remember earlier mistakes',()=>{
+test('the fifteen main act decisions are chapter-specific and remember earlier mistakes',()=>{
  const state=newGame('기록자',29);
- const labels=commonScenes.map(scene=>relationshipScene(scene,state).choices.at(-1)!.text);
- assert.equal(new Set(labels).size,commonScenes.length);
- const regretted=relationshipScene(commonScenes[9],{...state,flags:['choice:common-4:band-share']});
- assert.ok(regretted.lines.some(line=>line.speaker==='seoyul'&&line.text.includes('몰래 보낸 일')));
- const trusted=relationshipScene(commonScenes[9],{...state,flags:['choice:common-4:band-permission']});
- assert.ok(trusted.lines.some(line=>line.speaker==='seoyul'&&line.text.includes('공개 범위')));
- assert.ok(!trusted.lines.some(line=>line.text.includes('몰래 보낸 일')));
+ const labels=commonActs.flat().map(scene=>relationshipScene(scene,state).choices.at(-1)!.text);
+ assert.equal(new Set(labels).size,15);
+ const regretted=relationshipScene(commonActs[4][0],{...state,flags:['art-private-leak']});
+ assert.ok(regretted.lines.some(line=>line.speaker==='seoyul'&&line.text.includes('사적인 그림을 공개한 일')));
+ const trusted=relationshipScene(commonActs[4][0],{...state,flags:['art-scope-kept']});
+ assert.ok(trusted.lines.some(line=>line.speaker==='seoyul'&&line.text.includes('여백')));
+ assert.ok(!trusted.lines.some(line=>line.text.includes('사적인 그림을 공개한 일')));
 });
 
 test('personal routes have distinct staged dialogue instead of a repeated bonus answer',()=>{
@@ -814,11 +815,11 @@ test('map visits can skip the activity and open the current conversation directl
 test('after-school dialogue follows the current main chapter and relationship voice',()=>{
  const base:TalkContext={id:'taewoo',location:'dance',chapter:1,visit:0,stats:{affection:10,trust:5,jealousy:0,special:35},flags:[],seed:17};
  const early=adaptiveHangoutScene(base);
- const late=adaptiveHangoutScene({...base,chapter:10,stats:{...base.stats,affection:80,trust:75}});
- assert.match(early.title,/깨진 비커 이후/);
- assert.match(late.title,/세 개의 방과 후/);
- assert.ok(early.lines.some(line=>line.text.includes('화학실 사고')));
- assert.ok(late.lines.some(line=>line.text.includes('동시에 지킬 수 없는 약속')));
+ const late=adaptiveHangoutScene({...base,chapter:4,stats:{...base.stats,affection:80,trust:75}});
+ assert.match(early.title,/멈춘 영상의 99점/);
+ assert.match(late.title,/빌린 얼굴과 마지막 약속/);
+ assert.ok(early.lines.some(line=>line.text.includes('99점')));
+ assert.ok(late.lines.some(line=>line.text.includes('협박 발송기')));
  assert.notDeepEqual(early.lines,late.lines);
  assert.notDeepEqual(early.choices[0].response,late.choices[0].response);
 });

@@ -1,3 +1,4 @@
+import {scoreCase,poemCase,fairEpilogue} from './newCases';
 import {characters} from './characters';
 import type {Character,CharacterId,LocationId} from '../types';
 
@@ -17,9 +18,9 @@ export type Debate={title:string;claims:{speaker:SchoolId|'alter';text:string}[]
 export type CaseFile={id:string;number:number;chapter:number;title:string;subtitle:string;opening:SchoolLine[];evidence:Evidence[];debates:Debate[];sequence:string[];culprit:SchoolId;motives:string[];motive:number;closing:SchoolLine[]};
 const evidence=(id:string,name:string,location:LocationId,description:string,inspection:string):Evidence=>({id,name,location,description,inspection:script(inspection)});
 
-export const caseFiles:CaseFile[]=[
+const originalCases:CaseFile[]=[
  {id:'credit',number:1,chapter:2,title:'잘라 낸 이름',subtitle:'공연 영상 조작 · 첫 번째 학급재판',
- opening:script(`narrator|점심시간의 단체 채팅에 짧은 영상이 올라왔다. 서율의 편곡 파일 위에 세계의 이름 하나만 남아 있었다.
+ opening:script(`narrator|방과 후 단체 채팅에 짧은 영상이 올라왔다. 서율의 편곡 파일 위에 세계의 이름 하나만 남아 있었다.
 seoyul|저 크레딧, 내가 승인한 버전이 아니야. 원본을 보여 줘.
 world|올린 계정이 누군지부터 봐. 내 계정으로 올라간 것도 아니잖아.
 minhyuk|잠깐! 확인하지 않은 내용을 다른 반으로 보내지 마라. 지금부터 1반 안에서 먼저 사실을 확인한다!
@@ -64,7 +65,7 @@ world|{name}, 다음엔 네가 나를 보고 있는지 파일로 확인하려고
 seoyul|다음 합주에서 마지막 마디는 내가 정할게. 거기서 다시 시작하자.
 narrator|판결은 끝났지만 관계는 한 문장으로 회복되지 않았다. 다음 만남에서 지켜야 할 약속이 생겼다.`)},
  {id:'absence',number:2,chapter:6,title:'닫힌 교실의 결석자',subtitle:'사라진 반장 · 기록에 없는 출구',
- opening:script(`narrator|연습이 끝나도 민혁이 돌아오지 않았다. 출입 기록은 반장이 교실에 들어간 뒤 멈춰 있었다.
+ opening:script(`narrator|시설 점검이 끝나도 민혁이 돌아오지 않았다. 출입 기록은 반장이 교실에 들어간 뒤 멈춰 있었다.
 taewoo|전화도 꺼졌어. 문은 잠겨 있고. 그냥 규칙 얘기 하러 갔다고 보기엔 오래됐는데.
 hyunsol|오늘 보조문 센서는 점검 중이었어. 기록이 비어 있다는 것부터 조심해야 해.
 world|단체 채팅에 민혁 이름으로 이상한 메시지가 왔어. “내가 돌아오기 전에 순서를 지켜.” 이게 뭐야?
@@ -156,6 +157,8 @@ minhyuk|그리고 내일 방과 후… 내 일정표에 빈칸이 하나 있다.
 narrator|사이언스 페어까지의 시간표가 다시 펼쳐졌다. 조사로 알게 된 사실과 연애로 확인할 마음은 같은 노트의 다른 페이지에 남았다.`)},
 ];
 
+export const caseFiles:CaseFile[]=[{...originalCases[0],chapter:0,number:1},scoreCase,{...originalCases[1],chapter:2,number:3},poemCase,{...originalCases[2],chapter:4,number:5,closing:[...originalCases[2].closing,...fairEpilogue]}];
+
 export type BondChoice={text:string;reply:SchoolLine[];affection:number;trust:number};
 export type BondEpisode={title:string;chapter:number;lines:SchoolLine[];choices:BondChoice[]};
 const choice=(text:string,reply:string,affection:number,trust:number):BondChoice=>({text,reply:script(reply),affection,trust});
@@ -163,7 +166,7 @@ export const bondEpisodes:Record<ExtraId,BondEpisode[]>={
  juhan:[
   {title:'프로그래머의 첫 인사',chapter:0,lines:script(`narrator|컴퓨터실의 끝자리에서 누군가 작게 손을 흔들었다. 민트색 가디건 아래에 교복 리본이 단정하게 매여 있었다.
 juhan|이주한이야. 네 자리를 찾는 거면 옆자리 비었어. 소음이 덜 들리는 자리라… 나도 여기 좋아해.
-player|고마워. 아까 반장이 네 코드를 소개해 주던데.
+player|고마워. 아까 파일 비교 프로그램 얘기 했잖아.
 juhan|민혁은 내가 말하기 어려워하면 먼저 말을 꺼내 줘. 가끔은 내가 할 수 있는 말도 대신해서, 연습 중이야.
 player|연습?
 juhan|내 목소리로 설명하는 거. 내가 조용하다는 이유로 가끔 남들이 내 생각까지 대신 설명하려고 해. 그냥 나한테 물어봐 줬으면 좋겠는데.
@@ -171,7 +174,7 @@ narrator|주한의 손이 키보드에서 잠깐 멈췄다. 나는 모니터가 
 juhan|네가 궁금하면 코드부터 보여 줄까? 잘하는 걸 먼저 보여 주면 조금 덜 떨릴 것 같아.`),choices:[choice('빈 옆자리에 앉아 주한이 먼저 설명하고 싶은 기능을 고르게 한다.',`player|네가 제일 먼저 보여 주고 싶은 걸로 하자. 질문은 설명이 끝난 다음에 할게.
 juhan|그럼… 여기. 질문을 기다려 주는 기능이야. 이름만 보면 별거 아닌데 나한텐 중요해.`,12,12),choice('얼터에고가 대신 소개하도록 해 달라고 한다.',`player|AI가 네 소개를 해 주면 더 빠르지 않을까?
 juhan|빠르겠지. 그런데 이번엔 내가 소개하려고 했어. 그건 다음에 보여 줄게.`,1,-5),choice('외모가 코딩 실력과 연결되는지 농담한다.',`juhan|그 질문은… 코드하고 관계없어. 오늘은 여기까지 보여 줄게.`, -8,-12)]},
-  {title:'얼터에고의 얼굴',chapter:3,lines:script(`juhan|어제 이야기 기억해서 사용자 화면을 바꿨어. 질문하기 전에, 보여 줘도 되는 파일인지 먼저 묻게 했어.
+  {title:'얼터에고의 얼굴',chapter:1,lines:script(`juhan|어제 이야기 기억해서 사용자 화면을 바꿨어. 질문하기 전에, 보여 줘도 되는 파일인지 먼저 묻게 했어.
 alter|안녕, {name}. 주한은 네가 설명을 기다려 준 시간을 개발 메모에 적었어.
 juhan|그건 말하지 말라니까… 아니, 삭제해야 하는 비밀은 아니지만.
 player|네 메모도 공개 범위를 정할 수 있잖아.
@@ -180,7 +183,7 @@ alter|나의 말투는 주한의 기록에서 배웠어. 기억과 책임은 같
 narrator|주한이 내 눈을 보고 모니터를 잠갔다. 화면이 꺼지자 컴퓨터실이 조금 더 조용해졌다.
 juhan|내가 만든 나하고 진짜 나, 헷갈리지 않을 자신 있어?`),choices:[choice('화면을 끈 주한에게 오늘 개발하면서 기뻤던 순간을 묻는다.',`player|지금 웃은 사람은 너잖아. 오늘 제일 기뻤던 순간을 네 말로 들려줘.
 juhan|네가 기능을 칭찬하기 전에 나한테 물어본 순간. 방금이야.`,14,12),choice('AI가 더 자신 있게 말하니 AI와 얘기하겠다고 한다.',`juhan|그러면 다시 켜 줄게. …나는 잠깐 저장할 게 있어서.`,0,-10),choice('주한의 개인 메모는 공개하지 않는 설정을 함께 확인한다.',`juhan|나를 부끄러워해서 숨기는 게 아니라 내가 정하는 거네. 그 차이가 좋아.`,10,14)]},
-  {title:'내가 말하는 동안',chapter:7,lines:script(`narrator|발표 연습에서 주한의 첫 문장이 두 번 끊겼다. 주한은 준비된 AI 설명 화면을 열려다 손을 거뒀다.
+  {title:'내가 말하는 동안',chapter:2,lines:script(`narrator|발표 연습에서 주한의 첫 문장이 두 번 끊겼다. 주한은 준비된 AI 설명 화면을 열려다 손을 거뒀다.
 juhan|혼자 있으면 다 말할 수 있어. 사람들이 내 모습부터 보고 있으면 어느 문장부터 꺼낼지 모르겠어.
 player|나한테 연습해 볼래?
 juhan|좋아. 네가 눈을 피하지 않으면… 조금 더 떨릴지도 모르지만.
@@ -189,7 +192,7 @@ juhan|이 프로그램은 내 대신 마음을 말해 주는 장치가 아닙니
 player|그 문장 좋다.
 juhan|마지막 문장은 발표문에 없는데. 너랑 있을 때 설명이 끝나는 게 조금 아쉬워.`),choices:[choice('발표가 끝난 뒤에도 함께 있을 시간을 먼저 약속한다.',`player|그럼 연습 끝나고도 같이 있어. 이번에는 발표문 없이.
 juhan|응. 마지막 문장을 미리 적어 놓지 않아도 되는 약속이네.`,16,12),choice('주한이 떨릴 때 바로 AI로 바꿔 주겠다고 한다.',`juhan|바꿀지 말지는 내가 고르고 싶어. 떨리는 채로 끝까지 할 수도 있으니까.`,2,-6),choice('첫 문장을 천천히 다시 시작할 수 있는 신호를 정한다.',`juhan|그 신호는 네가 재촉하지 않는다는 뜻으로 기억할게.`,12,15)]},
-  {title:'원본의 이름',chapter:10,lines:script(`narrator|얼터에고 사건 뒤 주한이 새 개발 파일을 보여 줬다. 제목 옆에 자신의 이름을 지우지 않고 적어 두었다.
+  {title:'원본의 이름',chapter:4,lines:script(`narrator|얼터에고 사건 뒤 주한이 새 개발 파일을 보여 줬다. 제목 옆에 자신의 이름을 지우지 않고 적어 두었다.
 juhan|AI가 무서워서 내 이름도 가릴까 했어. 그러면 누가 설명을 책임지는지 더 모르게 되겠지.
 player|오늘은 네 이름으로 설명했잖아.
 juhan|네가 듣고 있어서. 한 사람의 시선이 부담이 아니라 힘이 될 수도 있다는 걸 이제 알았어.
@@ -209,7 +212,7 @@ minhyuk|반장이 무서워서 질문을 못 하는 반은 제대로 운영되�
 player|그럼 반장도 모르는 게 있어?
 minhyuk|있다. …전학생이 친해지고 싶어서 이름을 물은 건지, 안내를 받으려고 물은 건지는 아직 모르겠군.`),choices:[choice('친해지고 싶어서 물었다고 말하고, 점호가 끝날 때까지 옆에서 기다린다.',`player|친해지고 싶어서 물었어. 네 일이 끝나면 같이 교실을 둘러볼래?
 minhyuk|그렇다면… 업무 종료 후의 약속으로 적겠다.`,12,12),choice('완장이 멋지다며 몰래 사진을 찍는다.',`minhyuk|찍기 전에 물어봐라! 칭찬이라고 해도 동의가 빠지면 안 된다.`,1,-10),choice('답답한 규칙은 내가 알아서 무시하겠다고 한다.',`minhyuk|규칙에 문제가 있으면 바꾸자고 말해. 다른 사람의 안전을 혼자 대신 결정하지는 마라.`, -7,-10)]},
-  {title:'첫 번째 예외 조항',chapter:3,lines:script(`narrator|민혁의 일정표에는 쉬는 시간이 지우개로 세 번 지워져 있었다.
+  {title:'첫 번째 예외 조항',chapter:1,lines:script(`narrator|민혁의 일정표에는 쉬는 시간이 지우개로 세 번 지워져 있었다.
 player|점심도 회의 시간이야?
 minhyuk|페어 준비와 출석 점검을 동시에 하려면 이렇게 해야 한다. 반장이 빠질 수는 없으니까.
 player|다른 사람이 점심을 거르면 뭐라고 할 거야?
@@ -219,7 +222,7 @@ minhyuk|나한테도 같은 규칙을 적용해야겠군. 그런데 혼자 쉬�
 player|그럼 같이 쉬자.
 minhyuk|함께 쉬는 약속이라면 지키기 쉽겠네. …내가 널 기다리는 것도 일정에 적어도 되나?`),choices:[choice('출석표를 내려놓게 하고 함께 점심을 먹는다.',`player|오늘 점심의 담당 업무는 밥 먹기야. 우리 둘 다.
 minhyuk|좋다! 식사는 임무… 아니, 그 말을 또 했네. 그냥 같이 먹자.`,15,12),choice('남은 업무를 전부 대신하고 다음부터 내 허락을 받게 한다.',`minhyuk|돕는 것과 내 일을 통제하는 건 다르다. 내가 쉬는 시간도 내가 정할 수 있어야 해.`,0,-8),choice('쉬는 시간은 민혁의 빈칸으로 남겨 두자고 제안한다.',`minhyuk|아무것도 증명하지 않아도 되는 칸인가. …네가 옆에 있으면 그걸 연습할 수 있겠다.`,12,14)]},
-  {title:'규칙보다 먼저 물을 것',chapter:7,lines:script(`minhyuk|교실에서 사라진 날, 네가 제일 먼저 내 안전을 물었지. 왜 보고를 안 했느냐고 묻기 전에.
+  {title:'규칙보다 먼저 물을 것',chapter:2,lines:script(`minhyuk|교실에서 사라진 날, 네가 제일 먼저 내 안전을 물었지. 왜 보고를 안 했느냐고 묻기 전에.
 player|걱정됐으니까.
 minhyuk|나는 걱정하면 더 큰 목소리로 규칙을 말한다. 그런데 듣는 사람은 내가 화가 난 줄 알더군.
 narrator|민혁이 완장을 벗어 책상에 놓았다. 손목에 남은 자국을 한 번 문지른 뒤 내 쪽으로 의자를 돌렸다.
@@ -227,7 +230,7 @@ minhyuk|지금은 반장으로 묻는 게 아니다. 너도 내가 안 보이면
 player|물론이지. 네가 혼자 있고 싶은 날이면 먼저 물어볼게.
 minhyuk|그건 좋은 원칙이다. 사람을 먼저 확인하고, 규칙은 다음에.
 narrator|민혁이 웃다가 입을 다물었다. 평소의 단정한 표정으로 돌아가기까지 한 박자가 길었다.`),choices:[choice('민혁의 목소리가 커졌을 때 걱정인지 먼저 확인할 둘만의 신호를 정한다.',`minhyuk|네가 그 신호를 보여 주면 숨부터 고르겠다. 네가 내 표정을 읽어 주는 게… 좋군.`,16,15),choice('민혁이 모든 사람에게 다정해야 한다고 요구한다.',`minhyuk|모두에게 같은 표정을 지을 수는 없어. 네가 내 서툰 얼굴도 볼 수 있었으면 했다.`,1,-5),choice('완장을 다시 차기 전에 잠깐 손을 잡아도 되는지 묻는다.',`minhyuk|허락을 물은 순서는… 정확하다. 대답은, 좋다.`,17,10)]},
-  {title:'명령문으로 쓰지 않는 고백',chapter:10,lines:script(`narrator|민혁이 접은 종이를 꺼냈다. 제목은 “방과 후 약속안”이었지만 첫 문장 아래에 붉은 수정선이 그어져 있었다.
+  {title:'명령문으로 쓰지 않는 고백',chapter:4,lines:script(`narrator|민혁이 접은 종이를 꺼냈다. 제목은 “방과 후 약속안”이었지만 첫 문장 아래에 붉은 수정선이 그어져 있었다.
 minhyuk|좋아하는 사람이 꼭 지켜야 할 규칙을 적으려다가 지웠어. 강요하면 약속이 아니니까.
 player|지운 자리에 뭐라고 썼어?
 minhyuk|“원하면.” 두 글자를 쓰는 데 이상하게 오래 걸렸군.
