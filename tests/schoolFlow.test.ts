@@ -5,7 +5,7 @@ import {commonActs,commonScenes} from '../src/data/common';
 import {caseFiles,schoolCharacters,type ExtraId} from '../src/data/classroomMystery';
 import {activeScene,activeLines,newGame,choose,blankMeta,isGameState,restoreGame,type GameState} from '../src/engine/game';
 import {advanceWithCases,nextDayWithCases,visitWithCases,selectRouteWithCases,requiredCase,ensureRequiredCase,applyClassroom,schoolLocation,startSchoolBond,completeSchoolActivity} from '../src/engine/schoolFlow';
-import {caseLines,continueCase,collectEvidence,beginTrial,rebut,addSequence,submitSequence,vote,explainMotive,closeNotebook,bondLines,continueBond,selectBondChoice,newClassroomState,type ClassroomState} from '../src/engine/classroomMystery';
+import {caseLines,continueCase,collectEvidence,beginTrial,rebut,addSequence,submitSequence,vote,explainMotive,closeNotebook,bondLines,continueBond,selectBondChoice,newClassroomState,bondAvailable,type ClassroomState} from '../src/engine/classroomMystery';
 import {schoolActivity} from '../src/data/extraDaily';
 
 function playAct(g:GameState):GameState{
@@ -139,4 +139,20 @@ test('new map uses common residents instead of detached extra-character contact 
  assert.match(app,/CampusMap/);assert.doesNotMatch(app,/new-classmates/);
  assert.match(app,/residents\(selectedPlace\)\.map/);assert.match(app,/이야기하기/);assert.match(app,/함께 작업하기/);
  const css=readFileSync(new URL('../src/campus.css',import.meta.url),'utf8');assert.match(css,/map-screen/);assert.match(css,/campus-place-title/);
+});
+
+test('legacy extra-character visit dates migrate with the calendar without changing the source',()=>{
+ const legacy={...newGame('이전방문',43),chapter:3,classroom:newClassroomState()};delete legacy.storyRevision;delete legacy.mainStep;
+ legacy.classroom.bonds.juhan.days=[0,1,3];
+ legacy.classroom.bonds.minhyuk.days=[2];
+ const restored=restoreGame(legacy)!;assert.ok(restored);
+ assert.equal(restored.chapter,1);
+ assert.deepEqual(restored.classroom!.bonds.juhan.days,[0,1]);
+ assert.deepEqual(restored.classroom!.bonds.minhyuk.days,[0]);
+ assert.equal(bondAvailable(restored.classroom!,'juhan',1),false,'same new chapter stays visited');
+ assert.equal(bondAvailable(restored.classroom!,'juhan',3),true,'old day 3 cannot lock the new fourth chapter');
+ assert.deepEqual(legacy.classroom.bonds.juhan.days,[0,1,3]);
+ assert.deepEqual(restoreGame(restored),restored,'migration applies only once');
+ const broken=structuredClone(legacy);broken.classroom.bonds.juhan.days=[14];
+ assert.equal(restoreGame(broken),null,'invalid dates must not become a valid visit');
 });

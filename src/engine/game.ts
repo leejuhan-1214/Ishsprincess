@@ -196,9 +196,16 @@ export function restoreGame(value:unknown):GameState|null{
  if(value&&typeof value==='object'&&!Array.isArray(value)){
   const legacy=value as GameState;
   if(legacy.storyRevision!==2&&Number.isInteger(legacy.chapter)&&legacy.chapter>=0&&legacy.chapter<=13&&legacy.dialogueRevision===3){
-   const chapter=[0,0,0,1,1,1,2,2,2,3,3,4,4,4][legacy.chapter];
+   const chapterMap=[0,0,0,1,1,1,2,2,2,3,3,4,4,4];
+   const chapter=chapterMap[legacy.chapter];
    const cases=newClassroomState();
    if(legacy.classroom){for(const id of ['credit','absence','echo'])if(legacy.classroom.cases?.[id])cases.cases[id]=legacy.classroom.cases[id];cases.bonds=legacy.classroom.bonds;}
+   for(const id of ['juhan','minhyuk'] as const){
+    const bond=cases.bonds?.[id];
+    if(bond&&Array.isArray(bond.days)&&bond.days.every(day=>Number.isInteger(day)&&day>=0&&day<chapterMap.length)){
+     cases.bonds={...cases.bonds,[id]:{...bond,days:[...new Set(bond.days.map(day=>chapterMap[day]))]}};
+    }
+   }
    value={...legacy,storyRevision:2,mainStep:0,chapter,classroom:cases,...(legacy.segment==='common'?{phase:'story',line:0,response:null}:{} )};
   }
  }
