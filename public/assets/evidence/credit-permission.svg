@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title description">
+<title id="title">얼터에고 접근 권한</title><desc id="description">얼터에고는 이 폴더에서 읽기 전용이다. 파일 수정·업로드 권한은 없고 실행 기록도 16:50부터 시작한다.</desc>
+<style>text{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif}text{font-variant-numeric:tabular-nums}</style>
+<rect x="0" y="0" width="1200" height="820" rx="0" fill="#e9e7e3" stroke="none"/>
+<rect x="0" y="0" width="1200" height="126" rx="0" fill="#201e2c" stroke="none"/><rect x="0" y="0" width="10" height="126" rx="0" fill="#ce2b6a" stroke="none"/>
+<text x="48" y="33" font-size="17" fill="#e4d3de" font-weight="750" text-anchor="start">CASE 01 / CREDIT-PERMISSION</text>
+<text x="48" y="79" font-size="35" fill="#fffaf0" font-weight="800" text-anchor="start">얼터에고 접근 권한</text><text x="48" y="109" font-size="18" fill="#e1d9e1" font-weight="600" text-anchor="start">권한 및 실행 기록</text>
+<text x="1152" y="44" font-size="20" fill="#ffe9a1" font-weight="750" text-anchor="end">자료 03</text>
+<rect x="48" y="148" width="1104" height="407" rx="12" fill="#fffdf8" stroke="#c9c2cb"/><text x="88" y="178" font-size="22" fill="#ce2b6a" font-weight="800" text-anchor="start">얼터에고 / 폴더 접근</text>
+<rect x="88" y="196" width="321" height="188" rx="12" fill="#fffdf8" stroke="#cfc8d3"/><rect x="88" y="196" width="7" height="188" rx="2" fill="#ce2b6a" stroke="none"/><text x="112" y="232" font-size="19" fill="#565569" font-weight="700" text-anchor="start">읽기</text><text x="112" y="272" font-size="26" fill="#252533" font-weight="750" text-anchor="start">허용</text><rect x="440" y="196" width="321" height="188" rx="12" fill="#fffdf8" stroke="#cfc8d3"/><rect x="440" y="196" width="7" height="188" rx="2" fill="#ce2b6a" stroke="none"/><text x="464" y="232" font-size="19" fill="#565569" font-weight="700" text-anchor="start">파일 수정</text><text x="464" y="272" font-size="26" fill="#252533" font-weight="750" text-anchor="start">권한 없음</text><rect x="792" y="196" width="321" height="188" rx="12" fill="#fffdf8" stroke="#cfc8d3"/><rect x="792" y="196" width="7" height="188" rx="2" fill="#ce2b6a" stroke="none"/><text x="816" y="232" font-size="19" fill="#565569" font-weight="700" text-anchor="start">업로드</text><text x="816" y="272" font-size="26" fill="#252533" font-weight="750" text-anchor="start">권한 없음</text><rect x="88" y="409" width="1024" height="96" rx="12" fill="#e7e6ed" stroke="#c8c1d0"/><text x="115" y="447" font-size="20" fill="#565569" font-weight="750" text-anchor="start">프로세스 실행 기록</text><text x="115" y="481" font-size="29" fill="#252533" font-weight="750" text-anchor="start">얼터에고 최초 실행 16:50</text>
+<rect x="48" y="575" width="1104" height="212" rx="12" fill="#faf8f4" stroke="#ccc5cd"/><text x="76" y="610" font-size="19" fill="#ce2b6a" font-weight="800" text-anchor="start">관찰 내용</text>
+<text x="76" y="645" font-size="20" fill="#252533" font-weight="550" text-anchor="start">얼터에고는 이 폴더에서 읽기 전용이다. 파일 수정·업로드 권한은 없고 실행 기록도 16:50부터 시작한다.</text>
+
+<text x="600" y="809" font-size="13" fill="#565569" font-weight="500" text-anchor="middle">게임 내 가상 자료 · 실제 인물이나 학교의 기록이 아닙니다.</text>
+</svg>

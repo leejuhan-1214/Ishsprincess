@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title description">
+<title id="title">연결문 점검표</title><desc id="description">교실과 도서관 사이 보조문은 17:20~17:50 센서 점검 중이었다. 문 자체는 안에서 열 수 있었고 통행 금지 표시는 없었다.</desc>
+<style>text{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif}text{font-variant-numeric:tabular-nums}</style>
+<rect x="0" y="0" width="1200" height="820" rx="0" fill="#e9e7e3" stroke="none"/>
+<rect x="0" y="0" width="1200" height="126" rx="0" fill="#201e2c" stroke="none"/><rect x="0" y="0" width="10" height="126" rx="0" fill="#24639c" stroke="none"/>
+<text x="48" y="33" font-size="17" fill="#e4d3de" font-weight="750" text-anchor="start">CASE 03 / ABSENCE-DOOR</text>
+<text x="48" y="79" font-size="35" fill="#fffaf0" font-weight="800" text-anchor="start">연결문 점검표</text><text x="48" y="109" font-size="18" fill="#e1d9e1" font-weight="600" text-anchor="start">교실 ↔ 도서관 / 보조문</text>
+<text x="1152" y="44" font-size="20" fill="#ffe9a1" font-weight="750" text-anchor="end">자료 02</text>
+<rect x="48" y="148" width="1104" height="407" rx="12" fill="#fffdf8" stroke="#c9c2cb"/><text x="88" y="178" font-size="22" fill="#24639c" font-weight="800" text-anchor="start">연결문 센서 점검표</text>
+<rect x="88" y="194" width="295" height="123" rx="12" fill="#e4eaf1" stroke="#aebfce"/><text x="235" y="267" font-size="30" fill="#252533" font-weight="750" text-anchor="middle">교실</text><rect x="817" y="194" width="295" height="123" rx="12" fill="#e4eaf1" stroke="#aebfce"/><text x="964" y="267" font-size="30" fill="#252533" font-weight="750" text-anchor="middle">도서관</text><line x1="383" y1="257" x2="817" y2="257" stroke="#24639c" stroke-width="5"/><rect x="477" y="221" width="246" height="72" rx="12" fill="#fffdf8" stroke="#24639c"/><text x="600" y="266" font-size="24" fill="#252533" font-weight="750" text-anchor="middle">열 수 있는 보조문</text><rect x="88" y="341" width="498" height="151" rx="12" fill="#fffdf8" stroke="#cfc8d3"/><rect x="88" y="341" width="7" height="151" rx="2" fill="#24639c" stroke="none"/><text x="112" y="377" font-size="19" fill="#565569" font-weight="700" text-anchor="start">기록 센서 점검</text><text x="112" y="417" font-size="26" fill="#252533" font-weight="750" text-anchor="start">17:20 ~ 17:50</text><rect x="614" y="341" width="498" height="151" rx="12" fill="#fffdf8" stroke="#cfc8d3"/><rect x="614" y="341" width="7" height="151" rx="2" fill="#24639c" stroke="none"/><text x="638" y="377" font-size="19" fill="#565569" font-weight="700" text-anchor="start">통행 상태</text><text x="638" y="417" font-size="26" fill="#252533" font-weight="750" text-anchor="start">통행 금지 표시 없음</text>
+<rect x="48" y="575" width="1104" height="212" rx="12" fill="#faf8f4" stroke="#ccc5cd"/><text x="76" y="610" font-size="19" fill="#24639c" font-weight="800" text-anchor="start">관찰 내용</text>
+<text x="76" y="645" font-size="20" fill="#252533" font-weight="550" text-anchor="start">교실과 도서관 사이 보조문은 17:20~17:50 센서 점검 중이었다. 문 자체는 안에서 열 수 있었고 통행 금지</text><text x="76" y="672" font-size="20" fill="#252533" font-weight="550" text-anchor="start"> 표시는 없었다.</text>
+
+<text x="600" y="809" font-size="13" fill="#565569" font-weight="500" text-anchor="middle">게임 내 가상 자료 · 실제 인물이나 학교의 기록이 아닙니다.</text>
+</svg>

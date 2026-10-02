@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title description">
+<title id="title">최초 협박의 실행 시각</title><desc id="description">첫 사칭 메시지는 17:36 발송됐다. 얼터에고의 로컬 실행은 17:40 시작됐으며 이전 실행 프로세스는 없었다.</desc>
+<style>text{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif}text{font-variant-numeric:tabular-nums}</style>
+<rect x="0" y="0" width="1200" height="820" rx="0" fill="#e9e7e3" stroke="none"/>
+<rect x="0" y="0" width="1200" height="126" rx="0" fill="#201e2c" stroke="none"/><rect x="0" y="0" width="10" height="126" rx="0" fill="#a24830" stroke="none"/>
+<text x="48" y="33" font-size="17" fill="#e4d3de" font-weight="750" text-anchor="start">CASE 05 / ECHO-CLOCK</text>
+<text x="48" y="79" font-size="35" fill="#fffaf0" font-weight="800" text-anchor="start">최초 협박의 실행 시각</text><text x="48" y="109" font-size="18" fill="#e1d9e1" font-weight="600" text-anchor="start">프로세스 실행 시각</text>
+<text x="1152" y="44" font-size="20" fill="#ffe9a1" font-weight="750" text-anchor="end">자료 01</text>
+<rect x="48" y="148" width="1104" height="407" rx="12" fill="#fffdf8" stroke="#c9c2cb"/><text x="88" y="178" font-size="22" fill="#a24830" font-weight="800" text-anchor="start">최초 발신 / 로컬 실행</text>
+<line x1="190" y1="280" x2="1008" y2="280" stroke="#a24830" stroke-width="6"/><circle cx="235" cy="280" r="13" fill="#a24830"/><circle cx="965" cy="280" r="13" fill="#a24830"/><text x="235" y="239" font-size="51" fill="#a24830" font-weight="800" text-anchor="middle">17:36</text><text x="965" y="239" font-size="51" fill="#a24830" font-weight="800" text-anchor="middle">17:40</text><rect x="88" y="320" width="498" height="139" rx="12" fill="#fffdf8" stroke="#cfc8d3"/><rect x="88" y="320" width="7" height="139" rx="2" fill="#a24830" stroke="none"/><text x="112" y="356" font-size="19" fill="#565569" font-weight="700" text-anchor="start">첫 사칭 메시지</text><text x="112" y="396" font-size="26" fill="#252533" font-weight="750" text-anchor="start">발송</text><rect x="614" y="320" width="498" height="139" rx="12" fill="#fffdf8" stroke="#cfc8d3"/><rect x="614" y="320" width="7" height="139" rx="2" fill="#a24830" stroke="none"/><text x="638" y="356" font-size="19" fill="#565569" font-weight="700" text-anchor="start">로컬 얼터에고</text><text x="638" y="396" font-size="26" fill="#252533" font-weight="750" text-anchor="start">실행 시작</text><text x="600" y="506" font-size="28" fill="#252533" font-weight="750" text-anchor="middle">그 이전 얼터에고 실행 프로세스 없음</text>
+<rect x="48" y="575" width="1104" height="212" rx="12" fill="#faf8f4" stroke="#ccc5cd"/><text x="76" y="610" font-size="19" fill="#a24830" font-weight="800" text-anchor="start">관찰 내용</text>
+<text x="76" y="645" font-size="20" fill="#252533" font-weight="550" text-anchor="start">첫 사칭 메시지는 17:36 발송됐다. 얼터에고의 로컬 실행은 17:40 시작됐으며 이전 실행 프로세스는 없었</text><text x="76" y="672" font-size="20" fill="#252533" font-weight="550" text-anchor="start">다.</text>
+
+<text x="600" y="809" font-size="13" fill="#565569" font-weight="500" text-anchor="middle">게임 내 가상 자료 · 실제 인물이나 학교의 기록이 아닙니다.</text>
+</svg>

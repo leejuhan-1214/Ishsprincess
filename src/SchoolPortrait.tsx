@@ -7,5 +7,5 @@ export const portraitDimensions:Record<SchoolId,[number,number]>={
 };
 export function SchoolPortrait({id,className=''}:{id:SchoolId;className?:string}){
  const [width,height]=portraitDimensions[id];
- return <div role="img" aria-label={schoolById[id].name} className={`portrait school-portrait ${className}`} style={{'--portrait-ratio':`${width} / ${height}`,backgroundImage:`url(${import.meta.env.BASE_URL}assets/mystery/cast-${id}.png)`,backgroundSize:'cover',backgroundPosition:'center 12%'} as CSSProperties}/>;
+ return <div role="img" aria-label={schoolById[id].name} className={`portrait school-portrait ${className}`} style={{'--portrait-ratio':`${width} / ${height}`,backgroundImage:`url(${import.meta.env.BASE_URL}assets/mystery/cast-${id}.png${id==='juhan'?'?v=longhair-2':''})`,backgroundSize:'cover',backgroundPosition:'center 12%'} as CSSProperties}/>;
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title description">
+<title id="title">미디어실 사용표</title><desc id="description">16:35~16:45 사용표의 신청자는 전세계 한 명이다. 황민혁은 16:39에 스피커를 돌려주며 세계가 편집기 앞에 있는 것을 봤다.</desc>
+<style>text{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif}text{font-variant-numeric:tabular-nums}</style>
+<rect x="0" y="0" width="1200" height="820" rx="0" fill="#e9e7e3" stroke="none"/>
+<rect x="0" y="0" width="1200" height="126" rx="0" fill="#201e2c" stroke="none"/><rect x="0" y="0" width="10" height="126" rx="0" fill="#ce2b6a" stroke="none"/>
+<text x="48" y="33" font-size="17" fill="#e4d3de" font-weight="750" text-anchor="start">CASE 01 / CREDIT-WITNESS</text>
+<text x="48" y="79" font-size="35" fill="#fffaf0" font-weight="800" text-anchor="start">미디어실 사용표</text><text x="48" y="109" font-size="18" fill="#e1d9e1" font-weight="600" text-anchor="start">장소 신청 / 직접 관찰</text>
+<text x="1152" y="44" font-size="20" fill="#ffe9a1" font-weight="750" text-anchor="end">자료 05</text>
+<rect x="48" y="148" width="1104" height="407" rx="12" fill="#fffdf8" stroke="#c9c2cb"/><text x="88" y="178" font-size="22" fill="#ce2b6a" font-weight="800" text-anchor="start">미디어실 사용표</text>
+<rect x="88" y="196" width="1024" height="68" rx="6" fill="#f0edf1" stroke="#d8d4dd"/><text x="106" y="224" font-size="20" fill="#565569" font-weight="700" text-anchor="start">사용 시간</text><text x="353" y="224" font-size="24" fill="#252533" font-weight="650" text-anchor="start">16:35 ~ 16:45</text><rect x="88" y="269" width="1024" height="68" rx="6" fill="#faf8f3" stroke="#d8d4dd"/><text x="106" y="297" font-size="20" fill="#565569" font-weight="700" text-anchor="start">신청자</text><text x="353" y="297" font-size="24" fill="#252533" font-weight="650" text-anchor="start">전세계</text><rect x="88" y="342" width="1024" height="68" rx="6" fill="#f0edf1" stroke="#d8d4dd"/><text x="106" y="370" font-size="20" fill="#565569" font-weight="700" text-anchor="start">16:39 / 황민혁</text><text x="353" y="370" font-size="24" fill="#252533" font-weight="650" text-anchor="start">스피커를 반환하며 편집기 앞의 세계를 봄</text><rect x="88" y="415" width="1024" height="68" rx="6" fill="#faf8f3" stroke="#d8d4dd"/><text x="106" y="443" font-size="20" fill="#565569" font-weight="700" text-anchor="start">관찰 범위</text><text x="353" y="443" font-size="24" fill="#252533" font-weight="650" text-anchor="start">수정 버튼을 누르는 모습은 보지 못함</text>
+<rect x="48" y="575" width="1104" height="212" rx="12" fill="#faf8f4" stroke="#ccc5cd"/><text x="76" y="610" font-size="19" fill="#ce2b6a" font-weight="800" text-anchor="start">관찰 내용</text>
+<text x="76" y="645" font-size="20" fill="#252533" font-weight="550" text-anchor="start">16:35~16:45 사용표의 신청자는 전세계 한 명이다. 황민혁은 16:39에 스피커를 돌려주며 세계가 편집기 앞</text><text x="76" y="672" font-size="20" fill="#252533" font-weight="550" text-anchor="start">에 있는 것을 봤다.</text>
+
+<text x="600" y="809" font-size="13" fill="#565569" font-weight="500" text-anchor="middle">게임 내 가상 자료 · 실제 인물이나 학교의 기록이 아닙니다.</text>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title description">
+<title id="title">메모 폴더 동기화</title><desc id="description">시 초안은 개인 메모 폴더의 자동 동기화로 작업 폴더에 복사됐다. 읽기 권한은 있지만 공개 사용 허락 필드는 없다.</desc>
+<style>text{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif}text{font-variant-numeric:tabular-nums}</style>
+<rect x="0" y="0" width="1200" height="820" rx="0" fill="#e9e7e3" stroke="none"/>
+<rect x="0" y="0" width="1200" height="126" rx="0" fill="#201e2c" stroke="none"/><rect x="0" y="0" width="10" height="126" rx="0" fill="#177766" stroke="none"/>
+<text x="48" y="33" font-size="17" fill="#e4d3de" font-weight="750" text-anchor="start">CASE 04 / POEM-SYNC</text>
+<text x="48" y="79" font-size="35" fill="#fffaf0" font-weight="800" text-anchor="start">메모 폴더 동기화</text><text x="48" y="109" font-size="18" fill="#e1d9e1" font-weight="600" text-anchor="start">파일 위치 / 사용 동의</text>
+<text x="1152" y="44" font-size="20" fill="#ffe9a1" font-weight="750" text-anchor="end">자료 03</text>
+<rect x="48" y="148" width="1104" height="407" rx="12" fill="#fffdf8" stroke="#c9c2cb"/><text x="88" y="178" font-size="22" fill="#177766" font-weight="800" text-anchor="start">개인 메모의 동기화</text>
+<rect x="88" y="192" width="498" height="156" rx="12" fill="#fffdf8" stroke="#cfc8d3"/><rect x="88" y="192" width="7" height="156" rx="2" fill="#177766" stroke="none"/><text x="112" y="228" font-size="19" fill="#565569" font-weight="700" text-anchor="start">원본 위치</text><text x="112" y="268" font-size="26" fill="#252533" font-weight="750" text-anchor="start">개인 메모 폴더</text><rect x="614" y="192" width="498" height="156" rx="12" fill="#fffdf8" stroke="#cfc8d3"/><rect x="614" y="192" width="7" height="156" rx="2" fill="#177766" stroke="none"/><text x="638" y="228" font-size="19" fill="#565569" font-weight="700" text-anchor="start">자동 동기화 사본</text><text x="638" y="268" font-size="26" fill="#252533" font-weight="750" text-anchor="start">작업 폴더</text><line x1="586" y1="269" x2="614" y2="269" stroke="#177766" stroke-width="5"/><rect x="88" y="379" width="1024" height="65" rx="6" fill="#f0edf1" stroke="#d8d4dd"/><text x="106" y="407" font-size="20" fill="#565569" font-weight="700" text-anchor="start">파일 읽기</text><text x="353" y="407" font-size="24" fill="#252533" font-weight="650" text-anchor="start">권한 있음</text><rect x="88" y="449" width="1024" height="65" rx="6" fill="#faf8f3" stroke="#d8d4dd"/><text x="106" y="477" font-size="20" fill="#565569" font-weight="700" text-anchor="start">공개 사용 허락</text><text x="353" y="477" font-size="24" fill="#252533" font-weight="650" text-anchor="start">허락 필드 없음</text>
+<rect x="48" y="575" width="1104" height="212" rx="12" fill="#faf8f4" stroke="#ccc5cd"/><text x="76" y="610" font-size="19" fill="#177766" font-weight="800" text-anchor="start">관찰 내용</text>
+<text x="76" y="645" font-size="20" fill="#252533" font-weight="550" text-anchor="start">시 초안은 개인 메모 폴더의 자동 동기화로 작업 폴더에 복사됐다. 읽기 권한은 있지만 공개 사용 허락 필</text><text x="76" y="672" font-size="20" fill="#252533" font-weight="550" text-anchor="start">드는 없다.</text>
+
+<text x="600" y="809" font-size="13" fill="#565569" font-weight="500" text-anchor="middle">게임 내 가상 자료 · 실제 인물이나 학교의 기록이 아닙니다.</text>
+</svg>

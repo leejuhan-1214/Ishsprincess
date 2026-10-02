@@ -6,7 +6,7 @@ export type ExtraId='juhan'|'minhyuk';
 export type SchoolId=CharacterId|ExtraId;
 export type SchoolLine={speaker:SchoolId|'player'|'narrator'|'alter';text:string};
 export const extraCharacters:(Omit<Character,'id'>&{id:ExtraId})[]=[
- {id:'juhan',name:'이주한',role:'프로그래밍 · 얼터에고 개발자',tag:'용기는, 원본으로 남기는 것',color:'#8dbcae',specialLabel:'자기 확신',bio:'부드러운 밤색 단발과 조용한 말투의 여학생. 오래 겪은 놀림 때문에 자신의 이야기를 먼저 꺼내는 데 서툴지만, 코드를 설명할 때만큼은 흔들리지 않는다. 자신이 만든 AI 얼터에고에 말투와 연구 기록을 남겼다. AI가 대신 말하는 것과 스스로 말하는 것은 다르다는 사실을 배우고 있다.',quote:'내가 어떤 모습인지보다… 내가 끝까지 말하는 걸 봐 줄래?',location:'computer'},
+ {id:'juhan',name:'이주한',role:'프로그래밍 · 얼터에고 개발자',tag:'용기는, 원본으로 남기는 것',color:'#8dbcae',specialLabel:'자기 확신',bio:'긴 밤색 머리에 흰 꽃과 회로 모양 머리핀을 꽂은 여학생. 청록색 카디건과 리본 교복, 늘 안고 다니는 노트북이 트레이드마크다. 조용한 말투에 자신의 이야기를 먼저 꺼내는 데는 서툴지만, 코드를 설명할 때만큼은 흔들리지 않는다. 자신이 만든 AI 얼터에고에 말투와 연구 기록을 남겼다. AI가 대신 말하는 것과 스스로 말하는 것은 다르다는 사실을 배우고 있다.',quote:'내가 어떤 모습인지보다… 내가 끝까지 말하는 걸 봐 줄래?',location:'computer'},
  {id:'minhyuk',name:'황민혁',role:'1학년 1반 반장 · 초고교급 풍기위원',tag:'규칙 밖에서 배운 첫 약속',color:'#dfab73',specialLabel:'원칙',bio:'어두운 피부와 단정한 포니테일의 여학생 반장. 각 잡힌 흰 제복, 붉은 완장과 색인으로 가득한 규율 수첩이 트레이드마크다. 출석과 안전 규칙에 엄격하고, 노력을 가볍게 취급하는 말을 특히 싫어한다. 부당한 대우 앞에서는 누구보다 크게 항의하지만, 사적인 칭찬을 받으면 갑자기 말수가 줄어든다. 사람을 지키려 만든 규칙이 사람을 밀어내지 않도록 고민한다.',quote:'원칙은 사람을 지키기 위해 있다! …그러니까 네 마음도 예외로 두지 않겠다.',location:'classroom'},
 ];
 export const schoolCharacters=[...characters,...extraCharacters];

@@ -9,3 +9,5 @@ await import('../tests/classroom.test.ts');
 await import('../tests/schoolFlow.test.ts');
 await import('../tests/portraitFrames.test.ts');
 await import('../tests/campusMap.test.ts');
+await import('../tests/evidenceVisuals.test.ts');
+await import('../tests/investigationUI.test.ts');

@@ -1,5 +1,21 @@
 import type {CharacterId,Line,Scene} from '../types';
 type Bond={affection:number;trust:number;jealousy:number;special:number};
+const pendingThreads=[
+ {title:'지워진 크레딧',detail:'공개된 노래에서 한 사람의 이름이 빠졌다. 허락받은 작업 자료를 직접 찾으며 원본과 공개본의 차이를 확인하고 있다.'},
+ {title:'멈춘 영상의 99점',detail:'멈춘 춤 영상 옆에 99점이 표시됐다. 점수와 영상이 같은 시도와 같은 조건을 가리키는지는 아직 조사 중이다.'},
+ {title:'닫힌 교실의 결석자',detail:'반장의 위치를 둘러싼 소문과 출입 기록이 엇갈렸다. 교사의 안전 확인을 우선하고, 확인된 사실과 남은 물음을 나눠 적고 있다.'},
+ {title:'전시에 걸린 비공개 한 줄',detail:'태훈의 미공개 문장과 같은 한 줄이 전시 포스터에 나타났다. 파일의 출처와 공개 허락이 어떻게 전달됐는지 현장에서 확인하고 있다.'},
+ {title:'빌린 얼굴과 마지막 약속',detail:'익숙한 얼굴이 붙은 협박 알림은 교사가 먼저 중지했다. 보존된 파일과 실행 기록을 찾아 화면의 이름만으로 책임을 정하지 않기로 했다.'},
+];
+export const investigationThread=(chapter:number)=>pendingThreads[Math.max(0,Math.min(4,chapter))];
+const pending:Record<CharacterId,string[]>={
+ world:['영상에 보이는 이름만으로 누가 했다고 정하지는 마. 원본을 확인하고도 궁금한 게 있으면 내 얼굴 보고 물어봐.','99라는 숫자는 눈에 먼저 들어오네. 그래도 기준을 보기 전엔 그 숫자로 태우를 말하지 않을래.','민혁 이름으로 온 알림만 계속 보게 돼. 먼저 선생님이 확인한 사실부터 듣고 싶어.','누구 편을 들어야 하냐고 묻기 전에 어떤 허락이 있었는지 들어 보자. 네가 내 편이라고 증거를 바꾸진 않았으면 해.','그 얼굴을 보니까 나도 겁먹었어. 발송이 멈춘 지금은 누가 뭘 실행했는지 차근차근 확인하고 싶어.'],
+ junyeon:['이름 하나가 없다고 그 사람이 아무것도 안 한 건 아니겠지. 기록을 먼저 찾아 줘. 내 생각은 그다음에 말할게.','태우가 춤을 잘 추는지하고 이 표가 맞는지는 다른 질문이지? 내 기억도 자료랑 따로 적어 놓을게.','누가 어디 있었는지 추측하기 전에 내가 직접 본 시간부터 정리할게. 헷갈리는 건 헷갈린다고 적고.','공유 폴더에서 찾았다는 말만 듣고 나도 다 허락한 줄 알았어. 아직 결론 말고 확인할 질문으로 남길래.','파일을 돌려받는 것과 프로그램을 다시 켜는 건 다를 수 있겠네. 요청한 항목을 같이 보고 싶어.'],
+ hyunsol:['말이 정확해 보이는 것하고 확인된 사실은 달라. 원본과 공개본을 각각 보자.','기준을 모르면 숫자만으로 비교할 수 없어. 재계산도 어떤 조건으로 하는지부터 확인하자.','허가받은 점검이어도 기록 범위는 따로 봐야 해. 내가 설명한 문장도 확인 대상이고.','출처하고 허락은 다른 칸에 적자. 읽을 수 있었다는 사실로 게시해도 됐다고 결론 내리진 말고.','얼굴 이미지와 실행 파일은 따로 확인하자. 모르는 시각을 추측으로 채우진 않을게.'],
+ taewoo:['내가 잘 보이는지만 보느라 마지막 화면을 놓쳤어. 다시 틀어 주면 이번엔 끝까지 볼게.','좋은 기록도 있고 멈춘 날도 있어. 그 두 날을 같은 영상이라고 하진 말고, 원자료부터 같이 봐 줘.','걱정되니까 자꾸 단정적인 말이 나와. 지금은 선생님 확인을 기다리면서 내가 본 것만 말할게.','시 한 줄이 누구를 좋아한다는 답은 아니잖아. 태훈이 직접 허락한 범위부터 묻자.','주한 얼굴이 뜬다고 바로 주한이 말한 거라고 생각했어. 아직 그건 확인할 질문이지, 답은 아니네.'],
+ taehun:['없어진 이름을 먼저 보자. 누군가의 마음까지 빈칸에 대신 적어 넣지는 말고.','오늘 점수 옆에 조건을 적어 놓고 싶어. 같은 자리에 놓인 숫자라도 같은 방식으로 잰 건 아닐 수 있으니까.','일지의 빈 시각은 아직 모르는 칸이야. 기다리는 동안 그 칸을 소문으로 채우지는 말자.','그 문장은 내가 아직 공개하지 않겠다고 한 초안이야. 어디서 어떻게 전달됐는지, 내 대답도 자료와 함께 들어 줘.','글쓴이의 이름과 화면의 얼굴이 다를 수도 있네. 지금은 문장이 나온 경로부터 따라가 보자.'],
+ seoyul:['내가 공개에 동의한 프로젝트는 보여 줄게. 이름이 빠진 이유는 파일을 본 다음에 물어봐 줘.','같은 표에 있는 색도 기준이 다르면 비교가 어긋나. 태우의 숫자도 그 기준부터 확인하자.','사진에 잠긴 문이 보인다고 그 안에 누가 있는지까지 보인 건 아니야. 보이는 부분과 모르는 부분을 나눠 그리자.','파일을 본 경로하고 사용할 수 있다고 생각한 이유를 각각 설명할게. 태훈이 직접 한 대답도 끝까지 듣고.','내가 보는 얼굴과 실제로 돌아가는 프로그램이 같은지는 아직 모르겠어. 이미지만 보고 결론 내리진 않을게.'],
+};
 const after:Record<CharacterId,string[]>={
  world:['내 이름만 남겼던 영상은 고쳤어. 사과했다고 서율이 바로 웃어 주길 기대하진 않을래.','태우가 점수표 지우는 걸 봤어. 난 네 일정표에 내 이름만 쓰려던 걸 고치고 싶네.','민혁이 안 보일 때 알림 이름부터 믿었어. 누군가 날 보고 있다는 생각도 먼저 물어봐야겠네.','서율도 남의 문장으로 빈칸 채우려 했어. 우리 사이는 누구 편인지로 채우지 말자.','얼터에고 메시지는 멈췄어. 네가 다음에 올지는 프로그램 대신 나한테 말해 줘.'],
  junyeon:['서율이 지워진 이름을 직접 말하는 걸 봤어. 내 노트도 내 이름으로 보여 주고 싶어.','높은 숫자만 남기면 낮은 날이 없어지는 줄 알았어. 태우도 무서웠다는 게 좀 기억나.','보건실 간 걸 네가 모르면 걱정한다는 건 알았어. 다음엔 안전하다는 말부터 할게.','태훈이 아직 아니라고 한 말도 남겨야 했네. 나도 모르는 항목엔 바로 대답 안 하려고.','내 복구 요청에 책임이 있는 것까지 적었어. 협박하려던 마음은 아니었다는 것도. 다음엔 범위부터 물어볼게.'],
@@ -11,16 +27,16 @@ const after:Record<CharacterId,string[]>={
 const mistakes:[string,CharacterId,string][]=[
  ['public-humiliation','junyeon','그때 내 실수로 웃겼던 말은 아직 기억해. 오늘 내 설명은 끝까지 들어 줬으면 해.'],
  ['art-private-leak','seoyul','내 사적인 그림을 공개한 일도 아직 남아 있어. 오늘은 무엇을 보여 줄지 내가 정할게.'],
- ['score-shamed','taewoo','내가 멈춘 영상을 웃긴 제목으로 보낸 건 정정한 표랑 다른 상처였어. 그건 없던 일은 아니야.'],
+ ['score-shamed','taewoo','내가 멈춘 영상을 웃긴 제목으로 보낸 건 표가 맞는지와 다른 상처였어. 그건 없던 일은 아니야.'],
  ['absence-rumor','world','민혁 안전을 확인하고도 실종 소문을 보냈잖아. 이번에는 이름보다 사실을 먼저 보자.'],
  ['secret-promise','world','같은 시간을 다른 사람에게도 약속했지. 오늘은 기다리라는 말보다 가능한 날짜를 듣고 싶어.'],
  ['poem-exposed','taehun','내 초안을 고백이라고 밖에 말한 일은 아직 불편해. 지금 문장의 주어는 내가 고르게 해 줘.'],
 ];
-export function caseAfterthought(id:CharacterId,chapter:number,flags:string[]){
+export function caseAfterthought(id:CharacterId,chapter:number,flags:string[],investigating=false){
  const remembered=mistakes.find(([flag,person])=>person===id&&flags.some(value=>value===flag||value.startsWith(flag+':')));
- return remembered?.[2]??after[id][Math.max(0,Math.min(4,chapter))];
+ return remembered?.[2]??(investigating?pending:after)[id][Math.max(0,Math.min(4,chapter))];
 }
-export function schoolAfterthought(id:CharacterId,chapter:number,affection:number,trust:number,flags:string[]){
+export function schoolAfterthought(id:CharacterId,chapter:number,affection:number,trust:number,flags:string[],investigating=false){
  const low=trust<30,close=affection>=65&&trust>=55;
  const ending:Record<CharacterId,[string,string,string]>={
   world:['오늘은 네 말 바로 믿진 못하겠어. 지킬 날짜부터 하나 정해 줘.','그다음 얘기는 너한테 먼저 하고 싶어. 조금 더 있다 가.','그다음 약속도 네가 와서 물어봐 줬으면 해.'],
@@ -30,7 +46,8 @@ export function schoolAfterthought(id:CharacterId,chapter:number,affection:numbe
   taehun:['오늘 문장은 내 노트에 둘게. 읽을지는 다음에 정하고.','네가 오면 흐린 날도 기다릴 이유가 생겨.','오늘 일지 동행자 칸에 네 이름 써도 돼?'],
   seoyul:['오늘은 보여 준 그림 안에서만 얘기해 줘.','다음 그림은 전시 말고 너한테 먼저 보여 주고 싶어.','네가 가장 오래 본 색을 한 칸 더 남겨 둘게.'],
  };
- return `${caseAfterthought(id,chapter,flags)} ${ending[id][low?0:close?1:2]}`;
+ const personal=id==='hyunsol'&&close&&investigating?'아직 확인할 자료가 남았지만, 네가 옆에 있는 시간은 따로 좋네.':ending[id][low?0:close?1:2];
+ return `${caseAfterthought(id,chapter,flags,investigating)} ${personal}`;
 }
 type Beat={focus:CharacterId;low:string;high:string;choice:string;closeChoice:string;reply:string;closeReply:string};
 const beats:Record<string,Beat>={

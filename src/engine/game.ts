@@ -13,6 +13,7 @@ import {selectEpisode,pendingEpisode,episodeScene,episodePendingFlag,episodeSeen
 import type { CharacterId, GlobalKey, StatKey, Line, Effect, Scene, LocationId } from '../types';
 
 import {newClassroomState,isClassroomState,type ClassroomState} from './classroomMystery';
+import {caseFiles} from '../data/classroomMystery';
 
 export const routes = {...routesA,...routesB} as Record<CharacterId,Scene[]>;
 export const ids=characters.map(c=>c.id);
@@ -27,7 +28,7 @@ export function newGame(name:string,seed:number,ngPlus=false):GameState{
  const specials=[15,65,25,35,10,20];
  return {version:1,dialogueRevision:3,storyRevision:2,mainStep:0,name:name.trim(),seed:seed>>>0,phase:'story',segment:'common',chapter:0,route:null,routeChapter:0,line:0,response:null,stats:Object.fromEntries(ids.map((id,i)=>[id,{affection:10,trust:5,jealousy:0,special:specials[i]}])) as Record<CharacterId,Stats>,global:{harmony:40,fair:10,reputation:0,ethics:50,safety:50},flags:[],visits:Object.fromEntries(ids.map(id=>[id,0])) as Record<CharacterId,number>,visitor:null,visitLocation:null,actions:3,visitedToday:[],backlog:[],ending:null,haremOffered:false,haremChance:0,ngPlus,date:new Date().toISOString()};
 }
-function talkContext(s:GameState,id=s.visitor!):TalkContext{return {id,location:s.visitLocation??characterById[id].location,chapter:s.chapter,visit:s.visits[id],stats:s.stats[id],flags:s.flags,seed:s.seed};}
+function talkContext(s:GameState,id=s.visitor!):TalkContext{return {id,location:s.visitLocation??characterById[id].location,chapter:s.chapter,visit:s.visits[id],stats:s.stats[id],flags:s.flags,seed:s.seed,investigating:s.classroom?.cases[caseFiles[s.chapter]?.id]?.phase==='investigation'};}
 export function activeScene(s:GameState):Scene{
  if(s.segment==='hangout'&&s.visitor){
   const ctx=talkContext(s),episode=pendingEpisode(s.flags,s.visitor);
@@ -112,10 +113,10 @@ export const nextDay=(s:GameState,meta:Meta=blankMeta()):GameState=>{
  return {...s,phase:'story',segment:'common',chapter:s.chapter+1,mainStep:0,line:0,response:null,visitor:null,visitLocation:null};
 };
 export const locationOf=(s:GameState,id:CharacterId)=>scheduledLocation(id,s.chapter,s.actions,s.seed);
-export function visit(s:GameState,id:CharacterId,place?:LocationId):GameState{
+export function visit(s:GameState,id:CharacterId,place?:LocationId,expectedPlace?:LocationId):GameState{
  if(s.phase!=='map'||s.actions<=0||s.visitedToday.includes(id))return s;
- const expected=locationOf(s,id),location=place??expected;if(place&&place!==expected)return s;
- const ctx:TalkContext={id,location,chapter:s.chapter,visit:s.visits[id],stats:s.stats[id],flags:s.flags,seed:s.seed};
+ const expected=expectedPlace??locationOf(s,id),location=place??expected;if(place&&place!==expected)return s;
+ const ctx:TalkContext={id,location,chapter:s.chapter,visit:s.visits[id],stats:s.stats[id],flags:s.flags,seed:s.seed,investigating:s.classroom?.cases[caseFiles[s.chapter]?.id]?.phase==='investigation'};
  const episode=selectEpisode(ctx),event=episode?null:selectSuddenEvent(ctx);
  const flags=episode?[...s.flags,episodePendingFlag(episode.id)]:event?[...s.flags,`pending-event:${id}:${event}`]:s.flags;
  return {...s,phase:place?'activity':'story',segment:'hangout',visitor:id,visitLocation:location,flags,line:0,response:null};

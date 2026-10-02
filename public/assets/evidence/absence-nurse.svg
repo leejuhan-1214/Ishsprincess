@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title description">
+<title id="title">보건실 확인서</title><desc id="description">보건교사 확인: 17:29 민혁이 어지럼증을 느낀 준연과 함께 방문했다. 17:46까지 두 사람 모두 보건실에 있었다.</desc>
+<style>text{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif}text{font-variant-numeric:tabular-nums}</style>
+<rect x="0" y="0" width="1200" height="820" rx="0" fill="#e9e7e3" stroke="none"/>
+<rect x="0" y="0" width="1200" height="126" rx="0" fill="#201e2c" stroke="none"/><rect x="0" y="0" width="10" height="126" rx="0" fill="#24639c" stroke="none"/>
+<text x="48" y="33" font-size="17" fill="#e4d3de" font-weight="750" text-anchor="start">CASE 03 / ABSENCE-NURSE</text>
+<text x="48" y="79" font-size="35" fill="#fffaf0" font-weight="800" text-anchor="start">보건실 확인서</text><text x="48" y="109" font-size="18" fill="#e1d9e1" font-weight="600" text-anchor="start">보건교사 확인 자료</text>
+<text x="1152" y="44" font-size="20" fill="#ffe9a1" font-weight="750" text-anchor="end">자료 03</text>
+<rect x="48" y="148" width="1104" height="407" rx="12" fill="#fffdf8" stroke="#c9c2cb"/><text x="88" y="178" font-size="22" fill="#24639c" font-weight="800" text-anchor="start">보건실 방문 확인</text>
+<rect x="88" y="196" width="1024" height="68" rx="6" fill="#f0edf1" stroke="#d8d4dd"/><text x="106" y="224" font-size="20" fill="#565569" font-weight="700" text-anchor="start">17:29</text><text x="353" y="224" font-size="24" fill="#252533" font-weight="650" text-anchor="start">황민혁 · 방준연 함께 방문</text><rect x="88" y="269" width="1024" height="68" rx="6" fill="#faf8f3" stroke="#d8d4dd"/><text x="106" y="297" font-size="20" fill="#565569" font-weight="700" text-anchor="start">방문 사유</text><text x="353" y="297" font-size="24" fill="#252533" font-weight="650" text-anchor="start">준연의 어지럼증</text><rect x="88" y="342" width="1024" height="68" rx="6" fill="#f0edf1" stroke="#d8d4dd"/><text x="106" y="370" font-size="20" fill="#565569" font-weight="700" text-anchor="start">17:46까지</text><text x="353" y="370" font-size="24" fill="#252533" font-weight="650" text-anchor="start">두 학생 모두 보건실에 있음</text><rect x="88" y="415" width="1024" height="68" rx="6" fill="#faf8f3" stroke="#d8d4dd"/><text x="106" y="443" font-size="20" fill="#565569" font-weight="700" text-anchor="start">확인자</text><text x="353" y="443" font-size="24" fill="#252533" font-weight="650" text-anchor="start">보건교사</text><rect x="887" y="476" width="204" height="58" rx="2" fill="#e1eaf3" stroke="#7a9ab7"/><text x="989" y="514" font-size="24" fill="#24639c" font-weight="800" text-anchor="middle">교사 확인</text>
+<rect x="48" y="575" width="1104" height="212" rx="12" fill="#faf8f4" stroke="#ccc5cd"/><text x="76" y="610" font-size="19" fill="#24639c" font-weight="800" text-anchor="start">관찰 내용</text>
+<text x="76" y="645" font-size="20" fill="#252533" font-weight="550" text-anchor="start">보건교사 확인: 17:29 민혁이 어지럼증을 느낀 준연과 함께 방문했다. 17:46까지 두 사람 모두 보건실에 </text><text x="76" y="672" font-size="20" fill="#252533" font-weight="550" text-anchor="start">있었다.</text>
+
+<text x="600" y="809" font-size="13" fill="#565569" font-weight="500" text-anchor="middle">게임 내 가상 자료 · 실제 인물이나 학교의 기록이 아닙니다.</text>
+</svg>

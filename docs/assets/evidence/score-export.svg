@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title description">
+<title id="title">내보내기 화면 녹화</title><desc id="description">태우는 기준이 개인 기록인 화면을 보고 16:22 순위 표를 내보냈다. 설명의 “동일 기준” 문구는 유지됐다. 원자료에는 손대지 않았다.</desc>
+<style>text{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif}text{font-variant-numeric:tabular-nums}</style>
+<rect x="0" y="0" width="1200" height="820" rx="0" fill="#e9e7e3" stroke="none"/>
+<rect x="0" y="0" width="1200" height="126" rx="0" fill="#201e2c" stroke="none"/><rect x="0" y="0" width="10" height="126" rx="0" fill="#946011" stroke="none"/>
+<text x="48" y="33" font-size="17" fill="#e4d3de" font-weight="750" text-anchor="start">CASE 02 / SCORE-EXPORT</text>
+<text x="48" y="79" font-size="35" fill="#fffaf0" font-weight="800" text-anchor="start">내보내기 화면 녹화</text><text x="48" y="109" font-size="18" fill="#e1d9e1" font-weight="600" text-anchor="start">순위 표 공개 화면</text>
+<text x="1152" y="44" font-size="20" fill="#ffe9a1" font-weight="750" text-anchor="end">자료 04</text>
+<rect x="48" y="148" width="1104" height="407" rx="12" fill="#fffdf8" stroke="#c9c2cb"/><text x="88" y="178" font-size="22" fill="#946011" font-weight="800" text-anchor="start">내보내기 화면 기록</text>
+<rect x="88" y="190" width="1024" height="330" rx="12" fill="#282534" stroke="#65566c"/><text x="117" y="232" font-size="26" fill="#fff" font-weight="750" text-anchor="start">순위 표 내보내기 · 16:22</text><rect x="112" y="256" width="477" height="159" rx="12" fill="#fffdf8" stroke="#cfc8d3"/><rect x="112" y="256" width="7" height="159" rx="2" fill="#946011" stroke="none"/><text x="136" y="292" font-size="19" fill="#565569" font-weight="700" text-anchor="start">reference</text><text x="136" y="332" font-size="26" fill="#252533" font-weight="750" text-anchor="start">개인 기록 기준</text><rect x="616" y="256" width="471" height="159" rx="12" fill="#fffdf8" stroke="#cfc8d3"/><rect x="616" y="256" width="7" height="159" rx="2" fill="#946011" stroke="none"/><text x="640" y="292" font-size="19" fill="#565569" font-weight="700" text-anchor="start">공개 설명</text><text x="640" y="332" font-size="26" fill="#252533" font-weight="750" text-anchor="start">동일 기준</text><text x="117" y="477" font-size="25" fill="#f4e8cb" font-weight="700" text-anchor="start">원자료 변경 없음</text><text x="1084" y="477" font-size="22" fill="#f4e8cb" font-weight="750" text-anchor="end">EXPORT</text>
+<rect x="48" y="575" width="1104" height="212" rx="12" fill="#faf8f4" stroke="#ccc5cd"/><text x="76" y="610" font-size="19" fill="#946011" font-weight="800" text-anchor="start">관찰 내용</text>
+<text x="76" y="645" font-size="20" fill="#252533" font-weight="550" text-anchor="start">태우는 기준이 개인 기록인 화면을 보고 16:22 순위 표를 내보냈다. 설명의 “동일 기준” 문구는 유지됐다</text><text x="76" y="672" font-size="20" fill="#252533" font-weight="550" text-anchor="start">. 원자료에는 손대지 않았다.</text>
+
+<text x="600" y="809" font-size="13" fill="#565569" font-weight="500" text-anchor="middle">게임 내 가상 자료 · 실제 인물이나 학교의 기록이 아닙니다.</text>
+</svg>

@@ -10,4 +10,6 @@ test('campus labels distinguish completed visits from unavailable students',()=>
  assert.equal(campusPlaceStatus([{...person,visited:true},{...person,id:'seoyul'}],false),'지금은 만날 수 없어요');
  assert.equal(campusPlaceStatus([],false),'장소 살펴보기');
  assert.equal(campusPlaceStatus([{...person,available:true}],true),'관계 조건 필요');
+ assert.equal(campusPlaceStatus([{...person,id:'juhan',waiting:true}],false),'재판 후 약속');
+ assert.equal(campusPlaceStatus([{...person,id:'juhan',waiting:true},{...person,available:true}],false),'만남 가능 1명');
 });

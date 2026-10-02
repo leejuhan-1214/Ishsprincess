@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title description">
+<title id="title">복구 작업의 체크 항목</title><desc id="description">준연이 제출한 복구 요청에는 “예약 작업도 함께 복원”이 선택돼 있다. 17:30 재개됐고 작업 설명을 펼친 기록은 없다.</desc>
+<style>text{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif}text{font-variant-numeric:tabular-nums}</style>
+<rect x="0" y="0" width="1200" height="820" rx="0" fill="#e9e7e3" stroke="none"/>
+<rect x="0" y="0" width="1200" height="126" rx="0" fill="#201e2c" stroke="none"/><rect x="0" y="0" width="10" height="126" rx="0" fill="#a24830" stroke="none"/>
+<text x="48" y="33" font-size="17" fill="#e4d3de" font-weight="750" text-anchor="start">CASE 05 / ECHO-RESUME</text>
+<text x="48" y="79" font-size="35" fill="#fffaf0" font-weight="800" text-anchor="start">복구 작업의 체크 항목</text><text x="48" y="109" font-size="18" fill="#e1d9e1" font-weight="600" text-anchor="start">방준연 제출 / 복원 범위</text>
+<text x="1152" y="44" font-size="20" fill="#ffe9a1" font-weight="750" text-anchor="end">자료 04</text>
+<rect x="48" y="148" width="1104" height="407" rx="12" fill="#fffdf8" stroke="#c9c2cb"/><text x="88" y="178" font-size="22" fill="#a24830" font-weight="800" text-anchor="start">복구 요청의 선택 항목</text>
+<rect x="88" y="190" width="1024" height="126" rx="12" fill="#faf4e8" stroke="#cabaa0"/><rect x="111" y="222" width="37" height="37" rx="5" fill="#a24830" stroke="none"/><path d="M120 239 L129 248 L142 230" stroke="#fff" stroke-width="4" fill="none"/><text x="165" y="250" font-size="32" fill="#252533" font-weight="800" text-anchor="start">예약 작업도 함께 복원</text><text x="111" y="291" font-size="20" fill="#565569" font-weight="650" text-anchor="start">선택된 체크 항목</text><rect x="88" y="338" width="1024" height="55" rx="6" fill="#f0edf1" stroke="#d8d4dd"/><text x="106" y="366" font-size="20" fill="#565569" font-weight="700" text-anchor="start">17:30</text><text x="353" y="366" font-size="24" fill="#252533" font-weight="650" text-anchor="start">예약 작업 재개</text><rect x="88" y="398" width="1024" height="55" rx="6" fill="#faf8f3" stroke="#d8d4dd"/><text x="106" y="426" font-size="20" fill="#565569" font-weight="700" text-anchor="start">작업 설명</text><text x="353" y="426" font-size="24" fill="#252533" font-weight="650" text-anchor="start">펼친 기록 없음</text><rect x="88" y="458" width="1024" height="55" rx="6" fill="#f0edf1" stroke="#d8d4dd"/><text x="106" y="486" font-size="20" fill="#565569" font-weight="700" text-anchor="start">요청 목적</text><text x="353" y="486" font-size="24" fill="#252533" font-weight="650" text-anchor="start">이름이 빠진 보고서 복구</text>
+<rect x="48" y="575" width="1104" height="212" rx="12" fill="#faf8f4" stroke="#ccc5cd"/><text x="76" y="610" font-size="19" fill="#a24830" font-weight="800" text-anchor="start">관찰 내용</text>
+<text x="76" y="645" font-size="20" fill="#252533" font-weight="550" text-anchor="start">준연이 제출한 복구 요청에는 “예약 작업도 함께 복원”이 선택돼 있다. 17:30 재개됐고 작업 설명을 펼친</text><text x="76" y="672" font-size="20" fill="#252533" font-weight="550" text-anchor="start"> 기록은 없다.</text>
+
+<text x="600" y="809" font-size="13" fill="#565569" font-weight="500" text-anchor="middle">게임 내 가상 자료 · 실제 인물이나 학교의 기록이 아닙니다.</text>
+</svg>

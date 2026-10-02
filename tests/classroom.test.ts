@@ -8,6 +8,7 @@ import {isGameState,newGame,restoreGame} from '../src/engine/game';
 function investigate(s:ClassroomState,id:string){
  s=openCase(s,id,13);
  while(activeCase(s)&&s.cases[id].phase==='opening')s=continueCase(s);
+ s=openCase(s,id,13);
  for(const e of caseFiles.find(c=>c.id===id)!.evidence)s=collectEvidence(s,e.id);
  return beginTrial(s);
 }
@@ -47,6 +48,7 @@ test('case and romance evidence identifiers are internally consistent',()=>{
 test('cases unlock chronologically and require every evidence before trial',()=>{
  let s=newClassroomState();assert.equal(caseAvailable(s,'credit',-1),false);assert.equal(caseAvailable(s,'credit',2),true);assert.equal(caseAvailable(s,'absence',13),false);
  s=openCase(s,'credit',2);while(s.cases.credit.phase==='opening')s=continueCase(s);
+ s=openCase(s,'credit',2);
  s=beginTrial(s);assert.equal(s.cases.credit.phase,'investigation');
  s=collectEvidence(s,'credit-source');s=collectEvidence(s,'credit-source');assert.equal(s.cases.credit.clues.length,1);
  s=collectEvidence(s,'unknown');assert.equal(s.cases.credit.clues.length,1);

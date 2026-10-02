@@ -1,11 +1,11 @@
-import {caseAfterthought,schoolAfterthought} from '../data/storyContinuity';
+import {caseAfterthought,schoolAfterthought,investigationThread} from '../data/storyContinuity';
 import {characterById,locationById} from '../data/characters';
 import {hangoutMoves,type ChoiceMood} from '../data/hangoutMoments';
 import {bondTier,mainStoryThreads,relationshipLine} from './relationshipDirector';
 import type {CharacterId,Choice,Effect,Line,LocationId,Scene} from '../types';
 
 export type Relationship={affection:number;trust:number;jealousy:number;special:number};
-export type TalkContext={id:CharacterId;location:LocationId;chapter:number;visit:number;stats:Relationship;flags:string[];seed:number};
+export type TalkContext={id:CharacterId;location:LocationId;chapter:number;visit:number;stats:Relationship;flags:string[];seed:number;investigating?:boolean};
 export type EventKind='closeness'|'confidence'|'jealousy'|'boundary'|'chance';
 
 const persona:Record<CharacterId,{
@@ -162,7 +162,7 @@ export function hangoutScene(ctx:TalkContext):Scene{
  const event=pending?.split(':').at(-1) as EventKind|undefined;
  const topic=pick(locationTopics[ctx.location],`${ctx.seed}:${ctx.chapter}:${ctx.visit}:topic`);
  const scene=`${place.name}에서 이어진 ${topic}`;
- const tier=bondTier(ctx.stats),thread=mainStoryThreads[Math.min(ctx.chapter,mainStoryThreads.length-1)];
+ const tier=bondTier(ctx.stats),thread=ctx.investigating?investigationThread(ctx.chapter):mainStoryThreads[Math.min(ctx.chapter,mainStoryThreads.length-1)];
  const fill=(value:string)=>value.replaceAll('{scene}',scene).replaceAll('{topic}',topic).replaceAll('{place}',place.name);
  const opening=`${place.name}에 도착하자 ${subject(c.name)} ${locationGesture[ctx.location]}.`;
  const mood=tier==='distant'?pick(p.guarded,`${ctx.chapter}:${ctx.visit}:guarded`):pick(p.soft,`${ctx.chapter}:${ctx.visit}:soft`);
@@ -171,7 +171,7 @@ export function hangoutScene(ctx:TalkContext):Scene{
  const lead:Line[]=[
   line('narrator',opening),
   line('narrator',thread.detail),
-  line(ctx.id,caseAfterthought(ctx.id,Math.min(ctx.chapter,4),ctx.flags)),
+  line(ctx.id,caseAfterthought(ctx.id,Math.min(ctx.chapter,4),ctx.flags,ctx.investigating)),
   line('narrator',mood),
  ];
  const tail:Line[]=[
@@ -186,7 +186,7 @@ export function hangoutScene(ctx:TalkContext):Scene{
  const situational:Choice={
   id:`story-thread-${ctx.chapter}-${ctx.id}`,label:'오늘의 사건',
   text:`${ctx.visit+1}번째 만남 · `+({world:`‘${thread.title}’에서 공개하지 않기로 한 장면을 다시 보며, 세계가 숨긴 감정을 묻는다.`,junyeon:`‘${thread.title}’에서 준연이 끝내 설명하지 못한 자기 몫을 직접 말할 때까지 기다린다.`,hyunsol:`‘${thread.title}’의 사실과 추측을 두 칸으로 나눠 현솔과 서로의 판단을 다시 검토한다.`,taewoo:`‘${thread.title}’에서 느낀 감정을 여덟 박자 동작으로 만들어 태우와 번갈아 따라 한다.`,taehun:`‘${thread.title}’의 관측 사실과 감상을 나눠 적고 태훈의 문장 옆에 내 문장을 남긴다.`,seoyul:`‘${thread.title}’에서 가장 오래 남은 순간을 색 하나로 골라 서율의 팔레트 옆에 놓는다.`})[ctx.id],
-  response:[line('player',`아까 ${thread.title} 얘기, 네 생각을 더 듣고 싶어.`),line(ctx.id,schoolAfterthought(ctx.id,Math.min(ctx.chapter,4),ctx.stats.affection,ctx.stats.trust,ctx.flags)),line('narrator',`${place.name}에서 나눈 이야기는 다음 준비 때 확인할 작은 약속으로 남았다.`)],
+  response:[line('player',`아까 ${thread.title} 얘기, 네 생각을 더 듣고 싶어.`),line(ctx.id,schoolAfterthought(ctx.id,Math.min(ctx.chapter,4),ctx.stats.affection,ctx.stats.trust,ctx.flags,ctx.investigating)),line('narrator',`${place.name}에서 나눈 이야기는 ${ctx.investigating?'아직 확인하지 못한 물음과, 조사를 끝낸 뒤 함께 쉬기로 한':'다음 준비 때 확인할'} 작은 약속으로 남았다.`)],
   effects:[{target:ctx.id,stat:'affection',amount:8},{target:ctx.id,stat:'trust',amount:10},{target:ctx.id,stat:'jealousy',amount:-2},{target:'global',stat:'fair',amount:2},{target:'global',stat:'harmony',amount:1}],flags:[`personal:${ctx.id}`,`story-thread:${ctx.id}:${ctx.chapter}`],
  };
  const choiceBeats=['오늘 확인한 일 뒤에,','네가 남겨 둔 시간에,','다음 약속을 정하기 전에,'];
