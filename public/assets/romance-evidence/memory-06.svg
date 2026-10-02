@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">E06 예약 공지 대기열 내보내기</title><desc id="desc">교사 허가로 내보낸 공용 게시판 목록. 세 수신 모둠의 장소가 따로 입력되어 예약 게시되었다. 자동 장소 변경은 꺼져 있고 얼터에고에는 게시 권한이 없다. 개인 메시지는 없다.</desc>
+<rect width="1200" height="820" fill="#e3e6e1"/><rect x="42" y="36" width="1116" height="748" rx="10" fill="#fcfbf5" stroke="#a0ada5" stroke-width="2"/>
+<g font-family="Noto Sans KR,Malgun Gothic,sans-serif" fill="#2c3434">
+<rect x="42" y="36" width="1116" height="119" rx="10" fill="#263b3a"/><text x="77" y="77" font-size="18" letter-spacing="3" fill="#b6e1cf">마음의 기록 / E06</text><text x="77" y="126" font-size="33" font-weight="900" fill="#fff8e9">공용 게시판 · 예약 공지 확인</text>
+<text x="77" y="203" font-size="22">서식: 리허설 시험용 안내</text><text x="77" y="241" font-size="19" fill="#617573">교사 허가 범위 · 공지 항목과 게시 설정만 내보내기</text>
+<rect x="76" y="275" width="1048" height="50" fill="#d5e3dc"/>
+<g font-size="21" font-weight="700"><text x="99" y="309">수신 모둠</text><text x="361" y="309">직접 입력된 장소</text><text x="699" y="309">모임 시각</text><text x="901" y="309">게시 방식</text></g>
+<path d="M76 325H1124M76 383H1124M76 441H1124M76 499H1124M334 275V499M672 275V499M874 275V499" stroke="#b2c1b6" stroke-width="2"/>
+<g font-size="22"><text x="99" y="364">준비 지원</text><text x="361" y="364">컴퓨터실</text><text x="699" y="364">16:40</text><text x="901" y="364">예약 게시</text>
+<text x="99" y="422">밴드</text><text x="361" y="422">밴드연습실</text><text x="699" y="422">16:40</text><text x="901" y="422">예약 게시</text>
+<text x="99" y="480">댄스</text><text x="361" y="480">강당</text><text x="699" y="480">16:40</text><text x="901" y="480">예약 게시</text></g>
+<rect x="76" y="531" width="504" height="97" rx="6" fill="#e7eddf"/><rect x="603" y="531" width="521" height="97" rx="6" fill="#e7eddf"/>
+<text x="99" y="567" font-size="20" fill="#5a6d61">자동 장소 변경 설정</text><text x="99" y="604" font-size="27" font-weight="800">사용 안 함</text><text x="626" y="567" font-size="20" fill="#5a6d61">얼터에고 게시판 쓰기 권한</text><text x="626" y="604" font-size="27" font-weight="800">없음</text>
+<text x="78" y="673" font-size="20">표시 문구는 입력 항목이다. 제목은 작성자를 증명하지 않는다.</text><text x="78" y="710" font-size="18" fill="#60726c">예약 게시 기능은 이미 입력된 글을 보낸다. 실제 입력자는 별도로 대조한다.</text><text x="78" y="755" font-size="16" fill="#75857d">게임 속 가상 자료 · 교사와 확인한 공용 기록 · 개인 메시지·개인 기기 자료 제외</text>
+</g></svg>

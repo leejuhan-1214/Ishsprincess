@@ -14,3 +14,5 @@ await import('../tests/investigationUI.test.ts');
 await import('../tests/choiceOrder.test.ts');
 await import('../tests/activities.test.ts');
 await import('../tests/trialPresentation.test.ts');
+await import('../tests/romance.test.ts');
+await import('../tests/romanceMystery.test.ts');

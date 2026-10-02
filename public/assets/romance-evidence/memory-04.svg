@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">E04 예약·공지 업무 인계표</title><desc id="desc">민혁에게서 준연에게 연습 조정 업무가 인계됐다. 예약 변경 접수와 변경된 시간의 참가자 안내 갱신이 업무 범위에 포함된다.</desc>
+<rect width="1200" height="820" fill="#dcd2c1"/><path d="M60 39H1140V779H60Z" fill="#fffaf0" stroke="#afa188" stroke-width="2"/>
+<g font-family="Noto Sans KR,Malgun Gothic,sans-serif" fill="#30283a">
+<text x="94" y="88" font-size="18" letter-spacing="3" fill="#985673">마음의 기록 / E04</text><text x="94" y="145" font-size="37" font-weight="900">예약·공지 업무 인계표</text><text x="94" y="186" font-size="21" fill="#766980">공용 준비 파일철 · 합동 연습 조정 업무</text>
+<rect x="96" y="228" width="404" height="115" rx="7" fill="#e4dfd0"/><rect x="700" y="228" width="404" height="115" rx="7" fill="#ead4df"/>
+<text x="122" y="270" font-size="21">인계 담당</text><text x="122" y="318" font-size="31" font-weight="800">황민혁</text><text x="726" y="270" font-size="21">인수 담당</text><text x="726" y="318" font-size="31" font-weight="800">방준연</text>
+<path d="M536 286H664M638 263L664 286L638 309" fill="none" stroke="#9b7c9c" stroke-width="7"/>
+<rect x="96" y="380" width="1008" height="52" fill="#30283a"/><text x="121" y="414" font-size="22" fill="#fff3e6" font-weight="700">인계한 업무</text>
+<g font-size="23"><text x="122" y="477">01</text><text x="190" y="477">연습실 예약 조정 사항 접수</text><text x="122" y="538">02</text><text x="190" y="538">변경된 시간을 참가자 안내에 갱신</text><text x="122" y="599">03</text><text x="190" y="599">사용한 안내와 인계 자료를 공용 파일철에 보관</text></g>
+<path d="M96 494H1104M96 555H1104M96 617H1104" stroke="#cbbca4"/>
+<text x="96" y="665" font-size="20" fill="#995071">이 표는 업무 범위와 인계를 기록한다.</text><text x="96" y="701" font-size="19" fill="#73667b">특정 행동을 누가 했는지는 원본과 실제 인수자의 설명을 함께 확인한다.</text><text x="96" y="748" font-size="16" fill="#86758c">게임 속 가상 자료 · 학급 공개 준비 서류 · 개인 수첩이나 계정 자료 없음</text>
+</g></svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">E07 구버전과 승인본 큐시트</title><desc id="desc">객석에 배포된 v3는 댄스, 무대 전환, 밴드 순서다. 서율이 보관한 승인 서명된 v4는 밴드, 무대 전환, 댄스 순서다.</desc>
+<rect width="1200" height="820" fill="#e7dfd4"/>
+<g font-family="Noto Sans KR,Malgun Gothic,sans-serif" fill="#30283a">
+<rect width="1200" height="125" fill="#2c2337"/><text x="60" y="43" font-size="18" letter-spacing="3" fill="#f8d284">마음의 기록 / E07</text><text x="60" y="92" font-size="35" font-weight="900" fill="#fff6e7">무대 큐시트 · 달라진 순서</text>
+<rect x="57" y="168" width="514" height="485" rx="6" fill="#fffaf0" stroke="#bca795" stroke-width="2"/><rect x="628" y="168" width="514" height="485" rx="6" fill="#fffaf0" stroke="#a78ba8" stroke-width="2"/>
+<rect x="57" y="168" width="514" height="83" rx="6" fill="#b98f74"/><rect x="628" y="168" width="514" height="83" rx="6" fill="#876285"/>
+<text x="83" y="222" font-size="35" font-weight="900" fill="#fff9ed">v3 · 객석 배포본</text><text x="654" y="222" font-size="35" font-weight="900" fill="#fff9ed">v4 · 승인본</text>
+<text x="84" y="291" font-size="19" fill="#826857">이전 안 / 승인 최종 순서와 다름</text><text x="655" y="291" font-size="19" fill="#73507d">전날 승인 확인 / 서율 보관 원본</text>
+<g font-size="27" font-weight="700"><text x="86" y="359">01  김태우 · 댄스</text><text x="86" y="439">02  무대 전환</text><text x="86" y="519">03  전세계·이서율 · 밴드</text><text x="657" y="359">01  전세계·이서율 · 밴드</text><text x="657" y="439">02  무대 전환</text><text x="657" y="519">03  김태우 · 댄스</text></g>
+<path d="M85 387H542M85 467H542M655 387H1113M655 467H1113" stroke="#c9bca6" stroke-width="2"/>
+<text x="85" y="585" font-size="21" fill="#997d65">댄스 종료 후 밴드 세팅</text><text x="655" y="585" font-size="21" fill="#725873">밴드 종료 후 댄스 동선 정리</text>
+<text x="85" y="623" font-size="17" fill="#8b7a84">최종 리허설 때 나눠진 종이</text><text x="655" y="623" font-size="17" fill="#8b7a84">담당 교사 승인 확인 있음</text>
+<text x="59" y="704" font-size="21" font-weight="700">두 버전의 차이를 확인했다. 배포 경위와 선택 시점은 별도 기록에서 확인한다.</text><text x="59" y="746" font-size="18" fill="#7b6b80">관객 입장 전 리허설에서 발견 · 승인된 v4로 순서를 다시 맞춤</text><text x="59" y="791" font-size="16" fill="#8d7d92">게임 속 가상 자료 · 공용 배포본과 당사자가 직접 보관한 승인본 비교</text>
+</g></svg>

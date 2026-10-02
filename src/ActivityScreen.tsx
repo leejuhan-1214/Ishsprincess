@@ -7,12 +7,12 @@ import {isActivityAnswerCorrect,type Activity,type ActivityRound} from './engine
 import './activities.css';
 
 const modeNames:Record<ActivityRound['mode'],string>={timing:'박자 맞추기',memory:'패턴 기억',order:'순서 퍼즐',balance:'균형 조절',matching:'짝 맞추기',path:'경로 연결',search:'관찰 찾기'};
-type Props={game:GameState;person?:SchoolId;overrideActivity?:Activity;onFinish:(score:number)=>void;paused?:boolean};
+type Props={game?:GameState;person?:SchoolId;overrideActivity?:Activity;onFinish:(score:number)=>void;paused?:boolean};
 
 export function ActivityScreen({game,person,overrideActivity,onFinish,paused=false}:Props){
- const activity=overrideActivity??currentActivity(game);
+ const activity=overrideActivity??(game?currentActivity(game):null);
  if(!activity)return null;
- return <ActivitySession key={activity.id} activity={activity} person={person??game.visitor??'world'} onFinish={onFinish} paused={paused}/>;
+ return <ActivitySession key={activity.id} activity={activity} person={person??game?.visitor??'world'} onFinish={onFinish} paused={paused}/>;
 }
 
 function ActivitySession({activity,person,onFinish,paused}:{activity:Activity;person:SchoolId;onFinish:(score:number)=>void;paused:boolean}){

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">E01 서로 다른 약속 쪽지</title><desc id="desc">같은 공용 테이블 약속에 세계의 원본에는 15시 40분, 주인공이 받은 원본에는 16시 10분이 적혀 있다. 작성자와 이유는 이 자료만으로 알 수 없다.</desc>
+<defs><pattern id="paper" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M0 24H24" stroke="#cbbfa8" stroke-opacity=".18"/></pattern><filter id="shadow"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-opacity=".16"/></filter></defs>
+<rect width="1200" height="820" fill="#ece5d8"/><rect width="1200" height="820" fill="url(#paper)"/>
+<g font-family="Noto Sans KR,Malgun Gothic,sans-serif" fill="#2c2534">
+<path d="M0 0H1200V117H0Z" fill="#282132"/><text x="56" y="42" font-size="17" letter-spacing="3" fill="#f4cd7d">마음의 기록 / E01</text><text x="56" y="88" font-size="32" font-weight="800" fill="#fff5e8">같은 약속, 서로 다른 시간</text>
+<text x="63" y="166" font-size="20" fill="#695774">독서실 옆 공용 테이블에서 함께 펼친 두 원본</text>
+<g filter="url(#shadow)"><rect x="62" y="197" width="500" height="378" rx="8" fill="#fffaf0"/><rect x="638" y="197" width="500" height="378" rx="8" fill="#fffaf0"/></g>
+<rect x="62" y="197" width="500" height="54" rx="8" fill="#7b647f"/><rect x="638" y="197" width="500" height="54" rx="8" fill="#a44e6d"/>
+<text x="87" y="232" font-size="22" font-weight="700" fill="#fffaf0">세계가 보관한 원본</text><text x="663" y="232" font-size="22" font-weight="700" fill="#fffaf0">내가 받은 원본</text>
+<text x="94" y="298" font-size="21">준비 모임 안내</text><text x="670" y="298" font-size="21">준비 모임 안내</text>
+<text x="94" y="397" font-size="82" font-family="monospace" font-weight="800">15:40</text><text x="670" y="397" font-size="82" font-family="monospace" font-weight="800" fill="#a7335d">16:10</text>
+<path d="M92 421H533M669 421H1110" stroke="#c8bba5" stroke-width="2"/>
+<text x="94" y="464" font-size="22">장소 · 독서실 옆 공용 테이블</text><text x="670" y="464" font-size="22">장소 · 독서실 옆 공용 테이블</text>
+<text x="94" y="507" font-size="22">할 일 · 간식 먹으며 작업안 맞추기</text><text x="670" y="507" font-size="22">할 일 · 간식 먹으며 작업안 맞추기</text>
+<text x="94" y="546" font-size="17" fill="#75687c">기다리는 동안 접어 둔 쪽지</text><text x="670" y="546" font-size="17" fill="#75687c">도착할 때 가지고 온 쪽지</text>
+<rect x="62" y="611" width="1076" height="105" rx="7" fill="#ddd1ba"/><text x="90" y="653" font-size="25" font-weight="800">확인한 차이: 시간 30분</text><text x="90" y="689" font-size="20">장소와 모임 내용은 같다. 누가 왜 다르게 만들었는지는 아직 알 수 없다.</text>
+<text x="63" y="771" font-size="17" fill="#6e6178">게임 속 가상 자료 · 두 사람이 직접 보여 준 안내 원본만 비교</text><text x="1116" y="771" text-anchor="end" font-size="17" fill="#6e6178">1학년 1반</text>
+</g></svg>

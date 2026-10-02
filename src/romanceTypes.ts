@@ -1,0 +1,23 @@
+import type { LocationId } from './types';
+export const romancePeople = ['world','hyunsol','taewoo','taehun','seoyul','juhan','minhyuk','junyeon'] as const;
+export type RPerson = typeof romancePeople[number];
+export type RHero = Exclude<RPerson,'junyeon'>;
+export type RSpeaker = RPerson | 'player' | 'narrator' | 'teacher' | 'alter';
+export type RLine = {speaker:RSpeaker;text:string};
+export type RBond = {affection:number;trust:number};
+export type REffect = {person:RPerson;affection?:number;trust?:number};
+export type RChoice = {id:string;text:string;response:RLine[];effects?:REffect[];flags?:string[]};
+export type RScene = {id:string;title:string;location:LocationId;lines:RLine[];choices:RChoice[];memory?:string;image?:string};
+export type RMode = 'main'|'hangout'|'discovery'|'revelation'|'repair'|'finale';
+export type RPhase = 'story'|'map'|'focus'|'activity'|'trial'|'verdict'|'ending';
+export type RState = {
+ version:2;name:string;seed:number;chapter:number;act:number;phase:RPhase;mode:RMode;
+ line:number;response:RLine[]|null;focus:RPerson|null;visitor:RPerson|null;location:LocationId;
+ bonds:Record<RPerson,RBond>;flags:string[];clues:string[];actions:number;visited:string[];
+ visits:Record<RPerson,number>;sceneKey:string;backlog:RLine[];
+ verdict:'pending'|'exclude'|'forgive';repairStep:number;repairDone:boolean;
+ trialRound:number;trialFeedback:{ok:boolean;text:string}|null;trialOrder:string[];
+ ending:string|null;date:string;
+};
+export type RClue = {id:string;code:string;name:string;chapter:number;unlockAct:number;location:LocationId;spot:string;lead:string;description:string;limit:string;requires:string[];image:string;lines:RLine[]};
+export type RTrialRound = {id:string;title:string;claims:{id:string;speaker:RPerson|'alter';text:string}[];target:string;evidence:string;reason:string;hint:string};

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">E02 인쇄·배부 역할표</title><desc id="desc">학급의 공개 역할표. 공동 일정은 황민혁, 안내문 인쇄와 배부는 방준연이 담당한다. 담당 사실은 특정 잘못의 수행자를 확정하는 증거가 아니다.</desc>
+<rect width="1200" height="820" fill="#e3d8c3"/><rect x="43" y="34" width="1114" height="745" rx="5" fill="#fffaec" stroke="#b2a185" stroke-width="2"/>
+<g font-family="Noto Sans KR,Malgun Gothic,sans-serif" fill="#292632">
+<text x="82" y="84" font-size="18" letter-spacing="3" fill="#8e4669">마음의 기록 / E02</text><text x="82" y="139" font-size="38" font-weight="900">1반 페어 준비 · 역할표</text>
+<text x="82" y="182" font-size="22" fill="#716576">교실 뒤 게시판에 공개된 준비 업무</text>
+<rect x="79" y="219" width="1042" height="55" fill="#2e273b"/>
+<text x="108" y="255" font-size="22" font-weight="700" fill="#fff6e8">업무</text><text x="597" y="255" font-size="22" font-weight="700" fill="#fff6e8">담당</text><text x="854" y="255" font-size="22" font-weight="700" fill="#fff6e8">범위</text>
+<path d="M79 274H1121M79 340H1121M79 406H1121M79 472H1121M79 538H1121M79 604H1121M568 219V604M825 219V604" stroke="#c4b6a0" stroke-width="2"/>
+<rect x="80" y="407" width="1040" height="131" fill="#eddae0"/>
+<g font-size="23"><text x="108" y="317">공동 일정 정리</text><text x="597" y="317">황민혁</text><text x="854" y="317">전체 준비 일정</text>
+<text x="108" y="383">모임 안내 초안</text><text x="597" y="383">각 모임 담당</text><text x="854" y="383">내용·시간 작성</text>
+<text x="108" y="449">안내문 인쇄</text><text x="597" y="449" font-weight="800">방준연</text><text x="854" y="449">인쇄물 묶음 정리</text>
+<text x="108" y="515">안내문 배부</text><text x="597" y="515" font-weight="800">방준연</text><text x="854" y="515">해당 모임에 전달</text>
+<text x="108" y="581">공용 서류 확인</text><text x="597" y="581">담임 선생님</text><text x="854" y="581">확인·보관</text></g>
+<text x="83" y="658" font-size="22" font-weight="700" fill="#9d365f">담당이 있다는 사실과, 특정 행동을 했다는 사실은 다르다.</text>
+<text x="83" y="697" font-size="19" fill="#766778">쪽지의 작성·변경 경위는 원본과 실제 인계를 함께 확인해야 한다.</text>
+<text x="83" y="750" font-size="17" fill="#827488">게임 속 가상 자료 · 학급 공개 게시물 · 개인 자료 열람 없음</text>
+</g><circle cx="79" cy="55" r="10" fill="#aa5372"/><circle cx="1122" cy="55" r="10" fill="#aa5372"/></svg>

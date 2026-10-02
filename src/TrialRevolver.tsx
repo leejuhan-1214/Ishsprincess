@@ -1,15 +1,15 @@
 import {useEffect,useRef,useState,type CSSProperties} from 'react';
 import {ChevronLeft,ChevronRight,Crosshair,Search} from 'lucide-react';
 import type {Evidence} from './data/classroomMystery';
-import {evidenceVisuals} from './data/evidenceVisuals';
+import {evidenceVisuals,type EvidenceVisual} from './data/evidenceVisuals';
 import './trialRevolver.css';
 
-type Props={evidence:Evidence[];selected:string|null;disabled:boolean;onSelect:(id:string)=>void;onInspect:(id:string)=>void};
+type Props={evidence:Evidence[];selected:string|null;disabled:boolean;onSelect:(id:string)=>void;onInspect:(id:string)=>void;visuals?:Record<string,EvidenceVisual>};
 
 /** The cylinder is an alternative evidence selector, never a timing challenge. */
-export function TrialRevolver({evidence,selected,disabled,onSelect,onInspect}:Props){
+export function TrialRevolver({evidence,selected,disabled,onSelect,onInspect,visuals=evidenceVisuals}:Props){
  const current=Math.max(0,evidence.findIndex(item=>item.id===selected));
- const item=evidence[current],visual=item?evidenceVisuals[item.id]:null;
+ const item=evidence[current],visual=item?visuals[item.id]:null;
  const rotation=useRef(0),previous=useRef(current);
  if(previous.current!==current){
   const count=evidence.length,difference=((current-previous.current+count+count/2)%count)-count/2;
@@ -32,7 +32,7 @@ export function TrialRevolver({evidence,selected,disabled,onSelect,onInspect}:Pr
    </div>
    <div className="loaded-evidence" aria-live="polite" aria-atomic="true">
     <button className="loaded-evidence-image" onClick={()=>onInspect(item.id)} aria-label={`${item.name} 이미지 확대`}><img src={`${import.meta.env.BASE_URL}${visual.image}`} alt={visual.alt}/><span><Search size={13}/>자료 확대</span></button>
-    <div className="loaded-evidence-copy"><small>장전한 증거 · {String(current+1).padStart(2,'0')}</small><h2>{item.name}</h2><p>{item.description}</p></div>
+    <div className="loaded-evidence-copy"><small>{selected?'장전한 증거':'약실을 눌러 장전'} · {String(current+1).padStart(2,'0')}</small><h2>{item.name}</h2><p>{item.description}</p></div>
    </div>
   </div>
  </section>;

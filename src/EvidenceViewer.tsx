@@ -1,13 +1,13 @@
 import {useEffect,useState} from 'react';
 import {Download,ZoomIn,ZoomOut} from 'lucide-react';
-import {evidenceVisuals} from './data/evidenceVisuals';
+import {evidenceVisuals,type EvidenceVisual} from './data/evidenceVisuals';
 import './evidenceViewer.css';
 
 /** Shared by location inspections and the collected-evidence notebook. */
-export function EvidenceViewer({evidenceId}:{evidenceId:string}){
+export function EvidenceViewer({evidenceId,visual:override}:{evidenceId:string;visual?:EvidenceVisual}){
  const [zoomed,setZoomed]=useState(false);
  useEffect(()=>setZoomed(false),[evidenceId]);
- const visual=evidenceVisuals[evidenceId];
+ const visual=override??evidenceVisuals[evidenceId];
  if(!visual)return null;
  const source=`${import.meta.env.BASE_URL}${visual.image}`;
  return <figure className="evidence-viewer">

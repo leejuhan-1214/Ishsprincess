@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">E08 큐시트 배포 대장과 버전 이력</title><desc id="desc">전날 v4 승인과 공용 폴더 공유, 배포 담당 수령 확인이 먼저 있다. 다음 날 v3가 배포 대상으로 선택되고 리허설 전에 나눠졌다. 기록의 시간 순서와 실제 인수자의 설명은 함께 대조해야 한다.</desc>
+<rect width="1200" height="820" fill="#e8e3d9"/><rect x="45" y="35" width="1110" height="750" rx="8" fill="#fffaf0" stroke="#bcae96" stroke-width="2"/>
+<g font-family="Noto Sans KR,Malgun Gothic,sans-serif" fill="#30283a">
+<text x="83" y="86" font-size="18" letter-spacing="3" fill="#a05073">마음의 기록 / E08</text><text x="83" y="137" font-size="35" font-weight="900">승인본은 언제 준비됐을까?</text><text x="83" y="178" font-size="21" fill="#78687e">공용 프로젝트 버전 이력 + 배포 대장</text>
+<path d="M124 259V597" stroke="#9d7c9a" stroke-width="5"/>
+<g fill="#6d597c" stroke="#fffaf0" stroke-width="4"><circle cx="124" cy="260" r="22"/><circle cx="124" cy="370" r="22"/><circle cx="124" cy="480" r="22"/><circle cx="124" cy="590" r="22"/></g>
+<g font-size="18" font-weight="800" fill="#fff9ed" text-anchor="middle"><text x="124" y="267">1</text><text x="124" y="377">2</text><text x="124" y="487">3</text><text x="124" y="597">4</text></g>
+<g fill="#eee5d9"><rect x="176" y="225" width="918" height="86" rx="6"/><rect x="176" y="335" width="918" height="86" rx="6"/></g><g fill="#eddae1"><rect x="176" y="445" width="918" height="86" rx="6"/><rect x="176" y="555" width="918" height="86" rx="6"/></g>
+<g font-size="24" font-weight="800"><text x="201" y="260">전날 · v4 승인</text><text x="201" y="370">전날 · 승인본 공유와 수령 확인</text><text x="201" y="480">다음 날 · 배포 대상으로 v3 선택</text><text x="201" y="590">리허설 전 · v3 묶음 배부</text></g>
+<g font-size="19" fill="#73647a"><text x="201" y="293">밴드 → 무대 전환 → 댄스 순서로 확정</text><text x="201" y="403">공용 폴더에 v4 있음 / 배포 담당의 수령 확인란 작성</text><text x="201" y="513">v4가 준비된 뒤, 이전 파일을 배포 목록에 올림</text><text x="201" y="623">객석 배포본의 실제 내용은 E07의 v3와 같음</text></g>
+<text x="85" y="690" font-size="21" font-weight="800" fill="#a23862">확인된 순서: 최종본 준비가 먼저, 구버전 배포가 나중</text><text x="85" y="725" font-size="18" fill="#76667f">실제 수령·선택의 주체는 이름만 보지 않고 당사자 설명과 원본을 대조한다.</text><text x="85" y="762" font-size="16" fill="#8b7b93">게임 속 가상 자료 · 교사와 확인한 학급 공용 서류 및 프로젝트 이력</text>
+</g></svg>

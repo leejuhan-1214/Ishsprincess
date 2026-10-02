@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">E03 댄스실 예약 변경 확인서</title><desc id="desc">우리 반 댄스연습실 예약은 16시 20분에서 17시로 바뀌었다. 태우가 받은 참가자 안내에는 16시 20분이 남아 있다.</desc>
+<rect width="1200" height="820" fill="#eee8dd"/><rect x="57" y="45" width="1086" height="724" rx="10" fill="#fffdf4" stroke="#c3b59e" stroke-width="2"/>
+<g font-family="Noto Sans KR,Malgun Gothic,sans-serif" fill="#302739">
+<rect x="57" y="45" width="1086" height="102" rx="10" fill="#2f283c"/><text x="91" y="83" font-size="17" letter-spacing="3" fill="#f6d181">마음의 기록 / E03</text><text x="91" y="123" font-size="32" font-weight="800" fill="#fff6e9">댄스연습실 · 예약 변경 확인</text>
+<text x="91" y="197" font-size="23">사용 모임: 1학년 1반 합동 연습</text><text x="91" y="237" font-size="20" fill="#79687f">예약 담당 교사가 보여 준 공용 예약 내역</text>
+<rect x="91" y="272" width="430" height="201" rx="8" fill="#eee9db"/><rect x="679" y="272" width="430" height="201" rx="8" fill="#ecd3de"/>
+<text x="121" y="314" font-size="21" fill="#655a6e">변경 전 예약</text><text x="709" y="314" font-size="21" fill="#964064">변경 후 예약</text>
+<text x="121" y="422" font-family="monospace" font-size="79" font-weight="800">16:20</text><text x="709" y="422" font-family="monospace" font-size="79" font-weight="800" fill="#a13964">17:00</text>
+<path d="M550 372H648M625 350L648 372L625 394" fill="none" stroke="#9b7a99" stroke-width="7"/>
+<rect x="91" y="504" width="1018" height="105" rx="6" fill="#e4e6d9"/><text x="118" y="544" font-size="21" fill="#626a59">태우가 가지고 온 참가자 안내</text><text x="118" y="581" font-size="27" font-weight="800">16:20 그대로 · 변경된 시간을 전달받지 못함</text>
+<text x="91" y="658" font-size="22">확인된 것: 예약 변경과 참가자 안내 사이의 불일치</text><text x="91" y="696" font-size="18" fill="#796b81">실제 신청자와 전달 경위는 인계표·당사자 설명을 더 확인한다.</text>
+<text x="91" y="744" font-size="16" fill="#86738c">게임 속 가상 자료 · 교사가 공개한 우리 반 예약 항목만 확인</text>
+</g></svg>
