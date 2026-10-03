@@ -8,6 +8,7 @@ import {shuffleChoices} from './choiceOrder';
 import {hasHangoutAvailable} from '../data/romanceHangouts';
 import {hasRomanceActivity} from '../data/romanceActivities';
 import {artById} from '../data/romanceArt';
+import {momentForScene} from '../data/romanceIllustrationMoments';
 
 const clamp=(n:number,max=100)=>Math.max(0,Math.min(max,n));
 const isPerson=(v:unknown):v is RPerson=>typeof v==='string'&&(romancePeople as readonly string[]).includes(v);
@@ -159,7 +160,10 @@ export function selectFocus(s:RState,id:RPerson|null):RState{
 export function startHangout(s:RState,id:RPerson,location:LocationId,_activity=false):RState{
  if(s.phase!=='map'||!isPerson(id)||!isLocation(location)||s.actions<1||s.visited.includes(id)||!hasHangoutAvailable(id,s)||(id==='junyeon'&&s.verdict==='exclude')||personLocation(s,id)!==location)return s;
  const scene=getHangoutScene(id,s,location),key=`${scene.id}:visit-${s.visits[id]+1}`;
- const next=enterScene({...s,actions:s.actions-1,visited:[...s.visited,id],visitor:id,location,flags:uniq([...s.flags,`meeting-place:${key}:${location}`])},'hangout',key);
+ // Opt in only when starting a new encounter, never while restoring an old
+ // on-screen scene: inserting lines under a saved cursor would change its text.
+ const momentFlags=momentForScene(scene.id)?[`art:moment:${scene.id}`]:[];
+ const next=enterScene({...s,actions:s.actions-1,visited:[...s.visited,id],visitor:id,location,flags:uniq([...s.flags,`meeting-place:${key}:${location}`,...momentFlags])},'hangout',key);
  return next;
 }
 export function respondToActivity(s:RState,accept:boolean):RState{

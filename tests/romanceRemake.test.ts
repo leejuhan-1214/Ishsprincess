@@ -5,7 +5,7 @@ import {romancePeople,type RState} from '../src/romanceTypes';
 import {getHangoutScene,hasHangoutAvailable} from '../src/data/romanceHangouts';
 import {getMainScene} from '../src/data/romanceStory';
 import {getEarnedFinaleScene,heroineRomanceEligible} from '../src/data/romanceEndings';
-import {romanceArt,artPath,awareness} from '../src/data/romanceArt';
+import {romanceArt,artPath,artOriginalPath,awareness} from '../src/data/romanceArt';
 import {hasRomanceActivity,getRomanceActivity} from '../src/data/romanceActivities';
 import {newRomance,startHangout,personLocation,advanceRomance,chooseRomance,currentRomanceScene,respondToActivity,completeRomanceActivity,conveneTrial,restoreRomance} from '../src/engine/romance';
 import {getDiscoveryScene,memoryEvidence} from '../src/data/romanceMystery';
@@ -71,14 +71,28 @@ test('every heroine gets an actual line-triggered CG and all referenced original
  assert.equal(firstDateArt.size,7,'all seven initial date illustrations have a scene trigger');
  assert.equal(endingArt.size,7,'all seven earned romance endings have distinct illustrations');
  assert.equal(discoveryArt.size,4,'each chapter observation has its own discovery illustration');
+ const moments=new Set<string>();
+ for(const person of romancePeople)for(let chapter=0;chapter<5;chapter++)for(const visit of [1,2]){
+  const state:RState={...newRomance('봄',7),chapter,phase:'map',verdict:chapter===4?'forgive':'pending',
+   flags:visit===2?[`read:hangout-${person}-${chapter+1}-v1`]:[]};
+  const started=startHangout(state,person,personLocation(state,person));
+  assert.equal(started.phase,'story');
+  for(const line of currentRomanceScene(started).lines)if(line.art){
+   found.add(line.art);if(line.art.includes('-moment-'))moments.add(line.art);
+  }
+ }
+ assert.equal(moments.size,80,'all eighty new illustrations have actual encounter-entry triggers');
  for(const art of romanceArt){
   assert.ok(found.has(art.id),`${art.id} must be encountered, not merely stored unused`);
-  const path=new URL(`../public/${artPath(art.id)}`,import.meta.url);assert.ok(existsSync(path));
+  const path=new URL(`../public/${artOriginalPath(art.id)}`,import.meta.url);assert.ok(existsSync(path));
   const bytes=readFileSync(path);assert.equal(bytes.subarray(1,4).toString(),'PNG');
   assert.ok(bytes.readUInt32BE(16)>bytes.readUInt32BE(20),'event art is landscape');
+  const preview=readFileSync(new URL(`../public/${artPath(art.id)}`,import.meta.url));
+  assert.equal(preview.subarray(8,12).toString(),'WEBP');
+  assert.ok(preview.length<bytes.length,'delivery preview is smaller, original remains downloadable');
  }
- assert.equal(romanceArt.length,18);
- assert.equal(found.size,18,'every registered illustration is encountered, with no unregistered trigger');
+ assert.equal(romanceArt.length,98);
+ assert.equal(found.size,98,'every registered illustration is encountered, with no unregistered trigger');
 });
 
 test('the first meeting earns an optional activity; follow-up is uninterrupted and skips cannot farm rewards',()=>{

@@ -46,6 +46,25 @@
 .romance-trial-briefing h1{font-size:clamp(22px,3vw,36px);line-height:1.5;margin:10px 0 20px}.romance-trial-briefing>p{font-size:13px;color:#e3d2df;line-height:1.9}.romance-trial-briefing ol{list-style:none;padding:0;margin:23px 0;display:grid;gap:10px}.romance-trial-briefing li{display:flex;gap:20px;align-items:center;border-left:2px solid var(--r-pink);background:#2b2535;padding:11px 15px;font-size:12px}.romance-trial-briefing li>b{color:#f4d47e;min-width:140px}.romance-trial-rule{margin-bottom:20px!important}
 .romance-art-gallery h3{font-size:18px;color:#ffb9cf;margin-bottom:16px}.romance-art-gallery>figure{margin:0 0 22px;background:#100f19}.romance-art-gallery>figure>img{max-height:62vh;object-fit:contain;width:100%;display:block}.romance-art-gallery figcaption{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;font-size:13px;gap:15px}.romance-art-gallery figcaption a{font-size:11px;padding:8px 12px;min-height:35px}.romance-art-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:25px}.romance-art-grid>button{border:1px solid #72596f;background:#2d2237;padding:0 0 12px;text-align:left;overflow:hidden}.romance-art-grid>button[disabled]{opacity:.65}.romance-art-grid img,.romance-art-lock{width:100%;aspect-ratio:16/9;object-fit:cover;display:grid;place-items:center;background:linear-gradient(145deg,#3e2941,#171724);color:#947b96}.romance-art-grid b,.romance-art-grid small{display:block;padding:0 12px}.romance-art-grid b{font-size:12px;margin-top:10px}.romance-art-grid small{font-size:10px;color:#d5bcd1;margin-top:4px}
 @keyframes romance-reveal{from{opacity:.2}to{opacity:1}}
+.romance-art-filters{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:7px;padding:0 0 13px;margin-bottom:16px;background:#1f1b2b;border-bottom:1px solid #67526f}
+.romance-art-filters>button{display:flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:9px 13px;background:#30273c;border:1px solid #735c80;border-radius:7px;color:#f5edf4;font-size:12px;white-space:nowrap}
+.romance-art-filters>button small{font-size:10px;color:#c4acc9}
+.romance-art-filters>button[aria-pressed=true]{background:#6b284b;border-color:#ff8ebd;color:#fff}
+.romance-art-filters>button[aria-pressed=true] small{color:#ffe4ef}
+.romance-art-gallery>figure{scroll-margin-top:112px}
+.romance-art-gallery>figure>img{height:auto;aspect-ratio:16/9}
+.romance-art-gallery figcaption>span{min-width:0;line-height:1.7;overflow-wrap:anywhere}
+.romance-art-gallery figcaption>span>b{display:block;font-size:11px;color:#e9acc6}
+.romance-art-gallery figcaption>a{flex:none;min-height:44px;text-decoration:none;font-size:12px}
+.romance-art-paging{display:flex;align-items:center;gap:9px;padding:0 15px 13px}
+.romance-art-paging>button{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:8px;background:#2d2338;border:1px solid #735c80;color:#f5edf4;font-size:12px}
+.romance-art-paging>button:disabled{opacity:.3;cursor:default}
+.romance-art-paging>span{font-size:12px;font-variant-numeric:tabular-nums;color:#dac8df;min-width:45px;text-align:center}
+.romance-art-paging>.romance-art-back{margin-left:auto;padding-inline:14px}
+.romance-art-grid>button[aria-pressed=true]{border-color:#ff8ebd;box-shadow:0 0 0 1px #ff8ebd}
+.romance-art-grid img{height:auto}
+.romance-art-gallery button:focus-visible,.romance-art-gallery a:focus-visible{outline:2px solid #ffe17b;outline-offset:3px}
+@media(max-width:600px){.romance-art-filters{gap:6px;padding-bottom:9px;margin-bottom:12px}.romance-art-filters>button{flex:1 0 auto;padding:8px 10px}.romance-art-gallery>figure{scroll-margin-top:160px}.romance-art-gallery>figure>img{max-height:43dvh}.romance-art-gallery figcaption{flex-wrap:wrap;gap:8px;padding:10px}.romance-art-gallery figcaption>a{margin-left:auto}.romance-art-paging{padding:0 10px 10px;gap:7px}.romance-art-grid b,.romance-art-grid small{padding-inline:9px}}
 .romance-line{display:grid;grid-template-rows:auto auto auto;align-content:start}
 .romance-line-text{display:grid;isolation:isolate}
 .romance-line-text>span{grid-area:1/1;min-width:0}

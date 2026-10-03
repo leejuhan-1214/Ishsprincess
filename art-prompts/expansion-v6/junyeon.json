@@ -1,0 +1,314 @@
+{
+  "mode": "builtin-imagegen",
+  "date": "2026-10-04",
+  "entries": [
+    {
+      "id": "junyeon-moment-01",
+      "person": "junyeon",
+      "chapter": 0,
+      "visit": 1,
+      "title": "칠판의 여백",
+      "location": "classroom",
+      "composition": "Wide horizontal classroom, standing eye-level side view, Junyeon at the far left drawing a simple blank rectangle on blackboard, furniture and empty wall dominate the scene",
+      "expression": "careful mild concentration",
+      "gesture": "one arm lifted to chalkboard holding chalk, other hand holds eraser low",
+      "prompt": "Use case: illustration-story. Single 16:9 anime story scene of the same schoolgirl in the reference image. Reference role: character identity and ink line style, not pose. Keep her brown bob, round glasses, dark green bow, fully buttoned long-sleeve green cardigan and modest long plaid skirt. Scene composition: Wide horizontal classroom, standing eye-level side view, Junyeon at the far left drawing a simple blank rectangle on blackboard, furniture and empty wall dominate the scene. Expression: careful mild concentration. Action: one arm lifted to chalkboard holding chalk, other hand holds eraser low. Ordinary wholesome school activity, detailed setting, clean hands and anatomy, crisp ink linework with cel shading. No pinup posing, no exposed torso, no captions, UI, watermarks, collage, readable text or mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-junyeon.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-66a7a767-5d91-42e4-a845-7c24f493b79b.png",
+      "savedPath": "public/assets/romance-cg/junyeon-moment-01.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "준연은 칠판 가장자리에 작은 네모를 그렸다."
+        },
+        {
+          "speaker": "junyeon",
+          "text": "여기에 준비물 적으면 어때? 그림은 잘 못 그려도 네모는 그릴 수 있어."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 지우개로 삐져나온 선을 닦았다. 준연이 빈칸의 크기를 다시 재봤다."
+        }
+      ],
+      "replacedScene": {
+        "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL short rounded brown bob, round black eyeglasses, hazel-gray eyes, fair skin, olive green cardigan, white collared shirt, dark green bow thin gold stripes, modest long dark pleated plaid skirt. Preserve recognizable feminine face and ordinary human appearance. Scene: Korean science high school classroom. Composition: Overhead diagonal classroom shot seated at desk with color swatches and surrounding empty desks. Expression: hesitant thoughtful frown. Action: spreads colored paper squares with open palms. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+        "reason": "Input rejected by image tool; replaced with a different ordinary school activity."
+      }
+    },
+    {
+      "id": "junyeon-moment-02",
+      "person": "junyeon",
+      "chapter": 0,
+      "visit": 2,
+      "title": "마른 자리",
+      "location": "chemistry",
+      "composition": "Side-on wide lab with sink and clean glassware drying rack, white lab coat over green cardigan, safety goggles",
+      "expression": "serious pursed lips",
+      "gesture": "places clean empty beaker on rack using two steady hands",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL short rounded brown bob, round black eyeglasses, hazel-gray eyes, fair skin, olive green cardigan, white collared shirt, dark green bow thin gold stripes, modest long dark pleated plaid skirt. Preserve recognizable feminine face and ordinary human appearance. Scene: Korean science high school chemistry. Composition: Side-on wide lab with sink and clean glassware drying rack, white lab coat over green cardigan, safety goggles. Expression: serious pursed lips. Action: places clean empty beaker on rack using two steady hands. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-junyeon.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-694bc62c-b0de-416d-b677-0979cc6bd475.png",
+      "savedPath": "public/assets/romance-cg/junyeon-moment-02.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "세척을 마친 비커를 준연이 한 개씩 건조대에 올렸다."
+        },
+        {
+          "speaker": "junyeon",
+          "text": "가까이 붙이면 잘 안 마른대. 이 정도 띄워 놓을까?"
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 마른 받침을 옆에 놓았다. 유리가 부딪히지 않게 두 사람의 손이 번갈아 움직였다."
+        }
+      ]
+    },
+    {
+      "id": "junyeon-moment-03",
+      "person": "junyeon",
+      "chapter": 1,
+      "visit": 1,
+      "title": "반납하는 오후",
+      "location": "library",
+      "composition": "Long shot from behind tall book stacks at library entrance, Junyeon crossing the frame in full body carrying a short stack of books toward return desk, face seen in profile",
+      "expression": "relieved gentle smile",
+      "gesture": "walks carefully holding three books horizontally with both hands",
+      "prompt": "Use case: illustration-story. Single 16:9 anime story scene of the same schoolgirl in the reference image. Reference role: character identity and ink line style, not pose. Keep her brown bob, round glasses, dark green bow, fully buttoned long-sleeve green cardigan and modest long plaid skirt. Scene composition: Long shot from behind tall book stacks at library entrance, Junyeon crossing the frame in full body carrying a short stack of books toward return desk, face seen in profile. Expression: relieved gentle smile. Action: walks carefully holding three books horizontally with both hands. Ordinary wholesome school activity, detailed setting, clean hands and anatomy, crisp ink linework with cel shading. No pinup posing, no exposed torso, no captions, UI, watermarks, collage, readable text or mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-junyeon.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-0cc92423-583c-4366-b404-25d9b6a787e6.png",
+      "savedPath": "public/assets/romance-cg/junyeon-moment-03.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "준연이 빌린 책을 반납대 위에 차례로 올렸다."
+        },
+        {
+          "speaker": "junyeon",
+          "text": "기한 넘길까 봐 계속 가방에 넣어 뒀어. 무거운 줄도 몰랐네."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 마지막 책이 기울지 않게 받쳤다. 빈 가방을 멘 준연의 어깨가 조금 내려갔다."
+        }
+      ],
+      "replacedScene": {
+        "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL short rounded brown bob, round black eyeglasses, hazel-gray eyes, fair skin, olive green cardigan, white collared shirt, dark green bow thin gold stripes, modest long dark pleated plaid skirt. Preserve recognizable feminine face and ordinary human appearance. Scene: Korean science high school library. Composition: Long library aisle shot, girl in profile halfway down aisle, foreground books narrow frame, full figure. Expression: absorbed curiosity. Action: holds open illustrated book at waist tracing illustration with finger. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+        "reason": "Input rejected by image tool; replaced with a different ordinary school activity."
+      }
+    },
+    {
+      "id": "junyeon-moment-04",
+      "person": "junyeon",
+      "chapter": 1,
+      "visit": 2,
+      "title": "눈높이의 꽃",
+      "location": "garden",
+      "composition": "View across daisies to side of girl sitting on low bench, safe chest height seated perspective, broad garden",
+      "expression": "quiet wonder",
+      "gesture": "leans forward elbows on covered knees pointing gently at flower",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL short rounded brown bob, round black eyeglasses, hazel-gray eyes, fair skin, olive green cardigan, white collared shirt, dark green bow thin gold stripes, modest long dark pleated plaid skirt. Preserve recognizable feminine face and ordinary human appearance. Scene: Korean science high school garden. Composition: View across daisies to side of girl sitting on low bench, safe chest height seated perspective, broad garden. Expression: quiet wonder. Action: leans forward elbows on covered knees pointing gently at flower. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-junyeon.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-c9c2a976-31dc-4324-b718-f3f80c758f25.png",
+      "savedPath": "public/assets/romance-cg/junyeon-moment-04.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "준연은 화단 앞 벤치에 앉아 꽃잎의 모양을 비교했다."
+        },
+        {
+          "speaker": "junyeon",
+          "text": "같은 꽃인데 다 조금씩 달라. 그린 사람이 따로 있는 것 같아."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 휴대폰 대신 눈으로 차이를 찾아봤다. 준연이 가장 작은 꽃을 가리켰다."
+        }
+      ]
+    },
+    {
+      "id": "junyeon-moment-05",
+      "person": "junyeon",
+      "chapter": 2,
+      "visit": 1,
+      "title": "아직 따뜻한 자리",
+      "location": "cafeteria",
+      "composition": "Asymmetric candid from empty table corner, standing at table end with tray, many empty chairs visible",
+      "expression": "awkward uncertainty and hopeful eyebrow",
+      "gesture": "pauses one foot forward before setting tray down",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL short rounded brown bob, round black eyeglasses, hazel-gray eyes, fair skin, olive green cardigan, white collared shirt, dark green bow thin gold stripes, modest long dark pleated plaid skirt. Preserve recognizable feminine face and ordinary human appearance. Scene: Korean science high school cafeteria. Composition: Asymmetric candid from empty table corner, standing at table end with tray, many empty chairs visible. Expression: awkward uncertainty and hopeful eyebrow. Action: pauses one foot forward before setting tray down. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-junyeon.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-0dc8e608-ca4b-470c-af2a-f31659429c5b.png",
+      "savedPath": "public/assets/romance-cg/junyeon-moment-05.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "준연이 식판을 든 채 빈 의자 앞에 멈췄다."
+        },
+        {
+          "speaker": "junyeon",
+          "text": "여기…… 누가 맡아 둔 거 아니지? 가방 없어서."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 옆 의자를 당겼다. 준연은 국그릇이 흔들리지 않게 천천히 앉았다."
+        }
+      ]
+    },
+    {
+      "id": "junyeon-moment-06",
+      "person": "junyeon",
+      "chapter": 2,
+      "visit": 2,
+      "title": "소리를 맞추는 손",
+      "location": "media",
+      "composition": "High overhead oblique view of school media editing room sound mixer, Junyeon seated in full-sleeve buttoned cardigan looking down at faders, equipment foreground and monitor behind",
+      "expression": "intrigued one raised eyebrow",
+      "gesture": "moves a mixer fader gently with index finger while other hand rests beside dial",
+      "prompt": "Use case: illustration-story. Single 16:9 anime story scene of the same schoolgirl in the reference image. Reference role: character identity and ink line style, not pose. Keep her brown bob, round glasses, dark green bow, fully buttoned long-sleeve green cardigan and modest long plaid skirt. Scene composition: High overhead oblique view of school media editing room sound mixer, Junyeon seated in full-sleeve buttoned cardigan looking down at faders, equipment foreground and monitor behind. Expression: intrigued one raised eyebrow. Action: moves a mixer fader gently with index finger while other hand rests beside dial. Ordinary wholesome school activity, detailed setting, clean hands and anatomy, crisp ink linework with cel shading. No pinup posing, no exposed torso, no captions, UI, watermarks, collage, readable text or mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-junyeon.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-de0f0a74-2bb7-4614-84a4-5bdc89375061.png",
+      "savedPath": "public/assets/romance-cg/junyeon-moment-06.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "녹음 음량이 갑자기 커지자 준연이 조절 손잡이를 조금 내렸다."
+        },
+        {
+          "speaker": "junyeon",
+          "text": "한 칸만 옮겨도 확 달라지네. 이 정도면 말소리가 잘 들려?"
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 고개를 끄덕였다. 그녀는 같은 구간을 다시 들어 보고 손을 뗐다."
+        }
+      ],
+      "replacedScene": {
+        "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL short rounded brown bob, round black eyeglasses, hazel-gray eyes, fair skin, olive green cardigan, white collared shirt, dark green bow thin gold stripes, modest long dark pleated plaid skirt. Preserve recognizable feminine face and ordinary human appearance. Scene: Korean science high school media. Composition: Three quarter medium through microphone pop filter, face sideways toward audio playback device. Expression: surprised spontaneous grin. Action: presses playback while holding one headphone cup away from ear. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+        "reason": "Input rejected by image tool; replaced with a different ordinary school activity."
+      }
+    },
+    {
+      "id": "junyeon-moment-07",
+      "person": "junyeon",
+      "chapter": 3,
+      "visit": 1,
+      "title": "문틈의 박자",
+      "location": "band",
+      "composition": "Wide exterior-to-interior through open band room door, girl small at left against doorjamb, instruments and room depth",
+      "expression": "relaxed reserved smile eyes looking down",
+      "gesture": "taps rhythm with two fingers on schoolbag strap",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL short rounded brown bob, round black eyeglasses, hazel-gray eyes, fair skin, olive green cardigan, white collared shirt, dark green bow thin gold stripes, modest long dark pleated plaid skirt. Preserve recognizable feminine face and ordinary human appearance. Scene: Korean science high school band. Composition: Wide exterior-to-interior through open band room door, girl small at left against doorjamb, instruments and room depth. Expression: relaxed reserved smile eyes looking down. Action: taps rhythm with two fingers on schoolbag strap. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-junyeon.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-1ef85d4f-0423-4dba-90f4-fb00f3e31a5e.png",
+      "savedPath": "public/assets/romance-cg/junyeon-moment-07.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "합주가 끝난 문 앞에서 준연의 손가락이 가방 끈을 두드리고 있었다."
+        },
+        {
+          "speaker": "junyeon",
+          "text": "마지막 부분, 아직 귀에 남아. 좀 천천히 치던 데 있잖아."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 멜로디를 낮게 흥얼거렸다. 준연이 손끝으로 박자를 맞췄다."
+        }
+      ]
+    },
+    {
+      "id": "junyeon-moment-08",
+      "person": "junyeon",
+      "chapter": 3,
+      "visit": 2,
+      "title": "접힌 자국",
+      "location": "art",
+      "composition": "Close oblique hands smoothing paper with face upper left in profile, not facing viewer",
+      "expression": "frustrated furrowed brows",
+      "gesture": "presses wrinkled craft paper flat with palm and ruler",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL short rounded brown bob, round black eyeglasses, hazel-gray eyes, fair skin, olive green cardigan, white collared shirt, dark green bow thin gold stripes, modest long dark pleated plaid skirt. Preserve recognizable feminine face and ordinary human appearance. Scene: Korean science high school art. Composition: Close oblique hands smoothing paper with face upper left in profile, not facing viewer. Expression: frustrated furrowed brows. Action: presses wrinkled craft paper flat with palm and ruler. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-junyeon.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-d7fb977e-d8f2-48fa-b40b-4b4d28becf23.png",
+      "savedPath": "public/assets/romance-cg/junyeon-moment-08.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "한 번 접힌 종이는 쉽게 펴지지 않았다. 준연은 자를 내려놓았다."
+        },
+        {
+          "speaker": "junyeon",
+          "text": "세게 누르면 찢어질 것 같아. 그냥 이 자국대로 다른 걸 접어 볼까."
+        },
+        {
+          "speaker": "narrator",
+          "text": "우리는 종이를 반대로 돌렸다. 같은 자국이 이번에는 접을 선이 됐다."
+        }
+      ]
+    },
+    {
+      "id": "junyeon-moment-09",
+      "person": "junyeon",
+      "chapter": 4,
+      "visit": 1,
+      "title": "낙엽 하나",
+      "location": "walk",
+      "composition": "Distant rear full-length view paused under tree on school path, head turned toward leaf held chest high",
+      "expression": "pensive subdued sadness",
+      "gesture": "holds one fallen leaf by stem, other hand at side",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL short rounded brown bob, round black eyeglasses, hazel-gray eyes, fair skin, olive green cardigan, white collared shirt, dark green bow thin gold stripes, modest long dark pleated plaid skirt. Preserve recognizable feminine face and ordinary human appearance. Scene: Korean science high school walk. Composition: Distant rear full-length view paused under tree on school path, head turned toward leaf held chest high. Expression: pensive subdued sadness. Action: holds one fallen leaf by stem, other hand at side. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-junyeon.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-a80e4c82-2726-48fb-85f6-ebd470ddb050.png",
+      "savedPath": "public/assets/romance-cg/junyeon-moment-09.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "준연은 길 위의 잎 하나를 집어 들고 한동안 말이 없었다."
+        },
+        {
+          "speaker": "junyeon",
+          "text": "이건 떨어진 지 얼마 안 됐나 봐. 아직 색이 진해."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 바로 대답하지 않고 나란히 섰다. 그녀가 잎을 내려놓은 뒤 다시 걸었다."
+        }
+      ]
+    },
+    {
+      "id": "junyeon-moment-10",
+      "person": "junyeon",
+      "chapter": 4,
+      "visit": 2,
+      "title": "저장하기 전",
+      "location": "computer",
+      "composition": "Elevated three-quarter workstation view; chair and torso rotated together so head sits upright with gentle natural turn",
+      "expression": "anxious but resolute",
+      "gesture": "Seated body turned comfortably toward adjacent companion, right arm naturally reaches mouse",
+      "prompt": "Use case: precise-object-edit / anatomy correction. Edit the supplied illustration, specifically the neck/head/shoulder relationship near the center (52% width, 31% height). The seated schoolgirl is twisting her neck far too much to look behind her. Correct her anatomy: rotate the office chair and her entire upper torso modestly toward the nearby viewer so the chest and both shoulders support a relaxed upright neck; head turns only a gentle 20–30 degrees relative to shoulders, no sharply bent neck and no head facing backward over a fixed back. A natural seated three-quarter side pose, eyes meeting the nearby companion, chin level rather than cranked down. Keep recognizable face, brown bob, round glasses, timid attentive expression, buttoned green cardigan, white shirt and green bow, long plaid skirt. Keep her right hand naturally at or near the mouse with a comfortable arm connection and her other hand in lap. Preserve computer-room composition, desks, monitors, chairs, warm light and existing anime ink/cel rendering. Fully clothed everyday scene. Only modify anatomy/pose as necessary for the fix; do not redesign character or background, add text, crop, enlarge body parts, or sexualize. Single landscape image, same dimensions.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-junyeon.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-8238be19-8cff-47f6-ac04-2a7a58f84fb8.png",
+      "savedPath": "public/assets/romance-cg/junyeon-moment-10.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "준연은 파일 창을 열어 놓고 옆 의자를 바라봤다."
+        },
+        {
+          "speaker": "junyeon",
+          "text": "보내기 전에 한 번만 같이 읽어 줘. 내가 빠뜨린 게 있을 수도 있으니까."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 의자를 가까이 옮겼다. 화면을 넘기는 속도는 둘이 함께 정했다."
+        }
+      ],
+      "revision": {
+        "reason": "User correction: unnatural neck rotation at x52.4% y30.6%",
+        "originalGeneratedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-4d3d171e-e812-4324-8edc-dadc0434d35e.png",
+        "originalPrompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL short rounded brown bob, round black eyeglasses, hazel-gray eyes, fair skin, olive green cardigan, white collared shirt, dark green bow thin gold stripes, modest long dark pleated plaid skirt. Preserve recognizable feminine face and ordinary human appearance. Scene: Korean science high school computer. Composition: Elevated rear over shoulder wide workstation view, girl seated with neutral abstract folders on monitor. Expression: anxious but resolute. Action: turns toward empty adjacent chair, one hand approaching mouse. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+        "editReferencePath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-4d3d171e-e812-4324-8edc-dadc0434d35e.png"
+      }
+    }
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-03",
+  "entries": [
+    {
+      "id": "taewoo-moment-01",
+      "person": "taewoo",
+      "chapter": 0,
+      "visit": 1,
+      "title": "바닥에 그린 첫 박자",
+      "location": "dance",
+      "composition": "floor-level wide diagonal full-body action, 28mm view, figure at left third",
+      "expression": "confident concentrated half-grin, eyes looking at foot placement",
+      "gesture": "She demonstrates a sideways cross-step with one knee bent and both arms extended at shoulder height; feet entirely visible on wooden dance-room floor. Large windows and taped floor marks. NO mirrors or reflective surfaces.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Kim Taewoo, the SAME teen girl in reference: reddish chestnut high ponytail tied navy, brown eyes, lively angular anime face, blue and white varsity jacket over a loose plain white T-shirt, full-length navy athletic pants with white side stripe, sneakers. Fully clothed age-appropriate everyday school life. Preserve her face/hair and outfit, NOT the reference pose. Scene: She demonstrates a sideways cross-step with one knee bent and both arms extended at shoulder height; feet entirely visible on wooden dance-room floor. Large windows and taped floor marks. NO mirrors or reflective surfaces. Composition: floor-level wide diagonal full-body action, 28mm view, figure at left third. Expression: confident concentrated half-grin, eyes looking at foot placement. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taewoo.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-moment-01.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "바닥에 붙은 테이프 두 줄 사이로 태우의 운동화가 미끄러졌다."
+        },
+        {
+          "speaker": "taewoo",
+          "text": "발만 보면 어려워져. 내가 옆으로 갈 때 어깨도 같이 봐."
+        },
+        {
+          "speaker": "narrator",
+          "text": "태우가 속도를 절반으로 낮췄다. 설명보다 먼저 내 쪽에 한 사람 자리가 생겼다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-edb4b91b-64a8-45ab-9b2f-8ecebd549553.png"
+    },
+    {
+      "id": "taewoo-moment-02",
+      "person": "taewoo",
+      "chapter": 0,
+      "visit": 2,
+      "title": "종이보다 빠른 손",
+      "location": "hallway",
+      "composition": "steep high-angle diagonal bird's-eye full-body, long hallway vanishing away",
+      "expression": "wide-eyed startled open-mouth laugh",
+      "gesture": "Crouching on one knee in a bright school corridor, she catches a single falling loose page with one hand while steadying a stack of dance notes with the other. Two pages drift nearby; school lockers and striped sunlight. No mirror.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Kim Taewoo, the SAME teen girl in reference: reddish chestnut high ponytail tied navy, brown eyes, lively angular anime face, blue and white varsity jacket over a loose plain white T-shirt, full-length navy athletic pants with white side stripe, sneakers. Fully clothed age-appropriate everyday school life. Preserve her face/hair and outfit, NOT the reference pose. Scene: Crouching on one knee in a bright school corridor, she catches a single falling loose page with one hand while steadying a stack of dance notes with the other. Two pages drift nearby; school lockers and striped sunlight. No mirror. Composition: steep high-angle diagonal bird's-eye full-body, long hallway vanishing away. Expression: wide-eyed startled open-mouth laugh. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taewoo.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-moment-02.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "복도 창문이 열리자 태우가 들고 있던 종이 한 장이 휙 들렸다."
+        },
+        {
+          "speaker": "taewoo",
+          "text": "잠깐, 그건 내가 외운 쪽이 아니야!"
+        },
+        {
+          "speaker": "narrator",
+          "text": "태우는 종이를 잡고 나서야 웃었다. 나는 남은 종이의 모서리를 눌러 주었다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-e61c3326-8137-4631-87fd-15c47ce51773.png"
+    },
+    {
+      "id": "taewoo-moment-03",
+      "person": "taewoo",
+      "chapter": 1,
+      "visit": 1,
+      "title": "식기 전에 한마디",
+      "location": "cafeteria",
+      "composition": "seated side profile medium-wide across cafeteria aisle, bright horizontal table lines",
+      "expression": "puffed cheeks gently blowing hot food, amused embarrassed eyes",
+      "gesture": "At a school cafeteria bench she holds a warm steamed bun in a paper sleeve near mouth, blowing steam off before a bite, shoulders relaxed. Full torso and folded hands naturally visible, spacious cafeteria in background. Not frontal date table.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Kim Taewoo, the SAME teen girl in reference: reddish chestnut high ponytail tied navy, brown eyes, lively angular anime face, blue and white varsity jacket over a loose plain white T-shirt, full-length navy athletic pants with white side stripe, sneakers. Fully clothed age-appropriate everyday school life. Preserve her face/hair and outfit, NOT the reference pose. Scene: At a school cafeteria bench she holds a warm steamed bun in a paper sleeve near mouth, blowing steam off before a bite, shoulders relaxed. Full torso and folded hands naturally visible, spacious cafeteria in background. Not frontal date table. Composition: seated side profile medium-wide across cafeteria aisle, bright horizontal table lines. Expression: puffed cheeks gently blowing hot food, amused embarrassed eyes. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taewoo.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-moment-03.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "태우가 연습 얘기를 하다가 뜨거운 빵 앞에서 갑자기 조용해졌다."
+        },
+        {
+          "speaker": "taewoo",
+          "text": "아직 먹은 거 아니야. 뜨거운지 확인하는 중."
+        },
+        {
+          "speaker": "narrator",
+          "text": "박자는 빠르게 세던 사람이 이번 한입만큼은 오래 기다렸다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-e087f273-6773-4bda-8838-382233442f82.png"
+    },
+    {
+      "id": "taewoo-moment-04",
+      "person": "taewoo",
+      "chapter": 1,
+      "visit": 2,
+      "title": "다르게 묶은 두 색",
+      "location": "walk",
+      "composition": "rear three-quarter low long shot along tree-lined school path, full figure seated on bench",
+      "expression": "teasing sideways raised eyebrow and small closed-mouth smirk",
+      "gesture": "Sitting sideways on a park bench along school walking path, one sneaker rests safely on low bench rail as she ties mismatched colored shoelaces. Looking back over shoulder toward camera, ponytail curves across back, dappled green light.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Kim Taewoo, the SAME teen girl in reference: reddish chestnut high ponytail tied navy, brown eyes, lively angular anime face, blue and white varsity jacket over a loose plain white T-shirt, full-length navy athletic pants with white side stripe, sneakers. Fully clothed age-appropriate everyday school life. Preserve her face/hair and outfit, NOT the reference pose. Scene: Sitting sideways on a park bench along school walking path, one sneaker rests safely on low bench rail as she ties mismatched colored shoelaces. Looking back over shoulder toward camera, ponytail curves across back, dappled green light. Composition: rear three-quarter low long shot along tree-lined school path, full figure seated on bench. Expression: teasing sideways raised eyebrow and small closed-mouth smirk. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taewoo.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-moment-04.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "산책로 벤치 앞에서 태우가 발걸음을 멈췄다. 두 운동화의 끈 색이 달랐다."
+        },
+        {
+          "speaker": "taewoo",
+          "text": "왼쪽은 자신 있게, 오른쪽은 안 다치게. 둘 다 중요하거든."
+        },
+        {
+          "speaker": "narrator",
+          "text": "매듭을 두 번 당긴 태우가 내 신발도 한번 확인했다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-db03c4e2-313a-4589-9646-d86f48ce136d.png"
+    },
+    {
+      "id": "taewoo-moment-05",
+      "person": "taewoo",
+      "chapter": 2,
+      "visit": 1,
+      "title": "멈춰 둔 한 프레임",
+      "location": "media",
+      "composition": "over-the-shoulder composition from behind her ponytail, medium shot focused monitor+profile",
+      "expression": "earnest furrowed brow, lips slightly pressed in concentration",
+      "gesture": "In media editing room she leans toward a video monitor and points at a dance silhouette's shoulder frame while her other hand rests on keyboard. Monitor shows generic small full-body motion frames, no readable text. Her face visible in side profile, no reflection.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Kim Taewoo, the SAME teen girl in reference: reddish chestnut high ponytail tied navy, brown eyes, lively angular anime face, blue and white varsity jacket over a loose plain white T-shirt, full-length navy athletic pants with white side stripe, sneakers. Fully clothed age-appropriate everyday school life. Preserve her face/hair and outfit, NOT the reference pose. Scene: In media editing room she leans toward a video monitor and points at a dance silhouette's shoulder frame while her other hand rests on keyboard. Monitor shows generic small full-body motion frames, no readable text. Her face visible in side profile, no reflection. Composition: over-the-shoulder composition from behind her ponytail, medium shot focused monitor+profile. Expression: earnest furrowed brow, lips slightly pressed in concentration. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taewoo.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-moment-05.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "미디어실 화면의 연습 영상이 한 발을 내딛기 직전에 멈췄다."
+        },
+        {
+          "speaker": "taewoo",
+          "text": "여기. 발보다 어깨가 먼저 움직이지? 내가 말로는 너무 빨리 설명했나 봐."
+        },
+        {
+          "speaker": "narrator",
+          "text": "재생 버튼을 누르기 전에 태우가 내 이해부터 기다렸다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-0cd1c1a9-56f0-473b-812b-ee901cfb7e80.png"
+    },
+    {
+      "id": "taewoo-moment-06",
+      "person": "taewoo",
+      "chapter": 2,
+      "visit": 2,
+      "title": "내 박자를 빌려줄게",
+      "location": "computer",
+      "composition": "true overhead wide shot looking straight down at computer desk, seated full upper body diagonally",
+      "expression": "confused comic pursed lips and one eyebrow up",
+      "gesture": "In computer lab she wears plain over-ear headphones and taps two fingers beside a keyboard while a monitor displays simple colored rhythm blocks on a timeline. Her head tipped toward the screen; one hand adjusting headphone cup, ordinary lesson setting, no text.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Kim Taewoo, the SAME teen girl in reference: reddish chestnut high ponytail tied navy, brown eyes, lively angular anime face, blue and white varsity jacket over a loose plain white T-shirt, full-length navy athletic pants with white side stripe, sneakers. Fully clothed age-appropriate everyday school life. Preserve her face/hair and outfit, NOT the reference pose. Scene: In computer lab she wears plain over-ear headphones and taps two fingers beside a keyboard while a monitor displays simple colored rhythm blocks on a timeline. Her head tipped toward the screen; one hand adjusting headphone cup, ordinary lesson setting, no text. Composition: true overhead wide shot looking straight down at computer desk, seated full upper body diagonally. Expression: confused comic pursed lips and one eyebrow up. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taewoo.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-moment-06.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "컴퓨터실에서 태우는 같은 구간을 세 번 들었다. 손가락만 책상 위를 바쁘게 뛰었다."
+        },
+        {
+          "speaker": "taewoo",
+          "text": "이상하다. 화면으로 박자를 보니까 오히려 헷갈려."
+        },
+        {
+          "speaker": "narrator",
+          "text": "내가 옆에서 박자를 세자 태우의 손가락이 잠시 쉬었다가 같은 지점에 닿았다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-b288b38e-b991-4fd7-a3ed-26afccdfe4ae.png"
+    },
+    {
+      "id": "taewoo-moment-07",
+      "person": "taewoo",
+      "chapter": 3,
+      "visit": 1,
+      "title": "막 오르기 전의 별",
+      "location": "auditorium",
+      "composition": "extreme wide audience viewpoint, tiny full-body subject on stage right, strong negative space and curtain depth",
+      "expression": "quiet vulnerable nervous smile, gaze lowered",
+      "gesture": "Empty school auditorium before rehearsal. She stands alone near side curtain holding a small star keychain with both hands at chest height, shoulders slightly tucked. Stage work light casts long shadow, seats dark foreground. No spectators or mirrors.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Kim Taewoo, the SAME teen girl in reference: reddish chestnut high ponytail tied navy, brown eyes, lively angular anime face, blue and white varsity jacket over a loose plain white T-shirt, full-length navy athletic pants with white side stripe, sneakers. Fully clothed age-appropriate everyday school life. Preserve her face/hair and outfit, NOT the reference pose. Scene: Empty school auditorium before rehearsal. She stands alone near side curtain holding a small star keychain with both hands at chest height, shoulders slightly tucked. Stage work light casts long shadow, seats dark foreground. No spectators or mirrors. Composition: extreme wide audience viewpoint, tiny full-body subject on stage right, strong negative space and curtain depth. Expression: quiet vulnerable nervous smile, gaze lowered. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taewoo.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-moment-07.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "불이 반쯤 꺼진 강당에서 태우의 운동화 소리가 유난히 크게 들렸다."
+        },
+        {
+          "speaker": "taewoo",
+          "text": "사람 없을 때가 더 떨릴 때도 있어. 조용해서 내 생각만 들리거든."
+        },
+        {
+          "speaker": "narrator",
+          "text": "태우는 손안의 별 열쇠고리를 한번 쥐었다 펴고 객석 쪽을 바라봤다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-028a46c9-cb2d-42cc-a12b-4b444768f625.png"
+    },
+    {
+      "id": "taewoo-moment-08",
+      "person": "taewoo",
+      "chapter": 3,
+      "visit": 2,
+      "title": "삐뚤어도 알아볼 별",
+      "location": "art",
+      "composition": "oblique intimate profile medium shot framed through hanging paper crafts, seated torso",
+      "expression": "unrestrained eyes-closed laughing smile",
+      "gesture": "In art studio she holds up a lopsided blue paper star made for a keychain, harmless blunt scissors closed on table, paper scraps scattered. Laughing at her uneven craft, one hand lifts star by ribbon, other steadies elbow. Warm side light.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Kim Taewoo, the SAME teen girl in reference: reddish chestnut high ponytail tied navy, brown eyes, lively angular anime face, blue and white varsity jacket over a loose plain white T-shirt, full-length navy athletic pants with white side stripe, sneakers. Fully clothed age-appropriate everyday school life. Preserve her face/hair and outfit, NOT the reference pose. Scene: In art studio she holds up a lopsided blue paper star made for a keychain, harmless blunt scissors closed on table, paper scraps scattered. Laughing at her uneven craft, one hand lifts star by ribbon, other steadies elbow. Warm side light. Composition: oblique intimate profile medium shot framed through hanging paper crafts, seated torso. Expression: unrestrained eyes-closed laughing smile. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taewoo.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-moment-08.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "미술준비실에서 태우가 잘라 낸 별은 한쪽 팔이 유난히 길었다."
+        },
+        {
+          "speaker": "taewoo",
+          "text": "춤은 좌우 맞출 수 있는데 이건 왜 안 되지?"
+        },
+        {
+          "speaker": "narrator",
+          "text": "웃는 바람에 별도 흔들렸다. 반듯하지 않아도 태우가 만든 건 바로 알아볼 수 있었다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-d12d995b-633e-4587-91b7-75f4729b0a96.png"
+    },
+    {
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-96274ad1-0864-41b4-a148-0d68ab72593a.png",
+      "id": "taewoo-moment-09",
+      "person": "taewoo",
+      "chapter": 4,
+      "visit": 1,
+      "title": "우산 안의 보폭",
+      "location": "gate",
+      "composition": "eye-level long shot with school gate framing, full body three-quarter walking toward left, rain diagonal",
+      "expression": "playful challenging toothy grin, eyes glancing to companion outside frame",
+      "gesture": "At school gate during light rain, she holds one ordinary navy umbrella high in one hand and extends free arm sideways to measure walking space, light stepping stride. Rain jacket not needed, same varsity uniform. Dry under umbrella, no romantic grabbing, no readable signage.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Kim Taewoo, the SAME teen girl in reference: reddish chestnut high ponytail tied navy, brown eyes, lively angular anime face, blue and white varsity jacket over a loose plain white T-shirt, full-length navy athletic pants with white side stripe, sneakers. Fully clothed age-appropriate everyday school life. Preserve her face/hair and outfit, NOT the reference pose. Scene: At school gate during light rain, she holds one ordinary navy umbrella high in one hand and extends free arm sideways to measure walking space, light stepping stride. Rain jacket not needed, same varsity uniform. Dry under umbrella, no romantic grabbing, no readable signage. Composition: eye-level long shot with school gate framing, full body three-quarter walking toward left, rain diagonal. Expression: playful challenging toothy grin, eyes glancing to companion outside frame. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taewoo.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-moment-09.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "정문 앞에서 태우가 우산을 펴고 빈 반쪽을 내 쪽으로 기울였다."
+        },
+        {
+          "speaker": "taewoo",
+          "text": "뛰면 너만 젖어. 오늘은 걷는 박자로 맞춰."
+        },
+        {
+          "speaker": "narrator",
+          "text": "태우의 보폭이 조금 작아졌다. 비가 그칠 때까지 급할 이유는 없었다."
+        }
+      ]
+    },
+    {
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-e452a5b0-1c88-4bda-ac01-d30faf4c0ac7.png",
+      "id": "taewoo-moment-10",
+      "person": "taewoo",
+      "chapter": 4,
+      "visit": 2,
+      "title": "박수가 없는 쉬는 시간",
+      "location": "garden",
+      "composition": "low close-medium view from opposite garden bench, head and shoulders supported on folded arms along bench back, background deep flowers",
+      "expression": "soft tired genuine smile with half-lidded relieved eyes",
+      "gesture": "School garden at late afternoon. She sits backward on a wooden bench, rests chin gently on crossed forearms along backrest, shoulders relaxed after practice. Hair ponytail loosely falls to side, face 3/4 not frontal, green leaves bokeh, no player hands.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Kim Taewoo, the SAME teen girl in reference: reddish chestnut high ponytail tied navy, brown eyes, lively angular anime face, blue and white varsity jacket over a loose plain white T-shirt, full-length navy athletic pants with white side stripe, sneakers. Fully clothed age-appropriate everyday school life. Preserve her face/hair and outfit, NOT the reference pose. Scene: School garden at late afternoon. She sits backward on a wooden bench, rests chin gently on crossed forearms along backrest, shoulders relaxed after practice. Hair ponytail loosely falls to side, face 3/4 not frontal, green leaves bokeh, no player hands. Composition: low close-medium view from opposite garden bench, head and shoulders supported on folded arms along bench back, background deep flowers. Expression: soft tired genuine smile with half-lidded relieved eyes. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taewoo.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-moment-10.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "정원 벤치에 앉은 태우가 등받이에 팔을 포개고 턱을 얹었다."
+        },
+        {
+          "speaker": "taewoo",
+          "text": "오늘은 잘한 얘기 말고 별일 없는 얘기도 좀 해 줘."
+        },
+        {
+          "speaker": "narrator",
+          "text": "연습실에서의 큰 목소리 대신, 가까이 앉아야 들리는 말투가 남았다."
+        }
+      ]
+    }
+  ]
+}

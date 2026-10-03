@@ -174,7 +174,7 @@ test('same-map visits and activities award once, retain the selected location an
  const map=read(newRomance('동행',44)),place=personLocation(map,'juhan');
  assert.strictEqual(startHangout(map,'juhan',place==='gate'?'classroom':'gate'),map);
  const authored=getHangoutScene('juhan',map,place),started=startHangout(map,'juhan',place,true);assert.equal(started.actions,1);assert.equal(started.location,authored.location);
- assert.deepEqual(currentRomanceScene(started).lines,authored.lines,'moving to the authored activity place retains the original meeting introduction');
+ assert.deepEqual(currentRomanceScene(started).lines.slice(-authored.lines.length),authored.lines,'new illustrated prelude preserves the original meeting introduction');
  assert.equal(started.phase,'story','the authored conversation precedes every optional activity');assert.deepEqual(restoreRomance(JSON.parse(JSON.stringify(started))),started);
  const invitation=read(started,undefined,'pause');assert.equal(invitation.phase,'activity-invite');
  assert.deepEqual(restoreRomance(JSON.parse(JSON.stringify(invitation))),invitation);

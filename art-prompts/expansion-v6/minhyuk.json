@@ -1,0 +1,296 @@
+{
+  "mode": "builtin-imagegen",
+  "date": "2026-10-04",
+  "entries": [
+    {
+      "id": "minhyuk-moment-01",
+      "person": "minhyuk",
+      "chapter": 0,
+      "visit": 1,
+      "title": "복도의 한 뼘",
+      "location": "hallway",
+      "composition": "Wide side-on shot, girl full body small at right, long corridor with tape measure stretched along floor, standing eye level",
+      "expression": "businesslike concentration",
+      "gesture": "crouches modestly to mark walking lane with removable tape",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL, dark brown skin, long black high ponytail, brown eyes. White high-collar school council jacket navy piping, burgundy bow, gold buttons, braided shoulder cord, red-gold armband, modest dark pleated skirt. Preserve exact feminine identity. Scene: Korean science high school hallway. Composition: Wide side-on shot, girl full body small at right, long corridor with tape measure stretched along floor, standing eye level. Expression: businesslike concentration. Action: crouches modestly to mark walking lane with removable tape. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-minhyuk.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-10fd0482-feca-437c-8157-998b04b4f8e1.png",
+      "savedPath": "public/assets/romance-cg/minhyuk-moment-01.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "복도에 민혁이 붙인 테이프 두 줄이 길게 이어져 있었다."
+        },
+        {
+          "speaker": "minhyuk",
+          "text": "장비를 옮겨도 지나갈 자리는 남겠지? 네가 저쪽에서 걸어와 봐."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 두 줄 사이를 걸었다. 민혁은 자를 접고 나서야 고개를 끄덕였다."
+        }
+      ]
+    },
+    {
+      "id": "minhyuk-moment-02",
+      "person": "minhyuk",
+      "chapter": 0,
+      "visit": 2,
+      "title": "반장의 빈자리",
+      "location": "classroom",
+      "composition": "Direct overhead bird eye view of classroom desk grid, whole body from above, geometric desks",
+      "expression": "puzzled raised eyebrow",
+      "gesture": "holds one chair by backrest and repositions it",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL, dark brown skin, long black high ponytail, brown eyes. White high-collar school council jacket navy piping, burgundy bow, gold buttons, braided shoulder cord, red-gold armband, modest dark pleated skirt. Preserve exact feminine identity. Scene: Korean science high school classroom. Composition: Direct overhead bird eye view of classroom desk grid, whole body from above, geometric desks. Expression: puzzled raised eyebrow. Action: holds one chair by backrest and repositions it. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-minhyuk.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-4277c905-0f55-4f14-b866-c70b9de3c4ce.png",
+      "savedPath": "public/assets/romance-cg/minhyuk-moment-02.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "자리는 맞춰 놓고도 민혁은 의자 하나를 옮겼다 다시 놓았다."
+        },
+        {
+          "speaker": "minhyuk",
+          "text": "여기 앉으면 칠판이 가려지네. 줄은 반듯한데, 그게 다는 아니었어."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 옆줄 의자를 비켰다. 그녀가 비어 있는 시야를 확인하며 웃음을 흘렸다."
+        }
+      ]
+    },
+    {
+      "id": "minhyuk-moment-03",
+      "person": "minhyuk",
+      "chapter": 1,
+      "visit": 1,
+      "title": "도망가는 귤",
+      "location": "cafeteria",
+      "composition": "Candid lateral medium full shot of cafeteria counter, diagonal tray foreground",
+      "expression": "open unguarded laugh",
+      "gesture": "catches rolling mandarin with one hand while balancing tray with other",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL, dark brown skin, long black high ponytail, brown eyes. White high-collar school council jacket navy piping, burgundy bow, gold buttons, braided shoulder cord, red-gold armband, modest dark pleated skirt. Preserve exact feminine identity. Scene: Korean science high school cafeteria. Composition: Candid lateral medium full shot of cafeteria counter, diagonal tray foreground. Expression: open unguarded laugh. Action: catches rolling mandarin with one hand while balancing tray with other. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-minhyuk.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-b8af28fa-54f5-4e03-8682-b20b7df529ae.png",
+      "savedPath": "public/assets/romance-cg/minhyuk-moment-03.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "급식판 위의 귤이 굴러갔다. 민혁의 손바닥이 탁, 그 앞을 막았다."
+        },
+        {
+          "speaker": "minhyuk",
+          "text": "출구는 그쪽이 아닙니다. ……아, 귤한테 말했네."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 웃음을 참다 실패했다. 민혁도 결국 어깨를 들썩였다."
+        }
+      ]
+    },
+    {
+      "id": "minhyuk-moment-04",
+      "person": "minhyuk",
+      "chapter": 1,
+      "visit": 2,
+      "title": "휘어진 팻말",
+      "location": "garden",
+      "composition": "Eye-level side profile framed through leaves, kneeling modestly at garden bed with skirt covering knees",
+      "expression": "soft attentive calm",
+      "gesture": "uses both hands to straighten a little wooden plant stake",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL, dark brown skin, long black high ponytail, brown eyes. White high-collar school council jacket navy piping, burgundy bow, gold buttons, braided shoulder cord, red-gold armband, modest dark pleated skirt. Preserve exact feminine identity. Scene: Korean science high school garden. Composition: Eye-level side profile framed through leaves, kneeling modestly at garden bed with skirt covering knees. Expression: soft attentive calm. Action: uses both hands to straighten a little wooden plant stake. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-minhyuk.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-ff34d0fc-4aea-469d-83cd-d3b209253f62.png",
+      "savedPath": "public/assets/romance-cg/minhyuk-moment-04.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "기울어진 화단 팻말을 민혁이 조심스럽게 세웠다."
+        },
+        {
+          "speaker": "minhyuk",
+          "text": "꽉 누르면 뿌리 다칠 수도 있겠다. 흙 조금만 잡아 줄래?"
+        },
+        {
+          "speaker": "narrator",
+          "text": "내가 흙을 받치는 동안 그녀는 힘을 풀었다. 반듯함보다 먼저 살펴야 할 것이 있었다."
+        }
+      ]
+    },
+    {
+      "id": "minhyuk-moment-05",
+      "person": "minhyuk",
+      "chapter": 2,
+      "visit": 1,
+      "title": "반납은 천천히",
+      "location": "library",
+      "composition": "Rear three quarter wide view through library shelves, whole girl pushing book trolley away with face turned sideways",
+      "expression": "startled embarrassment",
+      "gesture": "brakes squeaky book trolley, shoulders raised",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL, dark brown skin, long black high ponytail, brown eyes. White high-collar school council jacket navy piping, burgundy bow, gold buttons, braided shoulder cord, red-gold armband, modest dark pleated skirt. Preserve exact feminine identity. Scene: Korean science high school library. Composition: Rear three quarter wide view through library shelves, whole girl pushing book trolley away with face turned sideways. Expression: startled embarrassment. Action: brakes squeaky book trolley, shoulders raised. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-minhyuk.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-3a9c6d8e-3811-4ec7-b9d6-8999cac10f41.png",
+      "savedPath": "public/assets/romance-cg/minhyuk-moment-05.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "조용한 도서관에 수레 바퀴 소리가 유난히 크게 울렸다."
+        },
+        {
+          "speaker": "minhyuk",
+          "text": "쉿…… 내가 낸 소리야. 미안. 이번에는 아주 천천히 갈게."
+        },
+        {
+          "speaker": "narrator",
+          "text": "민혁은 책보다 느리게 발을 옮겼다. 나는 앞에서 수레가 지날 틈을 만들었다."
+        }
+      ]
+    },
+    {
+      "id": "minhyuk-moment-06",
+      "person": "minhyuk",
+      "chapter": 2,
+      "visit": 2,
+      "title": "접히지 않는 바람",
+      "location": "roof",
+      "composition": "Wide rooftop behind tall protective rails, eye level with windblown notebook pages arcing across frame",
+      "expression": "exasperated puffed cheeks",
+      "gesture": "pins notebook open against waist with elbow and grips a flying sheet",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL, dark brown skin, long black high ponytail, brown eyes. White high-collar school council jacket navy piping, burgundy bow, gold buttons, braided shoulder cord, red-gold armband, modest dark pleated skirt. Preserve exact feminine identity. Scene: Korean science high school roof. Composition: Wide rooftop behind tall protective rails, eye level with windblown notebook pages arcing across frame. Expression: exasperated puffed cheeks. Action: pins notebook open against waist with elbow and grips a flying sheet. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-minhyuk.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-f8cb9e23-0d7c-4e86-91f6-975c51b25dd6.png",
+      "savedPath": "public/assets/romance-cg/minhyuk-moment-06.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "옥상 바람은 민혁의 계획표를 아무렇게나 넘겼다."
+        },
+        {
+          "speaker": "minhyuk",
+          "text": "잠깐, 아직 그 페이지 아니야. 종이까지 먼저 가려고 하네."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 노트 귀퉁이를 눌렀다. 바람이 멈추자 그녀가 긴 숨을 내쉬었다."
+        }
+      ]
+    },
+    {
+      "id": "minhyuk-moment-07",
+      "person": "minhyuk",
+      "chapter": 3,
+      "visit": 1,
+      "title": "마침표 하나",
+      "location": "computer",
+      "composition": "Close side profile at workstation, face left edge with hands lower foreground, monitor light",
+      "expression": "tired eyes and tiny triumphant smirk",
+      "gesture": "index finger poised over enter key",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL, dark brown skin, long black high ponytail, brown eyes. White high-collar school council jacket navy piping, burgundy bow, gold buttons, braided shoulder cord, red-gold armband, modest dark pleated skirt. Preserve exact feminine identity. Scene: Korean science high school computer. Composition: Close side profile at workstation, face left edge with hands lower foreground, monitor light. Expression: tired eyes and tiny triumphant smirk. Action: index finger poised over enter key. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-minhyuk.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-5560cd1b-1247-4736-8e02-ccd15bd78697.png",
+      "savedPath": "public/assets/romance-cg/minhyuk-moment-07.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "민혁이 안내문 마지막 줄을 고친 뒤 커서 앞에서 멈췄다."
+        },
+        {
+          "speaker": "minhyuk",
+          "text": "명령처럼 들리지 않아? 꼭 필요한 말만 남겼는데도 어렵다."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 문장 끝을 함께 읽었다. 민혁은 느낌표를 지우고 마침표를 찍었다."
+        }
+      ]
+    },
+    {
+      "id": "minhyuk-moment-08",
+      "person": "minhyuk",
+      "chapter": 3,
+      "visit": 2,
+      "title": "객석 앞의 연습",
+      "location": "auditorium",
+      "composition": "Distant back-row view through seat backs, small full-length girl on stage under warm work lights",
+      "expression": "nervous open mouth and determined eyes",
+      "gesture": "holds cue cards at chest height practicing modest bow",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL, dark brown skin, long black high ponytail, brown eyes. White high-collar school council jacket navy piping, burgundy bow, gold buttons, braided shoulder cord, red-gold armband, modest dark pleated skirt. Preserve exact feminine identity. Scene: Korean science high school auditorium. Composition: Distant back-row view through seat backs, small full-length girl on stage under warm work lights. Expression: nervous open mouth and determined eyes. Action: holds cue cards at chest height practicing modest bow. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-minhyuk.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-87824cc6-9723-4ab8-b8e5-d51fc9120361.png",
+      "savedPath": "public/assets/romance-cg/minhyuk-moment-08.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "몇 명만 앉아 있는 객석을 향해 민혁이 인사했다. 목소리 끝이 살짝 떨렸다."
+        },
+        {
+          "speaker": "minhyuk",
+          "text": "진행 순서는 외웠어. 그런데 얼굴이 보이면 다 잊을까 봐."
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 앞줄에서 고개를 끄덕였다. 다시 인사할 때 민혁은 조금 천천히 숨을 골랐다."
+        }
+      ]
+    },
+    {
+      "id": "minhyuk-moment-09",
+      "person": "minhyuk",
+      "chapter": 4,
+      "visit": 1,
+      "title": "걸음을 늦추는 일",
+      "location": "walk",
+      "composition": "Dynamic long lens full body on curving tree path, walking away turning head over shoulder, feet visible",
+      "expression": "cheerful surprised smile",
+      "gesture": "midstride one hand on satchel strap, other swings loosely",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL, dark brown skin, long black high ponytail, brown eyes. White high-collar school council jacket navy piping, burgundy bow, gold buttons, braided shoulder cord, red-gold armband, modest dark pleated skirt. Preserve exact feminine identity. Scene: Korean science high school walk. Composition: Dynamic long lens full body on curving tree path, walking away turning head over shoulder, feet visible. Expression: cheerful surprised smile. Action: midstride one hand on satchel strap, other swings loosely. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-minhyuk.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-6fe5508d-05a7-4a7b-90e2-4909336ba3e2.png",
+      "savedPath": "public/assets/romance-cg/minhyuk-moment-09.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "정문 쪽으로 바삐 걷던 민혁이 뒤를 돌아봤다. 내가 벤치 옆에 멈춰 있었기 때문이다."
+        },
+        {
+          "speaker": "minhyuk",
+          "text": "아, 오늘은 서둘러야 하는 날 아니지. 습관이 무섭네."
+        },
+        {
+          "speaker": "narrator",
+          "text": "민혁이 내 옆까지 되돌아왔다. 다음 걸음부터는 둘의 속도가 같았다."
+        }
+      ]
+    },
+    {
+      "id": "minhyuk-moment-10",
+      "person": "minhyuk",
+      "chapter": 4,
+      "visit": 2,
+      "title": "반듯하지 않은 별",
+      "location": "art",
+      "composition": "High oblique wide shot of art-room floor workspace, sits cross-legged with skirt covering knees beside paper scraps",
+      "expression": "delighted closed eye grin",
+      "gesture": "looks at wonky handmade paper star held between thumb and finger",
+      "prompt": "Use case: illustration-story. One landscape 16:9 visual-novel CG, single coherent illustration. Reference image is IDENTITY AND LINEWORK reference only, do NOT copy pose or framing. Subject: Teenage GIRL, dark brown skin, long black high ponytail, brown eyes. White high-collar school council jacket navy piping, burgundy bow, gold buttons, braided shoulder cord, red-gold armband, modest dark pleated skirt. Preserve exact feminine identity. Scene: Korean science high school art. Composition: High oblique wide shot of art-room floor workspace, sits cross-legged with skirt covering knees beside paper scraps. Expression: delighted closed eye grin. Action: looks at wonky handmade paper star held between thumb and finger. Detailed setting, cinematic lighting, crisp expressive anime ink contours and subtle hatching, cel shading matching reference, not photorealistic. Fully clothed innocent school life, anatomically correct hands. Candid action not facing-viewer portrait. No camera-reaching hand, no readable text, watermark, captions, UI, panels, mirrors.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-minhyuk.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-dd799da1-90f7-4303-87ab-ab0f9c864d10.png",
+      "savedPath": "public/assets/romance-cg/minhyuk-moment-10.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "민혁이 만든 종이 별은 꼭짓점 하나가 유난히 짧았다."
+        },
+        {
+          "speaker": "minhyuk",
+          "text": "새로 자를까 했는데…… 이쪽이 더 기억나겠지?"
+        },
+        {
+          "speaker": "narrator",
+          "text": "나는 고개를 끄덕였다. 그녀는 그 별을 버릴 종이 더미에서 꺼내 놓았다."
+        }
+      ]
+    }
+  ]
+}

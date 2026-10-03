@@ -1,0 +1,336 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-04",
+  "entries": [
+    {
+      "id": "juhan-moment-01",
+      "person": "juhan",
+      "chapter": 0,
+      "visit": 1,
+      "title": "화면 밖의 길잡이",
+      "location": "computer",
+      "composition": "over-the-shoulder oblique composition from behind subject, her face in three-quarter profile, monitor in foreground and rows of PCs receding",
+      "expression": "thoughtful tiny pout and focused teal eyes",
+      "gesture": "points with pencil to a paper maze beside keyboard while other hand stays away from mouse",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Juhan, same clearly female student as reference: long chestnut flowing hair, white flower-and-circuit hairclip, teal green eyes, teal cardigan with white trim and tiny cat pin, white collared blouse, dark green bow, modest knee-length dark pleated skirt.\nScene: School computer room, monitor displays simple original colored geometric maze without readable text; she wears teal cardigan and long chestnut hair.\nComposition: over-the-shoulder oblique composition from behind subject, her face in three-quarter profile, monitor in foreground and rows of PCs receding.\nExpression: thoughtful tiny pout and focused teal eyes.\nGesture: points with pencil to a paper maze beside keyboard while other hand stays away from mouse.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-juhan.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-f418c4ae-bf01-47fa-bd0d-5e4a38ccbf98.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/juhan-moment-01.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "주한이 화면 대신 종이에 그린 네모들을 연필 끝으로 짚었다."
+        },
+        {
+          "speaker": "juhan",
+          "text": "이 길, 만든 나는 바로 찾는데 처음 보는 사람은 다르게 보겠지?"
+        },
+        {
+          "speaker": "player",
+          "text": "여기서 두 번 돌아가는 줄 알았어."
+        },
+        {
+          "speaker": "juhan",
+          "text": "그거 적어 둬야겠다. 네가 헤맨 자리가 내 설명이 비어 있던 곳이네."
+        }
+      ]
+    },
+    {
+      "id": "juhan-moment-02",
+      "person": "juhan",
+      "chapter": 0,
+      "visit": 2,
+      "title": "책장 사이의 우회로",
+      "location": "library",
+      "composition": "long lens through a narrow gap between bookshelves, full seated figure on library window bench with feet on floor, face in side three-quarter",
+      "expression": "puzzled eyebrows tilted asymmetrically, lips slightly parted",
+      "gesture": "holds open a pop-up paper mechanics book and gently tilts it to inspect paper folding",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Juhan, same clearly female student as reference: long chestnut flowing hair, white flower-and-circuit hairclip, teal green eyes, teal cardigan with white trim and tiny cat pin, white collared blouse, dark green bow, modest knee-length dark pleated skirt.\nScene: School library quiet corner, no laptop or computer, green tree reflections in windows, afternoon gold.\nComposition: long lens through a narrow gap between bookshelves, full seated figure on library window bench with feet on floor, face in side three-quarter.\nExpression: puzzled eyebrows tilted asymmetrically, lips slightly parted.\nGesture: holds open a pop-up paper mechanics book and gently tilts it to inspect paper folding.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-juhan.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-ab4b8c4a-5dd9-4372-86c0-073843339f77.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/juhan-moment-02.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "책장 사이로 주한이 책을 이리저리 기울이는 모습이 보였다."
+        },
+        {
+          "speaker": "juhan",
+          "text": "코드를 읽는 게 이것보다 쉽겠어. 접힌 선은 앞뒤가 다르네."
+        },
+        {
+          "speaker": "player",
+          "text": "책을 거꾸로 보면 조금 나아져?"
+        },
+        {
+          "speaker": "juhan",
+          "text": "아니. 네가 반대쪽에서 봐 주면 나을 것 같아서 기다렸어."
+        }
+      ]
+    },
+    {
+      "id": "juhan-moment-03",
+      "person": "juhan",
+      "chapter": 1,
+      "visit": 1,
+      "title": "맞히기 전에 웃는 맛",
+      "location": "cafeteria",
+      "composition": "high overhead diagonal view of cafeteria table, character at side of frame with face clearly angled upward to companion",
+      "expression": "embarrassed cheeks slightly puffed while chewing, eyes smiling, blush; mouth closed",
+      "gesture": "holds a bitten plain cookie carefully in one hand and covers closed mouth politely with other hand",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Juhan, same clearly female student as reference: long chestnut flowing hair, white flower-and-circuit hairclip, teal green eyes, teal cardigan with white trim and tiny cat pin, white collared blouse, dark green bow, modest knee-length dark pleated skirt.\nScene: Bright school cafeteria snack corner, two simple unbranded cookie packets, no laptop, light comic warmth.\nComposition: high overhead diagonal view of cafeteria table, character at side of frame with face clearly angled upward to companion.\nExpression: embarrassed cheeks slightly puffed while chewing, eyes smiling, blush; mouth closed.\nGesture: holds a bitten plain cookie carefully in one hand and covers closed mouth politely with other hand.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-juhan.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-60211fde-0b44-4dd1-a3a3-a2dfd2a97ac3.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/juhan-moment-03.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "쿠키 맛을 설명하려던 주한이 먼저 입을 가렸다. 아직 한 입을 다 삼키지 못한 참이었다."
+        },
+        {
+          "speaker": "player",
+          "text": "정답은 천천히 말해도 돼."
+        },
+        {
+          "speaker": "juhan",
+          "text": "맛 맞히기보다 먹는 속도가 빨랐네. 잠깐만."
+        },
+        {
+          "speaker": "narrator",
+          "text": "주한은 빈 포장지를 뒤집어 놓고, 남은 조각을 내 쪽으로 밀었다."
+        }
+      ]
+    },
+    {
+      "id": "juhan-moment-04",
+      "person": "juhan",
+      "chapter": 1,
+      "visit": 2,
+      "title": "휴식에도 돌발 상황",
+      "location": "garden",
+      "composition": "wide dynamic side-on full-body shot at chest-height camera, subject stepping briskly across garden path, napkin fluttering ahead",
+      "expression": "surprised open-mouthed laugh, eyes wide",
+      "gesture": "reaches forward one hand toward a drifting clean paper napkin, other hand secures small picnic pouch",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Juhan, same clearly female student as reference: long chestnut flowing hair, white flower-and-circuit hairclip, teal green eyes, teal cardigan with white trim and tiny cat pin, white collared blouse, dark green bow, modest knee-length dark pleated skirt.\nScene: Sunny school garden, benign breeze lifting paper napkin, no falling, no injury, fully clothed knee-length pleated skirt with no upskirt.\nComposition: wide dynamic side-on full-body shot at chest-height camera, subject stepping briskly across garden path, napkin fluttering ahead.\nExpression: surprised open-mouthed laugh, eyes wide.\nGesture: reaches forward one hand toward a drifting clean paper napkin, other hand secures small picnic pouch.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-juhan.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-c1f3dd96-e13b-43ea-95ec-28525f3d3749.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/juhan-moment-04.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "주한이 간식 봉투를 여는 순간 냅킨이 바람을 타고 벤치를 벗어났다."
+        },
+        {
+          "speaker": "juhan",
+          "text": "잠깐, 휴식 계획에는 추격전 없었는데!"
+        },
+        {
+          "speaker": "player",
+          "text": "내 쪽으로 오고 있어. 길만 막을게."
+        },
+        {
+          "speaker": "juhan",
+          "text": "잡았다. 오늘은 화면 밖에서도 둘이 움직여야 되는 날이네."
+        }
+      ]
+    },
+    {
+      "id": "juhan-moment-05",
+      "person": "juhan",
+      "chapter": 2,
+      "visit": 1,
+      "title": "접힌 선의 새 용도",
+      "location": "art",
+      "composition": "medium-wide side profile at standing art workbench, camera level with shoulders, paper box foreground prominent",
+      "expression": "frustrated little frown with pressed lips, determined eyes",
+      "gesture": "pinches a paper box corner into shape with both hands carefully, head tilted sideways",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Juhan, same clearly female student as reference: long chestnut flowing hair, white flower-and-circuit hairclip, teal green eyes, teal cardigan with white trim and tiny cat pin, white collared blouse, dark green bow, modest knee-length dark pleated skirt.\nScene: Art studio with a folded paper box and paper scraps, spare pencils and glue capped on table, no laptop.\nComposition: medium-wide side profile at standing art workbench, camera level with shoulders, paper box foreground prominent.\nExpression: frustrated little frown with pressed lips, determined eyes.\nGesture: pinches a paper box corner into shape with both hands carefully, head tilted sideways.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-juhan.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-f02e5015-776f-4148-be72-4c09202320b0.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/juhan-moment-05.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "주한이 종이 상자의 한쪽 모서리를 누를 때마다 반대쪽이 벌어졌다."
+        },
+        {
+          "speaker": "juhan",
+          "text": "한 군데 고치면 다른 데가 무너지는 건 익숙한데, 종이는 저장도 안 되네."
+        },
+        {
+          "speaker": "player",
+          "text": "바닥을 받쳐 줄게. 모서리는 네가 잡아 봐."
+        },
+        {
+          "speaker": "juhan",
+          "text": "오, 서 있다. 지금 손 놓지 마. 나도 잠깐 성공한 모양을 보고 싶어."
+        }
+      ]
+    },
+    {
+      "id": "juhan-moment-06",
+      "person": "juhan",
+      "chapter": 2,
+      "visit": 2,
+      "title": "손으로 만든 대사",
+      "location": "hallway",
+      "composition": "wide shot from outside classroom window into hallway, strong window mullion framing, subject waist-up in profile to sunlit wall",
+      "expression": "eyes-squeezed spontaneous laugh, broad open smile",
+      "gesture": "makes a simple rabbit shadow puppet with one hand on sunlit wall, other hand tucked behind back",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Juhan, same clearly female student as reference: long chestnut flowing hair, white flower-and-circuit hairclip, teal green eyes, teal cardigan with white trim and tiny cat pin, white collared blouse, dark green bow, modest knee-length dark pleated skirt.\nScene: Late afternoon school corridor, clearly plausible single-hand bunny shadow on blank wall; no written text, no screen.\nComposition: wide shot from outside classroom window into hallway, strong window mullion framing, subject waist-up in profile to sunlit wall.\nExpression: eyes-squeezed spontaneous laugh, broad open smile.\nGesture: makes a simple rabbit shadow puppet with one hand on sunlit wall, other hand tucked behind back.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-juhan.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-a5362f49-4612-4224-9b3f-28b74856b6c3.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/juhan-moment-06.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "복도 벽에 토끼처럼 생긴 그림자가 나타났다가 손가락을 접자 금방 작아졌다."
+        },
+        {
+          "speaker": "juhan",
+          "text": "화면 없이 움직이는 캐릭터. 기능은 귀 접기 하나야."
+        },
+        {
+          "speaker": "player",
+          "text": "내 그림자는 자꾸 집게가 되는데."
+        },
+        {
+          "speaker": "juhan",
+          "text": "그럼 집게도 등장시키자. 토끼 혼자 있으면 할 얘기가 없으니까."
+        }
+      ]
+    },
+    {
+      "id": "juhan-moment-07",
+      "person": "juhan",
+      "chapter": 3,
+      "visit": 1,
+      "title": "녹음 버튼 앞의 숨",
+      "location": "media",
+      "composition": "close side profile with small desk microphone in foreground, shallow depth of field, exactly one closeup for set, not facing camera",
+      "expression": "nervous determined expression with lips gently parted, eyebrows lowered, tiny blush",
+      "gesture": "holds a small blank cue card below chin with both hands, inhaling before speaking",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Juhan, same clearly female student as reference: long chestnut flowing hair, white flower-and-circuit hairclip, teal green eyes, teal cardigan with white trim and tiny cat pin, white collared blouse, dark green bow, modest knee-length dark pleated skirt.\nScene: School media recording booth with modest acoustic panels, muted cool teal and amber task lamp; no headset required, no screen focus.\nComposition: close side profile with small desk microphone in foreground, shallow depth of field, exactly one closeup for set, not facing camera.\nExpression: nervous determined expression with lips gently parted, eyebrows lowered, tiny blush.\nGesture: holds a small blank cue card below chin with both hands, inhaling before speaking.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-juhan.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-e271163b-4f22-4a97-b390-4aa5337d3abd.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/juhan-moment-07.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "미디어실에서 주한이 녹음 버튼 앞에 손을 멈췄다."
+        },
+        {
+          "speaker": "juhan",
+          "text": "프로그램 인사말을 내 목소리로 넣어 보려는데, 글자로 쓸 때랑 다르네."
+        },
+        {
+          "speaker": "player",
+          "text": "내가 듣는 쪽에 있을게. 첫 문장만 해 봐."
+        },
+        {
+          "speaker": "juhan",
+          "text": "응. 잘 읽는 것 말고, 한 사람한테 말하는 것부터 해 볼게."
+        }
+      ]
+    },
+    {
+      "id": "juhan-moment-08",
+      "person": "juhan",
+      "chapter": 3,
+      "visit": 2,
+      "title": "작은 렌즈의 바깥",
+      "location": "roof",
+      "composition": "very wide twilight rooftop establishing view, full figure near safe inner wall at left, sky fills two thirds, slight high angle",
+      "expression": "awestruck rounded eyes and small quiet smile",
+      "gesture": "lowers a compact camera from eye level and looks directly up at first evening star, elbows relaxed",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Juhan, same clearly female student as reference: long chestnut flowing hair, white flower-and-circuit hairclip, teal green eyes, teal cardigan with white trim and tiny cat pin, white collared blouse, dark green bow, modest knee-length dark pleated skirt.\nScene: Safe fenced school rooftop at blue hour, faint city lights and a first star, no fantasy sky or impossible astronomy, no computer.\nComposition: very wide twilight rooftop establishing view, full figure near safe inner wall at left, sky fills two thirds, slight high angle.\nExpression: awestruck rounded eyes and small quiet smile.\nGesture: lowers a compact camera from eye level and looks directly up at first evening star, elbows relaxed.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-juhan.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-0285bf86-5d98-4a1b-8763-f90cf97af9ca.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/juhan-moment-08.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "주한이 작은 카메라를 내렸다. 화면에는 아직 하늘만 어둡게 찍혀 있었다."
+        },
+        {
+          "speaker": "juhan",
+          "text": "눈으로는 보이는데 사진에는 안 나오네."
+        },
+        {
+          "speaker": "player",
+          "text": "저 건물 위에 하나. 나도 보여."
+        },
+        {
+          "speaker": "juhan",
+          "text": "그럼 기록은 둘이 봤다는 걸로 됐다. 오늘은 저장 안 해도 되겠어."
+        }
+      ]
+    },
+    {
+      "id": "juhan-moment-09",
+      "person": "juhan",
+      "chapter": 4,
+      "visit": 1,
+      "title": "지운 자리의 여유",
+      "location": "classroom",
+      "composition": "rear three-quarter view through open classroom door, medium full figure at blackboard, face turned slightly sideways, empty desks create depth",
+      "expression": "relieved satisfied exhale, soft eyelids and faint proud smile",
+      "gesture": "rests eraser at board edge while brushing chalk dust from fingers over a cloth",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Juhan, same clearly female student as reference: long chestnut flowing hair, white flower-and-circuit hairclip, teal green eyes, teal cardigan with white trim and tiny cat pin, white collared blouse, dark green bow, modest knee-length dark pleated skirt.\nScene: Quiet classroom after cleanup, board only faint abstract line remnants no readable text, warm late sun, teal cardigan sleeves rolled modestly.\nComposition: rear three-quarter view through open classroom door, medium full figure at blackboard, face turned slightly sideways, empty desks create depth.\nExpression: relieved satisfied exhale, soft eyelids and faint proud smile.\nGesture: rests eraser at board edge while brushing chalk dust from fingers over a cloth.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-juhan.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-d3f5532a-fe8d-4994-828c-98288f93905b.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/juhan-moment-09.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "칠판을 다 지운 주한이 분필 가루 묻은 손을 내려다봤다."
+        },
+        {
+          "speaker": "juhan",
+          "text": "깔끔해졌는데 손에 오늘 한 일이 남았네."
+        },
+        {
+          "speaker": "player",
+          "text": "천 여기 있어. 왼쪽 모서리는 내가 마저 지울게."
+        },
+        {
+          "speaker": "juhan",
+          "text": "고마워. 다 끝내고 나면 뭘 고칠지 말고, 어디 갈지 생각하고 싶다."
+        }
+      ]
+    },
+    {
+      "id": "juhan-moment-10",
+      "person": "juhan",
+      "chapter": 4,
+      "visit": 2,
+      "title": "다음 화면 대신 산책",
+      "location": "walk",
+      "composition": "distant walking-path wide landscape with long perspective, full figure in front walking away then glancing sideways back, gentle eye-height camera",
+      "expression": "peaceful shy smile with slight blush, not direct camera gaze",
+      "gesture": "walks slowly with hands clasped loosely behind back and shoulder bag against hip",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Juhan, same clearly female student as reference: long chestnut flowing hair, white flower-and-circuit hairclip, teal green eyes, teal cardigan with white trim and tiny cat pin, white collared blouse, dark green bow, modest knee-length dark pleated skirt.\nScene: Tree-lined school walking path at gentle sunset, leaves overhead, calm ordinary day, no technology props, no dramatic romance contact.\nComposition: distant walking-path wide landscape with long perspective, full figure in front walking away then glancing sideways back, gentle eye-height camera.\nExpression: peaceful shy smile with slight blush, not direct camera gaze.\nGesture: walks slowly with hands clasped loosely behind back and shoulder bag against hip.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-juhan.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-74db0af1-7ab9-458d-a80b-cd8034b66da3.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/juhan-moment-10.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "주한이 산책로에서 걸음을 조금 늦췄다. 평소보다 손이 한가로워 보였다."
+        },
+        {
+          "speaker": "juhan",
+          "text": "아무것도 안 들고 나오니까 자꾸 손 둘 데를 찾게 되네."
+        },
+        {
+          "speaker": "player",
+          "text": "오늘은 빈손으로 계속 걸어도 되잖아."
+        },
+        {
+          "speaker": "juhan",
+          "text": "응. 그럼 다음에 할 일은 돌아가서 정하자. 지금은 이쪽 길이 궁금해."
+        }
+      ]
+    }
+  ]
+}

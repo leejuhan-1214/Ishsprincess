@@ -1,4 +1,5 @@
-import type {RHero,RState} from '../romanceTypes';
+import type {RPerson,RState} from '../romanceTypes';
+import {illustrationMoments} from './romanceIllustrationMoments';
 
 export const romanceArt = [
  {id:'world-earbud',person:'world',title:'한쪽씩 나눠 듣는 봄',alt:'노을이 비치는 밴드실에서 세계가 옆에 앉은 나에게 이어폰 한쪽을 건넨다.'},
@@ -19,9 +20,11 @@ export const romanceArt = [
  {id:'memory-reservation',person:'taewoo',title:'우리가 기다린 시간',alt:'댄스실 앞에서 태우의 휴대폰 안내와 예약 변경 확인서를 비교한다.'},
  {id:'memory-meeting',person:'seoyul',title:'세 곳으로 갈라진 약속',alt:'밴드실 앞에서 서율과 세 모둠이 받은 모임 안내를 펼쳐 본다.'},
  {id:'memory-cues',person:'minhyuk',title:'리허설 뒤의 두 순서',alt:'강당 객석의 진행 테이블에서 민혁과 승인본 및 배포본을 비교한다.'},
-] as const satisfies readonly {id:string;person:RHero;title:string;alt:string}[];
+ ...illustrationMoments.map(moment=>({id:moment.id,person:moment.person,title:moment.title,alt:moment.lines[0].text})),
+] satisfies readonly {id:string;person:RPerson;title:string;alt:string}[];
 export function artById(id?:string){return romanceArt.find(art=>art.id===id);}
-export function artPath(id:string){return `assets/romance-cg/${id}.png`;}
+export function artPath(id:string){return `assets/romance-cg/preview/${id}.webp`;}
+export function artOriginalPath(id:string){return `assets/romance-cg/${id}.png`;}
 export function awareness(s:RState){
  const stages=[
   {title:'첫 약속',text:'친구들과 페어 준비를 시작했다.',after:'read:main-1-1'},

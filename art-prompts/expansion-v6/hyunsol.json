@@ -1,0 +1,344 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-04",
+  "entries": [
+    {
+      "id": "hyunsol-moment-01",
+      "person": "hyunsol",
+      "chapter": 0,
+      "visit": 1,
+      "title": "모형의 반대편",
+      "location": "chemistry",
+      "composition": "distant eye-level wide establishing shot across a chemistry classroom; whole standing figure at wall-mounted molecular teaching models, character occupies one quarter of width",
+      "expression": "analytical narrowed eyes and an inquisitive slight frown",
+      "gesture": "stands with arms loosely crossed, head tipped sideways studying the wall model",
+      "prompt": "Use case: illustration-story. Produce a single 16:9 landscape anime school-life illustration. Reference image 1 is the same character's face, hair and crisp cel-shaded drawing style, not a pose template. Keep her teenage school-student identity. Chin-length black bob, silver hairpins, gray eyes, tiny facial beauty mark.\nScene and clothing: Bright school chemistry classroom. Same bob-haired girl in a fully buttoned long white labcoat over a collared school shirt with teal tie, dark trousers and practical closed shoes, clear safety goggles. Safe colorful plastic molecular teaching models mounted on a classroom wall, no active chemicals.\nComposition: distant eye-level wide establishing shot across a chemistry classroom; whole standing figure at wall-mounted molecular teaching models, character occupies one quarter of width\nExpression: analytical narrowed eyes and an inquisitive slight frown\nGesture: stands with arms loosely crossed, head tipped sideways studying the wall model\nDetailed ordinary school surroundings and strong readable visual storytelling. Anatomically natural two arms and hands. One image, no captions, speech balloons, UI, logos, watermark or collage.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-hyunsol.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-510136a9-db91-4e86-8023-6cb78786fcc0.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-moment-01.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "현솔은 벽에 걸린 분자 모형을 정면에서 보고는 옆으로 한 걸음 옮겼다."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "여기서 보면 겹친 게 따로 보여. 네 자리에서는 어떤 모양이야?"
+        },
+        {
+          "speaker": "player",
+          "text": "가운데 공이 하나 더 숨은 것 같은데."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "그럼 자리 바꿔 보자. 같은 걸 보고도 다른 말을 하는 이유부터 확인하게."
+        }
+      ],
+      "previousPrompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Choi Hyunsol as reference: straight black chin-length bob with bangs and two silver hairpins, gray eyes, tiny beauty mark near eye, white collared shirt teal necktie and modest dark skirt, white labcoat for lab tasks only and goggles when appropriate. Preserve facial identity and hair, no redesign. Change expression and gesture exactly; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: school chemistry lab, safe sealed colored-water demonstration, safety goggles worn properly over eyes, white labcoat.\nComposition: full figure side view at laboratory counter, camera at bottle height, broad classroom depth. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: sharp analytical squint, serious lips.\nAction/gesture: bends knees slightly to align eyes with sealed clear sample bottle, clipboard braced against hip.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "generationNote": "Original ordinary school-life request was input-filter rejected. Replaced with a different fully clothed standing classroom/garden task, without changing character age or hiding setting."
+    },
+    {
+      "id": "hyunsol-moment-02",
+      "person": "hyunsol",
+      "chapter": 0,
+      "visit": 2,
+      "title": "물뿌리개의 자리",
+      "location": "garden",
+      "composition": "rear three-quarter medium-long shot through a garden tool-shelf frame, entire standing upper figure with side face visible",
+      "expression": "quiet proud closed-mouth smile, relaxed brows",
+      "gesture": "places a small green watering can neatly on low open shelf with one hand, checks row of tidy cans with other hand resting on hip",
+      "prompt": "Use case: illustration-story. Produce a single 16:9 landscape anime school-life illustration. Reference image 1 is the same character's face, hair and crisp cel-shaded drawing style, not a pose template. Keep her teenage school-student identity. Chin-length black bob, silver hairpins, gray eyes, tiny facial beauty mark.\nScene and clothing: School garden tool shelter with leafy borders and morning dew. Same bob-haired girl in a long fully buttoned white practical coat over school shirt teal tie and dark trousers. Plain green watering cans on wooden shelves. Grounded ordinary school gardening activity.\nComposition: rear three-quarter medium-long shot through a garden tool-shelf frame, entire standing upper figure with side face visible\nExpression: quiet proud closed-mouth smile, relaxed brows\nGesture: places a small green watering can neatly on low open shelf with one hand, checks row of tidy cans with other hand resting on hip\nDetailed ordinary school surroundings and strong readable visual storytelling. Anatomically natural two arms and hands. One image, no captions, speech balloons, UI, logos, watermark or collage.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-hyunsol.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-6cceffff-068a-4f67-bcc1-e1d1bcfb2b7e.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-moment-02.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "현솔이 정원 도구장의 물뿌리개를 크기별로 놓았다. 비어 있던 맨 끝 칸이 정확히 채워졌다."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "물을 다 비우고 넣어야 해. 내일 쓰는 사람 신발에 쏟아지면 억울하잖아."
+        },
+        {
+          "speaker": "player",
+          "text": "다음 사람이 누군지도 모르는데 꼼꼼하네."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "내일 내가 될 수도 있고, 네가 될 수도 있으니까. 손잡이 쪽은 네가 맞춰 줄래?"
+        }
+      ],
+      "previousPrompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Choi Hyunsol as reference: straight black chin-length bob with bangs and two silver hairpins, gray eyes, tiny beauty mark near eye, white collared shirt teal necktie and modest dark skirt, white labcoat for lab tasks only and goggles when appropriate. Preserve facial identity and hair, no redesign. Change expression and gesture exactly; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: school garden after rain, distinct green foliage and dew; labcoat folded on nearby bench, white shirt teal tie dark skirt.\nComposition: intimate near-ground three-quarter full crouching shot beside planted garden border, camera level with leaves. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: eyes widened in genuine childlike fascination, little parted smile.\nAction/gesture: crouches on heels holding a magnifying loupe beside one leaf, other hand gently supports stem without plucking.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "generationNote": "Original ordinary school-life request was input-filter rejected. Replaced with a different fully clothed standing classroom/garden task, without changing character age or hiding setting."
+    },
+    {
+      "id": "hyunsol-moment-03",
+      "person": "hyunsol",
+      "chapter": 1,
+      "visit": 1,
+      "title": "공책 사이의 색",
+      "location": "classroom",
+      "composition": "true overhead bird's-eye wide view of classroom desks, neatly aligned colorful notebooks and girl's head, shoulders and arms visible from directly above",
+      "expression": "dryly amused one-eyebrow raise as she looks at a misfiled notebook",
+      "gesture": "uses both hands to separate one small yellow notebook from a stack of blue notebooks, elbows naturally apart",
+      "prompt": "Use case: illustration-story. Produce a single 16:9 landscape anime school-life illustration. Reference image 1 is the same character's face, hair and crisp cel-shaded drawing style, not a pose template. Keep her teenage school-student identity. Chin-length black bob, silver hairpins, gray eyes, tiny facial beauty mark.\nScene and clothing: Quiet school classroom, clean desks and plain notebooks. Same bob-haired girl wearing a neatly closed white cardigan over collared school shirt with teal tie, dark trousers. Colored notebook covers without words or symbols. Straight-down camera focuses on sorting task.\nComposition: true overhead bird's-eye wide view of classroom desks, neatly aligned colorful notebooks and girl's head, shoulders and arms visible from directly above\nExpression: dryly amused one-eyebrow raise as she looks at a misfiled notebook\nGesture: uses both hands to separate one small yellow notebook from a stack of blue notebooks, elbows naturally apart\nDetailed ordinary school surroundings and strong readable visual storytelling. Anatomically natural two arms and hands. One image, no captions, speech balloons, UI, logos, watermark or collage.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-hyunsol.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-28cc6115-ca5b-4424-986d-411bde181518.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-moment-03.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "공책을 정리하던 현솔이 파란 표지 사이의 노란 공책을 꺼냈다. 내 것이었다."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "이건 네 거지? 색으로 나누다가 내용까지 같은 줄 알 뻔했어."
+        },
+        {
+          "speaker": "player",
+          "text": "표지가 너무 튀어서 바로 찾았네."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "응. 덕분에 네 메모를 펼칠 필요는 없었어. 읽어도 되는 건 네가 골라서 보여 줘."
+        }
+      ],
+      "previousPrompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Choi Hyunsol as reference: straight black chin-length bob with bangs and two silver hairpins, gray eyes, tiny beauty mark near eye, white collared shirt teal necktie and modest dark skirt, white labcoat for lab tasks only and goggles when appropriate. Preserve facial identity and hair, no redesign. Change expression and gesture exactly; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: quiet classroom afternoon, pale chalkboard with abstract faint marks not words.\nComposition: high overhead tilted shot across two empty classroom desks, full seated upperbody and legs modestly positioned. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: deadpan skeptical face, one raised eyebrow.\nAction/gesture: holds a small plain folded paper airplane between finger and thumb ready to launch, other palm flat marking desk edge.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "generationNote": "Original ordinary school-life request was input-filter rejected. Replaced with a different fully clothed standing classroom/garden task, without changing character age or hiding setting."
+    },
+    {
+      "id": "hyunsol-moment-04",
+      "person": "hyunsol",
+      "chapter": 1,
+      "visit": 2,
+      "title": "달지 않은 정답",
+      "location": "cafeteria",
+      "composition": "single close-up at seated eye-level from slight side, natural face plus chopsticks foreground, not frontal POVhands",
+      "expression": "eyes softly closed in satisfied smile, cheeks subtly lifted",
+      "gesture": "tastes one small bite held neatly with chopsticks, free hand shields mouth while chuckling",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Choi Hyunsol as reference: straight black chin-length bob with bangs and two silver hairpins, gray eyes, tiny beauty mark near eye, white collared shirt teal necktie and modest dark skirt, white labcoat for lab tasks only and goggles when appropriate. Preserve facial identity and hair, no redesign. Change expression and gesture exactly; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: school cafeteria window counter with lunch tray, uniform shirt and teal tie; no labcoat near food.\nComposition: single close-up at seated eye-level from slight side, natural face plus chopsticks foreground, not frontal POVhands. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: eyes softly closed in satisfied smile, cheeks subtly lifted.\nAction/gesture: tastes one small bite held neatly with chopsticks, free hand shields mouth while chuckling.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-hyunsol.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-33fe92d1-666a-4788-94d2-e3dc483dc939.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-moment-04.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "현솔이 한입 먹고 잠깐 눈을 감았다. 평가는 쉽게 나오지 않았다."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "왜 이렇게 기다려. 네가 만든 것도 아니면서."
+        },
+        {
+          "speaker": "player",
+          "text": "네가 맛있게 먹으면 메뉴 고른 보람이 있잖아."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "합격. 근데 다음엔 네가 먹는 얼굴도 관찰할 거야."
+        }
+      ]
+    },
+    {
+      "id": "hyunsol-moment-05",
+      "person": "hyunsol",
+      "chapter": 2,
+      "visit": 1,
+      "title": "책등에 남은 손끝",
+      "location": "library",
+      "composition": "rear medium-long shot in library aisle, three-quarter head turned just enough to see profile, full torso and legs",
+      "expression": "caught-off-guard shy side glance, a small embarrassed frown",
+      "gesture": "one arm reaches up toward an ordinary-height shelf, fingertips paused on detective novel spine, other hand holds book to chest",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Choi Hyunsol as reference: straight black chin-length bob with bangs and two silver hairpins, gray eyes, tiny beauty mark near eye, white collared shirt teal necktie and modest dark skirt, white labcoat for lab tasks only and goggles when appropriate. Preserve facial identity and hair, no redesign. Change expression and gesture exactly; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: library tall shelves warm late afternoon, abstract plain bookspines no legible titles.\nComposition: rear medium-long shot in library aisle, three-quarter head turned just enough to see profile, full torso and legs. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: caught-off-guard shy side glance, a small embarrassed frown.\nAction/gesture: one arm reaches up toward an ordinary-height shelf, fingertips paused on detective novel spine, other hand holds book to chest.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-hyunsol.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-8975eaf3-95e4-4bc3-be97-52adac219657.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-moment-05.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "현솔의 손이 추리소설 한 권에서 멈췄다. 실험 참고서를 찾는 줄 알았던 나는 책등을 다시 봤다."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "그런 표정 하지 마. 쉬는 시간까지 분자만 생각하진 않아."
+        },
+        {
+          "speaker": "player",
+          "text": "어떤 장면이 제일 좋아?"
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "누가 정답을 말하기 전에, 둘이 같은 걸 다르게 봤다는 걸 아는 장면."
+        }
+      ]
+    },
+    {
+      "id": "hyunsol-moment-06",
+      "person": "hyunsol",
+      "chapter": 2,
+      "visit": 2,
+      "title": "물웅덩이의 예외",
+      "location": "walk",
+      "composition": "ground-level wide shot from beside shallow puddle, full standing figure beyond reflected sky, no mirror duplicate face",
+      "expression": "unrestrained laughing grin unlike usual restraint",
+      "gesture": "balances arms out sideways taking a tiny careful step around puddle with practical school shoes",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Choi Hyunsol as reference: straight black chin-length bob with bangs and two silver hairpins, gray eyes, tiny beauty mark near eye, white collared shirt teal necktie and modest dark skirt, white labcoat for lab tasks only and goggles when appropriate. Preserve facial identity and hair, no redesign. Change expression and gesture exactly; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: tree-lined campus walking path after shower, wet paving and fallen leaves; fully covered uniform no labcoat.\nComposition: ground-level wide shot from beside shallow puddle, full standing figure beyond reflected sky, no mirror duplicate face. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: unrestrained laughing grin unlike usual restraint.\nAction/gesture: balances arms out sideways taking a tiny careful step around puddle with practical school shoes.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-hyunsol.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-a1576418-c2c9-4c04-a9e0-a65bee5d09d9.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-moment-06.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "산책로 물웅덩이를 피하려던 현솔이 돌 하나를 밟고 균형을 잡았다. 늘 정확하던 보폭이 엇나갔다."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "계산보다 돌이 미끄럽네."
+        },
+        {
+          "speaker": "player",
+          "text": "손 잡아 줄까?"
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "지금은 웃지만 말고 옆에 있어 줘. 다음 발은 내가 고를게."
+        }
+      ]
+    },
+    {
+      "id": "hyunsol-moment-07",
+      "person": "hyunsol",
+      "chapter": 3,
+      "visit": 1,
+      "title": "정답보다 먼 빛",
+      "location": "observatory",
+      "composition": "wide deep-focus eye-level strict profile at observatory, a large telescope silhouette frames foreground",
+      "expression": "thoughtful brows with awed slightly open lips",
+      "gesture": "looks away from telescope toward distant night sky, one hand rests on safe railing, the other holds folded star chart",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Choi Hyunsol as reference: straight black chin-length bob with bangs and two silver hairpins, gray eyes, tiny beauty mark near eye, white collared shirt teal necktie and modest dark skirt, white labcoat for lab tasks only and goggles when appropriate. Preserve facial identity and hair, no redesign. Change expression and gesture exactly; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: school observatory sheltered viewing deck, telescope, subtle realistic stars, urban glow; cardigan over uniform and teal tie.\nComposition: wide deep-focus eye-level strict profile at observatory, a large telescope silhouette frames foreground. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: thoughtful brows with awed slightly open lips.\nAction/gesture: looks away from telescope toward distant night sky, one hand rests on safe railing, the other holds folded star chart.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-hyunsol.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-2b82b7d7-402f-431c-a338-b429ec4ab023.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-moment-07.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "현솔은 망원경에서 눈을 떼고 한동안 맨눈으로 하늘을 봤다."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "수치를 들으면 가까워질 줄 알았는데, 오히려 더 멀게 느껴져."
+        },
+        {
+          "speaker": "player",
+          "text": "그래서 실망했어?"
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "아니. 다 안다고 생각 안 해도 되는 게 편해서. 네 얘기도 그럴 때가 있어."
+        }
+      ]
+    },
+    {
+      "id": "hyunsol-moment-08",
+      "person": "hyunsol",
+      "chapter": 3,
+      "visit": 2,
+      "title": "작은 표식의 효용",
+      "location": "computer",
+      "composition": "wide side-on view along a row of computer desks, full standing figure at far monitor, foreground dark computer towers create layered depth",
+      "expression": "brows knitted in concentrated mild frustration, mouth gently pursed",
+      "gesture": "stands attaching a blank yellow adhesive tab around one disconnected cable with both hands, cable safely resting on desk",
+      "prompt": "Use case: illustration-story. Produce a single 16:9 landscape anime school-life illustration. Reference image 1 is the same character's face, hair and crisp cel-shaded drawing style, not a pose template. Keep her teenage school-student identity. Chin-length black bob, silver hairpins, gray eyes, tiny facial beauty mark.\nScene and clothing: School computer classroom in daylight. Same bob-haired girl in a fully buttoned white cardigan, white collar and teal tie with dark trousers. Computers powered off, colored paper tabs and disconnected cables on desk. Labels are solid colors with no writing.\nComposition: wide side-on view along a row of computer desks, full standing figure at far monitor, foreground dark computer towers create layered depth\nExpression: brows knitted in concentrated mild frustration, mouth gently pursed\nGesture: stands attaching a blank yellow adhesive tab around one disconnected cable with both hands, cable safely resting on desk\nDetailed ordinary school surroundings and strong readable visual storytelling. Anatomically natural two arms and hands. One image, no captions, speech balloons, UI, logos, watermark or collage.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-hyunsol.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-0f08e7f2-6865-424f-a0d2-bd8d76a36016.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-moment-08.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "현솔이 책상 위의 선에 노란 표식을 둘렀다. 연결하려고 집었던 선은 이미 옆으로 빼 두었다."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "모양이 같다고 용도까지 같진 않네. 오늘은 한 번에 외우려다 더 늦어졌어."
+        },
+        {
+          "speaker": "player",
+          "text": "그럼 다음 사람은 색을 먼저 보겠네."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "응. 나도 다음의 나를 너무 믿진 않으려고. 이 표식 떨어지는지만 같이 확인해 줘."
+        }
+      ],
+      "previousPrompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Choi Hyunsol as reference: straight black chin-length bob with bangs and two silver hairpins, gray eyes, tiny beauty mark near eye, white collared shirt teal necktie and modest dark skirt, white labcoat for lab tasks only and goggles when appropriate. Preserve facial identity and hair, no redesign. Change expression and gesture exactly; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: school computer lab, muted monitor showing abstract chart shapes only, not readable UI; white shirt teal tie, labcoat on chairback.\nComposition: medium side shot through foreground computer monitor edge, monitor glow side-lighting face and hands. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: frustrated knitted brow and compressed lips, honest irritation not cruel.\nAction/gesture: one hand hovers over mouse while other rubs forehead, shoulders slouched.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "generationNote": "Original ordinary school-life request was input-filter rejected. Replaced with a different fully clothed standing classroom/garden task, without changing character age or hiding setting."
+    },
+    {
+      "id": "hyunsol-moment-09",
+      "person": "hyunsol",
+      "chapter": 4,
+      "visit": 1,
+      "title": "예보 밖의 약속",
+      "location": "gate",
+      "composition": "wide low three-quarter frontal full-body shot at school gate canopy with large negative sky, no POVhands",
+      "expression": "relieved closed-mouth smile, relaxed eyelids",
+      "gesture": "shakes a closed umbrella gently downward away from camera, free hand checks plain watch at wrist",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Choi Hyunsol as reference: straight black chin-length bob with bangs and two silver hairpins, gray eyes, tiny beauty mark near eye, white collared shirt teal necktie and modest dark skirt, white labcoat for lab tasks only and goggles when appropriate. Preserve facial identity and hair, no redesign. Change expression and gesture exactly; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: school gate after rain, sunset sliver through clouds and drying asphalt, uniform teal tie and satchel.\nComposition: wide low three-quarter frontal full-body shot at school gate canopy with large negative sky, no POVhands. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: relieved closed-mouth smile, relaxed eyelids.\nAction/gesture: shakes a closed umbrella gently downward away from camera, free hand checks plain watch at wrist.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-hyunsol.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-3b32c48d-455e-48a1-acef-0ff22bf6cd5c.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-moment-09.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "정문 처마 아래에서 현솔이 우산 끝의 물을 털었다. 손목시계를 보던 얼굴이 나를 보자 풀렸다."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "오늘은 비 예보보다 네 도착이 정확하네."
+        },
+        {
+          "speaker": "player",
+          "text": "기다리는 사람이 배고프면 오차가 안 된다며."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "기억했네. 메뉴는 걸으면서 정하자. 오늘은 계산기 안 켤 거야."
+        }
+      ]
+    },
+    {
+      "id": "hyunsol-moment-10",
+      "person": "hyunsol",
+      "chapter": 4,
+      "visit": 2,
+      "title": "계산하지 않은 색",
+      "location": "art",
+      "composition": "very high near-top-down wide shot of art-room worktable with Hyunsol standing off to side, hands and whole gesture visible",
+      "expression": "tentative bashful smile, head slightly bowed sideways",
+      "gesture": "presses two watercolor swatches together into a third hue with a broad brush, other hand raises paint-stained fingertips away from shirt",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Choi Hyunsol as reference: straight black chin-length bob with bangs and two silver hairpins, gray eyes, tiny beauty mark near eye, white collared shirt teal necktie and modest dark skirt, white labcoat for lab tasks only and goggles when appropriate. Preserve facial identity and hair, no redesign. Change expression and gesture exactly; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: bright school art studio, pigments watercups paper with colorpatches only, labcoat used as protective garment, goggles off.\nComposition: very high near-top-down wide shot of art-room worktable with Hyunsol standing off to side, hands and whole gesture visible. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: tentative bashful smile, head slightly bowed sideways.\nAction/gesture: presses two watercolor swatches together into a third hue with a broad brush, other hand raises paint-stained fingertips away from shirt.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-hyunsol.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-7dc3b440-41e2-4310-a63b-20e5234be787.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-moment-10.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "미술실에서 현솔이 색 두 개를 섞다가 붓을 멈췄다. 메모할 비율은 처음부터 없었다."
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "같은 색 다시 만들라고 하면 못 할 것 같아."
+        },
+        {
+          "speaker": "player",
+          "text": "한 번만 나오는 색이어도 괜찮지 않아?"
+        },
+        {
+          "speaker": "hyunsol",
+          "text": "그럼 여기 남겨 두자. 오늘 네가 그렇게 말한 것도 같이 기억하게."
+        }
+      ]
+    }
+  ]
+}

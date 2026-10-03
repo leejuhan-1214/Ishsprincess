@@ -1,0 +1,336 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-04",
+  "entries": [
+    {
+      "id": "seoyul-moment-01",
+      "person": "seoyul",
+      "chapter": 0,
+      "visit": 1,
+      "title": "꽃 옆의 빈칸",
+      "location": "garden",
+      "composition": "ground-level side-profile environmental wide shot, subject kneeling safely on garden path at left; long diagonal flowerbeds dominate the frame",
+      "expression": "absorbed curiosity with gently pursed lips",
+      "gesture": "holds three paint swatches against a small yellow flower without picking it",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Seoyul, same female student as reference: short tousled mauve-lilac bob, white flower hairclip, pink-violet eyes, pale yellow cardigan over white collared blouse with dark plaid bow and modest knee-length dark pleated skirt.\nScene: Morning school garden, dewy flowerbeds and a wooden fence; no table. She is in profile studying colors, not looking at viewer.\nComposition: ground-level side-profile environmental wide shot, subject kneeling safely on garden path at left; long diagonal flowerbeds dominate the frame.\nExpression: absorbed curiosity with gently pursed lips.\nGesture: holds three paint swatches against a small yellow flower without picking it.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-seoyul.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-f3f03125-b520-4378-8129-d710a143ff51.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/seoyul-moment-01.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "화단 앞에서 서율이 색종이 세 장을 번갈아 들고 있었다."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "꽃을 그리려는데 노랑 하나로는 안 되네. 그림자 쪽은 거의 초록이야."
+        },
+        {
+          "speaker": "player",
+          "text": "꽃은 그대로 두고, 종이만 바꿔 보는 거구나."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "응. 네 눈에는 어느 쪽이 더 가까워? 미술실 가기 전에 골라 보자."
+        }
+      ]
+    },
+    {
+      "id": "seoyul-moment-02",
+      "person": "seoyul",
+      "chapter": 0,
+      "visit": 2,
+      "title": "손끝에 걸린 화집",
+      "location": "library",
+      "composition": "high oblique angle looking down library aisle, full figure on a safe low step stool beside tall shelves",
+      "expression": "wide-eyed mild alarm turning into a sheepish grimace",
+      "gesture": "one hand steadies on bookshelf while other cradles an oversized closed artbook against chest",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Seoyul, same female student as reference: short tousled mauve-lilac bob, white flower hairclip, pink-violet eyes, pale yellow cardigan over white collared blouse with dark plaid bow and modest knee-length dark pleated skirt.\nScene: Quiet library artbook section, warm horizontal light; her cardigan sleeve has slipped slightly over hand; sensible knee-length pleated skirt; full body visible.\nComposition: high oblique angle looking down library aisle, full figure on a safe low step stool beside tall shelves.\nExpression: wide-eyed mild alarm turning into a sheepish grimace.\nGesture: one hand steadies on bookshelf while other cradles an oversized closed artbook against chest.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-seoyul.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-0b73f33b-ca4d-4c71-a264-9015a59c5369.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/seoyul-moment-02.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "도서관 사다리 발판에서 서율이 커다란 화집을 품에 안았다."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "표지는 얇아 보였는데, 들고 오니까 벽돌이네."
+        },
+        {
+          "speaker": "player",
+          "text": "책부터 받을게. 내려오는 건 천천히 해."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "고마워. 이 무게만큼 좋은 그림이 들어 있으면 좋겠다."
+        }
+      ]
+    },
+    {
+      "id": "seoyul-moment-03",
+      "person": "seoyul",
+      "chapter": 1,
+      "visit": 1,
+      "title": "웃다가 놓친 한 박자",
+      "location": "band",
+      "composition": "long side-on wide shot through foreground music stand, piano keyboard leads across frame, visible seated full figure",
+      "expression": "unrestrained eyes-closed laugh, head thrown slightly back",
+      "gesture": "both hands lifted clear of keys in playful surrender after a missed note",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Seoyul, same female student as reference: short tousled mauve-lilac bob, white flower hairclip, pink-violet eyes, pale yellow cardigan over white collared blouse with dark plaid bow and modest knee-length dark pleated skirt.\nScene: Sunlit band practice room, electronic keyboard, neatly stored drum kit, warm dust beams; do not copy frontal desk portrait.\nComposition: long side-on wide shot through foreground music stand, piano keyboard leads across frame, visible seated full figure.\nExpression: unrestrained eyes-closed laugh, head thrown slightly back.\nGesture: both hands lifted clear of keys in playful surrender after a missed note.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-seoyul.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-3dc4219f-cff9-4aa9-bab3-84b60df40817.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/seoyul-moment-03.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "서율이 반주를 하다 갑자기 손을 번쩍 들었다. 마지막 음만 혼자 길게 남았다."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "잠깐. 네가 발로 세는 박자가 너무 진지해서 못 참겠어."
+        },
+        {
+          "speaker": "player",
+          "text": "진지하게 틀리고 있었는데."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "그건 나도야. 다시 할 때는 서로 얼굴 보지 말자."
+        }
+      ]
+    },
+    {
+      "id": "seoyul-moment-04",
+      "person": "seoyul",
+      "chapter": 1,
+      "visit": 2,
+      "title": "바람이 고른 자리",
+      "location": "hallway",
+      "composition": "rear three-quarter view at eye level in long school corridor, subject turning head over shoulder, foreground open door frames scene",
+      "expression": "startled raised eyebrows and small open mouth",
+      "gesture": "reaches up to catch one drifting lightweight paper decoration with empty other hand open",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Seoyul, same female student as reference: short tousled mauve-lilac bob, white flower hairclip, pink-violet eyes, pale yellow cardigan over white collared blouse with dark plaid bow and modest knee-length dark pleated skirt.\nScene: School hallway, paper decoration for a class display escaping a folder in a mild breeze, two paper cutouts suspended, lockers and open windows; no readable text.\nComposition: rear three-quarter view at eye level in long school corridor, subject turning head over shoulder, foreground open door frames scene.\nExpression: startled raised eyebrows and small open mouth.\nGesture: reaches up to catch one drifting lightweight paper decoration with empty other hand open.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-seoyul.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-1d4153cc-c4be-4b04-90f9-db1ae5d52da9.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/seoyul-moment-04.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "복도 창문이 열리자 서율의 종이 장식 하나가 파일 밖으로 날아갔다."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "저기, 꽃 모양! 바닥에 닿기 전에 잡아 줘."
+        },
+        {
+          "speaker": "player",
+          "text": "잡았어. 원래 붙이려던 자리보다 멀리 왔네."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "그러게. 저 창가에 걸면 흔들리는 것도 그림이 되겠다."
+        }
+      ]
+    },
+    {
+      "id": "seoyul-moment-05",
+      "person": "seoyul",
+      "chapter": 2,
+      "visit": 1,
+      "title": "손가락으로 자른 하늘",
+      "location": "roof",
+      "composition": "extreme-wide rooftop establishing shot with small full figure at right, horizon low, vast cloud shapes; side silhouette face still identifiable",
+      "expression": "seriously narrowed eyes and furrowed brow, artistic concentration",
+      "gesture": "forms a rectangular viewfinder with two hands in front of her eyes, elbows raised",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Seoyul, same female student as reference: short tousled mauve-lilac bob, white flower hairclip, pink-violet eyes, pale yellow cardigan over white collared blouse with dark plaid bow and modest knee-length dark pleated skirt.\nScene: Safe fenced school rooftop at amber sunset; she stands far from fence, wind moves bob hair, city and clouds; no romance pose.\nComposition: extreme-wide rooftop establishing shot with small full figure at right, horizon low, vast cloud shapes; side silhouette face still identifiable.\nExpression: seriously narrowed eyes and furrowed brow, artistic concentration.\nGesture: forms a rectangular viewfinder with two hands in front of her eyes, elbows raised.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-seoyul.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-8afead81-ac42-4d7c-b72c-784dbbd7c261.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/seoyul-moment-05.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "옥상에서 서율은 손가락으로 작은 사각형을 만들고 하늘을 잘라 보고 있었다."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "여기만 그리면 조용한데, 저 안테나까지 넣으면 좀 외로워져."
+        },
+        {
+          "speaker": "player",
+          "text": "같은 하늘인데 모서리가 분위기를 바꾸네."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "네가 고르면 어디까지 넣을지 궁금하다. 내 손 말고 네 손으로 해 봐."
+        }
+      ]
+    },
+    {
+      "id": "seoyul-moment-06",
+      "person": "seoyul",
+      "chapter": 2,
+      "visit": 2,
+      "title": "컵에 남은 표정",
+      "location": "cafeteria",
+      "composition": "steep overhead tabletop composition including face at upper edge, seated body in three-quarter view, diagonal tray and cup arrangement",
+      "expression": "lopsided mischievous half-smile and one eyebrow raised",
+      "gesture": "draws a tiny simple face on her own empty paper cup with a marker, other palm resting flat beside it",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Seoyul, same female student as reference: short tousled mauve-lilac bob, white flower hairclip, pink-violet eyes, pale yellow cardigan over white collared blouse with dark plaid bow and modest knee-length dark pleated skirt.\nScene: Bright school cafeteria after lunch, empty paper cup and clean tray, harmless small line-doodle face but no words, daytime.\nComposition: steep overhead tabletop composition including face at upper edge, seated body in three-quarter view, diagonal tray and cup arrangement.\nExpression: lopsided mischievous half-smile and one eyebrow raised.\nGesture: draws a tiny simple face on her own empty paper cup with a marker, other palm resting flat beside it.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-seoyul.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-1b958b37-5367-428a-a41f-8e22a3cdc4fa.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/seoyul-moment-06.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "서율이 빈 종이컵을 돌려 가며 아주 작은 눈 두 개를 그렸다."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "너 아까 국 뜨거워서 이런 얼굴 했어."
+        },
+        {
+          "speaker": "player",
+          "text": "눈이 이렇게까지 몰리지는 않았을 텐데."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "그건 컵이 좁아서 그래. 버리기 전에 한 번만 더 웃어 줘."
+        }
+      ]
+    },
+    {
+      "id": "seoyul-moment-07",
+      "person": "seoyul",
+      "chapter": 3,
+      "visit": 1,
+      "title": "무대 끝의 작은 표시",
+      "location": "auditorium",
+      "composition": "stage-wing wide shot at seated eye height, curtains form dark diagonal frame, subject crouched modestly on stage with legs fully covered by knee-length skirt",
+      "expression": "determined tight-lipped concentration, brows knit",
+      "gesture": "presses a strip of colored stage tape flat with open palm while holding a roll in the other",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Seoyul, same female student as reference: short tousled mauve-lilac bob, white flower hairclip, pink-violet eyes, pale yellow cardigan over white collared blouse with dark plaid bow and modest knee-length dark pleated skirt.\nScene: School auditorium during afternoon rehearsal setup, empty seats beyond, no stage performance pose, modest coverage and neutral camera no under-skirt view.\nComposition: stage-wing wide shot at seated eye height, curtains form dark diagonal frame, subject crouched modestly on stage with legs fully covered by knee-length skirt.\nExpression: determined tight-lipped concentration, brows knit.\nGesture: presses a strip of colored stage tape flat with open palm while holding a roll in the other.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-seoyul.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-b0f37de6-38b3-4448-a0b8-002db430dc73.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/seoyul-moment-07.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "서율이 무대 가장자리의 색 테이프를 꾹 눌렀다. 구겨진 끝이 쉽게 붙지 않았다."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "이 표시가 들뜨면 조명 받을 때 괜히 반짝여."
+        },
+        {
+          "speaker": "player",
+          "text": "이쪽 끝은 내가 잡을게. 네 쪽부터 천천히 붙여 봐."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "됐다. 멀리서는 안 보여도, 가까이서 보면 우리가 같이 한 자리네."
+        }
+      ]
+    },
+    {
+      "id": "seoyul-moment-08",
+      "person": "seoyul",
+      "chapter": 3,
+      "visit": 2,
+      "title": "비가 멈추는 동안",
+      "location": "walk",
+      "composition": "medium full-length strict side profile under awning, rain curtain fills foreground and distant path reflected below",
+      "expression": "quiet wistful look with relaxed eyelids, closed mouth, no smile",
+      "gesture": "hugs a closed sketchbook vertically to chest and leans shoulder lightly against shelter post",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Seoyul, same female student as reference: short tousled mauve-lilac bob, white flower hairclip, pink-violet eyes, pale yellow cardigan over white collared blouse with dark plaid bow and modest knee-length dark pleated skirt.\nScene: School walking path small rain shelter, blue rain with warm reflected lights; fully dry clothes, not wet fabric, no exposed skin.\nComposition: medium full-length strict side profile under awning, rain curtain fills foreground and distant path reflected below.\nExpression: quiet wistful look with relaxed eyelids, closed mouth, no smile.\nGesture: hugs a closed sketchbook vertically to chest and leans shoulder lightly against shelter post.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-seoyul.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-e5c22d3d-b576-4fb7-b35c-6beddd78ea4a.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/seoyul-moment-08.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "산책로 처마 아래에서 서율이 스케치북을 안쪽으로 감싸 안았다."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "비 오는 색은 좋아하는데, 종이가 젖는 건 싫네."
+        },
+        {
+          "speaker": "player",
+          "text": "그럼 멈출 때까지 눈으로만 그려 둘까?"
+        },
+        {
+          "speaker": "seoyul",
+          "text": "응. 네가 기억하는 색도 나중에 말해 줘. 나는 자꾸 파란 쪽만 보니까."
+        }
+      ]
+    },
+    {
+      "id": "seoyul-moment-09",
+      "person": "seoyul",
+      "chapter": 4,
+      "visit": 1,
+      "title": "바닥에 펼친 다음 장",
+      "location": "art",
+      "composition": "true near-top-down overhead wide shot, subject seated sideways on studio floor, sheets fanned in semicircle, long pleated skirt covers legs",
+      "expression": "bright delighted grin, cheeks raised, looking at chosen sheet not camera",
+      "gesture": "slides one blank sheet into a gap between colorful studies with both fingertips",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Seoyul, same female student as reference: short tousled mauve-lilac bob, white flower hairclip, pink-violet eyes, pale yellow cardigan over white collared blouse with dark plaid bow and modest knee-length dark pleated skirt.\nScene: Art studio floor with paper studies, pencils in tin, closed paint jars, easel legs; clean warm midday sun squares.\nComposition: true near-top-down overhead wide shot, subject seated sideways on studio floor, sheets fanned in semicircle, long pleated skirt covers legs.\nExpression: bright delighted grin, cheeks raised, looking at chosen sheet not camera.\nGesture: slides one blank sheet into a gap between colorful studies with both fingertips.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-seoyul.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-937ca9b8-d2b9-47e7-9dc0-a87cb53016ef.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/seoyul-moment-09.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "미술실 바닥에 펼친 그림들 사이로 서율이 빈 종이 한 장을 밀어 넣었다."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "완성한 것만 늘어놓으니까 숨 쉴 데가 없어서."
+        },
+        {
+          "speaker": "player",
+          "text": "아무것도 없는 종이도 전시하는 거야?"
+        },
+        {
+          "speaker": "seoyul",
+          "text": "다음에 그릴 자리. 이건 네가 먼저 한 줄 그어도 돼."
+        }
+      ]
+    },
+    {
+      "id": "seoyul-moment-10",
+      "person": "seoyul",
+      "chapter": 4,
+      "visit": 2,
+      "title": "문밖에서 돌아본 얼굴",
+      "location": "gate",
+      "composition": "distant telephoto composition through blurred school gate bars at left, full figure turned away walking then looking back, ample evening street depth",
+      "expression": "bashful small closed-lip smile with subtle blush, averted eyes",
+      "gesture": "one hand raises a small paper invitation beside shoulder while other holds satchel strap",
+      "prompt": "Use case: illustration-story. Asset: single cinematic 16:9 landscape CG for a Korean school visual novel. Reference image is ONLY character identity and ink/cel-shaded anime visual style, NOT pose or composition. Make a wholly new scene.\nSubject: Seoyul, same female student as reference: short tousled mauve-lilac bob, white flower hairclip, pink-violet eyes, pale yellow cardigan over white collared blouse with dark plaid bow and modest knee-length dark pleated skirt.\nScene: School gate at soft peach dusk, distant buses indistinct, she has finished class; no printed readable text on invitation.\nComposition: distant telephoto composition through blurred school gate bars at left, full figure turned away walking then looking back, ample evening street depth.\nExpression: bashful small closed-lip smile with subtle blush, averted eyes.\nGesture: one hand raises a small paper invitation beside shoulder while other holds satchel strap.\nStyle: crisp expressive ink contours, refined cel shading matching reference, layered atmospheric detailed school environment, coherent anatomy and natural hands. Preserve exact hair/eye/outfit identity. Full background, narrative candid moment not photocard. Only this one character visible unless a tiny indistinct clothed companion silhouette is necessary; no extra faces.\nConstraints: age-appropriate school life, fully clothed, no sexualization, no adult proportions, no cleavage, no upskirt, no fetish. No framing grids, collage, split panels, lettering, UI, speech bubbles, logos or watermark. No generic frontal portrait, no posing at camera. Output one single wide image.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-seoyul.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023e-43f7-76e0-9c77-4542876b069b\\exec-7f0b94b3-e1a5-419b-8051-5eac5286300b.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/seoyul-moment-10.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "교문을 먼저 나선 서율이 몇 걸음 뒤에서 다시 돌아봤다."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "아, 이거. 가방에 넣어 두면 또 잊을 것 같아서."
+        },
+        {
+          "speaker": "player",
+          "text": "접힌 종이에 그림부터 보이네."
+        },
+        {
+          "speaker": "seoyul",
+          "text": "빈칸은 같이 정하려고 남겼어. 걸으면서 펼쳐 볼래?"
+        }
+      ]
+    }
+  ]
+}

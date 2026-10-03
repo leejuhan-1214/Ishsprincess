@@ -18,7 +18,7 @@ test('CG stays through local conversation and stops at a location transition',()
 test('four discoveries each have distinct scene illustrations and seven distinct ending CGs',()=>{
  const discoveries=memoryEvidence.flatMap(c=>c.lines.flatMap(line=>line.art?[line.art]:[]));
  assert.equal(new Set(discoveries).size,4);
- assert.equal(romanceArt.length,18);
+ assert.equal(romanceArt.length,98);
  assert.equal(romanceArt.filter(art=>art.id.endsWith('-ending')).length,7);
  for(const id of discoveries)assert.ok(romanceArt.some(art=>art.id===id));
 });

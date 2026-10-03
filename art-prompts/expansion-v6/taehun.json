@@ -1,0 +1,298 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-04",
+  "entries": [
+    {
+      "id": "taehun-moment-01",
+      "person": "taehun",
+      "chapter": 0,
+      "visit": 1,
+      "title": "구름의 다른 이름",
+      "location": "roof",
+      "composition": "very wide rooftop establishing shot, side profile full body at left, sky occupies upper two thirds",
+      "expression": "curious bright eyes and slightly parted lips",
+      "gesture": "Safe school rooftop behind tall proper railing, she extends one arm toward an ordinary cloud shaped vaguely like a whale, other arm holds a closed poetry book against chest, feet firmly on ground. Blue daylight, no fantasy stars.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Go Taehun, the SAME teen girl in reference: long taupe-brown side braid with small star tie, violet-gray eyes, gentle angular anime face, lavender-gray cardigan over white collared shirt and large navy bow, star brooch, modest knee-length dark plaid skirt and opaque tights, loafers. Fully clothed age-appropriate everyday school life. Preserve face/hair and outfit, NOT the reference pose. Scene: Safe school rooftop behind tall proper railing, she extends one arm toward an ordinary cloud shaped vaguely like a whale, other arm holds a closed poetry book against chest, feet firmly on ground. Blue daylight, no fantasy stars. Composition: very wide rooftop establishing shot, side profile full body at left, sky occupies upper two thirds. Expression: curious bright eyes and slightly parted lips. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taehun.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-01.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "옥상 난간 안쪽에서 태훈이 구름 한 덩이를 가리켰다."
+        },
+        {
+          "speaker": "taehun",
+          "text": "도감의 이름은 적운인데, 오늘은 다른 이름도 하나 붙이고 싶어."
+        },
+        {
+          "speaker": "narrator",
+          "text": "내가 답하기도 전에 구름의 가장자리가 조금 달라졌다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-edcda763-f818-4f48-a2dd-44d60644225d.png"
+    },
+    {
+      "id": "taehun-moment-02",
+      "person": "taehun",
+      "chapter": 0,
+      "visit": 2,
+      "title": "책장 사이의 짧은 멈춤",
+      "location": "library",
+      "composition": "high oblique wide view down long library aisle, full standing figure and book trolley",
+      "expression": "thoughtful pressed lips and lowered attentive eyes",
+      "gesture": "In a spacious school library aisle, standing upright beside a low book return trolley, she rests one hand on trolley handle and reads the back cover of a book in the other hand. Entire figure naturally framed from far away; warm shelf shadows and books.",
+      "prompt": "Use case: illustration-story. New single horizontal 16:9 story illustration. Image 1 is character identity and anime rendering reference. Depict the same girl with taupe side braid, violet-gray eyes, gray cardigan, collared shirt, navy bow and star brooch, school uniform. In a spacious school library aisle, standing upright beside a low book return trolley, she rests one hand on trolley handle and reads the back cover of a book in the other hand. Entire figure naturally framed from far away; warm shelf shadows and books. Composition: high oblique wide view down long library aisle, full standing figure and book trolley. Expression: thoughtful pressed lips and lowered attentive eyes, curious about the book. Wide ordinary school-life scene with natural proportions, crisp hand-ink anime lines and detailed cel shading. No collage, captions or watermark. Do not repeat reference pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taehun.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-02.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "도서관 반납 수레 앞에서 태훈이 책의 앞뒤를 번갈아 살폈다."
+        },
+        {
+          "speaker": "taehun",
+          "text": "첫 문장은 마음에 드는데 마지막 문장이 너무 궁금해서."
+        },
+        {
+          "speaker": "narrator",
+          "text": "태훈은 책을 덮지 않은 채 수레 옆의 통로를 조금 비켜 주었다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-4fdb656e-158b-44c0-9276-02f9e99bbcc2.png",
+      "initialGeneratedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-11109d61-2e6b-48de-8a91-9efcd0ffeb4c.png",
+      "repairPrompt": "Edit the existing library illustration: correct her extra third arm. She must have EXACTLY TWO arms and TWO hands total. Keep the hand holding the book and keep the hand resting on the trolley handle. REMOVE the duplicated arm dangling down beside the skirt on the right of the image. Preserve her face, standing pose, hair, library shelves, trolley, framing, colors and all other content. Natural anatomy, no new objects."
+    },
+    {
+      "id": "taehun-moment-03",
+      "person": "taehun",
+      "chapter": 1,
+      "visit": 1,
+      "title": "반으로 나눈 별 모양",
+      "location": "cafeteria",
+      "composition": "eye-level three-quarter medium-wide shot from aisle beside lunch counter, standing body knee-up",
+      "expression": "unexpected delighted open-mouth laugh",
+      "gesture": "School cafeteria pickup counter, she holds a paper tray containing a star-shaped ordinary bread and gestures at its uneven tip with finger, laughing gently at a friend's comment offscreen. Apricot daylight, no seductive eating, no table frontal composition.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Go Taehun, the SAME teen girl in reference: long taupe-brown side braid with small star tie, violet-gray eyes, gentle angular anime face, lavender-gray cardigan over white collared shirt and large navy bow, star brooch, modest knee-length dark plaid skirt and opaque tights, loafers. Fully clothed age-appropriate everyday school life. Preserve face/hair and outfit, NOT the reference pose. Scene: School cafeteria pickup counter, she holds a paper tray containing a star-shaped ordinary bread and gestures at its uneven tip with finger, laughing gently at a friend's comment offscreen. Apricot daylight, no seductive eating, no table frontal composition. Composition: eye-level three-quarter medium-wide shot from aisle beside lunch counter, standing body knee-up. Expression: unexpected delighted open-mouth laugh. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taehun.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-03.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "급식실에서 태훈이 고른 빵은 별 모양이었다. 한쪽 끝은 조금 눌려 있었다."
+        },
+        {
+          "speaker": "taehun",
+          "text": "실제 별은 이렇게 뾰족하지 않은데, 이쪽은 먹기 편하네."
+        },
+        {
+          "speaker": "narrator",
+          "text": "도감 얘기로 시작한 말이 결국 어느 쪽을 나눌지로 끝났다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-52b57688-45cb-4527-bd5d-c4a92f2a6ac7.png"
+    },
+    {
+      "id": "taehun-moment-04",
+      "person": "taehun",
+      "chapter": 1,
+      "visit": 2,
+      "title": "게시판 앞에서 멈춘 말",
+      "location": "hallway",
+      "composition": "medium rear three-quarter shoulder-height shot, notice board to left, her side profile at right",
+      "expression": "surprised raised brows and small questioning mouth",
+      "gesture": "Standing in the school corridor at a bulletin board, she holds a closed notebook against her side and lightly touches her temple with the other hand while looking at cloud observation diagrams pinned neatly to the board. Calm ordinary posture, side profile visible.",
+      "prompt": "Use case: illustration-story. New single horizontal 16:9 anime school-life story illustration. Reference image gives the girl identity only: taupe-brown braid, violet-gray eyes, lavender-gray cardigan, white collar, navy bow and star brooch. Standing in the school corridor at a bulletin board, she holds a closed notebook against her side and lightly touches her temple with the other hand while looking at cloud observation diagrams pinned neatly to the board. Calm ordinary posture, side profile visible. Composition: medium rear three-quarter shoulder-height shot, notice board to left, her side profile at right. Expression: surprised raised brows and small questioning mouth. Wide environment visible behind her, soft window daylight. Crisp hand-drawn ink and cel shading, natural accurate anatomy, ordinary school uniform. No collage, caption, logo or watermark; paper diagrams contain no readable writing.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taehun.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-04.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "복도 게시판 앞에서 태훈이 관측 안내 종이를 한참 읽었다."
+        },
+        {
+          "speaker": "taehun",
+          "text": "이 그림만 보면 구름이 전부 같은 높이에 떠 있는 것 같네. 설명할 때 조심해야겠다."
+        },
+        {
+          "speaker": "narrator",
+          "text": "태훈이 관자놀이에 댔던 손을 내리고 노트에 작은 화살표를 더했다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-faef8b47-3990-41e6-9597-017e350d9713.png"
+    },
+    {
+      "id": "taehun-moment-05",
+      "person": "taehun",
+      "chapter": 2,
+      "visit": 1,
+      "title": "그림자를 재는 오후",
+      "location": "classroom",
+      "composition": "true top-down overhead wide desk composition, her head+arms in corner, long window shadow across ruler and paper",
+      "expression": "serious focused brow and slightly pursed lips",
+      "gesture": "Empty homeroom science observation at afternoon: she leans over desk comparing pencil shadow against a ruler on graph paper, pencil held upright in small clay base. Hands measure carefully. Slate notebook beside diagram, realistic sunlight geometry. No readable text.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Go Taehun, the SAME teen girl in reference: long taupe-brown side braid with small star tie, violet-gray eyes, gentle angular anime face, lavender-gray cardigan over white collared shirt and large navy bow, star brooch, modest knee-length dark plaid skirt and opaque tights, loafers. Fully clothed age-appropriate everyday school life. Preserve face/hair and outfit, NOT the reference pose. Scene: Empty homeroom science observation at afternoon: she leans over desk comparing pencil shadow against a ruler on graph paper, pencil held upright in small clay base. Hands measure carefully. Slate notebook beside diagram, realistic sunlight geometry. No readable text. Composition: true top-down overhead wide desk composition, her head+arms in corner, long window shadow across ruler and paper. Expression: serious focused brow and slightly pursed lips. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taehun.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-05.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "빈 교실 책상 위에서 연필의 그림자가 자 한 칸을 조금 넘었다."
+        },
+        {
+          "speaker": "taehun",
+          "text": "같은 시간에 다시 재면 계절에 따라 달라져. 기다린 것도 기록이 되는 셈이야."
+        },
+        {
+          "speaker": "narrator",
+          "text": "태훈은 숫자 옆에 창밖 하늘을 작은 선으로 덧그렸다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-71cf1c15-e8a6-49ae-8a91-0895d1aa0241.png"
+    },
+    {
+      "id": "taehun-moment-06",
+      "person": "taehun",
+      "chapter": 2,
+      "visit": 2,
+      "title": "돌 안에 남은 결",
+      "location": "chemistry",
+      "composition": "side-view waist-up shot through foreground rack of harmless mineral samples, strong profile silhouette",
+      "expression": "quiet delighted eyes widening, small amazed smile",
+      "gesture": "School science lab, she examines a rough striped rock specimen using a handheld magnifying lens at eye level, wears safety goggles over eyes and cardigan sleeves tidy. Geology educational activity, no chemicals, notebook and safe mineral tray. Crisp cel shaded light.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Go Taehun, the SAME teen girl in reference: long taupe-brown side braid with small star tie, violet-gray eyes, gentle angular anime face, lavender-gray cardigan over white collared shirt and large navy bow, star brooch, modest knee-length dark plaid skirt and opaque tights, loafers. Fully clothed age-appropriate everyday school life. Preserve face/hair and outfit, NOT the reference pose. Scene: School science lab, she examines a rough striped rock specimen using a handheld magnifying lens at eye level, wears safety goggles over eyes and cardigan sleeves tidy. Geology educational activity, no chemicals, notebook and safe mineral tray. Crisp cel shaded light. Composition: side-view waist-up shot through foreground rack of harmless mineral samples, strong profile silhouette. Expression: quiet delighted eyes widening, small amazed smile. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taehun.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-06.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "과학실 표본함에서 꺼낸 돌에는 얇은 줄이 겹겹이 남아 있었다."
+        },
+        {
+          "speaker": "taehun",
+          "text": "여긴 광물이 배열된 방향이 보여. 그냥 줄무늬라고 적기엔 아깝지?"
+        },
+        {
+          "speaker": "narrator",
+          "text": "태훈이 돋보기를 내려놓고, 내가 직접 볼 수 있도록 표본을 돌려 주었다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-ce55b13a-0122-4e25-92f3-c3bb1340bd1b.png"
+    },
+    {
+      "id": "taehun-moment-07",
+      "person": "taehun",
+      "chapter": 3,
+      "visit": 1,
+      "title": "덮개를 열기 전",
+      "location": "observatory",
+      "composition": "rear three-quarter long shot from observatory doorway, full body beside capped telescope, roof dome arcs overhead",
+      "expression": "small shy over-shoulder smile, raised tentative brows",
+      "gesture": "School observatory dusk, telescope lens safely covered awaiting teacher, she stands beside tripod not touching controls, turns head back and opens one palm to indicate a safe place beside her. Red low safety lights, realistic dome, not magical nebula.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Go Taehun, the SAME teen girl in reference: long taupe-brown side braid with small star tie, violet-gray eyes, gentle angular anime face, lavender-gray cardigan over white collared shirt and large navy bow, star brooch, modest knee-length dark plaid skirt and opaque tights, loafers. Fully clothed age-appropriate everyday school life. Preserve face/hair and outfit, NOT the reference pose. Scene: School observatory dusk, telescope lens safely covered awaiting teacher, she stands beside tripod not touching controls, turns head back and opens one palm to indicate a safe place beside her. Red low safety lights, realistic dome, not magical nebula. Composition: rear three-quarter long shot from observatory doorway, full body beside capped telescope, roof dome arcs overhead. Expression: small shy over-shoulder smile, raised tentative brows. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taehun.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-07.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "관측실 망원경에는 아직 덮개가 씌워져 있었다. 태훈은 조작부에 손대지 않고 옆자리를 확인했다."
+        },
+        {
+          "speaker": "taehun",
+          "text": "선생님 오시면 시작하자. 기다리는 동안엔 여기 서 봐."
+        },
+        {
+          "speaker": "narrator",
+          "text": "태훈이 가리킨 곳에서는 창밖 하늘과 설명하는 얼굴이 함께 보였다."
+        }
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-2e24a869-baa6-471f-a9b0-b956ae34f278.png"
+    },
+    {
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-53764c6f-d0ac-4d5b-805f-d68e45970ca2.png",
+      "id": "taehun-moment-08",
+      "person": "taehun",
+      "chapter": 3,
+      "visit": 2,
+      "title": "예보의 빈칸",
+      "location": "computer",
+      "composition": "tight side-profile close-up with monitor light, eye-level view, screen visible only at edge",
+      "expression": "skeptical tilted head, one eyebrow subtly raised and lips crooked in doubt",
+      "gesture": "School computer lab, she studies a weather forecast graph on screen, rests finger lightly against temple while other hand holds an open notebook out of focus. Monitor displays clouds and simple generic chart with no readable words. Cool blue monitor light, no frontal pose.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Go Taehun, the SAME teen girl in reference: long taupe-brown side braid with small star tie, violet-gray eyes, gentle angular anime face, lavender-gray cardigan over white collared shirt and large navy bow, star brooch, modest knee-length dark plaid skirt and opaque tights, loafers. Fully clothed age-appropriate everyday school life. Preserve face/hair and outfit, NOT the reference pose. Scene: School computer lab, she studies a weather forecast graph on screen, rests finger lightly against temple while other hand holds an open notebook out of focus. Monitor displays clouds and simple generic chart with no readable words. Cool blue monitor light, no frontal pose. Composition: tight side-profile close-up with monitor light, eye-level view, screen visible only at edge. Expression: skeptical tilted head, one eyebrow subtly raised and lips crooked in doubt. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taehun.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-08.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "컴퓨터실 화면의 구름 표시가 한 줄 더 늘어났다. 태훈은 고개를 조금 기울였다."
+        },
+        {
+          "speaker": "taehun",
+          "text": "예보가 바뀌면 계획도 고치면 되지. 만날 사람까지 바꾸는 건 아니고."
+        },
+        {
+          "speaker": "narrator",
+          "text": "노트 한쪽에 지우개 자국이 생겼고, 그 옆에 새 장소를 적을 여백이 남았다."
+        }
+      ]
+    },
+    {
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-37bb2ce2-88f4-4f32-a191-03edc5b2ceb7.png",
+      "id": "taehun-moment-09",
+      "person": "taehun",
+      "chapter": 4,
+      "visit": 1,
+      "title": "아직 봉하지 않은 문장",
+      "location": "walk",
+      "composition": "long horizontal side tracking shot through foreground tree leaves, full body walking slowly, face in soft 3/4 profile",
+      "expression": "wistful downcast tender smile",
+      "gesture": "Tree-lined school walking path at sunset, she carries an unsealed cream envelope carefully in both hands before her, looking down at it mid-step, braid and cardigan hem moved by light breeze. No readable lettering, safe path, no mystical effects.",
+      "prompt": "Use case: illustration-story. Asset type: a NEW distinct scene CG for an age-appropriate Korean school romance visual novel. Input image 1 is identity and rendering-style reference ONLY. Subject: Go Taehun, the SAME teen girl in reference: long taupe-brown side braid with small star tie, violet-gray eyes, gentle angular anime face, lavender-gray cardigan over white collared shirt and large navy bow, star brooch, modest knee-length dark plaid skirt and opaque tights, loafers. Fully clothed age-appropriate everyday school life. Preserve face/hair and outfit, NOT the reference pose. Scene: Tree-lined school walking path at sunset, she carries an unsealed cream envelope carefully in both hands before her, looking down at it mid-step, braid and cardigan hem moved by light breeze. No readable lettering, safe path, no mystical effects. Composition: long horizontal side tracking shot through foreground tree leaves, full body walking slowly, face in soft 3/4 profile. Expression: wistful downcast tender smile. Render one polished single 16:9 horizontal landscape illustration, crisp hand-ink anime lines, detailed cel shading, atmospheric location background matching the scene. Character must act naturally in the scene, not a photocard. No collage, no panels, no title, no text, no watermark. Accurate hands, no extra fingers/limbs. Keep proportions natural and fully clothed, no sexual framing. Make angle, expression, environment and body action specific as described; do NOT repeat the reference's headshot pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taehun.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-09.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "산책로를 걷는 동안 태훈은 봉투를 끝내 접어 닫지 않았다."
+        },
+        {
+          "speaker": "taehun",
+          "text": "쓰고 나면 끝날 줄 알았는데, 같이 읽을 자리도 남겨야겠더라."
+        },
+        {
+          "speaker": "narrator",
+          "text": "발걸음이 느려질 때마다 봉투 안의 종이가 작게 바스락거렸다."
+        }
+      ]
+    },
+    {
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-50a75175-1f42-49e2-aace-273e35ab065d.png",
+      "id": "taehun-moment-10",
+      "person": "taehun",
+      "chapter": 4,
+      "visit": 2,
+      "title": "작은 돌의 자리",
+      "location": "garden",
+      "composition": "wide composition framed through foreground garden flowers, seated profile with notebook along bench beside her",
+      "expression": "peaceful assured closed-mouth smile, relaxed gaze toward offscreen companion",
+      "gesture": "School garden. Sitting upright sideways on a wooden bench, she sets a small found pebble beside her open observation notebook resting on the empty part of the bench, to keep page from blowing away. One hand places pebble, other holds notebook corner. Side braid over shoulder, golden sunshine.",
+      "prompt": "Use case: illustration-story. New single horizontal 16:9 anime school-life story illustration. Image 1 is character identity and rendering reference. Same girl with taupe-brown side braid, violet-gray eyes, gray cardigan, white collar, navy bow and star brooch, ordinary school uniform. School garden. Sitting upright sideways on a wooden bench, she sets a small found pebble beside her open observation notebook resting on the empty part of the bench, to keep page from blowing away. One hand places pebble, other holds notebook corner. Side braid over shoulder, golden sunshine. Composition: wide composition framed through foreground garden flowers, seated profile with notebook along bench beside her. Expression: peaceful assured closed-mouth smile, relaxed gaze toward offscreen companion. Crisp ink outlines, rich cel-shading, detailed location. Natural accurate hands, no captions, no watermark, no collage.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-taehun.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-10.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "정원에서 태훈이 작은 돌 하나를 노트 끝에 얹었다."
+        },
+        {
+          "speaker": "taehun",
+          "text": "표본으로 가져가진 않을 거야. 지금은 책장만 잠깐 맡기는 거지."
+        },
+        {
+          "speaker": "narrator",
+          "text": "돌을 제자리에 돌려놓을 때까지, 우리는 다음 문장을 천천히 골랐다."
+        }
+      ]
+    }
+  ]
+}

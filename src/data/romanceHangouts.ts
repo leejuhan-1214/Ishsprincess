@@ -2,6 +2,7 @@ import type {LocationId} from '../types';
 import type {RChoice,RLine,RPerson,RScene,RState} from '../romanceTypes';
 import {followups} from './romanceFollowups';
 import {routeChoiceEffect,routeChoiceFlags} from './romanceRouteTraits';
+import {withIllustratedMoment} from './romanceIllustrationMoments';
 
 type Option = readonly [string,string,number,number];
 type Visit = {title:string;lines:string[];options:readonly [Option,Option,Option];again:string};
@@ -740,7 +741,7 @@ export function hasHangoutAvailable(person:RPerson,state:RState):boolean{
  return !state.flags.includes(`read:hangout-${person}-${chapter+1}-v2`);
 }
 
-export function getHangoutScene(person:RPerson,state:RState,location:LocationId):RScene{
+function getBaseHangoutScene(person:RPerson,state:RState,location:LocationId):RScene{
  const chapter=Math.max(0,Math.min(4,state.chapter));
  const visit=visits[person][chapter];
  const root=`hangout-${person}-${chapter+1}`;
@@ -775,4 +776,8 @@ export function getHangoutScene(person:RPerson,state:RState,location:LocationId)
  }));
  const destination=destinations[person][chapter];
  return{id,title:first?.title??visit.title,location:destination,lines:lines.map(line=>({...line,text:line.text.replaceAll('{name}',state.name)})),choices,memory:first?.title??visit.title};
+}
+
+export function getHangoutScene(person:RPerson,state:RState,location:LocationId):RScene{
+ return withIllustratedMoment(getBaseHangoutScene(person,state,location),state);
 }

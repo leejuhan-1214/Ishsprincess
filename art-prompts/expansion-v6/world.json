@@ -1,0 +1,338 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-04",
+  "entries": [
+    {
+      "id": "world-moment-01",
+      "person": "world",
+      "chapter": 0,
+      "visit": 1,
+      "title": "정문에서 돌아본 순간",
+      "location": "gate",
+      "composition": "rear three-quarter long shot, whole figure walking through the school gate; camera several metres behind",
+      "expression": "one eyebrow raised, playful questioning half-smile",
+      "gesture": "pauses mid-step, turns only upper torso and face back toward player, points to the gate with relaxed thumb",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Jeon Segye / World as reference: long flowing black wavy hair, violet eyes, burgundy rose with dark ribbons hair ornament, dark navy school blazer white piping, white collared shirt burgundy/navy bow with red brooch, modest dark plaid skirt. Preserve facial identity, hairstyle and school outfit, no redesign. Change expression and gesture exactly as specified; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: morning Korean science high school gate, trees and bicycle rack; black satchel at her side.\nComposition: rear three-quarter long shot, whole figure walking through the school gate; camera several metres behind. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: one eyebrow raised, playful questioning half-smile.\nAction/gesture: pauses mid-step, turns only upper torso and face back toward player, points to the gate with relaxed thumb.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-2550cc29-c05e-4fba-aef2-e579ec7bece3.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-moment-01.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "정문을 지나던 세계가 내 발소리가 멈춘 걸 알아채고 돌아봤다."
+        },
+        {
+          "speaker": "world",
+          "text": "길 외우는 중이야? 그렇게 서 있으면 학교가 먼저 외우겠다."
+        },
+        {
+          "speaker": "player",
+          "text": "표지판보다 네가 먼저 눈에 들어와서."
+        },
+        {
+          "speaker": "world",
+          "text": "그럼 오늘 길 안내는 내가 해. 내일부터는 네 차례고."
+        }
+      ]
+    },
+    {
+      "id": "world-moment-02",
+      "person": "world",
+      "chapter": 0,
+      "visit": 2,
+      "title": "녹음 버튼 앞의 숨",
+      "location": "media",
+      "composition": "over-the-shoulder diagonal wide shot from behind a cropped player's shoulder, World small at recording microphone beyond desk",
+      "expression": "lips pressed in embarrassed amusement, cheeks slightly warm",
+      "gesture": "one palm lightly covers the microphone while the other raises a request-to-pause finger",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Jeon Segye / World as reference: long flowing black wavy hair, violet eyes, burgundy rose with dark ribbons hair ornament, dark navy school blazer white piping, white collared shirt burgundy/navy bow with red brooch, modest dark plaid skirt. Preserve facial identity, hairstyle and school outfit, no redesign. Change expression and gesture exactly as specified; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: small school media recording booth with waveform blurred on monitor, acoustic foam, desk lamp; no readable text.\nComposition: over-the-shoulder diagonal wide shot from behind a cropped player's shoulder, World small at recording microphone beyond desk. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: lips pressed in embarrassed amusement, cheeks slightly warm.\nAction/gesture: one palm lightly covers the microphone while the other raises a request-to-pause finger.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-1c9b4659-dc7d-4d53-846b-393213e90d6c.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-moment-02.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "녹음 신호가 켜지자 세계의 평소 목소리가 갑자기 단정해졌다."
+        },
+        {
+          "speaker": "world",
+          "text": "이상하지. 네 앞에선 잘하는데 마이크 앞에선 자기소개부터 어려워."
+        },
+        {
+          "speaker": "player",
+          "text": "마이크도 잠깐 모르는 친구라고 생각해 봐."
+        },
+        {
+          "speaker": "world",
+          "text": "그러면 네가 먼저 질문해. 혼자 잘하는 척은 오늘 그만할래."
+        }
+      ]
+    },
+    {
+      "id": "world-moment-03",
+      "person": "world",
+      "chapter": 1,
+      "visit": 1,
+      "title": "플러그 끝의 작은 박자",
+      "location": "band",
+      "composition": "wide low eye-level from beside guitar case on floor, full seated figure in profile, no POV hand",
+      "expression": "concentrated brows, slightly parted lips counting silently",
+      "gesture": "leans forward seated on chair, plugs cable into amplifier with one hand while steadying guitar upright with the other",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Jeon Segye / World as reference: long flowing black wavy hair, violet eyes, burgundy rose with dark ribbons hair ornament, dark navy school blazer white piping, white collared shirt burgundy/navy bow with red brooch, modest dark plaid skirt. Preserve facial identity, hairstyle and school outfit, no redesign. Change expression and gesture exactly as specified; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: sunlit band practice room, amplifier, coiled cables, keyboard far back.\nComposition: wide low eye-level from beside guitar case on floor, full seated figure in profile, no POV hand. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: concentrated brows, slightly parted lips counting silently.\nAction/gesture: leans forward seated on chair, plugs cable into amplifier with one hand while steadying guitar upright with the other.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-71a1fc20-b48a-4a13-b710-cf8c6b9531bd.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-moment-03.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "세계는 케이블을 끼우기 전에 발끝으로 박자를 두 번 쳤다."
+        },
+        {
+          "speaker": "world",
+          "text": "처음 소리 날 때 놀라지 마. 볼륨은 낮췄는데 기대는 못 낮췄어."
+        },
+        {
+          "speaker": "player",
+          "text": "그럼 내가 놀라는 표정은 감상에 포함하지 마."
+        },
+        {
+          "speaker": "world",
+          "text": "포함할 건데. 내 첫 관객 반응은 다 듣고 싶거든."
+        }
+      ]
+    },
+    {
+      "id": "world-moment-04",
+      "person": "world",
+      "chapter": 1,
+      "visit": 2,
+      "title": "젓가락 끝의 협상",
+      "location": "cafeteria",
+      "composition": "steep overhead wide shot of cafeteria tray and World leaning sideways at long bench, face visible upward, clear arms",
+      "expression": "open delighted laugh, eyes narrowed joyfully",
+      "gesture": "holds chopsticks upright in one hand like a tiny conductor, other hand points at last dumpling on her own tray",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Jeon Segye / World as reference: long flowing black wavy hair, violet eyes, burgundy rose with dark ribbons hair ornament, dark navy school blazer white piping, white collared shirt burgundy/navy bow with red brooch, modest dark plaid skirt. Preserve facial identity, hairstyle and school outfit, no redesign. Change expression and gesture exactly as specified; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: bright school cafeteria, plain lunch trays and water glasses, no foreground POVhands.\nComposition: steep overhead wide shot of cafeteria tray and World leaning sideways at long bench, face visible upward, clear arms. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: open delighted laugh, eyes narrowed joyfully.\nAction/gesture: holds chopsticks upright in one hand like a tiny conductor, other hand points at last dumpling on her own tray.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-6ce87979-9f65-499b-81ca-b9c698550a8e.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-moment-04.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "급식 쟁반 한쪽에 남은 만두를 두고 세계가 지휘자처럼 젓가락을 들었다."
+        },
+        {
+          "speaker": "world",
+          "text": "마지막 한 개. 지금 양보하면 나중에 서운하다고 노래할 수도 있어."
+        },
+        {
+          "speaker": "player",
+          "text": "차라리 가위바위보로 정하자. 곡 하나 생기는 건 막아야지."
+        },
+        {
+          "speaker": "world",
+          "text": "좋아. 대신 네가 이기면 첫 소절은 같이 만들어 줘."
+        }
+      ]
+    },
+    {
+      "id": "world-moment-05",
+      "person": "world",
+      "chapter": 2,
+      "visit": 1,
+      "title": "바람이 넘긴 페이지",
+      "location": "roof",
+      "composition": "clean waist-up strict side profile with expansive rooftop sky occupying most frame; character off-center",
+      "expression": "eyes gently closed, peaceful listening expression",
+      "gesture": "holds folded song notebook against chest with both arms; wind moves long hair sideways",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Jeon Segye / World as reference: long flowing black wavy hair, violet eyes, burgundy rose with dark ribbons hair ornament, dark navy school blazer white piping, white collared shirt burgundy/navy bow with red brooch, modest dark plaid skirt. Preserve facial identity, hairstyle and school outfit, no redesign. Change expression and gesture exactly as specified; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: safe fenced school rooftop in late afternoon, distant Incheon skyline; uniform fully covered.\nComposition: clean waist-up strict side profile with expansive rooftop sky occupying most frame; character off-center. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: eyes gently closed, peaceful listening expression.\nAction/gesture: holds folded song notebook against chest with both arms; wind moves long hair sideways.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-4025b603-62ef-4e27-8636-da950c96625b.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-moment-05.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "옥상 바람이 악보 한 장을 넘겼다. 세계는 붙잡는 대신 잠시 눈을 감았다."
+        },
+        {
+          "speaker": "world",
+          "text": "오늘은 아무것도 찍지 말자. 바람 소리는 기억으로도 남을 것 같아."
+        },
+        {
+          "speaker": "player",
+          "text": "그럼 박자만 맞춰 걸을까?"
+        },
+        {
+          "speaker": "world",
+          "text": "응. 근데 내가 느리게 가면 같이 느려져 줘."
+        }
+      ]
+    },
+    {
+      "id": "world-moment-06",
+      "person": "world",
+      "chapter": 2,
+      "visit": 2,
+      "title": "책장 너머의 입모양",
+      "location": "library",
+      "composition": "medium shot seen through a narrow horizontal opening between library books, eye-level partially occluded candid framing",
+      "expression": "mock-stern puckered shushing mouth, bright mischievous eyes",
+      "gesture": "one finger gently at lips, other hand holds a thin music book vertically at hip",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Jeon Segye / World as reference: long flowing black wavy hair, violet eyes, burgundy rose with dark ribbons hair ornament, dark navy school blazer white piping, white collared shirt burgundy/navy bow with red brooch, modest dark plaid skirt. Preserve facial identity, hairstyle and school outfit, no redesign. Change expression and gesture exactly as specified; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: quiet school library shelf aisle with warm window light; not seated at table.\nComposition: medium shot seen through a narrow horizontal opening between library books, eye-level partially occluded candid framing. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: mock-stern puckered shushing mouth, bright mischievous eyes.\nAction/gesture: one finger gently at lips, other hand holds a thin music book vertically at hip.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-418f1cc9-b7df-4ac5-84d9-7ec3a1a21580.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-moment-06.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "책장 너머에서 세계가 소리 없이 내 이름을 불렀다. 내가 대답하려 하자 입가에 손가락을 댔다."
+        },
+        {
+          "speaker": "world",
+          "text": "쉿. 이름 부른 건 난데 혼나는 건 네 쪽이겠다."
+        },
+        {
+          "speaker": "player",
+          "text": "입모양으로 부르는 건 반칙 아니야?"
+        },
+        {
+          "speaker": "world",
+          "text": "그럼 책 찾고 밖에서 불러 줘. 이번엔 내가 대답할게."
+        }
+      ]
+    },
+    {
+      "id": "world-moment-07",
+      "person": "world",
+      "chapter": 3,
+      "visit": 1,
+      "title": "객석 끝까지 닿는 손",
+      "location": "auditorium",
+      "composition": "very wide establishing shot from back of empty auditorium, World full-body small on stage at far right, rows of seats create deep leading lines",
+      "expression": "earnest nervous smile visible enough to read but not a portrait",
+      "gesture": "one arm raised high waving to player in audience, the other holds microphone at waist",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Jeon Segye / World as reference: long flowing black wavy hair, violet eyes, burgundy rose with dark ribbons hair ornament, dark navy school blazer white piping, white collared shirt burgundy/navy bow with red brooch, modest dark plaid skirt. Preserve facial identity, hairstyle and school outfit, no redesign. Change expression and gesture exactly as specified; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: empty school auditorium during rehearsal, single warm stage light, deep blue seats.\nComposition: very wide establishing shot from back of empty auditorium, World full-body small on stage at far right, rows of seats create deep leading lines. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: earnest nervous smile visible enough to read but not a portrait.\nAction/gesture: one arm raised high waving to player in audience, the other holds microphone at waist.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-a6eaa356-b665-4b8d-91d7-bdd9084543d9.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-moment-07.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "객석 맨 뒤에서도 세계의 손이 보였다. 빈 의자들이 둘 사이를 길게 채웠다."
+        },
+        {
+          "speaker": "world",
+          "text": "이 정도면 보여? 네가 멀리 앉아도 내가 먼저 찾을 수 있게."
+        },
+        {
+          "speaker": "player",
+          "text": "보여. 이제 내려도 되는데."
+        },
+        {
+          "speaker": "world",
+          "text": "한 번만 더 흔들어 줘. 내가 제대로 찾은 건지 확인하게."
+        }
+      ]
+    },
+    {
+      "id": "world-moment-08",
+      "person": "world",
+      "chapter": 3,
+      "visit": 2,
+      "title": "응원 글씨 밖의 별",
+      "location": "art",
+      "composition": "oblique bird's-eye full-body shot of World kneeling comfortably beside large blank poster paper on clean art-room floor",
+      "expression": "cheek puffed in comic stubborn determination",
+      "gesture": "uses broad paintbrush to add a small blue star, free hand balances flat on paper corner",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Jeon Segye / World as reference: long flowing black wavy hair, violet eyes, burgundy rose with dark ribbons hair ornament, dark navy school blazer white piping, white collared shirt burgundy/navy bow with red brooch, modest dark plaid skirt. Preserve facial identity, hairstyle and school outfit, no redesign. Change expression and gesture exactly as specified; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: school art studio, covered floor, cups of clean water and paints; paper has abstract stars only no lettering.\nComposition: oblique bird's-eye full-body shot of World kneeling comfortably beside large blank poster paper on clean art-room floor. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: cheek puffed in comic stubborn determination.\nAction/gesture: uses broad paintbrush to add a small blue star, free hand balances flat on paper corner.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-4d727ac9-0e7e-4753-969c-35c389026feb.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-moment-08.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "세계는 응원 포스터 여백에 별을 하나 그렸다가 그 위에 더 큰 별을 덧그렸다."
+        },
+        {
+          "speaker": "world",
+          "text": "이건 번진 게 아니라 강조야. 그렇게 봐 줘."
+        },
+        {
+          "speaker": "player",
+          "text": "별 하나가 응원을 독점하는데?"
+        },
+        {
+          "speaker": "world",
+          "text": "오늘은 양보 안 해. 그래도 네 별 그릴 자리는 남겨 뒀어."
+        }
+      ]
+    },
+    {
+      "id": "world-moment-09",
+      "person": "world",
+      "chapter": 4,
+      "visit": 1,
+      "title": "빈칸을 찾은 복도",
+      "location": "hallway",
+      "composition": "wide horizontal side view through the school corridor doorway; full standing figure at distant noticeboard, strong diagonal corridor perspective",
+      "expression": "puzzled lifted eyebrows, lips parted in a small surprised question",
+      "gesture": "stands still pointing to an empty space on the noticeboard with one hand, holds a closed schedule folder under opposite arm",
+      "prompt": "Use case: illustration-story. Produce a single 16:9 landscape anime school-life illustration. Reference image 1 is the same character's face, hair and crisp cel-shaded drawing style, not a pose template. Keep her teenage school-student identity. Long wavy black hair, violet eyes, burgundy rose hair accessory.\nScene and clothing: School hallway in afternoon. Same black-haired girl wears her neatly buttoned navy school blazer, white collar, burgundy bow and full-length dark pleated uniform skirt. Board contains blank colored paper squares and no readable writing.\nComposition: wide horizontal side view through the school corridor doorway; full standing figure at distant noticeboard, strong diagonal corridor perspective\nExpression: puzzled lifted eyebrows, lips parted in a small surprised question\nGesture: stands still pointing to an empty space on the noticeboard with one hand, holds a closed schedule folder under opposite arm\nDetailed ordinary school surroundings and strong readable visual storytelling. Anatomically natural two arms and hands. One image, no captions, speech balloons, UI, logos, watermark or collage.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-a1cdb415-bd34-465a-b69c-5e78116d3e09.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-moment-09.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "세계가 복도 게시판의 빈칸을 가리켰다. 다른 종이들이 빼곡한데 딱 그 자리만 비어 있었다."
+        },
+        {
+          "speaker": "world",
+          "text": "여기다 행사 사진 붙인대. 무대 사진만 잔뜩이면 재미없겠지?"
+        },
+        {
+          "speaker": "player",
+          "text": "준비하던 모습도 한 장 있으면 좋겠다."
+        },
+        {
+          "speaker": "world",
+          "text": "그럼 케이블 감다가 웃은 것도 후보. 멋있는 척 안 한 순간도 남겨 보자."
+        }
+      ],
+      "previousPrompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Jeon Segye / World as reference: long flowing black wavy hair, violet eyes, burgundy rose with dark ribbons hair ornament, dark navy school blazer white piping, white collared shirt burgundy/navy bow with red brooch, modest dark plaid skirt. Preserve facial identity, hairstyle and school outfit, no redesign. Change expression and gesture exactly as specified; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: sunlit classroom hallway with window breeze, two sheets fluttering, no readable writing.\nComposition: dynamic diagonal medium-long side shot in bright corridor, both shoes and head visible, frozen candid action no low skirt angle. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: wide-eyed startled face with small open mouth.\nAction/gesture: lunges one safe step forward reaching to catch a fluttering loose sheet, other arm hugs closed folder.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "generationNote": "Original ordinary school-life request was input-filter rejected. Replaced with a different fully clothed standing classroom/garden task, without changing character age or hiding setting."
+    },
+    {
+      "id": "world-moment-10",
+      "person": "world",
+      "chapter": 4,
+      "visit": 2,
+      "title": "우산 아래 빈자리",
+      "location": "garden",
+      "composition": "wide lateral long shot across rain-soaked school garden with foreground leaves; World standing under umbrella off-center",
+      "expression": "small vulnerable hopeful smile, direct glance toward off-camera player",
+      "gesture": "tilts open umbrella outward to make a dry space beside her, opposite hand clutches closed satchel strap",
+      "prompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Jeon Segye / World as reference: long flowing black wavy hair, violet eyes, burgundy rose with dark ribbons hair ornament, dark navy school blazer white piping, white collared shirt burgundy/navy bow with red brooch, modest dark plaid skirt. Preserve facial identity, hairstyle and school outfit, no redesign. Change expression and gesture exactly as specified; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: gentle rain school garden path, hydrangeas and wet paving, full uniform; no other figure.\nComposition: wide lateral long shot across rain-soaked school garden with foreground leaves; World standing under umbrella off-center. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: small vulnerable hopeful smile, direct glance toward off-camera player.\nAction/gesture: tilts open umbrella outward to make a dry space beside her, opposite hand clutches closed satchel strap.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
+      "referencePath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png",
+      "generatedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-ac535224-99ab-4350-b073-81e8ec27455a.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-moment-10.png",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "정원 비가 잦아들어도 세계는 우산을 접지 않았다. 내 쪽으로 손잡이가 조금 기울었다."
+        },
+        {
+          "speaker": "world",
+          "text": "여긴 아직 비 와. 그러니까 잠깐 더 같이 가도 이상하진 않지?"
+        },
+        {
+          "speaker": "player",
+          "text": "핑계 없어도 같이 걸을 수 있어."
+        },
+        {
+          "speaker": "world",
+          "text": "알아. 그래도 이런 날씨는 조금 고맙네."
+        }
+      ]
+    }
+  ]
+}
