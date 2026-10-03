@@ -4,10 +4,11 @@ import {existsSync,readFileSync} from 'node:fs';
 import {romancePeople,type RState} from '../src/romanceTypes';
 import {getHangoutScene,hasHangoutAvailable} from '../src/data/romanceHangouts';
 import {getMainScene} from '../src/data/romanceStory';
+import {getEarnedFinaleScene,heroineRomanceEligible} from '../src/data/romanceEndings';
 import {romanceArt,artPath,awareness} from '../src/data/romanceArt';
 import {hasRomanceActivity,getRomanceActivity} from '../src/data/romanceActivities';
 import {newRomance,startHangout,personLocation,advanceRomance,chooseRomance,currentRomanceScene,respondToActivity,completeRomanceActivity,conveneTrial,restoreRomance} from '../src/engine/romance';
-import {memoryEvidence} from '../src/data/romanceMystery';
+import {getDiscoveryScene,memoryEvidence} from '../src/data/romanceMystery';
 
 function finishDialogue(initial:RState){let s=initial,guard=0;while(s.phase==='story'){
  assert.ok(guard++<1000);const scene=currentRomanceScene(s);
@@ -36,14 +37,48 @@ test('eighty finite encounters have new follow-ups instead of a repeating v2 tem
 
 test('every heroine gets an actual line-triggered CG and all referenced originals exist',()=>{
  const found=new Set<string>();
- for(const person of romancePeople){const s=newRomance('봄',7);for(const l of getHangoutScene(person,s,'classroom').lines)if(l.art)found.add(l.art);}
+ const firstDateArt=new Set<string>(),endingArt=new Set<string>(),discoveryArt=new Set<string>();
+ for(const person of romancePeople){
+  const first=getHangoutScene(person,newRomance('봄',7),'classroom');
+  for(const line of first.lines)if(line.art){found.add(line.art);firstDateArt.add(line.art);}
+  if(person==='junyeon')continue;
+  // Build earned route flags from actual authored choices and completed scenes,
+  // not invented milestones or affection alone. Three chapters span early/late.
+  let state:RState={...newRomance('봄',7),chapter:4,focus:person,verdict:'forgive'};
+  for(const chapter of [0,1,3]){
+   const encounter=getHangoutScene(person,{...state,chapter},'classroom');
+   const choice=encounter.choices.find(candidate=>chapter===3
+    ?candidate.flags?.includes(`route:${person}:commitment`)
+    :candidate.flags?.some(flag=>flag.startsWith(`route:${person}:${chapter+1}:`)));
+   assert.ok(choice,`${person}/${chapter+1} needs an authored milestone choice`);
+   state={...state,flags:[...state.flags,`read:${encounter.id}`,...choice.flags??[]]};
+  }
+  state={...state,bonds:{...state.bonds,[person]:{affection:100,trust:100}}};
+  assert.ok(heroineRomanceEligible(state,person),`${person} fixture must earn the actual romance route`);
+  const finale=getEarnedFinaleScene(state),romance=finale.choices.find(choice=>choice.id==='romance');
+  assert.ok(romance,`${person} must receive an explicit mutual romance choice`);
+  const ownEndingArt=romance.response.filter(line=>line.art).map(line=>line.art!);
+  assert.ok(ownEndingArt.length>0,`${person} ending CG must be triggered by its playable answer`);
+  assert.ok(ownEndingArt.every(id=>id===`${person}-ending`));
+  for(const id of ownEndingArt){found.add(id);endingArt.add(id);}
+  assert.ok(finale.choices.filter(choice=>choice.id!=='romance').every(choice=>choice.response.every(line=>!line.art)),'friendship/distance do not show mutual-romance CGs');
+ }
+ for(const clue of memoryEvidence){
+  const state:RState={...newRomance('봄',7),chapter:clue.chapter,act:clue.unlockAct,location:clue.location,clues:[...clue.requires]};
+  const discovery=getDiscoveryScene(clue.id,state);
+  for(const line of discovery.lines)if(line.art){found.add(line.art);discoveryArt.add(line.art);}
+ }
+ assert.equal(firstDateArt.size,7,'all seven initial date illustrations have a scene trigger');
+ assert.equal(endingArt.size,7,'all seven earned romance endings have distinct illustrations');
+ assert.equal(discoveryArt.size,4,'each chapter observation has its own discovery illustration');
  for(const art of romanceArt){
   assert.ok(found.has(art.id),`${art.id} must be encountered, not merely stored unused`);
   const path=new URL(`../public/${artPath(art.id)}`,import.meta.url);assert.ok(existsSync(path));
   const bytes=readFileSync(path);assert.equal(bytes.subarray(1,4).toString(),'PNG');
   assert.ok(bytes.readUInt32BE(16)>bytes.readUInt32BE(20),'event art is landscape');
  }
- assert.equal(romanceArt.length,7);
+ assert.equal(romanceArt.length,18);
+ assert.equal(found.size,18,'every registered illustration is encountered, with no unregistered trigger');
 });
 
 test('the first meeting earns an optional activity; follow-up is uninterrupted and skips cannot farm rewards',()=>{

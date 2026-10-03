@@ -1,7 +1,7 @@
 import {useEffect,useMemo,useRef,useState} from 'react';
 import {ArrowRight,Check,Heart,Music2,Pause,Play,RotateCcw,SkipForward,Undo2,Volume2} from 'lucide-react';
 import type {RPerson} from './romanceTypes';
-import {activityKindNames,compositionIsValid,debugIsValid,getRomanceActivity,packingIsValid,rhythmIsValid,starPathIsValid,type ActivityTask,type RomanceActivityData} from './data/romanceActivities';
+import {activityKindNames,comparisonIsValid,compositionIsValid,debugIsValid,getRomanceActivity,packingIsValid,ratioIsValid,rhythmIsValid,starPathIsValid,type ActivityTask,type RomanceActivityData} from './data/romanceActivities';
 import './romanceActivities.css';
 
 type Props={person:RPerson;chapter:number;encounter:1|2;seed:number;paused?:boolean;onFinish:(score:number)=>void};
@@ -22,9 +22,9 @@ function ActivitySession({activity,paused,onFinish}:{activity:RomanceActivityDat
  function settle(ok:boolean,detail=''){if(suspended||settled.current||finished.current)return;settled.current=true;setResult({ok,detail});}
  function finish(score:number){if(suspended||finished.current)return;finished.current=true;onFinish(score);}
  function retry(){if(suspended||finished.current)return;settled.current=false;setResult(null);setAttempt(value=>value+1);if(scroll.current)scroll.current.scrollTop=0;}
- return <section className="romance-together" aria-label={`${names[activity.person]}와 ${activity.title}`}>
+ return <section className="romance-together" aria-label={`${names[activity.person]}${activity.person==='world'||activity.person==='taewoo'?'와':'과'} ${activity.title}`}>
   <div className="rt-card">
-   <header className="rt-header"><span className="rt-kicker"><Heart size={14}/>AFTER SCHOOL / 둘이 해 보는 일</span><span className="rt-person">{names[activity.person]}</span><h2 ref={heading} tabIndex={-1}>{activity.title}</h2><span className="rt-kind">{activityKindNames[activity.task.kind]} · 선택 활동</span></header>
+   <header className="rt-header"><span className="rt-kicker"><Heart size={14}/>함께하기</span><span className="rt-person">{names[activity.person]}</span><h2 ref={heading} tabIndex={-1}>{activity.title}</h2><span className="rt-kind">{activityKindNames[activity.task.kind]} · 선택 활동</span></header>
    <div className="rt-scroll" ref={scroll}>
     <p className="rt-invitation">{activity.invitation}</p>
     <p className="rt-goal">{activity.goal}</p>
@@ -47,6 +47,8 @@ function ActivityBoard({task,paused,settle}:BoardProps<ActivityTask>){
   case 'debug':return <DebugBoard task={task} paused={paused} settle={settle}/>;
   case 'stars':return <StarsBoard task={task} paused={paused} settle={settle}/>;
   case 'pack':return <PackBoard task={task} paused={paused} settle={settle}/>;
+  case 'ratio':return <RatioBoard task={task} paused={paused} settle={settle}/>;
+  case 'compare':return <CompareBoard task={task} paused={paused} settle={settle}/>;
  }
 }
 function MixBoard({task,paused,settle}:BoardProps<Extract<ActivityTask,{kind:'mix'}>>){
@@ -78,15 +80,18 @@ function MixBoard({task,paused,settle}:BoardProps<Extract<ActivityTask,{kind:'mi
 }
 function RhythmBoard({task,paused,settle}:BoardProps<Extract<ActivityTask,{kind:'rhythm'}>>){
  const [entered,setEntered]=useState<number[]>([]),[times,setTimes]=useState<number[]>([]),[timed,setTimed]=useState(false),[guide,setGuide]=useState(false),[pulse,setPulse]=useState(false);
+ const [started,setStarted]=useState(false),[showSequence,setShowSequence]=useState(false);
  useEffect(()=>{if(!guide||paused)return;const timer=window.setInterval(()=>setPulse(value=>!value),60000/task.bpm);return()=>window.clearInterval(timer);},[guide,paused,task.bpm]);
  function pick(index:number){if(paused||entered.length>=task.pattern.length)return;setEntered(previous=>[...previous,index]);setTimes(previous=>[...previous,performance.now()]);}
- function reset(){setEntered([]);setTimes([]);setGuide(false);}
+ function reset(){setEntered([]);setTimes([]);setGuide(false);setStarted(false);}
  const complete=entered.length===task.pattern.length;
  return <div className="rt-rhythm">
-  <div className="rt-mode-switch"><label><input type="checkbox" checked={timed} disabled={entered.length>0} onChange={event=>{setTimed(event.target.checked);setGuide(false);}}/>박자 간격도 맞춰 보기 <small>(선택)</small></label><span>{timed?`${task.bpm} BPM`:'시간 제한 없는 순서 모드'}</span></div>
-  <ol className="rt-pattern" aria-label="함께 따라 할 동작">{task.pattern.map((value,i)=><li key={i} className={i<entered.length?(entered[i]===value?'is-right':'is-different'):i===entered.length?'is-next':''}><span>{i+1}</span><b>{task.gestures[value]}</b>{i<entered.length&&<small>{task.gestures[entered[i]]}</small>}</li>)}</ol>
+  <div className="rt-mode-switch"><label><input type="checkbox" checked={timed} disabled={entered.length>0} onChange={event=>{setTimed(event.target.checked);setGuide(false);}}/>박자 간격도 맞춰 보기 <small>(선택)</small></label><span>{timed?`${task.bpm} BPM`:'시간 제한 없음'}</span></div>
+  <label className="rt-sequence-assist"><input type="checkbox" checked={showSequence} onChange={event=>setShowSequence(event.target.checked)}/>순서를 보면서 하기</label>
+  <ol className="rt-pattern" aria-label={started&&!showSequence?'기억해서 이을 동작':'함께 따라 할 동작'}>{task.pattern.map((value,i)=><li key={i} className={complete?(entered[i]===value?'is-right':'is-different'):i===entered.length&&started?'is-next':''}><span>{i+1}</span><b>{!started||showSequence||complete?task.gestures[value]:i<entered.length?task.gestures[entered[i]]:'?'}</b>{complete&&entered[i]!==value&&<small>{task.gestures[entered[i]]}</small>}</li>)}</ol>
+  {!started&&<button type="button" className="rt-submit" onClick={()=>setStarted(true)}>기억했어 · 시작</button>}
   {timed&&<button type="button" className="rt-tempo" onClick={()=>setGuide(value=>!value)} aria-pressed={guide}><i className={guide&&pulse?'is-lit':''}/>{guide?'박자 불빛 끄기':'박자 불빛 켜기'}<span>불빛이 바뀔 때 한 번씩</span></button>}
-  <div className="rt-gesture-buttons">{task.gestures.map((gesture,i)=><button type="button" key={gesture} onClick={()=>pick(i)} disabled={complete}><span aria-hidden="true">{['●','✦','—'][i]}</span>{gesture}</button>)}</div>
+  <div className="rt-gesture-buttons">{task.gestures.map((gesture,i)=><button type="button" key={gesture} onClick={()=>pick(i)} disabled={!started||complete}><span aria-hidden="true">{['●','✦','—'][i]}</span>{gesture}</button>)}</div>
   <div className="rt-inline-actions"><button type="button" className="rt-secondary" onClick={reset} disabled={entered.length===0&&!guide}><RotateCcw size={15}/>처음부터</button><span className="rt-help" aria-live="polite">{entered.length} / {task.pattern.length} 동작</span></div>
   <button type="button" className="rt-submit" disabled={!complete} onClick={()=>{setGuide(false);const ok=rhythmIsValid(task,entered,times,timed);settle(ok,ok?(timed?'같은 간격으로 짧은 합주를 마쳤어요.':'서두르지 않고 서로의 차례를 끝까지 맞췄어요.'):'순서나 간격이 살짝 달랐어요. 다음에는 시간 제한 없는 순서 모드로 해도 같은 보상을 받아요.');}}><Check size={17}/>둘의 호흡 확인하기</button>
  </div>;
@@ -143,5 +148,33 @@ function PackBoard({task,paused,settle}:BoardProps<Extract<ActivityTask,{kind:'p
   <div className="rt-bag"><div className="rt-bag-handle" aria-hidden="true"/><h3>{task.bag}</h3><div className="rt-capacity" role="img" aria-label={`${task.capacity}칸 중 ${used}칸 사용${used>task.capacity?', 가방이 넘쳐요':''}`}>{Array.from({length:Math.max(task.capacity,used)},(_,i)=><span key={i} className={`${i<used?'is-full':''} ${i>=task.capacity?'is-over':''}`}/>)}</div><b className={used>task.capacity?'rt-overflow':''}>{used} / {task.capacity}칸</b><p>{selected.length?selected.map(i=>task.items[i].label).join(' · '):'아직 비어 있어요. 필요한 만큼만 담아 봐요.'}</p></div>
   <div className="rt-pack-items" role="group" aria-label="가방에 넣거나 뺄 물건">{task.items.map((value,i)=><button type="button" key={value.label} aria-pressed={selected.includes(i)} className={selected.includes(i)?'is-picked':''} onClick={()=>choose(i)}><span>{value.label}</span><small>{value.size}칸 {selected.includes(i)?'· 빼기':'· 넣기'}</small></button>)}</div>
   <button type="button" className="rt-submit" disabled={selected.length===0} onClick={()=>{const ok=packingIsValid(task,selected);settle(ok,ok?`${selected.map(i=>task.items[i].label).join(', ')}. 필요한 것을 챙기고 ${task.capacity-used}칸의 여유를 남겼어요.`:used>task.capacity?'가방이 조금 넘쳤어요. 오늘 꼭 필요하지 않은 것을 하나 내려놓아도 괜찮아요.':`「${task.required.map(i=>task.items[i].label).join('」「')}」는 이번 약속에 꼭 필요해요. 다시 확인해 볼까요?`);}}><Check size={17}/>이 가방으로 같이 가기</button>
+ </div>;
+}
+
+function RatioBoard({task,paused,settle}:BoardProps<Extract<ActivityTask,{kind:'ratio'}>>){
+ const [amounts,setAmounts]=useState(()=>task.components.map(()=>0));
+ const total=amounts.reduce((sum,value)=>sum+value,0);
+ function change(index:number,delta:number){if(paused)return;setAmounts(previous=>previous.map((value,i)=>i===index?Math.max(0,Math.min(task.total,value+delta)):value));}
+ return <div className="rt-ratio">
+  <div className="rt-ratio-target"><b>{task.components.map(component=>component.parts).join(' : ')}</b><span>{task.components.map(component=>component.label).join(' : ')}<br/>전체 {task.total}{task.unit}</span></div>
+  <div className="rt-ratio-vessel" role="img" aria-label={`지금 ${amounts.map((value,i)=>`${task.components[i].label} ${value}${task.unit}`).join(', ')}`}>
+   {task.components.map((component,i)=><span key={component.label} style={{width:`${amounts[i]/Math.max(total,task.total)*100}%`,background:component.color}}>{amounts[i]>0?amounts[i]:''}</span>)}
+  </div>
+  <p className={`rt-ratio-total ${total>task.total?'is-over':''}`} aria-live="polite">{total} / {task.total}{task.unit}{total>task.total?' · 전체 양을 줄여 주세요':''}</p>
+  <div className="rt-ratio-controls">{task.components.map((component,i)=><div key={component.label}><b><i style={{background:component.color}} aria-hidden="true"/>{component.label}</b><button type="button" aria-label={`${component.label} 1${task.unit} 줄이기`} disabled={amounts[i]===0} onClick={()=>change(i,-1)}>−</button><output aria-label={`${component.label} 양`}>{amounts[i]}</output><button type="button" aria-label={`${component.label} 1${task.unit} 늘리기`} disabled={amounts[i]===task.total} onClick={()=>change(i,1)}>+</button></div>)}</div>
+  <p className="rt-board-caption">{task.caption}</p>
+  <button type="button" className="rt-submit" disabled={total===0} onClick={()=>{const ok=ratioIsValid(task,amounts);settle(ok,ok?'전체 양과 각 부분의 비율이 모두 맞아요.':total!==task.total?'비율을 살펴보기 전에 전체 양부터 맞춰 봐요.':'전체 양은 맞아요. 비율의 숫자를 모두 더해 한 부분의 크기부터 구해 볼까요?');}}><Check size={17}/>비율 확인</button>
+ </div>;
+}
+
+function CompareBoard({task,paused,settle}:BoardProps<Extract<ActivityTask,{kind:'compare'}>>){
+ const [selected,setSelected]=useState<number[]>([]);
+ function toggle(index:number){if(paused)return;setSelected(previous=>previous.includes(index)?previous.filter(value=>value!==index):[...previous,index]);}
+ return <div className="rt-compare">
+  <div className="rt-compare-head"><span>항목</span><b>{task.before}</b><b>{task.after}</b></div>
+  <div className="rt-compare-rows" role="group" aria-label="서로 달라진 항목">{task.rows.map((row,index)=><button type="button" key={row.label} className={selected.includes(index)?'is-picked':''} aria-pressed={selected.includes(index)} onClick={()=>toggle(index)}><span>{selected.includes(index)&&<Check size={13}/>}<b>{row.label}</b></span><span>{row.left}</span><span>{row.right}</span></button>)}</div>
+  <p className="rt-help" aria-live="polite">달라진 칸만 선택 · {selected.length}개 표시</p>
+  <p className="rt-board-caption">{task.caption}</p>
+  <button type="button" className="rt-submit" disabled={selected.length===0} onClick={()=>{const ok=comparisonIsValid(task,selected);const found=selected.filter(index=>task.differences.includes(index)).length;const extra=selected.length-found;settle(ok,ok?'달라진 항목을 빠짐없이 확인했어요. 같은 항목은 그대로 두었어요.':extra>0?'같은 내용인 항목도 표시됐어요. 두 칸을 차례로 다시 읽어 봐요.':`${found}곳은 정확하게 찾았어요. 아직 표시하지 않은 차이가 남아 있어요.`);}}><Check size={17}/>둘이 확인하기</button>
  </div>;
 }

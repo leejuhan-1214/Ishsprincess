@@ -1,5 +1,6 @@
 import type {LocationId} from '../types';
 import type {RChoice,REffect,RLine,RPerson,RScene,RSpeaker,RState} from '../romanceTypes';
+import {characterAfterChoices,characterAsides,characterMoments} from './romanceCharacterMoments';
 export {getHangoutScene} from './romanceHangouts';
 
 const speaker:Record<string,RSpeaker>={n:'narrator',p:'player',w:'world',h:'hyunsol',t:'taewoo',o:'taehun',s:'seoyul',j:'juhan',m:'minhyuk',b:'junyeon',a:'alter',teacher:'teacher'};
@@ -179,9 +180,9 @@ h|간식으로 지급하면 동의할게.
 t|그러면 나는 연습 추가해도 되겠다. 아직 출출하거든.
 j|그 계산이면 모두 매일 연장 근무야.
 n@cafeteria|매점 창가에는 잠깐 기대어 서 있을 만한 자리가 있었다.
-n|나는 지난번 함께 마신 음료의 이름을 찾았다. 같은 병을 알아보는 일이 반가웠다.
-p|이번에는 내가 먼저 골랐어. 지난번에 네가 덜 단 걸 좋아한다고 했지.
-n|현솔이 병 라벨을 보고 웃었다. 지난번 덜 단 음료를 골랐던 건 현솔이었다.
+n|진열대 앞에서 내가 오래 고민하자 현솔이 병 두 개를 꺼내 들었다.
+p|어느 쪽이 더 단 거야? 라벨만 봐서는 모르겠네.
+h|성분표는 이쪽. 근데 덜 단 걸 좋아하는지는 네가 말해 줘야 해.
 o|날씨 좋다. 오늘은 돌아갈 때 하늘 좀 보고 가.
 s|나도 오늘 색 예뻐서 그리려고. 해 지기 전까지는.
 b|공동 리허설 안내는 게시판에 올라갈 거야. 장소 확인해 줘.
@@ -442,202 +443,6 @@ minhyuk:[['상자는 반으로 나누자. 같이 하자고 해 놓고 내가 다
 junyeon:[['네가 여기까지 찾아올 줄 몰랐어. 묶음 하나만 같이 들어 줄래?','복숭아 맛 좋아해. 다음에 음료 고를 때 그거면 돼.','같이 있을 때는 좋은데 다음 약속 말하려면 자꾸 망설여져.'],['달력에 이름이 둘씩 적혀 있네. 나랑 정리할 시간도 남길 수 있어?','나중에 끝나면 잠깐 같이 걸을래? 오늘은 묻기 전에 포기하지 않으려고.','목요일. 적어 뒀어. 네 다른 약속이 없어져야 내가 생기는 건 아니겠지.'],['음료 두 개 샀어. 너 오기로 했는데도 괜히 한 번 더 확인하고 싶어서.','네가 다른 데서 기다린 동안 나는 여기 있었어. 지금은 같이 앉을 수 있네.','함께 있는 건 좋아. 다음에도 나부터 찾을 건지 자꾸 묻고 싶어지는 게 문제지만.'],['내일 끝나면 다들 자기 약속대로 가겠지. 나도 뭔가 정해야 하는데.','지금은 서류만 놓고 올게. 간식은 조금만 남겨 줘.','행사 끝나고 할 말 있어. 오늘은 아직 꺼낼 자신이 없어서.'],['나란히 앉으려다 내가 의자를 뗐네. 지금은 어느 자리가 맞는지 모르겠어.','내가 고쳐야 하는 안내부터 확인할게. 네가 곁에 있는지와 상관없이 해야 하는 일이니까.','지금 쉬는 시간도 우리가 새로 정한 거지. 그게 없던 잘못을 만드는 건 아니고.']]
 };
 
-const firstDates:Record<Exclude<RPerson,'junyeon'>,{art:string;text:string}>={
- world:{art:'world-earbud',text:`n|방과 후, 세계가 밴드실 문에 뒤집힌 팻말을 걸었다. ‘녹음 중’이라고 적힌 뒷면이었다.
-p|녹음하는 거야? 조용히 있을게.
-w|아니. 계속 사람 들어오면 오늘도 네 얘기는 못 들을 것 같아서.
-n|세계는 휴대전화를 뒤집어 놓고 이어폰 한쪽을 내 손바닥에 얹었다.
-w|아직 제목 없어. 남한테 들려주는 건 네가 처음이고.
-p|그럼 표정 관리가 중요하겠네.
-w|하지 마. 재미없으면 재미없는 얼굴 해. 나도 그런 건 보고 고치게.
-n|드럼 소리 뒤로 세계의 작은 허밍이 들렸다. 무대에서 듣던 목소리보다 가까웠다.
-p|끝나는 줄 알았는데 또 이어지네.
-w|잘 가라는 말을 해 놓고 한 마디 더 붙이는 거야. 너랑 있을 때 자꾸 그래서.
-n|세계가 내 표정을 보다가 이어폰 줄을 내려다봤다. 어깨가 닿을 듯한 거리를 먼저 벌리지는 않았다.
-w|……지금 거 농담으로 들렸어?
-p|아니. 그래서 뭐라고 답할지 생각하고 있었어.
-w|노래 끝날 때까지만 생각해. 너무 오래 걸리면 나 다음 곡 만들지도 몰라.`},
- hyunsol:{art:'hyunsol-crystal',text:`n|정규 실험과 정리를 끝낸 현솔이 창가로 손짓했다. 밀봉된 작은 결정 표본이 햇빛 아래 파랗게 빛났다.
-h|오늘은 안 만져도 돼. 눈으로만 보기. 안전 수칙도 끝났고, 보고서도 냈어.
-p|그럼 이제 정말 구경하러 온 사람인데.
-h|응. 그래서 부른 건데 왜 아직 실험대부터 닦으려고 해.
-n|현솔이 표본병을 눈높이로 들었다. 내 그림자가 병을 가리자 반 걸음 옆으로 비켰다.
-p|이 각도가 제일 예쁘다.
-h|결정?
-p|응. 그리고… 네가 방금 엄청 뿌듯해했어.
-n|현솔은 대답 대신 병을 조금 돌렸다. 푸른 조각 뒤로 창문의 빛이 갈라졌다.
-h|실패한 날에도 와서 봐 줬잖아. 흰 가루밖에 없었는데 ‘눈 같다’고.
-p|다음엔 눈사람 만들자는 말은 참았어.
-h|잘 참았네. 그 말 했으면 도로 내보냈다.
-n|현솔이 웃었다. 장갑을 벗은 손에는 고무줄 자국이 옅게 남아 있었다.
-h|오늘은 결과 보여 주면 네가 바로 갈까 봐, 좀 천천히 보여 준 거야.
-p|나 아직 하교하자는 말 안 했는데.
-h|그러니까. 이제 그다음 뭐 할지 네가 말해 봐.`},
- taewoo:{art:'taewoo-hand',text:`n|댄스실 거울에 붙은 화살표는 절반이나 떨어져 있었다. 태우는 음악을 끄고 마지막 두 동작만 다시 밟았다.
-t|너 이거 구경만 하지 말고 들어와 봐.
-p|최종 관객 자격도 탈락한 거야?
-t|관객한테 마지막 손맞춤을 시킬 수는 없잖아.
-n|태우가 오른손을 내밀었다. 내가 박수를 치려 하자 웃음을 터뜨렸다.
-t|하이파이브 아니고. 손을 잡아야 내가 이쪽으로 돌 수 있어.
-p|그 설명 처음부터 해 줬으면 덜 창피했을 텐데.
-t|지금 알아서 두 배로 재밌는데?
-n|내 손바닥 위에 태우의 손이 가볍게 놓였다. 장난스럽던 얼굴이 카운트를 세는 동안 진지해졌다.
-t|셋, 넷. 당기지는 말고. 내가 갈게.
-n|한 바퀴 돈 태우가 눈앞에서 멈췄다. 둘 다 거울 대신 서로를 보고 있었다.
-p|성공했네.
-t|응. 근데 손은 네가 먼저 놓을 줄 알았어.
-n|내가 뒤늦게 손가락을 펴자 태우가 다시 손끝을 걸었다.
-t|한 번만 더. 이번에는… 카운트는 내가 안 셀래.`},
- taehun:{art:'taehun-atlas',text:`n|지도 교사의 관측 활동이 끝난 뒤에도 옥상 관측대에는 해 질 빛이 남아 있었다. 태훈이 열린 성도를 둘 사이에 놓았다.
-o|아직 별은 안 보여. 오늘 첫 과제는 안 보이는 걸 보이는 척하지 않기.
-p|그러면 벌써 통과했어. 하나도 안 보이거든.
-o|잘했어. 나는 아까 저 비행기를 금성이라고 할 뻔했는데.
-n|태훈은 자기 실수를 적듯 책 옆에 작은 비행기를 그렸다. 지구과학 참고서 사이에서 시집 책갈피가 삐져나왔다.
-p|둘 다 가져온 거야?
-o|하나는 어디를 볼지 알려 주고, 하나는 보고 나서 할 말을 알려 줘.
-p|나도 한 문장 골라도 돼?
-o|응. 너무 멋있는 말 고르려고 하지는 마. 네 말이면 됐어.
-n|바람이 성도의 페이지를 넘겼다. 우리 손이 같은 모서리를 누르고 한동안 그대로 있었다.
-p|여기 별자리보다 지금 네 손이 더 잘 보이는데.
-o|아직 밝아서 그래.
-n|태훈은 고개를 숙인 채 한 번 웃었다. 핑계가 충분하지 않다는 건 둘 다 알았다.
-o|어두워지면… 그때도 물어볼게. 그때는 뭐가 제일 먼저 보이는지.
-n|나는 별이 나오기를 기다리면서도 이 시간이 빨리 어두워지지는 않았으면 했다.`},
- seoyul:{art:'seoyul-sketch',text:`n|미술 준비실에 남은 서율은 내게 창가 의자를 가리켰다. 포스터용 붓은 이미 씻어 말리고 있었다.
-s|오늘은 종이 잡아 주는 거 아니야. 네가 안 움직여 주면 돼.
-p|초상화? 잘 나오게 앉아야 하나.
-s|그렇게 등에 힘주면 교과서 위인 같아. 그냥 있어.
-n|나는 어깨를 내렸다. 서율의 연필이 빠르게 움직이다 내 눈과 마주칠 때마다 느려졌다.
-p|나 그림 봐도 돼?
-s|아직. 눈이 자꾸 안 맞아.
-p|내가 짝짝이인 걸 수도 있는데.
-s|아니야. 네가 나 볼 때랑 창밖 볼 때가 달라서.
-n|서율의 엄지에는 포스터를 칠하던 청록 물감이 남아 있었다. 그 손가락으로 종이를 가린 모습이 더 눈에 들어왔다.
-p|그러면 지금은 어느 쪽 눈인데?
-s|……나 보는 쪽.
-n|서율이 그림을 조금 내렸다. 종이 속의 나는 웃고 있었고, 실제의 나는 그보다 더 어색하게 웃었다.
-s|한 장 더 그려도 돼? 이건 내가 갖고 싶어.
-p|그럼 다음 장은 내가 고를게.
-s|좋아. 대신 오늘처럼 와 줘. 모델 예약이라고 해 두면 덜 떨릴 것 같아서.`},
- juhan:{art:'juhan-pixel',text:`n|주한의 작은 협동 게임에는 네모난 주인공 둘이 있었다. 우리는 마지막 문 앞까지 와서 동시에 떨어졌다.
-j|아. 여기서 다들 끝났다고 방심해. 나도 만들고 방심했어.
-p|제작자도 떨어지면 공평한 게임이네.
-n|재시작 버튼을 누르려는데 주한이 내 손등 옆에 손가락을 놓고 멈췄다.
-j|잠깐. 오른쪽 벽, 한 번만 눌러 봐.
-n|벽의 픽셀 하나가 열렸다. 화면 구석에서 작은 하트 두 개가 서툴게 서로를 따라 뛰었다.
-p|버그 아니지?
-j|그걸 제일 먼저 물어보면 조금 서운한데.
-p|내가 찾아도 되는 비밀이었어?
-j|너 아니면 찾기 힘들게 했어. 지난번에 네가 맨날 그 벽 쳐다봤잖아.
-n|주한은 화면을 보는 척했지만 내 반응이 느리자 결국 고개를 돌렸다.
-j|이런 거 넣는 게 너무 티 나나 싶어서 세 번 지웠어.
-p|지금은 안 지워서 다행인데.
-j|……응. 저장해 뒀으니까. 오늘은 진짜 안 지울 거야.
-n|작은 하트들이 화면 한쪽에서 계속 뛰었다. 다음 판을 누를 수 있었는데도, 둘 다 조작기를 들지 않았다.`},
- minhyuk:{art:'minhyuk-rain',text:`n|교문을 나서려는 순간 빗방울이 굵어졌다. 민혁은 완장을 가방에 넣다 말고 우산을 폈다.
-m|버스 정류장까지 같이 가. 이 정도면 둘이 들어가겠지.
-p|반장은 우산도 비상용으로 갖고 다니네.
-m|오늘은 비 예보가 있어서. 반장이 아니라 일기예보를 믿은 거야.
-n|나는 민혁이 가리킨 쪽으로 들어갔다. 우산 끝에서 떨어진 물이 내 바지 끝을 적셨다.
-m|더 들어와. 지금 내 어깨도 조금 젖는데 네 쪽은 거의 밖이다.
-p|너한테 너무 붙을까 봐.
-m|붙으라고 했는데 왜 혼자 어려운 시험을 보는 거야.
-n|그 말이 끝나고서야 민혁의 걸음이 반 박자 늦어졌다. 우리 소매가 나란히 닿았다.
-p|이제 안 젖지?
-m|응. 이쪽은.
-n|민혁이 아닌 척 우산 손잡이를 내 쪽으로 기울였다. 나는 손잡이 아래를 함께 잡고 가운데로 돌렸다.
-p|같이 쓰는 거면 가운데.
-m|알겠어. 그러면 정류장까지는 네가 방향 맡아.
-p|너는?
-m|나는… 오늘 네 옆에 있을게. 그것까지 역할로 나눌 필요는 없잖아.`}
-};
-
-const reunionDates:Record<Exclude<RPerson,'junyeon'>,string>={
- world:`n|세계가 밴드실에서 전에 같이 듣던 재생목록을 열었다. 맨 아래에 제목 없는 트랙 하나가 새로 생겨 있었다.
-w|그때 네가 다시 듣자고 한 부분 있잖아. 거기서부터 만들었어.
-p|그러면 이번에는 나도 조금은 만든 사람인가?
-w|일 퍼센트. 반응 좋으면 이 퍼센트까지 올려 줄게.
-n|세계가 익숙한 쪽 이어폰을 내 손에 놓았다. 이번엔 어느 쪽을 끼는지 묻지 않았다.
-p|처음 들었을 때보다 끝이 길어졌네.
-w|응. 너 보내고 나서 다음 말 생각났거든. 늦게 생각난 말은 여기 넣는 중.
-p|그럼 맨 끝 가사는 나한테 하는 거야?
-n|세계가 화면 대신 내 얼굴을 보았다. 곡은 끝났지만 이어폰을 가져가지는 않았다.
-w|지금은 너한테 먼저 들려주는 거야. 더 물어보면 나 긴장해서 또 제목 바꿔.
-p|안 바꾸게 천천히 물어봐야겠다.
-w|천천히 해. 오늘은 나도 네 대답 들을 시간 남겨 놨어.`,
- hyunsol:`n|현솔이 창가에 놓인 표본과 지난번 함께 찍은 사진을 나란히 들었다. 사진 속 결정은 지금보다 훨씬 작았다.
-h|봐. 그날 보고 끝난 게 아니라 이만큼 더 자랐어. 새 표본은 선생님이 밀봉해 주셨고.
-p|사진 같이 안 남겼으면 난 전이랑 똑같다고 했겠다.
-h|그래서 오늘도 보여 주려고. 네가 못 본 사이에 달라진 거.
-n|현솔이 내 쪽으로 표본을 기울였다. 나는 병 뒤에 손을 대지 않고 햇빛 방향으로 한 발 비켰다.
-p|이번에도 뿌듯한 얼굴이 먼저 보이는데.
-h|너는 결정 보러 왔다고 해 놓고 자꾸 내 얼굴부터 보네.
-p|오늘은 그렇게 핑계 안 댔어. 네가 보여 주고 싶다고 해서 왔지.
-n|현솔은 대답하는 대신 사진을 내 손에 쥐여 줬다. 사진 구석의 날짜 아래가 비어 있었다.
-h|그럼 오늘 것도 같이 찍자. 그때처럼 병만 찍지 말고.
-p|다음에 또 얼마나 바뀌는지 보게?
-h|응. 그리고 네가 다음에도 올 이유 하나 더 남겨 놓게.`,
- taewoo:`n|댄스실 거울의 마지막 발 위치는 이제 테이프가 없어도 찾을 수 있었다. 태우가 음악을 끄고 나를 돌아봤다.
-t|처음엔 여덟 박자를 하나씩 설명했는데. 오늘은 손 내밀면 바로 알아보겠지?
-p|아직 한 번쯤 장난칠 기회는 남은 줄 알았는데.
-t|그럼 장난은 끝나고. 오늘은 무대에서 쓸 속도로 해 볼 거야.
-n|태우가 손을 내밀었다. 나는 손바닥을 맞추고 태우가 돌아올 자리를 비웠다.
-t|이제 내가 설명 안 해도 아네.
-p|한 번 보여 줬으니까. 네가 자꾸 다시 같이 해 줬고.
-n|돌아선 태우가 지난번보다 조금 가까이 멈췄다. 거울을 보던 시선이 내 쪽으로 옮겨 왔다.
-t|동작은 됐는데, 내가 웃으면 포즈가 바뀌거든.
-p|그게 더 네 포즈 같은데.
-n|태우가 먼저 웃고는 연결된 손을 내려다봤다. 카운트가 끝났는데도 놓지 않았다.
-t|그러면 이번 한 번은 객석 말고 나만 봐. 끝날 때까지.`,
- taehun:`n|관측 활동이 끝난 옥상에서 태훈이 지난번 성도를 펼쳤다. 우리가 함께 누르던 모서리에 얇은 책갈피가 생겨 있었다.
-o|이 페이지 또 펼칠 줄 알고 표시해 뒀어. 책은 잘못 없는데 괜히 접힌 데를 찾게 돼서.
-p|나 기다렸다는 말도 꼭 책 얘기로 하네.
-o|기다렸어. 이렇게 말하면 돼?
-n|태훈이 성도를 내 쪽으로 조금 돌렸다. 해가 낮게 비치자 종이 위 별보다 태훈의 얼굴이 더 붉어 보였다.
-p|응. 나는 그 말이 더 좋아.
-o|그럼 오늘은 문장 고르는 거 네 차례. 지난번엔 내가 많이 얘기했으니까.
-n|하늘에 움직이는 밝은 점 하나가 나타났다. 태훈이 성도의 위치를 짚으려다 멈췄다.
-o|아, 비행기. 금성이라고 할 뻔했어.
-p|그것도 써 두자. 맞힌 날만 적는 건 아니잖아.
-n|바람에 들리는 페이지를 함께 눌렀다. 전에 닿았던 손을 이번에는 급하게 옮기지 않았다.
-o|그러면 오늘은 별 이름 틀린 날. 네가 웃어 준 날까지 같이 적을래.`,
- seoyul:`n|미술 준비실 창가 의자에는 전에 나를 그렸던 스케치가 놓여 있었다. 서율은 그 옆에 새 종이를 꺼냈다.
-s|오늘도 잠깐 앉아 줄래? 똑같이 그리는 건 아니야.
-p|그림 속 내 자세가 마음에 안 들었어?
-s|아니. 네가 요즘 나 볼 때 웃는 게 좀 달라서. 그때는 어깨에 힘 엄청 줬거든.
-n|나는 일부러 어깨를 더 들어 보였다. 서율이 웃으면서 연필 뒷부분으로 의자를 가리켰다.
-s|그러면 비교 사진부터 남겨야 할 것 같은데.
-p|이제 그만 장난칠게. 나 어떻게 앉으면 돼?
-s|그냥 나 보고 있어. 오늘은 다른 데 안 봐도 돼.
-n|서율이 말한 다음에야 그 말이 어떤 뜻처럼 들리는지 알아챈 표정이 됐다. 엄지에 남은 물감으로 종이 끝을 문질렀다.
-p|너도 나 그리면서 계속 보는 거잖아. 나도 봐도 되는 거지?
-s|응. 그래서 오늘은 눈을 빨리 못 그릴 것 같아.
-n|연필이 멈춘 시간에도 의자를 옮기지 않았다. 전에 없던 작은 미소가 종이 위에 먼저 생겼다.`,
- juhan:`n|주한의 게임에서 전에 찾았던 비밀 벽을 다시 눌렀다. 익숙한 픽셀 하트 옆에 이번에는 작은 빈칸이 하나 더 있었다.
-p|나 여기 알아. “찾아와 줘서 고마워” 나오는 데.
-j|응. 그 뒤를 만들었어. 숨은 길을 찾으면 끝이라고 생각했는데 네가 계속 와서.
-p|그럼 오늘은 이어하기야?
-j|같이 누르는 버튼이야. 하나로는 안 돼. 화면 속 캐릭터 둘 다 여기 서야 해.
-n|나는 내 캐릭터를 빈칸으로 옮겼다. 주한이 자기 조작기를 들고 나란히 세웠다.
-p|셋 세고 누를까?
-j|그냥 눌러. 이번엔 조금 달라도 기다려 주게 해 뒀어.
-n|두 버튼이 켜지자 작은 하트가 하나 더 튀어나왔다. 화면에는 나란한 두 캐릭터와 짧은 새 문장이 남았다.
-p|“다음에도 여기서.” 이건 약속 같은데.
-j|응. 그래서 그냥 네가 스스로 발견할 때까지 숨겨 놓기는 싫었어.
-n|주한은 화면을 가리지 않았다. 이번에는 반응을 기다리는 얼굴도 내게 그대로 보여 줬다.`,
- minhyuk:`n|교문에서 비가 내리기 시작하자 민혁이 내 쪽을 먼저 찾았다. 지난번과 같은 우산이 가방에서 나왔다.
-m|오늘도 정류장까지 같이 갈래? 너 우산 있으면 각자 써도 되지만.
-p|있는데. 작은 거.
-n|민혁이 펼친 우산을 조금 내렸다. 나는 가방을 열다 말고 민혁 옆으로 갔다.
-p|그래도 네가 같이 가자고 하면 같이 쓰고 싶은데.
-m|그러면 우산 둘 가지고 한 개 쓰는 이상한 애들이네.
-p|비 오는 날은 이유 하나쯤 이상해도 되지 않을까.
-n|나는 지난번처럼 손잡이 아래를 함께 잡았다. 민혁이 가운데를 맞춰 주자 우리 소매가 먼저 닿았다.
-m|이번엔 설명 안 해도 되네. 네 어깨만 젖으면 안 되는 것도.
-p|네 어깨도. 그건 이제 둘 다 외웠지.
-n|정류장 안내 방송이 멀리 들렸지만 민혁은 걸음을 재촉하지 않았다.
-m|오늘은 버스 하나 놓쳐도 괜찮아. 같이 걷는 시간이 생각보다 금방 끝나더라.`
-};
 
 function focusedLines(state:RState,chapter:number,act:number):RLine[]{
  const focus=state.focus;
@@ -648,9 +453,8 @@ function focusedLines(state:RState,chapter:number,act:number):RLine[]{
   {speaker:'narrator',text:'친구들이 기다리는 쪽으로 발걸음을 옮겼다. 다른 누군가를 빈자리에 서둘러 세우지는 않았다.'}
  ];
  if(chapter===2&&act===0&&focus!=='junyeon'){
-  const date=firstDates[focus];
-  const seen=state.flags.includes('read:hangout-'+focus+'-1-v1');
-  return read(seen?reunionDates[focus]:date.text,state).map((line,index)=>({...line,location:focus==='minhyuk'?'gate' as LocationId:home[focus],...(index>=5?{art:date.art}:{}),...(line.speaker===focus?{expression:index>=9?'shy' as const:'smile' as const}:{})}));
+  const moment=characterMoments[focus];
+  return read(moment.text,state).map((line,index)=>({...line,location:moment.location,...(line.speaker===focus?{expression:index===7?'serious' as const:index>=11?'shy' as const:'neutral' as const}:{})}));
  }
  const replies:Record<RPerson,string[]>={
   world:['그 첫 관객 자리, 다른 사람한테 예약 넘기지 마.','나 지금 웃는 얼굴 아닌데. 네가 기다린 걸 가볍게 생각하지는 않아.','한 곡 끝났으니까 이번엔 내 얘기도 들어. 오늘 네가 보고 싶었어.'],
@@ -667,54 +471,23 @@ function focusedLines(state:RState,chapter:number,act:number):RLine[]{
   '마지막 준비물을 옮기며 잠깐 눈이 마주쳤다. 다른 친구들 틈에서도 그 표정은 따로 알아볼 수 있었다.',
   chapter===2||chapter===4?'정원을 나와 학교 뒤 산책로로 걸으며 목소리를 조금 낮췄다. 바로 옆에 있는 사람에게만 묻고 싶은 말이 있었다.':'교실을 나와 복도를 걸으며 목소리를 조금 낮췄다. 바로 옆에 있는 사람에게만 묻고 싶은 말이 있었다.'
  ];
- const lines:RLine[]=[{speaker:'narrator',text:moments[act],...(act===2?{location:(chapter===2||chapter===4?'walk':'hallway') as LocationId}:{})},{speaker:focus,text:focusWords[focus][chapter][act]},{speaker:'player',text:replies[focus][act]}];
+ const aside=focus!=='junyeon'?characterAsides[focus][`${chapter}:${act}`]:undefined;
+ const approach:Record<RPerson,string>={world:'세계가 내 앞에서 휴대전화를 뒤집어 놓았다.',hyunsol:'현솔은 정리하던 손을 멈추고 내 쪽으로 몸을 돌렸다.',taewoo:'태우가 가방끈을 고쳐 메며 내 걸음에 맞췄다.',taehun:'태훈이 책 사이에 손가락을 끼우고 고개를 들었다.',seoyul:'서율의 시선이 들고 있던 종이에서 내 얼굴로 올라왔다.',juhan:'주한은 하려던 말을 한 번 삼킨 뒤 내 이름부터 불렀다.',minhyuk:'민혁이 친구들에게 짧게 인사하고 내 옆으로 왔다.',junyeon:'준연이 남은 종이를 가지런히 놓고 내 쪽을 보았다.'};
+ const lines:RLine[]=[{speaker:'narrator',text:act===2?moments[act]:approach[focus],...(act===2?{location:(chapter===2||chapter===4?'walk':'hallway') as LocationId}:{})},{speaker:focus,text:aside?.[0]??focusWords[focus][chapter][act]},{speaker:'player',text:aside?.[1]??replies[focus][act]}];
  if(chapter===3&&act===0&&focus!=='junyeon'){
   const callbacks:Record<Exclude<RPerson,'junyeon'>,string>={world:'세계는 내가 들어 봤던 무제곡을 아주 짧게 흥얼거렸다. 마지막 소절만 나를 보며 소리 없이 입 모양으로 불렀다.',hyunsol:'현솔의 가방에는 창가에서 보았던 결정 표본 사진이 달려 있었다. 사진 구석에 내가 붙였던 색 이름도 작게 남아 있었다.',taewoo:'태우가 뒤돌아 같은 손을 내밀었다. 이번에는 설명을 기다리지 않고 잡았다. 거울 없이도 마지막 발의 방향이 맞았다.',taehun:'태훈의 성도 모서리에 작은 비행기 낙서가 남아 있었다. 나는 그 옆에 금성이 아니라고 적었고, 태훈은 웃으며 지우개를 숨겼다.',seoyul:'서율은 나를 그린 두 장 중 한 장을 조심히 내밀었다. 뒷면에는 완성 날짜 대신 둘이 미술실에 남아 있던 시간이 쓰여 있었다.',juhan:'주한이 보여 준 새 시작 화면에는 벽 구석의 하트가 그대로 있었다. 숨긴 건데 네가 못 찾으면 의미 없잖아, 하고 먼저 웃었다.',minhyuk:'민혁은 말린 우산을 돌려주면서 손잡이 아래를 한 번 짚었다. 빗소리가 없는데도 그날 둘이 맞춰 걷던 속도가 떠올랐다.'};
-  lines.push({speaker:'narrator',text:callbacks[focus],art:firstDates[focus].art});
+  // Recall only a scene actually played. A remembered image is not a new CG,
+  // and its old location must not replace the current conversation background.
+  if(state.flags.includes(`read:hangout-${focus}-1-v1`))lines.push({speaker:'narrator',text:callbacks[focus]});
  }
- if(state.bonds[focus].trust<25&&chapter>=2)lines.push({speaker:focus,text:focus==='junyeon'?'다른 애들한테 가기 전에 나한테도 한 번은 물어봐 줬으면 했어.':'아직 네 농담이 언제 진심인지 헷갈릴 때가 있어. 오늘은 그냥 그대로 말해 줘.'});
- else if(state.bonds[focus].affection>=55&&chapter>=2)lines.push({speaker:'narrator',text:`${names[focus]}는 다른 친구들이 부르는데도 먼저 내 대답을 끝까지 들었다. 그 짧은 망설임이 괜히 좋았다.`});
+ if(state.bonds[focus].trust<25&&chapter>=2&&act===1){
+  const careful:Record<RPerson,string>={world:'좋다고 해 주는 건 기쁜데, 오늘은 네가 정말 본 것부터 말해 줘. 기분 맞추는 대답이면 나는 또 모르니까.',hyunsol:'괜찮다고 먼저 결론 내리지는 마. 아직 내가 말 안 한 부분도 있어.',taewoo:'오늘은 웃기려고 넘기지 말고 잠깐만 진지하게 들어 줘. 나도 그게 좀 어렵거든.',taehun:'내 문장 끝에 네가 먼저 뜻을 붙이면, 내가 하고 싶던 말은 어디에 두나 싶어.',seoyul:'지금은 고쳐 주기보다 그냥 한 번 봐 줘. 설명은 내가 할게.',juhan:'방금 말 지우고 다시 해도 돼? 네 대답을 예상하다가 내가 말하려던 걸 놓쳤어.',minhyuk:'네가 다 해 준다는 말보다 어디까지 함께할 수 있는지 알고 싶어. 나도 그만큼 말할게.',junyeon:'다른 애들한테 가기 전에 나한테도 한 번은 물어봐 줬으면 했어.'};
+  lines.push({speaker:focus,text:careful[focus],expression:'serious'});
+ }else if(state.bonds[focus].affection>=55&&chapter>=2&&act===2)lines.push({speaker:'narrator',text:`갈림길 앞에서 ${names[focus]}와 눈이 마주쳤다. 누구도 먼저 작별 인사를 꺼내지 않아, 조금 더 느린 걸음으로 나란히 걸었다.`});
  return lines;
 }
 
 type MainOption=[text:string,response:string,affection:number,trust:number,flag?:string];
-const dateChoices:Record<Exclude<RPerson,'junyeon'>,MainOption[]>={
- world:[
- ['이어폰을 빼지 않은 채 “제목은 우리 둘만 알자”고 한다.','p|제목은 우리 둘만 아는 걸로 하자. 공개할 제목은 나중에 네가 고르고.\nw|……그 말은 조금 반칙이다.\nn|세계는 제목 칸에 점 두 개를 찍었다.\nw|지금은 이걸로. 너랑 나만 무슨 뜻인지 아는 거야.',4,1,'date:world:private'],
- ['후렴의 마지막 음을 따라 부른다.','n|내가 음을 한 번 틀리자 세계가 참던 웃음을 터뜨렸다.\nw|거긴 그렇게 올라가면 안 되는데. 잠깐, 그게 더 신나긴 하다.\np|작곡 참여 인정?\nw|응. 다음에도 와서 네가 부른 부분 책임져.',2,4,'date:world:sing'],
- ['“고백 가사야?” 하고 장난스럽게 되묻는다.','w|너는 그렇게 물으면 안 창피해?\np|대답 안 해도 돼. 내가 너무 급했네.\nn|세계가 이어폰 줄을 한 번 감았다가 풀었다.\nw|지금은 노래로 먼저 들려주고 싶었어. 나중에 내가 직접 말할게.',1,-2,'date:world:too-soon']
- ],
- hyunsol:[
- ['병의 색보다 현솔이 웃던 순간을 기억하고 싶다고 한다.','h|실험 결과보다 실험한 사람 표정이 더 재밌었어?\np|응. 이거 성공한 날, 네 얼굴이 먼저 생각날 것 같아.\nn|현솔이 병을 조심히 내려놓았다.\nh|그럼 사진은 같이 찍자. 병만 가운데 놓지 말고.',4,1,'date:hyunsol:portrait'],
- ['표본 이름에 둘만 아는 별명을 붙인다.','p|나는 이거 “여름 소다” 같아. 못 마시는 소다.\nh|마시면 안 된다는 설명까지 이름에 넣은 건 점수 높네.\nn|현솔은 라벨을 바꾸지 않고 사진 파일에만 별명을 적었다.\nh|실험 기록은 그대로. 네 이름은 사진 설명 쪽에 적어 둘게.',2,4,'date:hyunsol:nickname'],
- ['다음 표본은 혼자 완성한 뒤 보여 달라고 한다.','h|그럼 실패한 날에는 안 와도 되겠네.\np|그 뜻은 아니었는데. 네가 혼자 집중하고 싶을 줄 알았어.\nh|집중은 수업 시간에 많이 해. 오늘은 너랑 같이 보고 싶어서 부른 건데.',-2,1,'date:hyunsol:distance']
- ],
- taewoo:[
- ['이번에는 내가 천천히 카운트를 세며 손을 잡는다.','p|하나, 둘. 너무 빠르면 네가 말해.\nn|태우의 회전이 내 느린 박자에 맞춰 작아졌다.\nt|맞출 수 있네. 내가 네 속도로 춰도.\np|성공하면 오늘 끝?\nt|아니. 성공한 거 한 번 더 하고 싶어.',3,4,'date:taewoo:pace'],
- ['거울을 보지 말고 서로만 보고 마무리하자고 한다.','t|그러면 동작 틀려도 모르겠는데.\np|네 표정은 제대로 보이잖아.\nn|태우가 입을 열었다 닫고 웃었다. 이번 회전은 조금 느렸다.\nt|그런 말 하고 눈 피하면 반칙인 거 알지?',5,0,'date:taewoo:eyes'],
- ['손맞춤 대신 더 어려운 회전을 제안한다.','t|지금은 난이도 올리는 시간 아닌데.\np|더 잘하고 싶어서 그랬어.\nt|부탁한 건 마지막 한 번 같이 해 달라는 거였어. 잘해 보이는 건 내가 충분히 할 수 있고.',-2,1,'date:taewoo:showoff']
- ],
- taehun:[
- ['성도의 모서리를 함께 누른 채 지금 보이는 색을 말한다.','p|별은 아직 없는데, 네 손등에 하늘색이 남아 있어.\no|그 문장 지금 적어도 돼?\np|나중에 너무 멋있는 말 고른 척하지는 말고.\nn|태훈은 관측 노트의 빈칸에 내 말을 적었다.',4,2,'date:taehun:present'],
- ['오늘 틀린 천체 이름을 둘만의 농담으로 남긴다.','p|다음에 비행기 보면 태훈자리라고 할까.\no|발견자가 부끄러워서 이름 등록은 안 해 줄 텐데.\nn|태훈이 비행기 낙서 옆에 내 이름 첫 글자도 썼다.\no|공동 발견이야. 너도 같이 창피해 줘.',2,4,'date:taehun:joke'],
- ['별이 잘 보이는 날에 다시 오자며 책을 덮으려 한다.','o|아직 안 가도 돼. 오늘 꼭 별만 보려고 온 건 아니어서.\np|그럼 조금 더 있다 가자.\no|응. 다음엔 책 말고 내 얼굴도 한 번 보고 물어봐 줘.',-1,1,'date:taehun:missed']
- ],
- seoyul:[
- ['완성된 그림 대신 지금 그리는 서율도 한 번 그려 본다.','p|나도 한 장 그려 볼래. 모델 예약 교환.\ns|예쁘게 그려 달라고 안 했어. 네가 보는 대로 그려.\nn|내 종이의 손이 너무 커지자 서율은 그 손가락에 물감 자국을 보탰다.\ns|이건 마음에 든다. 너 이걸 보고 있었네.',3,4,'date:seoyul:exchange'],
- ['“네가 나 보는 표정도 기억해 두고 싶다”고 말한다.','n|서율의 연필 끝이 종이에서 떨어졌다.\ns|그러면 계속 그렇게 보고 있어야 하잖아.\np|힘들면 말해.\ns|힘든 건 아닌데… 자꾸 웃을 것 같아서 그래.',5,0,'date:seoyul:look'],
- ['더 멋있게 보이도록 포즈와 그림을 고쳐 달라고 한다.','s|나는 지금 네 모습 그리는 게 좋았는데.\np|잘 나오고 싶어서 욕심냈어.\ns|알아. 그래도 그림 속에 네가 없는 포즈를 넣고 싶지는 않아.',-2,2,'date:seoyul:posing']
- ],
- juhan:[
- ['화면의 하트 옆에 두 캐릭터를 나란히 세운다.','n|나는 조작기를 들어 주한의 캐릭터 옆으로 한 칸 움직였다.\np|비밀 장소 찾았으니까 같이 사진 찍자.\nj|스크린샷은… 응, 찍었어. 방금보다 먼저 한 번 찍긴 했는데.',4,2,'date:juhan:save'],
- ['숨은 길을 나만 발견하도록 만든 이유를 직접 묻는다.','j|너는 자꾸 화면 끝까지 걸어가 보잖아. 길 없어 보여도.\np|그래서 내가 찾을 거라고 생각했어?\nj|응. 나도 너한테는 없는 척 숨겨 놓은 걸 발견해 줬으면 해서.',2,5,'date:juhan:ask'],
- ['다른 친구들도 찾게 힌트를 공개하자고 제안한다.','j|그건… 아직 안 하고 싶은데.\np|네가 만든 게 귀여워서 다들 좋아할 줄 알았어.\nj|고마워. 근데 오늘은 네가 먼저 보는 것까지가 내가 정해 둔 거였어.',-1,-2,'date:juhan:public']
- ],
- minhyuk:[
- ['우산 손잡이를 가운데로 맞추고 발맞춰 걷는다.','p|하나, 둘. 네가 빨라지면 우산도 네 쪽으로 도망간다.\nm|보행 지도까지 받을 줄은 몰랐는데.\nn|민혁은 웃음을 숨기지 않고 걸음을 늦췄다.\nm|괜찮네. 누구 기다리라고 안 해도 옆에 있으니까.',3,4,'date:minhyuk:pace'],
- ['가까운 정류장 말고 다음 정류장까지 같이 가자고 한다.','m|버스 한 번 더 지나갈 수도 있어.\np|응. 그래도 지금은 조금 더 걷고 싶어.\nn|민혁은 도착 알림을 확인한 뒤 화면을 껐다.\nm|다음 정류장까지만. 그다음에는 네가 또 물어봐.',5,1,'date:minhyuk:long-way'],
- ['민혁이 안 젖도록 우산을 전부 민혁 쪽으로 민다.','m|그러면 너는 왜 같이 들어왔어?\np|내 쪽은 조금 젖어도 돼.\nm|나도 그렇게 생각해서 네 쪽으로 기울인 건데. 둘 다 우기면 둘 다 젖잖아.',0,-2,'date:minhyuk:one-sided']
- ]
-};
 /** The festival-eve choices stay with the person in the private farewell. */
 const eveDateChoices:Record<RPerson,MainOption[]>={
  world:[
@@ -849,15 +622,17 @@ const sharedChoices:MainOption[][][]=[
 function mainChoices(chapter:number,act:number,state:RState):RChoice[]{
  const c=Math.max(0,Math.min(4,chapter));const a=Math.max(0,Math.min(2,act));
  const available=state.focus&&!(state.focus==='junyeon'&&state.verdict==='exclude')?state.focus:null;
- const date=c===2&&a===0&&available&&available!=='junyeon'?dateChoices[available]:null;
+ const date=c===2&&a===0&&available&&available!=='junyeon'?characterMoments[available].options:null;
+ const afterDate=c===2&&a===2&&available&&available!=='junyeon'?characterAfterChoices[available]:null;
  const eve=c===3&&a===2&&available?eveDateChoices[available]:null;
- const options=date??eve??sharedChoices[c][a];
+ const options=date??afterDate??eve??sharedChoices[c][a];
  return options.map(([text,response,affection,trust,flag],index)=>{
-  const responseLines=read(response,state).map(line=>date&&available&&available!=='junyeon'?{...line,art:firstDates[available].art,location:available==='minhyuk'?'gate' as LocationId:home[available]}:line);
+  const responseLines=read(response,state).map(line=>date&&available&&available!=='junyeon'?{...line,location:characterMoments[available].location}:line);
   const respondingPerson=responseLines.find(line=>Object.prototype.hasOwnProperty.call(names,line.speaker))?.speaker as RPerson|undefined;
-  const person:RPerson|null=date||eve?available:(respondingPerson??null);
+  const person:RPerson|null=date||afterDate||eve?available:(respondingPerson??null);
   const effects:REffect[]=person?[{person,affection,trust}]:[];
-  return{id:'main-option-'+(index+1),text,response:responseLines,effects,flags:['main-memory:'+(c+1)+':'+(a+1)+':'+index,...flag?[flag]:[]]};
+  const routeFlags=date&&available?[`moment:${available}:${index}`,`route:${available}:3:${flag}`,...flag==='commitment'?[`route:${available}:commitment`]:[]]:[];
+  return{id:'main-option-'+(index+1),text,response:responseLines,effects,flags:['main-memory:'+(c+1)+':'+(a+1)+':'+index,...(!date&&flag?[afterDate?`aftertalk:${available}:${flag}`:flag]:[]),...routeFlags]};
  });
 }
 
@@ -951,6 +726,8 @@ n|우리가 남긴 것은 서로를 감시할 명단이 아니었다. 어긋난 
 
 function dateCallback(state:RState):RLine[]{
  const id=state.focus;if(!id||id==='junyeon')return[];
+ const momentIndex=[0,1,2].find(index=>state.flags.includes(`moment:${id}:${index}`));
+ if(momentIndex!==undefined)return[{speaker:id,text:characterMoments[id].callback[momentIndex],expression:'smile'}];
  const memories:Record<Exclude<RPerson,'junyeon'>,[string,string,string][]>={
   world:[['date:world:private','노래 제목 아직 점 두 개야. 바꾸려다가 네가 먼저 알아볼 것 같아서 남겼어.','나는 손끝으로 책상에 점 두 개를 찍었다. 세계가 같은 자리를 한 번 더 두드렸다.'],['date:world:sing','네가 올려 부른 마지막 음, 그 버전도 녹음했어. 듣고 책임질 준비 됐어?','음악이 시작되기 전부터 나는 웃었다. 세계는 그 얼굴이 보고 싶었다고 중얼거렸다.'],['date:world:too-soon','그때 고백 가사냐고 물었지. 오늘은 답 재촉 안 해서 좋아. 나도 안 한 척하는 건 아니야.','나는 농담부터 꺼내려던 말을 삼켰다. 세계가 자기 속도로 문장을 끝낼 때까지 기다렸다.']],
   hyunsol:[['date:hyunsol:portrait','같이 찍은 사진에서 병만 유난히 선명해. 우리는 웃다가 흔들렸고. 다시 찍을 이유 생겼네.','현솔은 실패한 사진이라고 지우지 않았다. 나는 다음 사진에도 같이 나오겠다고 했다.'],['date:hyunsol:nickname','여름 소다 사진 찾는 거지? 파일 이름까지 그렇게 적어 놨더니 이제 원래 이름이 덜 기억나.','현솔이 작은 사진을 내밀었다. 그날 붙인 엉뚱한 이름이 이번 만남의 첫말이 됐다.'],['date:hyunsol:distance','오늘은 실패한 것도 보여 줘도 돼? 완성한 뒤에만 보면 네가 놓치는 날이 너무 많아서.','나는 완성본만 보자는 뜻이 아니었다고 이번에는 분명히 말했다. 현솔은 정리 중이던 의자를 다시 꺼냈다.']],

@@ -26,3 +26,6 @@ await import('../tests/mobileCampus.test.ts');
 await import('../tests/mobileActivities.test.ts');
 await import('../tests/mobileViewport.test.ts');
 await import('../tests/mobileLayout.test.ts');
+await import('../tests/romanceEndings.test.ts');
+await import('../tests/romanceCharacterVoices.test.ts');
+await import('../tests/dialoguePresentation.test.ts');

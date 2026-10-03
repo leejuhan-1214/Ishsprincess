@@ -1,7 +1,8 @@
 import {romancePeople,type RPerson,type RState,type RScene,type RLine,type RChoice,type RClue,type REffect} from '../romanceTypes';
 import {locations} from '../data/characters';
 import type {LocationId} from '../types';
-import {getMainScene,getHangoutScene,getRepairScene,getFinaleScene} from '../data/romanceStory';
+import {getMainScene,getHangoutScene,getRepairScene} from '../data/romanceStory';
+import {getEarnedFinaleScene,heroineRomanceEligible} from '../data/romanceEndings';
 import {memoryEvidence,romanceTrialRounds,romanceSequence,getDiscoveryScene,getRevelationScene} from '../data/romanceMystery';
 import {shuffleChoices} from './choiceOrder';
 import {hasHangoutAvailable} from '../data/romanceHangouts';
@@ -30,7 +31,7 @@ export function validRomanceName(value:string):boolean{
 }
 export function newRomance(name:string,seed:number):RState{
  if(typeof name!=='string'||!validRomanceName(name))throw new RangeError('이름을 1~12자로 입력해 주세요.');
- const s:RState={version:2,name:name.trim(),seed:Number.isFinite(seed)?seed>>>0:0,chapter:0,act:0,phase:'story',mode:'main',line:0,response:null,focus:null,visitor:null,location:'classroom',bonds:Object.fromEntries(romancePeople.map(id=>[id,{affection:8,trust:8}])) as RState['bonds'],flags:[],clues:[],actions:2,visited:[],visits:Object.fromEntries(romancePeople.map(id=>[id,0])) as RState['visits'],sceneKey:'',backlog:[],verdict:'pending',repairStep:0,repairDone:false,trialRound:0,trialFeedback:null,trialOrder:[],ending:null,date:dates[0][0]};
+ const s:RState={version:2,name:name.trim(),seed:Number.isFinite(seed)?seed>>>0:0,chapter:0,act:0,phase:'story',mode:'main',line:0,response:null,focus:null,visitor:null,location:'classroom',bonds:Object.fromEntries(romancePeople.map(id=>[id,{affection:8,trust:8}])) as RState['bonds'],flags:['edition:earned-routes'],clues:[],actions:2,visited:[],visits:Object.fromEntries(romancePeople.map(id=>[id,0])) as RState['visits'],sceneKey:'',backlog:[],verdict:'pending',repairStep:0,repairDone:false,trialRound:0,trialFeedback:null,trialOrder:[],ending:null,date:dates[0][0]};
  return enterScene(s,'main');
 }
 
@@ -42,7 +43,7 @@ export function currentRomanceScene(s:RState):RScene{
  if(s.mode==='discovery')return getDiscoveryScene(s.sceneKey.replace(/^discover-/,''),s);
  if(s.mode==='revelation')return getRevelationScene(s);
  if(s.mode==='repair')return getRepairScene(Math.min(3,s.repairStep),s);
- if(s.mode==='finale')return getFinaleScene(s);
+ if(s.mode==='finale')return getEarnedFinaleScene(s);
  return getMainScene(s.chapter,s.act,s);
 }
 export function romanceLines(s:RState):RLine[]{return s.response??currentRomanceScene(s).lines;}
@@ -54,7 +55,10 @@ export function personLocation(s:RState,id:RPerson):LocationId{
  return places[(s.seed%places.length+s.chapter*3+s.act*2+(2-s.actions)+offset)%places.length];
 }
 function enterScene(s:RState,mode:RState['mode'],key?:string):RState{
- let next={...s,phase:'story' as const,mode,line:0,response:null,sceneKey:key??s.sceneKey};
+ // Mark the new finale at entry, including an older save reaching it for the
+ // first time. Otherwise an autosave could mistake it for an old on-screen
+ // finale and silently change its script underneath the saved cursor.
+ let next={...s,phase:'story' as const,mode,line:0,response:null,sceneKey:key??s.sceneKey,flags:mode==='finale'?uniq([...s.flags,'edition:earned-routes']):s.flags};
  const scene=currentRomanceScene(next);
  next={...next,sceneKey:key??scene.id,location:scene.location};
  return next;
@@ -79,7 +83,7 @@ function allowedChoice(s:RState,choice:RChoice):boolean{
  const romance=(choice.flags??[]).filter(flag=>flag.startsWith('romance:'));
  if(!romance.length)return true;
  if(s.mode!=='finale')return false;
- return romance.every(flag=>{const id=flag.slice(8);return isPerson(id)&&(id==='junyeon'?junyeonRomanceEligible(s):s.focus===id);});
+ return romance.every(flag=>{const id=flag.slice(8);return isPerson(id)&&(id==='junyeon'?junyeonRomanceEligible(s):s.focus===id&&(s.flags.includes('legacy:finale')||heroineRomanceEligible(s,id)));});
 }
 export function chooseRomance(s:RState,choiceId:string):RState{
  if(s.phase!=='story'||s.response!==null)return s;
@@ -116,7 +120,7 @@ function finishScene(s:RState,scene:RScene):RState{
   return enterScene({...next,repairStep:4,repairDone:true,date:'후일담 · 4주 뒤'},'finale');
  }
  if(s.mode==='finale'){
-  const decision=[...next.flags].reverse().find(f=>/^(romance|friendship):/.test(f));
+  const decision=[...next.flags].reverse().find(f=>/^(romance|friendship|unresolved|distance):/.test(f));
   return {...next,phase:'ending',ending:`${decision??`friendship:${s.focus??'class'}`}:${s.verdict}`};
  }
  next={...next,actions:2,visited:[],visitor:null};
@@ -239,6 +243,9 @@ export function restoreRomance(value:unknown):RState|null{
    bonds[id]={affection:clamp(bond.affection,id==='junyeon'?junyeonCap(s):100),trust:clamp(bond.trust)};visits[id]=s.visits[id];
   }
   const restored:RState={...s,name:s.name.trim(),bonds,visits,flags:uniq(s.flags),clues:uniq(s.clues),visited:uniq(s.visited),trialOrder:[...s.trialOrder],backlog:s.backlog.map(line=>({...line})),response:s.response?.map(line=>({...line}))??null,trialFeedback:s.trialFeedback?{...s.trialFeedback}:null};
+  // A finale already on screen must keep its old text/choice cursor. Earlier
+  // v2 saves instead enter the new finale and earn memories from saved choices.
+  if(restored.mode==='finale'&&!restored.flags.includes('edition:earned-routes')&&!restored.flags.includes('legacy:finale'))restored.flags.push('legacy:finale');
   // Edition 2 launched activities before the encounter. Resume those saves at
   // the conversation, rather than silently marking its unread story complete.
   if(restored.phase==='activity'&&!restored.flags.some(flag=>flag.startsWith(`choice:${restored.sceneKey}:`))){restored.phase='story';restored.line=0;restored.response=null;}

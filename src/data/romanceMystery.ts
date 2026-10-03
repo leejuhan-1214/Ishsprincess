@@ -1,6 +1,6 @@
 import type {RClue,RLine,RPerson,RScene,RState,RTrialRound} from '../romanceTypes';
 
-const l=(speaker:RLine['speaker'],text:string):RLine=>({speaker,text});
+const l=(speaker:RLine['speaker'],text:string,art?:string):RLine=>({speaker,text,...(art?{art}:{})});
 const image=(number:string)=>`assets/romance-evidence/memory-${number}.svg`;
 
 /** Ordinary shared school records. What a record cannot establish matters too. */
@@ -15,7 +15,7 @@ export const memoryEvidence:RClue[]=[
    l('world','다음에 물어볼 때 헷갈리지 않게 지금 적어 두자. 어느 종이가 누구 건지도.'),
    l('player','내가 받은 원본은 네 시 십 분. 이쪽 종이가 내 거야.'),
    l('world','내가 기다리며 보고 있던 건 세 시 사십 분. 여기 나란히 놓을게.'),
-   l('narrator','내 쪽지에는 16:10, 세계의 쪽지에는 15:40. 독서실 옆 공용 테이블이라는 장소는 같았다.'),
+   l('narrator','내 쪽지에는 16:10, 세계의 쪽지에는 15:40. 독서실 옆 공용 테이블이라는 장소는 같았다.','memory-time'),
    l('player','장소와 모임 내용은 같고 시간만 삼십 분 달라. 여기까지는 두 원본으로 확인되네.'),
    l('world','응. 누가 왜 다르게 적었는지는 아직 모르고. 기다린 이유를 네 탓으로 적지는 말자.'),
    l('player','원본은 그대로 보관하고, 옆에 확인한 장소랑 날짜를 적을게.'),
@@ -56,7 +56,7 @@ export const memoryEvidence:RClue[]=[
    l('player','네 원래 안내는 네 시 이십 분. 그걸 보고 제시간에 왔던 거지.'),
    l('taewoo','응. 이 화면은 그대로 남겨 뒀어. 나 혼자 시간을 잘못 외운 게 아니었다는 것부터 적고 싶어.'),
    l('teacher','확인서에는 우리 반 예약이 16시 20분에서 17시로 변경됐다고 적혀 있다. 변경 전후를 함께 보자.'),
-   l('narrator','변경 전과 변경 후 시간이 한 장에 적혀 있었다. 태우는 자기 안내 화면을 그 옆에 놓았다.'),
+   l('narrator','변경 전과 변경 후 시간이 한 장에 적혀 있었다. 태우는 자기 안내 화면을 그 옆에 놓았다.','memory-reservation'),
    l('taewoo','예약은 바뀌었는데 내 안내에는 이전 시간이 남아 있었네. 이 차이를 기록하면 되겠다.'),
    l('teacher','누가 어떤 전달을 맡았는지는 공개 인계표도 확인하자. 이 확인서만으로 신청한 사람이나 이유까지 정하지는 말고.'),
    l('world','그래도 빈 교실에서 맞춘 손뼉은 꽤 괜찮았어. 기다린 시간을 전부 버리진 않았네.'),
@@ -96,7 +96,7 @@ export const memoryEvidence:RClue[]=[
    l('player','내가 받은 준비 지원 안내는 네 시 사십 분, 컴퓨터실. 표시명은 리허설 자동안내, 얼터에고 테스트야.'),
    l('seoyul','우리가 받은 밴드 안내는 같은 시각에 밴드연습실. 원문 화면 그대로 남겨 뒀어.'),
    l('taewoo','댄스 안내는 강당. 아까 내가 기다렸던 장소가 여기에도 그대로 적혀 있어.'),
-   l('narrator','세 공지는 제목과 말투가 같았다. 하지만 받는 모둠과 안내 장소는 서로 달랐다.'),
+   l('narrator','저장한 원문 화면은 그대로 두고, 비교하기 쉽게 출력한 세 장을 보면대에 펼쳤다. 제목은 같았지만 받는 모둠과 안내 장소가 달랐다.','memory-meeting'),
    l('player','같은 모임인데 모둠마다 다른 장소로 안내됐어. 표시 이름만으로 누가 썼는지는 정할 수 없고.'),
    l('world','응. 내가 혼자 기다린 것도 너희를 피해서는 아니었다는 게 여기 남겠네.'),
    l('seoyul','공용 게시판의 원문을 그대로 저장하자. 우리가 요약한 메모랑은 따로 두고.'),
@@ -136,7 +136,7 @@ export const memoryEvidence:RClue[]=[
    l('taewoo','우리가 연습한 건 밴드 뒤에 댄스야. 다시 맞췄을 때는 전환도 제대로 됐어.'),
    l('world','맞아. 처음 받은 표대로 시작했으면 서로 다음 차례를 다르게 기다렸겠네.'),
    l('seoyul','여기가 내가 어제 확인받아서 가지고 있던 종이야. 승인 표시도 그대로 있어.'),
-   l('narrator','서율이 펼친 v4에는 승인 확인이 있었다. 객석에 나눠진 종이는 그 전 버전인 v3였다.'),
+   l('narrator','서율이 펼친 v4에는 승인 확인이 있었다. 객석에 나눠진 종이는 그 전 버전인 v3였다.','memory-cues'),
    l('player','v3는 댄스 다음 밴드고, v4는 밴드 다음 댄스야. 전환 안내도 같이 바뀌었네.'),
    l('seoyul','둘 다 원본으로 보관하자. 어느 버전이 배포됐는지 나중에도 직접 비교할 수 있게.'),
    l('teacher','관객이 들어오기 전 연습에서 확인했고 다친 사람은 없었다. 누가 언제 이 버전을 골랐는지는 배포 기록을 더 확인하자.'),

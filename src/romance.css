@@ -25,6 +25,8 @@
 .romance-pending-events>button{display:flex;align-items:center;gap:6px;min-width:0;max-width:100%;padding:8px 10px;background:#302736;border:1px solid #87758b;color:#ffe0aa;font-size:11px;text-align:left}
 .romance-pending-events>button>svg{flex:none}.romance-pending-events>button>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .romance-map-footer>.r-primary{flex:none}
+.romance-map .campus-heading{display:none}
+.romance-map .campus-zones{padding:10px 0}
 @media(max-width:600px){.romance-pending-events>button{font-size:10px;padding:7px 6px}.romance-pending-events>button>svg{width:12px;height:12px}.romance-portrait-card>.school-portrait{height:100%}}
 .romance-stage.has-event-art{display:block;background:#100f19;overflow:hidden;border:1px solid #b38a95}
 .has-event-art .romance-scene-title{position:absolute;top:8px;left:8px;z-index:2;padding:5px 10px;max-width:45%;opacity:.92;border-left-width:2px}
@@ -44,6 +46,22 @@
 .romance-trial-briefing h1{font-size:clamp(22px,3vw,36px);line-height:1.5;margin:10px 0 20px}.romance-trial-briefing>p{font-size:13px;color:#e3d2df;line-height:1.9}.romance-trial-briefing ol{list-style:none;padding:0;margin:23px 0;display:grid;gap:10px}.romance-trial-briefing li{display:flex;gap:20px;align-items:center;border-left:2px solid var(--r-pink);background:#2b2535;padding:11px 15px;font-size:12px}.romance-trial-briefing li>b{color:#f4d47e;min-width:140px}.romance-trial-rule{margin-bottom:20px!important}
 .romance-art-gallery h3{font-size:18px;color:#ffb9cf;margin-bottom:16px}.romance-art-gallery>figure{margin:0 0 22px;background:#100f19}.romance-art-gallery>figure>img{max-height:62vh;object-fit:contain;width:100%;display:block}.romance-art-gallery figcaption{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;font-size:13px;gap:15px}.romance-art-gallery figcaption a{font-size:11px;padding:8px 12px;min-height:35px}.romance-art-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:25px}.romance-art-grid>button{border:1px solid #72596f;background:#2d2237;padding:0 0 12px;text-align:left;overflow:hidden}.romance-art-grid>button[disabled]{opacity:.65}.romance-art-grid img,.romance-art-lock{width:100%;aspect-ratio:16/9;object-fit:cover;display:grid;place-items:center;background:linear-gradient(145deg,#3e2941,#171724);color:#947b96}.romance-art-grid b,.romance-art-grid small{display:block;padding:0 12px}.romance-art-grid b{font-size:12px;margin-top:10px}.romance-art-grid small{font-size:10px;color:#d5bcd1;margin-top:4px}
 @keyframes romance-reveal{from{opacity:.2}to{opacity:1}}
+.romance-line{display:grid;grid-template-rows:auto auto auto;align-content:start}
+.romance-line-text{display:grid;isolation:isolate}
+.romance-line-text>span{grid-area:1/1;min-width:0}
+.romance-line-text>.romance-line-measure{visibility:hidden;pointer-events:none}
+.romance-ending{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:28px;align-items:center;background:rgba(17,15,26,.94)}
+.romance-ending-visual{min-width:0}
+.romance-ending-visual>img{display:block;width:100%;height:auto;max-height:65dvh;object-fit:contain;border:1px solid #816573}
+.romance-ending-visual>.school-portrait{height:clamp(180px,44vh,360px);width:auto;aspect-ratio:var(--portrait-ratio);margin:auto;background-size:contain!important;background-repeat:no-repeat;background-color:transparent}
+.romance-ending-copy{text-align:left}
+.romance-ending-copy>small{color:var(--r-pink);font-size:13px}
+.romance-ending-copy h1{font-size:clamp(24px,2.6vw,38px);line-height:1.45}
+.romance-ending-copy>p{font-size:15px;line-height:1.9}
+.romance-ending-afterword{margin:24px 0;border-left:2px solid #9c7994;padding-left:16px;color:#cfc2d0;font-size:13px;line-height:1.9}
+.romance-ending-afterword p+p{margin-top:10px}
+.romance-ending-copy .romance-inline{justify-content:flex-start;gap:8px}
+.romance-ending-copy .romance-inline button{font-size:12px}
 @media(max-width:600px){.has-event-art .romance-scene-title{max-width:90%;top:4px;left:4px;padding:4px 7px}.has-event-art .romance-scene-title h1{font-size:9px}.romance-event-art{grid-template-rows:minmax(0,1fr) 27px}.romance-event-art figcaption{font-size:9px;gap:5px}.romance-invitation{flex-direction:column;gap:12px;padding:18px}.romance-invitation>.school-portrait{height:24vh;max-height:150px}.romance-invitation h1{margin:7px 0 10px;font-size:24px}.romance-invitation p{font-size:13px}.romance-invitation .romance-inline{margin:16px 0 10px;gap:9px}.romance-invitation .r-primary,.romance-invitation .r-secondary{font-size:12px;padding:10px 12px}.romance-art-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.romance-trial-briefing{padding:20px 16px}.romance-trial-briefing h1{font-size:24px}.romance-trial-briefing li{display:block;padding:10px 12px}.romance-trial-briefing li>b{display:block;margin-bottom:5px}}
 @media(max-width:600px){.romance-map-body{grid-template-rows:minmax(140px,1.15fr) minmax(130px,.85fr)}.romance-trial-body{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(105px,1fr) auto auto;gap:8px;overflow:hidden}.romance-claims{min-height:0;overflow:auto;overscroll-behavior:contain}.romance-claims .r-primary{display:none}.romance-trial .trial-revolver{margin:0;max-height:220px;overflow:auto;align-self:stretch}.romance-trial .loaded-evidence-copy p{display:none}.romance-trial .trial-revolver>header{margin-bottom:8px;padding-bottom:8px}.romance-trial .loaded-evidence-image{max-height:104px}.romance-trial .loaded-evidence-copy{margin-top:5px}.romance-mobile-submit{display:flex}.romance-mobile-submit .r-primary{width:100%;min-height:40px;padding:9px;font-size:12px}.romance-trial-feedback{margin-bottom:0}}
 @media(prefers-reduced-motion:reduce){.romance-app *,.romance-app *:before,.romance-app *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

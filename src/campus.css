@@ -2,7 +2,8 @@
 .school-trial-theme .map-heading h1{color:#fff5ed;font-weight:900}.school-trial-theme .map-heading p{color:#dbccdf;font-size:12px}
 .school-trial-theme .map-layout{grid-template-columns:minmax(0,1fr) 300px;align-items:start;gap:22px}
 .campus-directory{border:1px solid #68566f;background:#141119;box-shadow:7px 7px #08060d}
-.campus-mobile-location{display:none}
+.campus-current{display:flex;gap:7px;align-items:center;padding:10px 20px;color:#ffedbd;font-size:12px;background:#241d2b}.campus-current>span{color:#c8b9d1;font-size:10px}.campus-current b{margin-left:auto}.campus-place-thumb{display:none}
+.campus-friend-finder{display:flex;flex-wrap:wrap;gap:6px;padding:4px 20px 12px}.campus-friend-finder button{display:flex;flex-direction:column;justify-content:center;gap:3px;min-height:44px;min-width:76px;padding:5px 9px;color:#f5eaf7;background:#35263e;border:1px solid #9475a0;text-align:left}.campus-friend-finder b{font-size:12px}.campus-friend-finder small{font-size:10px;color:#ddc5e5}.campus-friend-finder button[aria-pressed=true]{border-color:#ffcd68;background:#533944}
 .campus-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:22px;border-bottom:1px solid #56405f;background:#201829}
 .campus-heading small{display:block;color:#ff91bb;font-size:9px;font-weight:800;letter-spacing:.13em;margin-bottom:8px}.campus-heading b{font-size:21px}.campus-heading i{font-style:normal;font-size:11px;display:flex;align-items:center;gap:7px;color:#f5df81}
 .campus-filters{display:flex;gap:8px;flex-wrap:wrap;padding:18px 22px 4px}.campus-filters button{border:1px solid #745983;background:#2a2035;color:#eadff2;font-size:11px;padding:8px 13px}.campus-filters button[aria-pressed=true]{background:#ffe36e;color:#21141f;border-color:#ffe36e;font-weight:800}
@@ -14,7 +15,7 @@
 .campus-place-title{display:flex;align-items:center;gap:5px}.campus-place-title>svg:first-child{color:var(--zone-color)}.campus-place-title b{font-size:11px;font-weight:800;line-height:1.5}.campus-place-title>svg:last-child{margin-left:auto;color:#b29abc}
 .campus-place.selected{background:#48213c;border:2px solid #ff70a2;padding:11px 9px;box-shadow:0 0 0 2px #ff347f22}
 @media(hover:hover){.campus-place:hover{background:#3b2b45;border-color:var(--zone-color);transform:translateY(-1px)}}
-.campus-place:focus-visible,.campus-filters button:focus-visible,.campus-mobile-location select:focus-visible{outline:3px solid #ffe36e;outline-offset:3px}
+.campus-place:focus-visible,.campus-filters button:focus-visible,.campus-friend-finder button:focus-visible{outline:3px solid #ffe36e;outline-offset:3px}
 .campus-place:active{border-color:#ffe36e}
 .campus-place.is-locked{border-style:dashed}.campus-place.is-locked .campus-place-status{color:#e4bdcd}
 .campus-occupants{display:flex;gap:7px;flex-wrap:wrap;flex:1;align-items:center;margin:12px 0}.campus-occupants>span{display:flex;flex-direction:column;align-items:center;gap:5px}.campus-occupants small{font-size:8px;color:#f0e7f4}
@@ -35,30 +36,34 @@
 @media(max-width:720px){.school-trial-theme .map-layout{display:flex;flex-direction:column}.campus-directory{width:100%;box-shadow:4px 4px #08060d}.campus-heading{padding:18px 15px;align-items:flex-start;flex-direction:column;gap:12px}.campus-heading b{font-size:20px}.campus-heading i{font-size:10px}.campus-filters{padding:15px 12px 0;gap:6px}.campus-filters button{font-size:10px;padding:7px 10px}.campus-zones{padding:12px;gap:13px}.campus-place-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.campus-place{min-height:135px;padding:13px 11px}.campus-place.selected{padding:12px 10px}.campus-place-title b{font-size:12px}.campus-place-status{font-size:9px}.campus-occupants .portrait{width:33px;height:40px}.campus-occupants small{font-size:9px}.campus-zone>header{padding:13px}.campus-zone header small{font-size:9px}.school-trial-theme .place-card{width:100%;position:static;display:block;margin:0}.school-trial-theme .place-card>img{height:120px;width:100%;min-height:0}.school-trial-theme .place-content{padding:18px}.school-trial-theme .resident .portrait{width:45px;height:56px}.school-trial-theme .resident-actions button{font-size:12px;min-height:44px}.school-trial-theme .map-heading h1{font-size:26px}.school-trial-theme .map-heading p{font-size:11px}.school-trial-theme .casebook-banner{padding:12px 14px;margin-bottom:18px}.school-trial-theme .casebook-banner b{font-size:14px}.school-trial-theme .casebook-banner i{font-size:9px}.campus-directory footer{padding:13px 15px;font-size:9px}.required-case-notice{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.campus-place{transition:none}.campus-place:hover{transform:none}}
 
-/* Native selection keeps every destination reachable without precision taps. */
+/* A flat card grid and explicit people finder avoid tiny pins and long native menus. */
 @media(pointer:coarse),(max-width:720px){
  .campus-filters button{min-height:44px;min-width:44px}
- .campus-place,.campus-filters button,.campus-mobile-location select{touch-action:manipulation}
+ .campus-place,.campus-filters button,.campus-friend-finder button{touch-action:manipulation}
 }
 @media(max-width:600px){
- .campus-directory .campus-mobile-location{display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:3;background:#211a2c;padding:3px 7px;border:1px solid #8d719c;color:#ffe36e;min-width:0}
- .campus-mobile-location>svg{flex:none;pointer-events:none}
- .campus-directory .campus-mobile-location select{min-width:0;width:100%;min-height:44px;font:inherit;font-size:16px;font-weight:700;color:#fff6f5;background:#211a2c;border:0;border-radius:0;cursor:pointer}
- .romance-app .romance-map .campus-directory .campus-heading,.romance-app .romance-map .campus-directory .campus-filters{display:none}
- .romance-app .romance-map .campus-directory{padding:6px;scroll-padding-top:62px}
- .romance-app .romance-map .campus-zones{padding:8px 0 0;gap:8px}
- .romance-app .romance-map .campus-zone{margin:0}
- .romance-app .romance-map .campus-zone>header{padding:7px 9px}
- .romance-app .romance-map .campus-zone h3{font-size:12px;margin:0}
- .romance-app .romance-map .campus-place-grid{gap:6px;padding:6px}
- .romance-app .romance-map .campus-place{min-height:89px;padding:8px;border-width:2px}
+ .romance-app .romance-map .campus-directory{padding:6px;scroll-padding-top:90px}
+ .romance-app .romance-map .campus-controls{position:sticky;top:-6px;z-index:3;background:#181321;padding-bottom:3px}
+ .romance-app .romance-map .campus-current{padding:7px 5px;font-size:12px;background:none}
+ .romance-app .romance-map .campus-current>span{font-size:10px}
+ .romance-app .romance-map .campus-directory .campus-heading{display:none}
+ .romance-app .romance-map .campus-directory .campus-filters{display:flex;position:static;flex-wrap:nowrap;overflow-x:auto;gap:5px;padding:0 0 3px;margin:0;scrollbar-width:thin;background:none}
+ .romance-app .romance-map .campus-filters button{flex:none;min-height:44px;padding:6px 12px;font-size:12px}
+ .romance-app .romance-map .campus-friend-finder{flex-wrap:nowrap;overflow-x:auto;padding:4px 0 6px}
+ .romance-app .romance-map .campus-friend-finder button{flex:none}
+ .romance-app .romance-map .campus-zones{padding:6px 0 0;gap:6px;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .romance-app .romance-map .campus-zone,.romance-app .romance-map .campus-place-grid{display:contents}
+ .romance-app .romance-map .campus-zone>header{display:none}
+ .romance-app .romance-map .campus-place{position:relative;min-height:82px;padding:8px 6px 7px 47px;border-width:2px;justify-content:center;overflow:hidden}
+ .romance-app .romance-map .campus-place-thumb{display:block;position:absolute;left:5px;top:8px;bottom:8px;height:calc(100% - 16px);width:35px;object-fit:cover;opacity:.92}
  .romance-app .romance-map .campus-place-title b{font-size:12px;overflow-wrap:anywhere}
  .romance-app .romance-map .campus-place-title>svg{flex:none}
- .romance-app .romance-map .campus-place-title>svg:last-child{display:none}
- .romance-app .romance-map .campus-occupants{margin:6px 0;gap:5px}
+ .romance-app .romance-map .campus-place-title>svg{display:none}
+ .romance-app .romance-map .campus-place.is-locked .campus-place-title>svg:first-child{display:block;width:11px}
+ .romance-app .romance-map .campus-occupants{margin:4px 0;gap:4px;flex:0}
  .romance-app .romance-map .campus-occupants>span{flex-direction:row;gap:4px;max-width:100%}
- .romance-app .romance-map .campus-occupants .portrait{width:22px;height:27px;flex:none}
+ .romance-app .romance-map .campus-occupants .school-portrait,.romance-app .romance-map .campus-occupants .portrait{display:none}
  .romance-app .romance-map .campus-occupants small{font-size:11px;overflow-wrap:anywhere}
- .romance-app .romance-map .campus-place-status{font-size:10px}
- .romance-app .romance-map .campus-clue-badge{font-size:11px}
+ .romance-app .romance-map .campus-place-status{font-size:9px}
+ .romance-app .romance-map .campus-clue-badge{font-size:10px}
 }

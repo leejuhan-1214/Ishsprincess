@@ -1,6 +1,6 @@
 import {useState,type CSSProperties} from 'react';
 import {BookOpen,FlaskConical,Music2,Trees,Lock,MapPin,Users,ChevronRight,Search} from 'lucide-react';
-import {locations} from './data/characters';
+import {locations,locationImage} from './data/characters';
 import type {LocationId} from './types';
 import {SchoolPortrait} from './SchoolPortrait';
 import {campusPlaceStatus,type CampusStudent} from './campusStatus';
@@ -17,20 +17,21 @@ type Props={selected:LocationId;students:CampusStudent[];locked:(place:LocationI
 export function CampusMap({selected,students,locked,onSelect,discoveries={}}:Props){
  const [filter,setFilter]=useState('all');
  const count=students.filter(s=>s.available).length;
+ const currentPlace=locations.find(place=>place.id===selected)!;
+ function choose(place:LocationId){onSelect(place);}
  return <div className="campus-directory">
-  <div className="campus-mobile-location"><MapPin size={18} aria-hidden="true"/><select aria-label="갈 장소" value={selected} onChange={event=>{setFilter('all');onSelect(event.target.value as LocationId);}}>{zones.map(zone=><optgroup key={zone.id} label={zone.name}>{locations.filter(place=>zone.places.includes(place.id)).map(place=>{
-   const people=students.filter(person=>person.place===place.id&&person.available).map(person=>person.name);
-   const detail=[locked(place.id)?'잠김':'',discoveries[place.id]?'확인할 기록':'',...people].filter(Boolean).join(' · ');
-   return <option key={place.id} value={place.id}>{place.name}{detail?` · ${detail}`:''}</option>;
-  })}</optgroup>)}</select></div>
+  <div className="campus-controls">
+  <div className="campus-current" aria-live="polite"><MapPin size={15} aria-hidden="true"/><span>선택한 장소</span><b>{currentPlace.name}</b>{locked(selected)&&<Lock size={14} aria-label="잠김"/>}</div>
   <div className="campus-heading"><span><b>학교 지도</b></span><i><Users size={15}/>{count}명</i></div>
   <div className="campus-filters" role="group" aria-label="지도 구역 필터">{[{id:'all',name:'전체'},{id:'people',name:'친구'},{id:'clues',name:'확인할 곳'},...zones].map(zone=><button key={zone.id} aria-pressed={filter===zone.id} onClick={()=>setFilter(zone.id)}>{zone.name}</button>)}</div>
+  {filter==='people'&&<div className="campus-friend-finder" role="group" aria-label="친구가 있는 장소로 이동">{students.filter(person=>person.available).map(person=><button key={person.id} aria-pressed={selected===person.place} onClick={()=>choose(person.place)}><b>{person.name}</b><small>{locations.find(place=>place.id===person.place)?.name}</small></button>)}</div>}
+  </div>
   <div className="campus-zones">{zones.filter(z=>filter==='all'||filter==='people'||filter==='clues'||filter===z.id).map(zone=>{
    const list=locations.filter(place=>zone.places.includes(place.id)&&(filter!=='people'||students.some(s=>s.place===place.id&&s.available))&&(filter!=='clues'||(discoveries[place.id]??0)>0));
    if(!list.length)return null;const Icon=zone.icon;
    return <section key={zone.id} className="campus-zone" style={{'--zone-color':zone.color} as CSSProperties}><header><Icon size={18}/><div><h3>{zone.name}</h3></div></header><div className="campus-place-grid">{list.map(place=>{
     const people=students.filter(s=>s.place===place.id),isLocked=locked(place.id);
-    return <button key={place.id} className={`campus-place ${selected===place.id?'selected':''} ${isLocked?'is-locked':''}`} aria-pressed={selected===place.id} aria-label={`${place.name}${isLocked?' · 잠김':''}${discoveries[place.id]?` · 확인할 기록 ${discoveries[place.id]}개`:''} · ${people.length?people.map(s=>s.name).join(', '):'아무도 없음'}`} onClick={()=>onSelect(place.id)}><div className="campus-place-title">{isLocked?<Lock size={13}/>:<MapPin size={13}/>}<b>{place.name}</b><ChevronRight size={13}/></div><div className="campus-occupants">{people.length?people.map(person=><span key={person.id} className={person.available?'available':person.visited?'visited':'unavailable'}><SchoolPortrait id={person.id}/><small>{person.name}</small></span>):<small className="campus-quiet">—</small>}</div>{!!discoveries[place.id]&&<span className="campus-clue-badge"><Search size={12}/>확인 {discoveries[place.id]}</span>}<span className="campus-place-status">{campusPlaceStatus(people,isLocked)}</span></button>;
+    return <button key={place.id} className={`campus-place ${selected===place.id?'selected':''} ${isLocked?'is-locked':''}`} aria-pressed={selected===place.id} aria-label={`${place.name}${isLocked?' · 잠김':''}${discoveries[place.id]?` · 확인할 기록 ${discoveries[place.id]}개`:''} · ${people.length?people.map(s=>s.name).join(', '):'아무도 없음'}`} onClick={()=>choose(place.id)}><img className="campus-place-thumb" src={locationImage(place.id)} alt="" loading="lazy"/><div className="campus-place-title">{isLocked?<Lock size={13}/>:<MapPin size={13}/>}<b>{place.name}</b><ChevronRight size={13}/></div><div className="campus-occupants">{people.length?people.map(person=><span key={person.id} className={person.available?'available':person.visited?'visited':'unavailable'}><SchoolPortrait id={person.id}/><small>{person.name}</small></span>):<small className="campus-quiet">—</small>}</div>{!!discoveries[place.id]&&<span className="campus-clue-badge"><Search size={12}/>확인 {discoveries[place.id]}</span>}<span className="campus-place-status">{campusPlaceStatus(people,isLocked)}</span></button>;
    })}</div></section>;
   })}</div>
   {filter==='people'&&!count&&<p className="campus-empty">지금 만날 수 있는 친구가 없어요.</p>}

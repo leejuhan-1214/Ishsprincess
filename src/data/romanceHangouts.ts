@@ -1,6 +1,7 @@
 import type {LocationId} from '../types';
 import type {RChoice,RLine,RPerson,RScene,RState} from '../romanceTypes';
 import {followups} from './romanceFollowups';
+import {routeChoiceEffect,routeChoiceFlags} from './romanceRouteTraits';
 
 type Option = readonly [string,string,number,number];
 type Visit = {title:string;lines:string[];options:readonly [Option,Option,Option];again:string};
@@ -120,7 +121,7 @@ v('오차 없는 저녁 약속',[
 '끝나는 시간이 늦어지면 직접 알려 줄게.',
 '좋아. 이 약속에는 오차 범위 없어. 기다리는 사람 배고프니까.',
 '실험 설명보다 더 열심히 외워 둘게.'
-],[['약속 시간을 직접 읽어 확인한다.','응. 같은 말 두 번 듣는 게 오늘은 안 지루하네.',7,10],['각자 고른 메뉴를 반씩 먹자고 한다.','그럼 실패 확률도 절반. 아니, 너랑 먹으면 대체로 괜찮겠지.',9,7],['설명 연습을 들어 준 뒤 같이 내려간다.','일 끝날 때까지 같이 있어 주네. 그럼 저녁 얘기하면서 가자.',8,9]],'메뉴는 그대로야. 너 오는 시간도 그대로였으면 좋겠어. 오늘 확인하러 온 거지?'),
+],[['약속 시간을 직접 읽어 확인한다.','응. 같은 말 두 번 듣는 게 오늘은 안 지루하네.',7,10],['내일 저녁은 각자 고른 메뉴를 나누고, 다음 주엔 내가 초대하겠다고 한다.','내일 메뉴 얘기하다 다음 주까지 생겼네. 그쪽은 네가 좋아하는 걸로 골라.',9,7],['설명 연습을 들어 준 뒤 같이 내려간다.','일 끝날 때까지 같이 있어 주네. 그럼 저녁 얘기하면서 가자.',8,9]],'메뉴는 그대로야. 너 오는 시간도 그대로였으면 좋겠어. 오늘 확인하러 온 거지?'),
 v('계산기 없이 만나는 법',[
 '계산기 돌려줘야 하는데, 네 가방에 넣을 뻔했어.',
 '아직 내가 빌려 가도 되는 줄 알았네.',
@@ -182,7 +183,7 @@ v('둘만 아는 객석 신호',[
 '끝난 뒤에는 어디로 가면 돼?',
 '지금 앉은 자리. 내가 내려와서 같이 표시 떼자.',
 '그럼 여기서 기다릴게. 손동작도 외워 둘게.'
-],[['신호를 다시 맞춰 보고 서로 확인한다.','맞아. 내일 그 손 찾을게. 사람 많아도 찾을 수 있어.',9,9],['객석 표시 옆에 작은 별을 그린다.','내 자리는 무대인데 네 자리 꾸미는 게 더 재밌네.',10,6],['내려온 뒤 같이 먹을 간식을 고른다.','좋아. 내일은 춤 얘기하다가도 그거 먹으러 가야겠다.',8,8]],'신호 한 번만 보여 줘. 응, 맞았어. 내일은 멀리서도 알겠네.'),
+],[['신호를 다시 맞춰 보고 서로 확인한다.','맞아. 내일 그 손 찾을게. 사람 많아도 찾을 수 있어.',9,9],['객석 표시 옆에 작은 별을 그린다.','내 자리는 무대인데 네 자리 꾸미는 게 더 재밌네.',10,6],['공연 뒤 간식을 고르고, 무대 없는 다음 주에도 같이 먹자고 한다.','다음 주엔 공연이 없는데……응, 알아듣고 괜히 물었어. 그날은 내가 먼저 기다릴게.',8,8]],'신호 한 번만 보여 줘. 응, 맞았어. 내일은 멀리서도 알겠네.'),
 v('무대가 없어도 같은 자리',[
 '찾았어. 마지막 포즈 끝나자마자 너 봤다.',
 '난 네가 못 본 줄 알고 신호 두 번 했어.',
@@ -244,7 +245,7 @@ v('흐려도 바뀌지 않는 약속',[
 '비 오면?',
 '우산 쓰고 도서관. 질문이 더 생겨도 결국 만나게 해 둘 거야.',
 '그 답 마음에 든다. 나도 잊지 않을게.'
-],[['도감 옆에 두 가지 계획을 함께 적는다.','이렇게 적으니까 어느 하늘이어도 괜찮겠네.',8,10],['도서관에서 읽을 책을 미리 고른다.','너는 흐린 쪽도 기대하는구나. 나도 조금 그래.',10,7],['태훈이 좋아하는 별 이야기를 더 듣는다.','시간 괜찮아? 이건 길어져. 대신 내일 이어도 돼.',9,7]],'예보는 또 바뀌었어. 그래도 두 가지 중 하나면 되니까 이번에는 덜 초조해.'),
+],[['도감 옆에 두 가지 계획을 함께 적는다.','이렇게 적으니까 어느 하늘이어도 괜찮겠네.',8,10],['도서관에서 같이 읽을 책을 고르고, 맑아도 만날 시간을 적는다.','너는 흐린 쪽만 대비하는 게 아니구나. 좋아, 맑아도 이 페이지는 같이 읽자.',10,7],['태훈이 좋아하는 별 이야기를 더 듣는다.','시간 괜찮아? 이건 길어져. 대신 내일 이어도 돼.',9,7]],'예보는 또 바뀌었어. 그래도 두 가지 중 하나면 되니까 이번에는 덜 초조해.'),
 v('별 대신 적은 이야기',[
 '역시 구름이 이겼네. 관측회는 취소래.',
 '우리 산책은?',
@@ -368,7 +369,7 @@ v('얼터에고를 끈 다음',[
 '응. 그래도 중요한 건 알아들었어. 네가 같이 가자고 한 거.',
 '그 문장은 다시 실행 안 해도 저장해 줘.',
 '직접 기억할게. 다섯 시에 같이 가자.'
-],[['시간을 함께 확인하고 약속을 직접 말한다.','응. 화면으로 보여 주는 것보다 이렇게 듣는 게 좋네.',8,10],['함께 먹고 싶은 간식을 하나씩 고른다.','나는 쿠키. 너는? 두 개 고르면 반씩 바꿔 먹자.',10,7],['말이 빨라져도 괜찮다고 웃으며 기다린다.','나 지금 또 빨라지려는데. 그래도 네가 웃어 주니까 덜 급해.',9,8]],'내일 약속은 프로그램에 안 넣었어. 잊어서가 아니라 내가 기억하고 싶어서.'),
+],[['시간을 함께 확인하고 약속을 직접 말한다.','응. 화면으로 보여 주는 것보다 이렇게 듣는 게 좋네.',8,10],['쿠키를 나눠 먹을 날을 정하고 다음번 간식은 내가 준비하겠다고 한다.','나는 쿠키. 다음에는 네가 고르는 맛도 먹어 볼래. 시연 끝나도 간식 약속은 남는 거지?',10,7],['말이 빨라져도 괜찮다고 웃으며 기다린다.','나 지금 또 빨라지려는데. 그래도 네가 웃어 주니까 덜 급해.',9,8]],'내일 약속은 프로그램에 안 넣었어. 잊어서가 아니라 내가 기억하고 싶어서.'),
 v('화면을 가리고 묻는 말',[
 '마지막 스테이지야. 이번에는 우리가 만든 엔딩까지 가 보자.',
 '첫날 인사말도 그대로 남았네.',
@@ -430,7 +431,7 @@ v('업무표 아래의 개인 약속',[
 '그럼 지금부터 민혁이라고 부를게.',
 '이미 그렇게 부르잖아. 그런데 지금은 좀 다르게 들린다.',
 '나도 그 칸에 적힌 이름이 다르게 보여.'
-],[['개인 약속 칸에 두 사람의 시간을 나란히 적는다.','이 줄은 지우지 않을게. 일이 늘어도 직접 이야기하고 바꿀게.',8,11],['완장 매듭을 고칠 시간을 주며 조용히 기다린다.','그렇게 보고 있으면 더 안 묶이는데. 그래도 먼저 가지는 마.',10,7],['행사 뒤의 첫 행선지를 함께 고른다.','선택지가 많네. 업무 장소 고를 때보다 훨씬 어렵다.',9,9]],'업무표 아래 네 이름 보고 또 확인했어. 틀린 게 없는데 그냥 한 번 더 보고 싶어서.'),
+],[['개인 약속 칸에 두 사람의 시간을 나란히 적는다.','이 줄은 지우지 않을게. 일이 늘어도 직접 이야기하고 바꿀게.',8,11],['완장 매듭을 고칠 시간을 주며 조용히 기다린다.','그렇게 보고 있으면 더 안 묶이는데. 그래도 먼저 가지는 마.',10,7],['행사 뒤에는 민혁이 고른 가게, 다음에는 내 장소로 가자고 한다.','한 번씩 안내하는 거네. 그럼 다음 약속은 네가 잡아 줘. 나는 따라가는 연습 할게.',9,9]],'업무표 아래 네 이름 보고 또 확인했어. 틀린 게 없는데 그냥 한 번 더 보고 싶어서.'),
 v('완장을 벗고 남은 시간',[
 '정리 끝. 이제 완장 벗어도 돼.',
 '내가 기다릴 자리는 제대로 찾았네.',
@@ -526,8 +527,8 @@ const firstMoments:Record<Exclude<RPerson,'junyeon'>,FirstMoment>={
   '실험은 끝났어. 이 전시병 뚜껑은 열지 말고 바깥에서만 봐.',
   '아까 만든 결정이야? 조명 아래에선 잘 안 보였는데.',
   '선생님 확인받고 밀봉해 뒀어. 창가에서 잠깐 색만 비교할 거야.',
-  '내가 받쳐 줄까? 네가 기록하면서 보기엔 손이 모자라겠다.',
-  '아래쪽만 잡아. 이쪽으로 조금. 빛에 비치니까 모서리가 보이지?',
+  '흰 종이를 병 뒤에 받쳐 줄까? 색이 더 잘 보이겠는데.',
+  '응. 종이 아래쪽만 잡아. 병은 내가 들게. 빛에 비치니까 모서리가 보이지?',
   '작은 별을 병에 넣어 둔 것 같네.',
   '별은 아니고 결정. 그래도 그 말은 개인 노트에만 적어 둘게.',
   '지금 웃었지? 정확한 설명만 좋아하는 줄 알았는데.',
@@ -758,7 +759,7 @@ export function getHangoutScene(person:RPerson,state:RState,location:LocationId)
   const choices:RChoice[]=next.options.map(([text,reply,player,last,affection,trust],index)=>({
    id:`option-${index+1}`,text,
    response:[{speaker:person,text:reply,expression:person==='junyeon'?'serious':'surprised'},{speaker:'player',text:player},{speaker:person,text:last,expression:person==='junyeon'?'serious':affection>=10?'shy':'smile'}],
-   effects:[{person,affection,trust}],flags:[`memory:${root}:followup:${index}`]
+   effects:[{person,affection:affection+routeChoiceEffect(person,chapter,2,index).affection,trust:trust+routeChoiceEffect(person,chapter,2,index).trust}],flags:[`memory:${root}:followup:${index}`,...routeChoiceFlags(person,chapter,2,index)]
   }));
   return{id,title:next.title,location:next.location,lines:[...callback,...lines].map(line=>({...line,text:line.text.replaceAll('{name}',state.name)})),choices,memory:next.title};
  }
@@ -770,7 +771,7 @@ export function getHangoutScene(person:RPerson,state:RState,location:LocationId)
  const choices:RChoice[]=options.map(([text,reply,affection,trust],index)=>({
   id:`option-${index+1}`,text,
   response:[{speaker:person,text:reply,expression:person==='junyeon'?'serious':affection>=8?'shy':'smile'},{speaker:'player',text:person==='juhan'&&chapter===4&&index===2&&!state.flags.includes('read:hangout-juhan-1-v1')?'게임 밖에서도 이렇게 만났잖아.':firstReplies[person][chapter][index][0]},{speaker:person,text:person==='juhan'&&chapter===4&&index===2&&!state.flags.includes('read:hangout-juhan-1-v1')?'응. 그러면 다음 인사말은 내가 화면 밖에서 먼저 할게.':firstReplies[person][chapter][index][1],expression:person==='junyeon'?'serious':'smile'}].map(line=>({...line,...(first?{art:first.art}:{})})) as RLine[],
-  effects:[{person,affection,trust}],flags:[`memory:${root}:${index}`]
+  effects:[{person,affection:affection+routeChoiceEffect(person,chapter,1,index).affection,trust:trust+routeChoiceEffect(person,chapter,1,index).trust}],flags:[`memory:${root}:${index}`,...routeChoiceFlags(person,chapter,1,index)]
  }));
  const destination=destinations[person][chapter];
  return{id,title:first?.title??visit.title,location:destination,lines:lines.map(line=>({...line,text:line.text.replaceAll('{name}',state.name)})),choices,memory:first?.title??visit.title};
