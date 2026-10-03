@@ -3,10 +3,12 @@ import assert from 'node:assert/strict';
 import {romancePeople,type RPerson,type RState,type RChoice} from '../src/romanceTypes';
 import {memoryEvidence,romanceTrialRounds,romanceSequence} from '../src/data/romanceMystery';
 import {getHangoutScene} from '../src/data/romanceStory';
+import {hasHangoutAvailable} from '../src/data/romanceHangouts';
+import {respondToActivity,conveneTrial} from '../src/engine/romance';
 import {newRomance,currentRomanceScene,romanceLines,advanceRomance,chooseRomance,nextRomance,selectFocus,startHangout,completeRomanceActivity,availableMemories,inspectMemory,submitArgument,continueArgument,submitReconstruction,setVerdict,restoreRomance,personLocation,choiceOrder,junyeonCap,junyeonRomanceEligible} from '../src/engine/romance';
 import {ROMANCE_STORAGE_PREFIX,saveRomance,loadRomance,listRomanceSaves} from '../src/engine/romanceStorage';
 
-function read(s:RState,prefer?:(choices:RChoice[],s:RState)=>RChoice):RState{
+function read(s:RState,prefer?:(choices:RChoice[],s:RState)=>RChoice,activity:'skip'|'play'|'pause'='skip'):RState{
  let guard=0;
  while(s.phase==='story'){
   assert.ok(guard++<1500,'dialogue must have a reachable continuation');
@@ -17,6 +19,7 @@ function read(s:RState,prefer?:(choices:RChoice[],s:RState)=>RChoice):RState{
    assert.notStrictEqual(next,s,`${scene.id}: the presented choice must be selectable`);s=next;
   }else s=advanceRomance(s);
  }
+ if(s.phase==='activity-invite'&&activity!=='pause')s=activity==='play'?completeRomanceActivity(respondToActivity(s,true),3):respondToActivity(s,false);
  return s;
 }
 function collectOpen(s:RState):RState{
@@ -26,18 +29,19 @@ function collectOpen(s:RState):RState{
 }
 function hangout(s:RState,id:RPerson,activity=true):RState{
  const start=startHangout(s,id,personLocation(s,id),activity);assert.notStrictEqual(start,s);
- return read(activity?completeRomanceActivity(start,3):start);
+ return read(start,undefined,activity?'play':'skip');
 }
 function reachTrial(focus:RPerson|null='world'):RState{
  let s=newRomance('다음약속',31),guard=0;
  while(s.phase!=='trial'){
   assert.ok(guard++<60,'the only trial should be reachable');
   if(s.phase==='story'){s=read(s);continue;}
+  if(s.phase==='trial-briefing'){s=conveneTrial(s);continue;}
   if(s.phase==='focus'){s=selectFocus(s,focus);continue;}
   assert.equal(s.phase,'map');s=collectOpen(s);
   const target=focus??'world';
-  if(s.actions&&!s.visited.includes(target))s=hangout(s,target);
-  if(s.actions&&target!=='junyeon'&&!s.visited.includes('junyeon'))s=hangout(s,'junyeon');
+  if(s.actions&&!s.visited.includes(target)&&hasHangoutAvailable(target,s))s=hangout(s,target);
+  if(s.actions&&target!=='junyeon'&&!s.visited.includes('junyeon')&&hasHangoutAvailable('junyeon',s))s=hangout(s,'junyeon');
   const next=nextRomance(s);assert.notStrictEqual(next,s,'collecting both chapter memories releases the next chapter');s=next;
  }
  return s;
@@ -111,8 +115,10 @@ test('same-map visits and activities award once, retain the selected location an
  assert.strictEqual(startHangout(map,'juhan',place==='gate'?'classroom':'gate'),map);
  const authored=getHangoutScene('juhan',map,place),started=startHangout(map,'juhan',place,true);assert.equal(started.actions,1);assert.equal(started.location,authored.location);
  assert.deepEqual(currentRomanceScene(started).lines,authored.lines,'moving to the authored activity place retains the original meeting introduction');
- assert.equal(started.phase,'activity');assert.deepEqual(restoreRomance(JSON.parse(JSON.stringify(started))),started);
- const done=completeRomanceActivity(started,3);assert.equal(done.bonds.juhan.trust,started.bonds.juhan.trust+10);
+ assert.equal(started.phase,'story','the authored conversation precedes every optional activity');assert.deepEqual(restoreRomance(JSON.parse(JSON.stringify(started))),started);
+ const invitation=read(started,undefined,'pause');assert.equal(invitation.phase,'activity-invite');
+ assert.deepEqual(restoreRomance(JSON.parse(JSON.stringify(invitation))),invitation);
+ const playing=respondToActivity(invitation,true),done=completeRomanceActivity(playing,3);assert.equal(done.bonds.juhan.trust,playing.bonds.juhan.trust+9);
  assert.strictEqual(completeRomanceActivity(done,3),done);
  const back=read(done);assert.equal(back.actions,1);assert.ok(back.visited.includes('juhan'));
  assert.strictEqual(startHangout(back,'juhan',personLocation(back,'juhan')),back);
@@ -122,8 +128,8 @@ test('same-map visits and activities award once, retain the selected location an
 test('Junyeon caps discard overflow on activities and restore; verdict changes no existing value',()=>{
  for(const affection of [69,70]){
   const map=read(newRomance('상한',41));map.bonds.junyeon={affection,trust:55};
-  const started=startHangout(map,'junyeon',personLocation(map,'junyeon'),true),finished=completeRomanceActivity(started,3);
-  assert.equal(finished.bonds.junyeon.affection,70);assert.equal(finished.bonds.junyeon.trust,65);assert.equal(junyeonCap(finished),70);
+  const started=startHangout(map,'junyeon',personLocation(map,'junyeon'),true),invited=read(started,undefined,'pause'),playing=respondToActivity(invited,true),finished=completeRomanceActivity(playing,3);
+  assert.equal(finished.bonds.junyeon.affection,70);assert.equal(finished.bonds.junyeon.trust,playing.bonds.junyeon.trust+9);assert.equal(junyeonCap(finished),70);
  }
  const pending=newRomance('복원',6);pending.bonds.junyeon.affection=100;
  assert.equal(restoreRomance(pending)?.bonds.junyeon.affection,70);assert.equal(pending.bonds.junyeon.affection,100,'restore must not mutate its input');

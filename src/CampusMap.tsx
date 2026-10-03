@@ -30,6 +30,6 @@ export function CampusMap({selected,students,locked,onSelect,discoveries={}}:Pro
   })}</div>
   {filter==='people'&&!count&&<p className="campus-empty">오늘 만날 수 있는 친구가 없어요. 일정을 마치고 다음 이야기로 이어 가세요.</p>}
   {filter==='clues'&&!Object.keys(discoveries).length&&<p className="campus-empty">지금 조사할 새 단서가 없어요. 사건 수첩에서 확보한 자료를 확인하세요.</p>}
-  <footer><i/>장소를 선택하면 상세 카드에서 대화나 활동을 고를 수 있어요.<span>게임용 가상 캠퍼스</span></footer>
+  <footer><i/>장소를 선택하면 친구와 이어 갈 약속을 확인할 수 있어요.<span>게임용 가상 캠퍼스</span></footer>
  </div>;
 }

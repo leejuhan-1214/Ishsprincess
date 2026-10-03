@@ -1,0 +1,44 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "world-earbud",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-e507afde-ef9f-40a0-85a8-003ab088900d.png",
+      "target": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-earbud.png"
+    },
+    {
+      "id": "hyunsol-crystal",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-b501a75f-18cc-4bbf-ac5f-6e98074d4679.png",
+      "target": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-crystal.png"
+    },
+    {
+      "id": "taewoo-hand",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-0f22966b-94a3-4bc8-b388-05850d9acea8.png",
+      "target": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-hand.png"
+    },
+    {
+      "id": "taehun-atlas",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-63e275af-f28b-4927-a3c8-48f859ba7b64.png",
+      "target": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-atlas.png"
+    },
+    {
+      "id": "seoyul-sketch",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-2fb33969-2b0f-4ada-9203-d510dffa351a.png",
+      "target": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/seoyul-sketch.png"
+    },
+    {
+      "id": "juhan-pixel",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-f2d13fee-a368-477f-bf37-c6c387506173.png",
+      "target": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/juhan-pixel.png"
+    },
+    {
+      "id": "minhyuk-rain",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-0b0ed8cf-07a4-4f56-85fc-e87bb3d7f126.png",
+      "target": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/minhyuk-rain.png"
+    }
+  ],
+  "refinements": {
+    "taewoo": "Precise image edit. EDIT ONLY the tiny LEFT-HAND BACKGROUND mirror reflection of the girl, especially the reflected arm on the VIEWER'S LEFT side of her reflected torso. It currently has a BENT elbow and hand raised near her chin, which is WRONG. Replace that bent arm with a STRAIGHT fully extended arm reaching forward away from the mirror and out toward the LEFT EDGE of the image. The reflected hand must NOT be near the reflected girl's chin/face. Her reflected other hand stays on her hip, as in the foreground. Match foreground outfit, auburn ponytail and angle. The reflection should show the back view of the exact foreground hand-offering pose. Keep EVERYTHING ELSE pixel-consistent: large foreground girl, face, smile, offering hand, player hand, legs, room, blank whiteboard, light, crop. No new writing. Focus all change on removing the bent 'hand-near-chin' pose from the reflection.",
+    "minhyuk": "Use case precise-object-edit. Image1 is the edit target. Edit ONLY the school gate name plaque on the far LEFT: remove the Japanese kanji completely and replace it with exact Korean Hangul text '인천과학고등학교' vertically in one column, restrained gold lettering. It is a Korean school. Keep everything else EXACTLY unchanged: brown-skinned girl's face and expression, black ponytail, white navy-trim uniform with red bow, umbrella, both hands on shaft, rain, warm light, framing. No other lettering or changes."
+  }
+}

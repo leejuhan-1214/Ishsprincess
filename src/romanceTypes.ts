@@ -3,13 +3,13 @@ export const romancePeople = ['world','hyunsol','taewoo','taehun','seoyul','juha
 export type RPerson = typeof romancePeople[number];
 export type RHero = Exclude<RPerson,'junyeon'>;
 export type RSpeaker = RPerson | 'player' | 'narrator' | 'teacher' | 'alter';
-export type RLine = {speaker:RSpeaker;text:string};
+export type RLine = {speaker:RSpeaker;text:string;art?:string;location?:LocationId;expression?:'neutral'|'smile'|'shy'|'serious'|'surprised'|'sad'};
 export type RBond = {affection:number;trust:number};
 export type REffect = {person:RPerson;affection?:number;trust?:number};
 export type RChoice = {id:string;text:string;response:RLine[];effects?:REffect[];flags?:string[]};
 export type RScene = {id:string;title:string;location:LocationId;lines:RLine[];choices:RChoice[];memory?:string;image?:string};
 export type RMode = 'main'|'hangout'|'discovery'|'revelation'|'repair'|'finale';
-export type RPhase = 'story'|'map'|'focus'|'activity'|'trial'|'verdict'|'ending';
+export type RPhase = 'story'|'map'|'focus'|'activity-invite'|'activity'|'trial-briefing'|'trial'|'verdict'|'ending';
 export type RState = {
  version:2;name:string;seed:number;chapter:number;act:number;phase:RPhase;mode:RMode;
  line:number;response:RLine[]|null;focus:RPerson|null;visitor:RPerson|null;location:LocationId;

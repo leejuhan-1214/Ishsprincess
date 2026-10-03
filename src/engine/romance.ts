@@ -4,6 +4,9 @@ import type {LocationId} from '../types';
 import {getMainScene,getHangoutScene,getRepairScene,getFinaleScene} from '../data/romanceStory';
 import {memoryEvidence,romanceTrialRounds,romanceSequence,getDiscoveryScene,getRevelationScene} from '../data/romanceMystery';
 import {shuffleChoices} from './choiceOrder';
+import {hasHangoutAvailable} from '../data/romanceHangouts';
+import {hasRomanceActivity} from '../data/romanceActivities';
+import {artById} from '../data/romanceArt';
 
 const clamp=(n:number,max=100)=>Math.max(0,Math.min(max,n));
 const isPerson=(v:unknown):v is RPerson=>typeof v==='string'&&(romancePeople as readonly string[]).includes(v);
@@ -94,6 +97,7 @@ export function advanceRomance(s:RState):RState{
  return next;
 }
 function finishScene(s:RState,scene:RScene):RState{
+ if(s.mode==='hangout'&&s.visitor&&hasRomanceActivity(s.visitor,s.chapter,s.sceneKey.includes('-v2:')?2:1)&&!s.flags.includes(`activity:${s.sceneKey}`)&&!s.flags.includes(`activity-skipped:${s.sceneKey}`))return {...s,phase:'activity-invite',line:0,response:null};
  let next={...s,flags:uniq([...s.flags,`read:${scene.id}`]),line:0,response:null};
  if(s.mode==='discovery'){
   const clue=memoryEvidence.find(c=>`discover-${c.id}`===s.sceneKey);
@@ -114,14 +118,14 @@ function finishScene(s:RState,scene:RScene):RState{
   return {...next,phase:'ending',ending:`${decision??`friendship:${s.focus??'class'}`}:${s.verdict}`};
  }
  next={...next,actions:2,visited:[],visitor:null};
- if(s.chapter===4&&s.act===0&&s.verdict==='pending'&&allMemories(next))return {...next,phase:'trial',trialRound:0,trialFeedback:null,trialOrder:[]};
+ if(s.chapter===4&&s.act===0&&s.verdict==='pending'&&allMemories(next))return {...next,phase:'trial-briefing',trialRound:0,trialFeedback:null,trialOrder:[]};
  return {...next,phase:'map'};
 }
 function allMemories(s:RState):boolean{return memoryEvidence.every(c=>s.clues.includes(c.id));}
 function chapterMemories(s:RState):boolean{return memoryEvidence.filter(c=>c.chapter<=s.chapter).every(c=>s.clues.includes(c.id));}
 export function nextRomance(s:RState):RState{
  if(s.phase!=='map'||!s.flags.includes(`read:${getMainScene(s.chapter,s.act,s).id}`))return s;
- if(s.chapter===4&&s.act===0&&s.verdict==='pending')return allMemories(s)?{...s,phase:'trial',trialRound:0,trialFeedback:null,trialOrder:[]}:s;
+ if(s.chapter===4&&s.act===0&&s.verdict==='pending')return allMemories(s)?{...s,phase:'trial-briefing',trialRound:0,trialFeedback:null,trialOrder:[]}:s;
  if(s.act<2)return enterScene({...s,act:s.act+1,date:dates[s.chapter][s.act+1],visitor:null},'main');
  if(!chapterMemories(s))return s;
  if(s.chapter===1)return {...s,phase:'focus'};
@@ -134,17 +138,26 @@ export function selectFocus(s:RState,id:RPerson|null):RState{
  if(s.phase!=='focus'||s.chapter!==1||s.act!==2||!(id===null||isPerson(id)))return s;
  return enterScene({...s,focus:id,chapter:2,act:0,visitor:null,date:dates[2][0],flags:uniq([...s.flags,`focus:${id??'none'}`])},'main');
 }
-export function startHangout(s:RState,id:RPerson,location:LocationId,activity=false):RState{
- if(s.phase!=='map'||!isPerson(id)||!isLocation(location)||s.actions<1||s.visited.includes(id)||(id==='junyeon'&&s.verdict==='exclude')||personLocation(s,id)!==location)return s;
+export function startHangout(s:RState,id:RPerson,location:LocationId,_activity=false):RState{
+ if(s.phase!=='map'||!isPerson(id)||!isLocation(location)||s.actions<1||s.visited.includes(id)||!hasHangoutAvailable(id,s)||(id==='junyeon'&&s.verdict==='exclude')||personLocation(s,id)!==location)return s;
  const scene=getHangoutScene(id,s,location),key=`${scene.id}:visit-${s.visits[id]+1}`;
  const next=enterScene({...s,actions:s.actions-1,visited:[...s.visited,id],visitor:id,location,flags:uniq([...s.flags,`meeting-place:${key}:${location}`])},'hangout',key);
- return activity?{...next,phase:'activity'}:next;
+ return next;
+}
+export function respondToActivity(s:RState,accept:boolean):RState{
+ if(s.phase!=='activity-invite'||s.mode!=='hangout'||!s.visitor)return s;
+ if(accept)return {...s,phase:'activity'};
+ return finishScene({...s,flags:uniq([...s.flags,`activity-skipped:${s.sceneKey}`])},currentRomanceScene(s));
 }
 export function completeRomanceActivity(s:RState,score:number):RState{
  if(s.phase!=='activity'||s.mode!=='hangout'||!s.visitor||s.flags.includes(`activity:${s.sceneKey}`))return s;
  const value=Number.isFinite(score)?Math.floor(clamp(score,3)):0;
- const next=effects(s,[{person:s.visitor,affection:3+value*2,trust:1+value*3}]);
- return {...next,phase:'story',flags:uniq([...next.flags,`activity:${s.sceneKey}`,`activity-score:${s.sceneKey}:${value}`])};
+ const next=value?effects(s,[{person:s.visitor,affection:value*2,trust:value*3}]):s;
+ return finishScene({...next,flags:uniq([...next.flags,`activity:${s.sceneKey}`,`activity-score:${s.sceneKey}:${value}`])},currentRomanceScene(s));
+}
+export function conveneTrial(s:RState):RState{
+ if(s.phase!=='trial-briefing'||s.chapter!==4||s.act!==0||s.verdict!=='pending'||!allMemories(s)||!s.flags.includes('read:main-5-1'))return s;
+ return {...s,phase:'trial',trialRound:0,trialFeedback:null,trialOrder:[],flags:uniq([...s.flags,'trial:convened'])};
 }
 export function availableMemories(s:RState,location?:LocationId):RClue[]{
  if(s.phase!=='map')return [];
@@ -179,8 +192,12 @@ export function setVerdict(s:RState,verdict:'exclude'|'forgive'):RState{
 }
 
 const modes=['main','hangout','discovery','revelation','repair','finale'];
-const phases=['story','map','focus','activity','trial','verdict','ending'];
-const lineValue=(v:unknown):v is RLine=>!!v&&typeof v==='object'&&'speaker' in v&&'text' in v&&(isPerson(v.speaker)||['player','narrator','teacher','alter'].includes(String(v.speaker)))&&typeof v.text==='string'&&v.text.length<=10000;
+const phases=['story','map','focus','activity-invite','activity','trial-briefing','trial','verdict','ending'];
+const lineValue=(v:unknown):v is RLine=>{
+ if(!v||typeof v!=='object'||!('speaker' in v)||!('text' in v)||!(isPerson(v.speaker)||['player','narrator','teacher','alter'].includes(String(v.speaker)))||typeof v.text!=='string'||v.text.length>10000)return false;
+ const line=v as RLine;
+ return (line.location===undefined||isLocation(line.location))&&(line.art===undefined||(typeof line.art==='string'&&!!artById(line.art)))&&(line.expression===undefined||['neutral','smile','shy','serious','surprised','sad'].includes(line.expression));
+};
 const stringArray=(v:unknown,max=5000):v is string[]=>Array.isArray(v)&&v.length<=max&&v.every(item=>typeof item==='string'&&item.length<=500);
 const int=(v:unknown,min:number,max:number):v is number=>typeof v==='number'&&Number.isInteger(v)&&v>=min&&v<=max;
 export function restoreRomance(value:unknown):RState|null{
@@ -191,13 +208,13 @@ export function restoreRomance(value:unknown):RState|null{
   if(!(s.focus===null||isPerson(s.focus))||!(s.visitor===null||isPerson(s.visitor))||!isLocation(s.location)||!stringArray(s.flags)||!stringArray(s.clues,8)||!int(s.actions,0,2)||!stringArray(s.visited,8)||!s.visited.every(isPerson)||typeof s.sceneKey!=='string'||s.sceneKey.length>300)return null;
   if(!['pending','exclude','forgive'].includes(s.verdict)||!int(s.repairStep,0,4)||typeof s.repairDone!=='boolean'||!int(s.trialRound,0,romanceTrialRounds.length)||!stringArray(s.trialOrder,4)||!(s.ending===null||typeof s.ending==='string')||typeof s.date!=='string'||s.date.length>100||!Array.isArray(s.backlog)||s.backlog.length>800||!s.backlog.every(lineValue))return null;
   if(!(s.trialFeedback===null||(typeof s.trialFeedback==='object'&&typeof s.trialFeedback.ok==='boolean'&&typeof s.trialFeedback.text==='string'&&s.trialFeedback.text.length<=2000)))return null;
-  if(s.chapter<4&&(s.verdict!=='pending'||['trial','verdict','ending'].includes(s.phase)||['revelation','repair','finale'].includes(s.mode)))return null;
+  if(s.chapter<4&&(s.verdict!=='pending'||['trial-briefing','trial','verdict','ending'].includes(s.phase)||['revelation','repair','finale'].includes(s.mode)))return null;
   if(s.repairDone&&(s.verdict!=='forgive'||s.repairStep!==4))return null;
   if(s.mode==='repair'&&(s.verdict!=='forgive'||s.repairStep>3))return null;
   if(s.phase==='focus'&&(s.chapter!==1||s.act!==2))return null;
-  if((s.phase==='activity'||s.mode==='hangout')&&!s.visitor)return null;
-  if(s.phase==='activity'&&s.mode!=='hangout')return null;
-  if(s.phase==='trial'&&(s.chapter!==4||s.act!==0||s.verdict!=='pending'||!allMemories(s)))return null;
+  if((s.phase==='activity'||s.phase==='activity-invite'||s.mode==='hangout')&&!s.visitor)return null;
+  if((s.phase==='activity'||s.phase==='activity-invite')&&s.mode!=='hangout')return null;
+  if((s.phase==='trial'||s.phase==='trial-briefing')&&(s.chapter!==4||s.act!==0||s.verdict!=='pending'||!allMemories(s)))return null;
   if(s.phase==='verdict'&&(s.mode!=='revelation'||s.verdict!=='pending'))return null;
   if(s.clues.some(id=>!memoryEvidence.some(c=>c.id===id&&(c.chapter<s.chapter||(c.chapter===s.chapter&&c.unlockAct<=s.act))&&c.requires.every(required=>s.clues.includes(required)))))return null;
   if(new Set(s.trialOrder).size!==s.trialOrder.length||s.trialOrder.some(id=>!romanceSequence.some(item=>item.id===id)))return null;
@@ -208,13 +225,16 @@ export function restoreRomance(value:unknown):RState|null{
    bonds[id]={affection:clamp(bond.affection,id==='junyeon'?junyeonCap(s):100),trust:clamp(bond.trust)};visits[id]=s.visits[id];
   }
   const restored:RState={...s,name:s.name.trim(),bonds,visits,flags:uniq(s.flags),clues:uniq(s.clues),visited:uniq(s.visited),trialOrder:[...s.trialOrder],backlog:s.backlog.map(line=>({...line})),response:s.response?.map(line=>({...line}))??null,trialFeedback:s.trialFeedback?{...s.trialFeedback}:null};
+  // Edition 2 launched activities before the encounter. Resume those saves at
+  // the conversation, rather than silently marking its unread story complete.
+  if(restored.phase==='activity'&&!restored.flags.some(flag=>flag.startsWith(`choice:${restored.sceneKey}:`))){restored.phase='story';restored.line=0;restored.response=null;}
   if(restored.mode==='discovery'&&!memoryEvidence.some(c=>`discover-${c.id}`===restored.sceneKey))return null;
   if(restored.mode==='discovery'&&restored.phase==='story'&&!availableMemories({...restored,phase:'map'},restored.location).some(c=>`discover-${c.id}`===restored.sceneKey))return null;
   const scene=currentRomanceScene(restored),lines=romanceLines(restored);
   if(restored.response!==null&&!scene.choices.some(choice=>restored.flags.includes(`choice:${restored.sceneKey}:${choice.id}`)))return null;
   if(restored.phase==='story'&&restored.line>lines.length)return null;
   if(restored.phase==='story'&&restored.mode!=='hangout'&&restored.sceneKey!==scene.id)return null;
-  if((restored.phase==='story'||restored.phase==='activity')&&restored.mode==='hangout'&&restored.sceneKey!==`${scene.id}:visit-${restored.visits[restored.visitor!]+1}`)return null;
+  if((restored.phase==='story'||restored.phase==='activity'||restored.phase==='activity-invite')&&restored.mode==='hangout'&&restored.sceneKey!==`${scene.id}:visit-${restored.visits[restored.visitor!]+1}`)return null;
   return restored;
  }catch{return null;}
 }
