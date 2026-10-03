@@ -1,0 +1,46 @@
+{
+  "revision": "2026-10-04-v7",
+  "mode": "built-in image_gen edit",
+  "entries": [
+    {
+      "id": "hyunsol-moment-04",
+      "prompt": "Use case: precise-object-edit. Asset type: landscape school-life game CG.\nImage 1 is the EDIT TARGET. This is a precise background costume consistency correction, not a scene redesign.\nEdit ONLY the three small students behind the main girl's right shoulder, on the right side cafeteria tables. Change their white-shirt-only or mismatched outfits into the common navy blazer uniform. The large girl eating with chopsticks in the foreground, and the blurred player shoulder at far left, are main characters: do not change them.\nCommon school uniform for every BACKGROUND student: dark navy tailored school blazer, white collared shirt, plain solid navy necktie (no colored bows, no stripes), charcoal gray trousers or knee-length charcoal pleated skirt wherever legs are visible. No colored piping or contrasting cuffs. Maintain the existing soft focus and appropriate light and shadow on the background students. A turned-away person still has a navy blazer back.\nKeep everything else unchanged: same foreground main character identity, face expression, body pose, clothing, hands, props, camera, exact landscape framing, background architecture, furniture, food, lighting and crisp anime cel illustration style. Do not recolor the whole picture, alter the foreground, change student count or add text/watermark. All characters remain fully clothed in ordinary school life.",
+      "referenced_image_paths": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-moment-04.png"
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-0d50a809-550e-49ad-ae94-86725232cf8f.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/hyunsol-moment-04.png",
+      "qa": "Visually inspected full output: background students now use navy school blazers; foreground heroine, original framing, gestures, food/books and lighting preserved."
+    },
+    {
+      "id": "junyeon-moment-03",
+      "prompt": "Use case: precise-object-edit. Asset type: landscape school-life game CG.\nImage 1 is the EDIT TARGET. This is a precise background costume consistency correction, not a scene redesign.\nEdit ONLY the two small seated students at the far background-left table behind the walking girl. Their green outerwear becomes the common navy blazer. Keep their poses and positions. The walking girl with brown bob, glasses, green cardigan, bow and books is the main character: keep her fully unchanged, including her outfit.\nCommon school uniform for every BACKGROUND student: dark navy tailored school blazer, white collared shirt, plain solid navy necktie (no colored bows, no stripes), charcoal gray trousers or knee-length charcoal pleated skirt wherever legs are visible. No colored piping or contrasting cuffs. Maintain the existing soft focus and appropriate light and shadow on the background students. A turned-away person still has a navy blazer back.\nKeep everything else unchanged: same foreground main character identity, face expression, body pose, clothing, hands, props, camera, exact landscape framing, background architecture, furniture, food, lighting and crisp anime cel illustration style. Do not recolor the whole picture, alter the foreground, change student count or add text/watermark. All characters remain fully clothed in ordinary school life.",
+      "referenced_image_paths": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/junyeon-moment-03.png"
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-a4d84175-fb45-4331-92d3-934c4ecf2bea.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/junyeon-moment-03.png",
+      "qa": "Visually inspected full output: background students now use navy school blazers; foreground heroine, original framing, gestures, food/books and lighting preserved."
+    },
+    {
+      "id": "junyeon-moment-05",
+      "prompt": "Use case: precise-object-edit. Asset type: landscape school-life game CG.\nImage 1 is the EDIT TARGET. This is a precise background costume consistency correction, not a scene redesign.\nEdit ONLY ALL the small students seated at distant tables behind the girl, both center background and right by the windows. Replace their green/gray school sweaters with the common navy blazer school uniform. The large girl in front carrying her lunch tray, with glasses and green cardigan, is the main character: keep her fully unchanged, including her outfit.\nCommon school uniform for every BACKGROUND student: dark navy tailored school blazer, white collared shirt, plain solid navy necktie (no colored bows, no stripes), charcoal gray trousers or knee-length charcoal pleated skirt wherever legs are visible. No colored piping or contrasting cuffs. Maintain the existing soft focus and appropriate light and shadow on the background students. A turned-away person still has a navy blazer back.\nKeep everything else unchanged: same foreground main character identity, face expression, body pose, clothing, hands, props, camera, exact landscape framing, background architecture, furniture, food, lighting and crisp anime cel illustration style. Do not recolor the whole picture, alter the foreground, change student count or add text/watermark. All characters remain fully clothed in ordinary school life.",
+      "referenced_image_paths": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/junyeon-moment-05.png"
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-65188b3f-69c1-4594-a303-0f7ac7124c3e.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/junyeon-moment-05.png",
+      "qa": "Visually inspected full output: background students now use navy school blazers; foreground heroine, original framing, gestures, food/books and lighting preserved."
+    },
+    {
+      "id": "taewoo-moment-03",
+      "prompt": "Use case: precise-object-edit. Asset type: landscape school-life game CG.\nImage 1 is the EDIT TARGET. This is a precise background costume consistency correction, not a scene redesign.\nEdit ONLY ALL the small students at the background cafeteria tables, both sides and the very far serving counter. They should ALL have the common navy blazer school uniform rather than a mixture of blue sports tracksuits and white-shirt-only outfits. Preserve each person's pose and placement, don't add students. The main ponytailed copper-haired girl in the foreground and her blurred conversation partner at the near left edge keep their original blue-and-white sportswear UNCHANGED: they are the main pair.\nCommon school uniform for every BACKGROUND student: dark navy tailored school blazer, white collared shirt, plain solid navy necktie (no colored bows, no stripes), charcoal gray trousers or knee-length charcoal pleated skirt wherever legs are visible. No colored piping or contrasting cuffs. Maintain the existing soft focus and appropriate light and shadow on the background students. A turned-away person still has a navy blazer back.\nKeep everything else unchanged: same foreground main character identity, face expression, body pose, clothing, hands, props, camera, exact landscape framing, background architecture, furniture, food, lighting and crisp anime cel illustration style. Do not recolor the whole picture, alter the foreground, change student count or add text/watermark. All characters remain fully clothed in ordinary school life.",
+      "referenced_image_paths": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-moment-03.png"
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-54195663-ea31-441d-96b2-0e47502710d0.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taewoo-moment-03.png",
+      "qa": "Visually inspected full output: background students now use navy school blazers; foreground heroine, original framing, gestures, food/books and lighting preserved."
+    }
+  ]
+}

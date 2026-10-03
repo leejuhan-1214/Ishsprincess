@@ -1,5 +1,6 @@
 import type {RPerson,RState} from '../romanceTypes';
 import {illustrationMoments} from './romanceIllustrationMoments';
+import {artRevision} from './artRevision';
 
 export const romanceArt = [
  {id:'world-earbud',person:'world',title:'한쪽씩 나눠 듣는 봄',alt:'노을이 비치는 밴드실에서 세계가 옆에 앉은 나에게 이어폰 한쪽을 건넨다.'},
@@ -23,8 +24,8 @@ export const romanceArt = [
  ...illustrationMoments.map(moment=>({id:moment.id,person:moment.person,title:moment.title,alt:moment.lines[0].text})),
 ] satisfies readonly {id:string;person:RPerson;title:string;alt:string}[];
 export function artById(id?:string){return romanceArt.find(art=>art.id===id);}
-export function artPath(id:string){return `assets/romance-cg/preview/${id}.webp`;}
-export function artOriginalPath(id:string){return `assets/romance-cg/${id}.png`;}
+export function artPath(id:string){return `assets/romance-cg/preview/${id}.webp?v=${artRevision}`;}
+export function artOriginalPath(id:string){return `assets/romance-cg/${id}.png?v=${artRevision}`;}
 export function awareness(s:RState){
  const stages=[
   {title:'첫 약속',text:'친구들과 페어 준비를 시작했다.',after:'read:main-1-1'},

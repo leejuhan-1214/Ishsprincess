@@ -19,21 +19,26 @@
       "lines": [
         {
           "speaker": "narrator",
-          "text": "정문을 지나던 세계가 내 발소리가 멈춘 걸 알아채고 돌아봤다."
+          "text": "정문을 지나던 세계가 내 발소리가 멈추자 돌아봤다. 웃는 입과 달리 가방끈을 잡은 손에는 힘이 들어가 있었다."
         },
         {
           "speaker": "world",
-          "text": "길 외우는 중이야? 그렇게 서 있으면 학교가 먼저 외우겠다."
+          "text": "방금 다른 데 가는 줄 알았어. 같이 들어가는 거, 맞지?"
         },
         {
           "speaker": "player",
-          "text": "표지판보다 네가 먼저 눈에 들어와서."
+          "text": "맞아. 표지판 보느라 잠깐 멈춘 거야."
         },
         {
           "speaker": "world",
-          "text": "그럼 오늘 길 안내는 내가 해. 내일부터는 네 차례고."
+          "text": "그럼 오늘 길 안내는 내가 할래. 네가 내 뒤에 있는지 자꾸 확인하게 되네."
         }
-      ]
+      ],
+      "revisionV7": {
+        "emotion": "정문에서 뒤를 확인하는 초조함",
+        "manifest": "art-prompts/revision-v7/world.json",
+        "finalGeneratedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-9d458b53-d7f2-426b-8f87-b8f7009b5cb8.png"
+      }
     },
     {
       "id": "world-moment-02",
@@ -52,21 +57,26 @@
       "lines": [
         {
           "speaker": "narrator",
-          "text": "녹음 신호가 켜지자 세계의 평소 목소리가 갑자기 단정해졌다."
+          "text": "녹음 신호가 켜지자 세계는 마이크를 가렸다. 내 반응을 기다리는 눈이 쉽게 떨어지지 않았다."
         },
         {
           "speaker": "world",
-          "text": "이상하지. 네 앞에선 잘하는데 마이크 앞에선 자기소개부터 어려워."
+          "text": "네 표정이 안 보이면 내가 이상하게 부르는 것 같아. 첫 부분만 먼저 들어 줄래?"
         },
         {
           "speaker": "player",
-          "text": "마이크도 잠깐 모르는 친구라고 생각해 봐."
+          "text": "들을게. 마음에 안 드는 데가 있으면 그것도 말해도 되지?"
         },
         {
           "speaker": "world",
-          "text": "그러면 네가 먼저 질문해. 혼자 잘하는 척은 오늘 그만할래."
+          "text": "응. 괜찮다는 말만 기다리고 싶은데, 그러면 네가 진짜 들었는지 또 궁금할 것 같아서."
         }
-      ]
+      ],
+      "revisionV7": {
+        "emotion": "녹음 중 확인받고 싶은 시선",
+        "manifest": "art-prompts/revision-v7/world.json",
+        "finalGeneratedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-a047e4cb-9ba4-442b-844e-9959562453dc.png"
+      }
     },
     {
       "id": "world-moment-03",
@@ -85,21 +95,26 @@
       "lines": [
         {
           "speaker": "narrator",
-          "text": "세계는 케이블을 끼우기 전에 발끝으로 박자를 두 번 쳤다."
+          "text": "세계는 케이블을 끼우다 곁눈으로 나를 봤다. 기타 목을 받친 손가락이 조금 굳어 있었다."
         },
         {
           "speaker": "world",
-          "text": "처음 소리 날 때 놀라지 마. 볼륨은 낮췄는데 기대는 못 낮췄어."
+          "text": "첫 소리, 네가 먼저 들었으면 했어. 다른 데 갈 생각은 아직 없지?"
         },
         {
           "speaker": "player",
-          "text": "그럼 내가 놀라는 표정은 감상에 포함하지 마."
+          "text": "지금은 들으러 온 거야. 볼륨부터 천천히 올려 봐."
         },
         {
           "speaker": "world",
-          "text": "포함할 건데. 내 첫 관객 반응은 다 듣고 싶거든."
+          "text": "응. 첫 관객이 너라고 생각하니까 잘하고 싶은 마음이 좀 지나치네."
         }
-      ]
+      ],
+      "revisionV7": {
+        "emotion": "첫 관객을 놓칠까 곁눈질",
+        "manifest": "art-prompts/revision-v7/world.json",
+        "finalGeneratedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-ed8fefac-9268-4e30-a246-bbfc9242f332.png"
+      }
     },
     {
       "id": "world-moment-04",
@@ -118,21 +133,26 @@
       "lines": [
         {
           "speaker": "narrator",
-          "text": "급식 쟁반 한쪽에 남은 만두를 두고 세계가 지휘자처럼 젓가락을 들었다."
+          "text": "급식 쟁반에 만두 한 개가 남았다. 세계는 크게 웃으면서도 내가 누구를 보는지 살폈다."
         },
         {
           "speaker": "world",
-          "text": "마지막 한 개. 지금 양보하면 나중에 서운하다고 노래할 수도 있어."
+          "text": "마지막 한 개. 이거 먹고 바로 다른 자리로 갈 거야?"
         },
         {
           "speaker": "player",
-          "text": "차라리 가위바위보로 정하자. 곡 하나 생기는 건 막아야지."
+          "text": "아니. 가위바위보부터 하자. 점심시간 아직 남았잖아."
         },
         {
           "speaker": "world",
-          "text": "좋아. 대신 네가 이기면 첫 소절은 같이 만들어 줘."
+          "text": "좋아. 내가 이기면 천천히 먹기. ……지면 그래도 조금 더 얘기해 줘."
         }
-      ]
+      ],
+      "revisionV7": {
+        "emotion": "웃으면서도 살피는 점심",
+        "manifest": "art-prompts/revision-v7/world.json",
+        "finalGeneratedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-c5f47806-3542-4b50-be12-570baa87d955.png"
+      }
     },
     {
       "id": "world-moment-05",
@@ -151,21 +171,26 @@
       "lines": [
         {
           "speaker": "narrator",
-          "text": "옥상 바람이 악보 한 장을 넘겼다. 세계는 붙잡는 대신 잠시 눈을 감았다."
+          "text": "옥상 바람에 머리카락이 흐트러졌다. 세계는 악보를 꼭 안은 채 잠시 눈을 감았다."
         },
         {
           "speaker": "world",
-          "text": "오늘은 아무것도 찍지 말자. 바람 소리는 기억으로도 남을 것 같아."
+          "text": "아무 말 안 하는 것도 같이 있는 거라고 생각하면 되지?"
         },
         {
           "speaker": "player",
-          "text": "그럼 박자만 맞춰 걸을까?"
+          "text": "응. 네가 노래 안 해도 여기 있을 수 있어."
         },
         {
           "speaker": "world",
-          "text": "응. 근데 내가 느리게 가면 같이 느려져 줘."
+          "text": "이상하다. 듣고 싶은 말인데도 한 번 더 확인하고 싶어져. 오늘은 그냥 믿어 볼게."
         }
-      ]
+      ],
+      "revisionV7": {
+        "emotion": "조용해진 옥상",
+        "manifest": "art-prompts/revision-v7/world.json",
+        "finalGeneratedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-1cb77c5c-d97a-4b55-87dd-47b02d95a351.png"
+      }
     },
     {
       "id": "world-moment-06",
@@ -184,21 +209,26 @@
       "lines": [
         {
           "speaker": "narrator",
-          "text": "책장 너머에서 세계가 소리 없이 내 이름을 불렀다. 내가 대답하려 하자 입가에 손가락을 댔다."
+          "text": "책장 너머의 세계가 입가에 손가락을 댔다. 다른 쪽으로 향했던 내 시선을 따라왔다가 음악책을 끌어안았다."
         },
         {
           "speaker": "world",
-          "text": "쉿. 이름 부른 건 난데 혼나는 건 네 쪽이겠다."
+          "text": "쉿. 이름은 내가 불렀는데 네가 다른 쪽부터 보니까 조금 샘났어."
         },
         {
           "speaker": "player",
-          "text": "입모양으로 부르는 건 반칙 아니야?"
+          "text": "소리가 어느 쪽인지 찾은 거야. 지금은 너 보고 있잖아."
         },
         {
           "speaker": "world",
-          "text": "그럼 책 찾고 밖에서 불러 줘. 이번엔 내가 대답할게."
+          "text": "알아. 혼자 뜻을 붙였네. 책 찾고 밖에서 네 목소리로 한 번만 불러 줘."
         }
-      ]
+      ],
+      "revisionV7": {
+        "emotion": "책장 사이의 작은 질투",
+        "manifest": "art-prompts/revision-v7/world.json",
+        "finalGeneratedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-b8402bfd-32d7-4fa1-9bb4-d594720284d2.png"
+      }
     },
     {
       "id": "world-moment-07",
@@ -217,21 +247,26 @@
       "lines": [
         {
           "speaker": "narrator",
-          "text": "객석 맨 뒤에서도 세계의 손이 보였다. 빈 의자들이 둘 사이를 길게 채웠다."
+          "text": "객석 맨 뒤에서도 세계의 손이 보였다. 그녀는 내가 답할 때까지 흔드는 손을 내리지 않았다."
         },
         {
           "speaker": "world",
-          "text": "이 정도면 보여? 네가 멀리 앉아도 내가 먼저 찾을 수 있게."
+          "text": "이 정도면 보여? 객석이 비어 있는데도 너를 놓칠까 봐 자꾸 보게 돼."
         },
         {
           "speaker": "player",
-          "text": "보여. 이제 내려도 되는데."
+          "text": "보여. 여기 있으니까 마이크 편하게 잡아."
         },
         {
           "speaker": "world",
-          "text": "한 번만 더 흔들어 줘. 내가 제대로 찾은 건지 확인하게."
+          "text": "응. 한 번만 더 흔들어 줘. 보고 나면 앞을 보고 부를 수 있을 것 같아."
         }
-      ]
+      ],
+      "revisionV7": {
+        "emotion": "먼 객석에서 한 사람을 찾는 눈",
+        "manifest": "art-prompts/revision-v7/world.json",
+        "finalGeneratedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-84340369-00dc-4a2c-9afe-59afa6b38b72.png"
+      }
     },
     {
       "id": "world-moment-08",
@@ -250,21 +285,26 @@
       "lines": [
         {
           "speaker": "narrator",
-          "text": "세계는 응원 포스터 여백에 별을 하나 그렸다가 그 위에 더 큰 별을 덧그렸다."
+          "text": "세계는 포스터 여백의 별 위에 더 큰 별을 그렸다. 종이 모서리를 누른 손과 부푼 볼이 고집을 드러냈다."
         },
         {
           "speaker": "world",
-          "text": "이건 번진 게 아니라 강조야. 그렇게 봐 줘."
+          "text": "내 별부터 봐 달라면 욕심이야? 오늘 네가 다른 포스터를 너무 오래 봤어."
         },
         {
           "speaker": "player",
-          "text": "별 하나가 응원을 독점하는데?"
+          "text": "네가 그린 걸 보고 있어. 그렇다고 다른 그림이 안 좋아지는 건 아니잖아."
         },
         {
           "speaker": "world",
-          "text": "오늘은 양보 안 해. 그래도 네 별 그릴 자리는 남겨 뒀어."
+          "text": "알아. 그래서 말로만 투정할래. 네 별 그릴 자리까지 덮지는 않았어."
         }
-      ]
+      ],
+      "revisionV7": {
+        "emotion": "응원만큼은 독차지하고 싶은 고집",
+        "manifest": "art-prompts/revision-v7/world.json",
+        "finalGeneratedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-66e3b0b0-18c2-4777-92a9-200e54151680.png"
+      }
     },
     {
       "id": "world-moment-09",
@@ -283,23 +323,28 @@
       "lines": [
         {
           "speaker": "narrator",
-          "text": "세계가 복도 게시판의 빈칸을 가리켰다. 다른 종이들이 빼곡한데 딱 그 자리만 비어 있었다."
+          "text": "복도 게시판의 빈칸 앞에서 세계가 질문을 삼켰다. 닫힌 파일을 안은 팔에 힘이 들어갔다."
         },
         {
           "speaker": "world",
-          "text": "여기다 행사 사진 붙인대. 무대 사진만 잔뜩이면 재미없겠지?"
+          "text": "여기 단체사진 붙인대. 내가 안 나온 사진도 골라야겠지?"
         },
         {
           "speaker": "player",
-          "text": "준비하던 모습도 한 장 있으면 좋겠다."
+          "text": "네가 같이 만든 행사니까 준비하던 모습도 남기면 좋겠어."
         },
         {
           "speaker": "world",
-          "text": "그럼 케이블 감다가 웃은 것도 후보. 멋있는 척 안 한 순간도 남겨 보자."
+          "text": "응. 근데 네가 고를 때 내가 있는 걸 먼저 찾았으면 하는 마음도 있어. 그렇다고 네 대신 고르진 않을게."
         }
       ],
       "previousPrompt": "Use case: illustration-story. Asset: single narrative CG for age-appropriate school romance visual novel. Reference image 1 is CHARACTER IDENTITY and crisp inked cel-shading STYLE only, not pose/composition. Same teenage girl Jeon Segye / World as reference: long flowing black wavy hair, violet eyes, burgundy rose with dark ribbons hair ornament, dark navy school blazer white piping, white collared shirt burgundy/navy bow with red brooch, modest dark plaid skirt. Preserve facial identity, hairstyle and school outfit, no redesign. Change expression and gesture exactly as specified; do not copy reference pose.\nCreate ONE 16:9 LANDSCAPE wide illustration, NOT collage, not card, not portrait crop.\nScene: sunlit classroom hallway with window breeze, two sheets fluttering, no readable writing.\nComposition: dynamic diagonal medium-long side shot in bright corridor, both shoes and head visible, frozen candid action no low skirt angle. Framing and staging must strongly differ from the reference portrait. Environment is substantial and legible.\nExpression: wide-eyed startled face with small open mouth.\nAction/gesture: lunges one safe step forward reaching to catch a fluttering loose sheet, other arm hugs closed folder.\nCrisp sophisticated anime linework and clean celshading matching reference; natural cinematic lighting, detailed grounded environment, restrained school-life feeling. Ordinary fully clothed teenagers, innocent interaction. If player indicated, show only cropped neutral-clothed shoulder or hand, no additional face. Correct anatomy and hands, exactly two arms. No text, dialogue, captions, UI, logos, watermark, split panels, repeated character, seductive staging, sexualization, foreshortened skirt view. Do not make frontal table-and-offered-hand pose.",
-      "generationNote": "Original ordinary school-life request was input-filter rejected. Replaced with a different fully clothed standing classroom/garden task, without changing character age or hiding setting."
+      "generationNote": "Original ordinary school-life request was input-filter rejected. Replaced with a different fully clothed standing classroom/garden task, without changing character age or hiding setting.",
+      "revisionV7": {
+        "emotion": "사진을 고르며 망설이는 마음",
+        "manifest": "art-prompts/revision-v7/world.json",
+        "finalGeneratedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-07f2f75d-0a71-4932-a485-674617520351.png"
+      }
     },
     {
       "id": "world-moment-10",
@@ -318,21 +363,26 @@
       "lines": [
         {
           "speaker": "narrator",
-          "text": "정원 비가 잦아들어도 세계는 우산을 접지 않았다. 내 쪽으로 손잡이가 조금 기울었다."
+          "text": "정원 비가 잦아들어도 세계는 우산을 접지 않았다. 내 쪽으로 손잡이를 기울이고 대답을 기다렸다."
         },
         {
           "speaker": "world",
-          "text": "여긴 아직 비 와. 그러니까 잠깐 더 같이 가도 이상하진 않지?"
+          "text": "잠깐 더 같이 가고 싶어. 비 핑계 대면 덜 부담스러울 줄 알았는데."
         },
         {
           "speaker": "player",
-          "text": "핑계 없어도 같이 걸을 수 있어."
+          "text": "핑계 없어도 말해도 돼. 오늘은 조금 더 걸을 수 있어."
         },
         {
           "speaker": "world",
-          "text": "알아. 그래도 이런 날씨는 조금 고맙네."
+          "text": "고마워. 다음에 먼저 가야 하는 날엔 말해 줘. 붙잡고 싶어도 네가 고를 자리는 남겨 둘게."
         }
-      ]
+      ],
+      "revisionV7": {
+        "emotion": "머물러 달라고 말하기 직전",
+        "manifest": "art-prompts/revision-v7/world.json",
+        "finalGeneratedPath": "C:\\Users\\User\\.codex\\generated_images\\01a1023d-1372-7413-975e-d60bba3115ef\\exec-c3752e9a-145a-44b2-8f0e-cf7e8e33bf3b.png"
+      }
     }
   ]
 }

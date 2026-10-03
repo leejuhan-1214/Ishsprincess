@@ -30,3 +30,4 @@ await import('../tests/romanceEndings.test.ts');
 await import('../tests/romanceCharacterVoices.test.ts');
 await import('../tests/dialoguePresentation.test.ts');
 await import('../tests/illustration-moments.test.ts');
+await import('../tests/artRevision.test.ts');

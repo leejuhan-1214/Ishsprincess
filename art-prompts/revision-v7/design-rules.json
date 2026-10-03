@@ -1,0 +1,31 @@
+{
+  "revision": "2026-10-04-v7",
+  "mode": "built-in image_gen edit",
+  "scope": "Active game portraits and CGs; archived bonus images are not part of this revision.",
+  "schoolUniform": {
+    "appliesTo": "Unidentified background students in this fictional school",
+    "shirt": "white collared school shirt",
+    "outerwear": "dark navy school blazer",
+    "neckwear": "plain navy necktie, no colored bow or stripes",
+    "bottoms": "charcoal trousers or knee-length charcoal pleated skirt",
+    "exceptions": "The eight named main characters retain their individual costumes. Do not convert main heroines into background students."
+  },
+  "juhan": {
+    "identity": "Female programmer and enthusiastic gamer, long chestnut hair, teal eyes",
+    "design": "Tousled hair, sleepy eyes, headset and oversized teal/dark gaming hoodie over a fully clothed school outfit; not a sexualized design",
+    "specificRepairs": ["moment-01: one anatomically correct left hand and one right hand", "moment-06: correct left-hand thumb and wrist orientation", "moment-05: assembling a red Sinanju plastic model, not a paper box"],
+    "reference": "https://manual.bandai-hobby.net/menus/detail/670"
+  },
+  "world": {
+    "identity": "Black wavy hair, original violet eyes, rose accessory and red ribbon; band singer/guitarist",
+    "design": "Anxious attachment, jealous glances and vulnerable smiles expressed differently by scene; keep relief and warmth in later moments",
+    "avoid": "No weapons, self-harm, confinement, sexualization or replacement of every expression with the same face"
+  },
+  "anatomy": ["taehun-moment-02: coherent left shoulder, upper arm, elbow and forearm", "taehun-moment-07: feet support the body and ankles follow the lower legs"],
+  "continuity": "Keep CG IDs, scene IDs, line counts, save cursors, encounter choices and rewards stable. Update Juhan 05 text and its bridge to match the new activity.",
+  "locationBackgroundAudit": {
+    "method": "All sixteen active location backgrounds visually inspected at source resolution",
+    "result": "No background students; no clothing correction needed and no location background changed",
+    "files": ["assets/locations/gate.png", "assets/classroom.webp", "assets/locations/hallway.png", "assets/locations/garden.png", "assets/locations/cafeteria.png", "assets/locations/library.png", "assets/lab.webp", "assets/locations/media.png", "assets/computer.webp", "assets/night.webp", "assets/band.webp", "assets/locations/art.png", "assets/dance.webp", "assets/locations/auditorium.png", "assets/locations/roof.png", "assets/locations/walk.png"]
+  }
+}

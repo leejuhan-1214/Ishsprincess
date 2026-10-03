@@ -1,6 +1,6 @@
 import type {Character, CharacterId, LocationId} from '../types';
 export const characters: Character[] = [
- {id:'world',name:'전세계',role:'밴드부 · 보컬 & 기타',tag:'너에게만 들려줄게',color:'#d997a6',specialLabel:'집착',bio:'무대 위에서는 누구보다 빛나는 사람. 웃음 뒤에 숨긴 불안은 아직 누구에게도 들려준 적 없다.',quote:'카메라가 꺼져도 내 옆에 있을 거야?',location:'band'},
+ {id:'world',name:'전세계',role:'밴드부 · 보컬 & 기타',tag:'너에게만 들려줄게',color:'#d997a6',specialLabel:'집착',bio:'무대에서는 시선을 독차지하지만, 좋아하는 사람 앞에서는 작은 침묵도 오래 곱씹는다. 웃는 입술과 달리 눈빛에는 질투와 불안이 먼저 비치고, 헤어질 때면 소매 끝을 놓는 데 시간이 걸린다. 확인받고 싶은 마음을 숨기지 못하지만, 함께하는 동안 상대의 시간도 존중하는 법을 배운다.',quote:'오늘은 나 보러 온 거지? …한 번만 더 말해 줘.',location:'band'},
  {id:'junyeon',name:'방준연',role:'화학 탐구 · 연구 기록',tag:'빈 옆자리의 온도',color:'#c2a37b',specialLabel:'위축',bio:'조금 느린 말투와 손때 묻은 노트. 주눅 든 모습 너머에는 누구보다 집요한 호기심이 있다.',quote:'내가 말할 때, 옆에 있어 줘.',location:'chemistry'},
  {id:'hyunsol',name:'최현솔',role:'화학 탐구 · 실험 설계',tag:'마음에도 오차가 있을까',color:'#85b6ad',specialLabel:'짜증',bio:'정확한 숫자와 틀림없는 절차를 믿는다. 마음까지 정답으로 설명할 수 있을 거라고 생각했다.',quote:'맞는 말이어도, 상처가 될 수 있겠지.',location:'chemistry'},
  {id:'taewoo',name:'김태우',role:'댄스부 · 센터',tag:'여덟 번째 카운트',color:'#d99c79',specialLabel:'경쟁심',bio:'누구보다 무대를 사랑하는 자신만만한 센터. 박수 소리가 멎은 뒤의 자신도 사랑받고 싶다.',quote:'실수해도, 끝까지 봐 줄 거지?',location:'dance'},

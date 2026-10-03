@@ -1,0 +1,39 @@
+{
+  "revision": "2026-10-04-v7",
+  "mode": "built-in image_gen edit",
+  "entries": [
+    {
+      "id": "world-earbud",
+      "prompt": "Use case: identity-preserve. Asset type: landscape visual novel scene illustration.\nImage 1 is the edit target. Image 2 is ONLY the character face/hair design reference, not a pose or framing template.\nChange only the girl's facial expression and small hairstyle details in Image 1: While still offering one earbud, her violet eyes search the listener's face with noticeably anxious attachment: inner brows slightly raised, dark tired lower eyelids, tiny wavering closed smile, a little blush and messy stray bangs. The smile should read 'please stay here listening with me' rather than a generic relaxed model smile. Keep two correctly oriented hands, one resting at cheek and one holding earbud. Do not add characters or props.\nPreserve her identity, violet eyes, long black wavy hair, rose accessory, red ribbon, fully clothed school outfit, body proportions, camera angle, original landscape framing, scene environment and warm lighting. Match the same crisp cel-shaded anime illustration style. The second image's tired vulnerable facial character should be visible without copying its pose. This is an ordinary age-appropriate nonsexual school friendship/romance scene. No added text, no watermark, no violence, no extra hands. Keep original background and layout.",
+      "referenced_image_paths": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-earbud.png",
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png"
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-d366bc7c-5dd2-4a90-8633-34a974f166e2.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-earbud.png",
+      "qa": "Visually inspected: distinct anxious / worried / relieved expressions, original staging and props preserved, violet eyes and hands intact, no background students."
+    },
+    {
+      "id": "world-ending",
+      "prompt": "Use case: identity-preserve. Asset type: landscape visual novel scene illustration.\nImage 1 is the edit target. Image 2 is ONLY the character face/hair design reference, not a pose or framing template.\nChange only the girl's facial expression and small hairstyle details in Image 1: Her expression becomes a distinct relieved, tender almost-crying smile with a small tear shining at one lower eyelid; tension is leaving her brows as she makes warm eye contact. Keep slight under-eye tiredness and messy stray bangs for continuity with image 2. Her hand on the listener's hand is relaxed, never restraining. This is a peaceful earned ending, not her earlier suspicious expression. Keep phone, instrument and hand-holding geometry, correct fingers.\nPreserve her identity, violet eyes, long black wavy hair, rose accessory, red ribbon, fully clothed school outfit, body proportions, camera angle, original landscape framing, scene environment and warm lighting. Match the same crisp cel-shaded anime illustration style. The second image's tired vulnerable facial character should be visible without copying its pose. This is an ordinary age-appropriate nonsexual school friendship/romance scene. No added text, no watermark, no violence, no extra hands. Keep original background and layout.",
+      "referenced_image_paths": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-ending.png",
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png"
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-a1ff260b-bbb9-4619-ab84-7123320faf32.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/world-ending.png",
+      "qa": "Visually inspected: distinct anxious / worried / relieved expressions, original staging and props preserved, violet eyes and hands intact, no background students."
+    },
+    {
+      "id": "memory-time",
+      "prompt": "Use case: identity-preserve. Asset type: landscape visual novel scene illustration.\nImage 1 is the edit target. Image 2 is ONLY the character face/hair design reference, not a pose or framing template.\nChange only the girl's facial expression and small hairstyle details in Image 1: She has a worried, searching expression: knitted inner brows, slightly bitten lower lip without any injury, tired violet eyes looking up from the mismatching appointment notes toward the listener, as if needing reassurance that she was not deliberately left waiting. Add slightly messy bangs and fine under-eye shadows matching image 2. Not an evil smirk. Preserve pointing at the two notes and correct hand anatomy. Do not introduce readable accusations or new clues.\nPreserve her identity, violet eyes, long black wavy hair, rose accessory, red ribbon, fully clothed school outfit, body proportions, camera angle, original landscape framing, scene environment and warm lighting. Match the same crisp cel-shaded anime illustration style. The second image's tired vulnerable facial character should be visible without copying its pose. This is an ordinary age-appropriate nonsexual school friendship/romance scene. No added text, no watermark, no violence, no extra hands. Keep original background and layout.",
+      "referenced_image_paths": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/memory-time.png",
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-world.png"
+      ],
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-71d16a2f-ba07-42ae-8467-1b365021c34e.png",
+      "savedPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/memory-time.png",
+      "qa": "Visually inspected: distinct anxious / worried / relieved expressions, original staging and props preserved, violet eyes and hands intact, no background students."
+    }
+  ]
+}

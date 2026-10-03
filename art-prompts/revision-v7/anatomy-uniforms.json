@@ -1,0 +1,569 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-04",
+  "scope": "Anatomy corrections for Taehun 02/07; review of all 74 romance-cg PNGs whose filenames do not begin juhan- or world-. Other 24 files owned by another agent.",
+  "uniformStandard": {
+    "shirt": "white collared shirt",
+    "outerwear": "dark navy blazer with sleeves",
+    "tie": "plain navy necktie when visible from the front",
+    "bottoms": "charcoal trousers or knee-length plain charcoal pleated skirt"
+  },
+  "invariants": [
+    "Preserve protagonist and all named main cast unique outfits",
+    "Preserve scene framing, character pose/expression and environments except specified anatomy repairs",
+    "Preserve staff uniforms, silhouettes without a visible mismatch, and occluded garment details",
+    "Final image edits performed only with built-in image_gen; sharp used only to make review contact sheets"
+  ],
+  "review": {
+    "count": 74,
+    "method": "Five 4x4 review contact sheets of 416x234 thumbnails; full-size individual inspection of all nine candidate edit targets and ambiguous minhyuk-moment-08/seoyul-moment-04; individual output review for all seven selected edits.",
+    "contactSheetDirectory": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/output/art-audit-v7",
+    "delegatedToRoot": [
+      "hyunsol-moment-04",
+      "junyeon-moment-03",
+      "junyeon-moment-05",
+      "taewoo-moment-03"
+    ],
+    "delegatedRecord": "art-prompts/revision-v7/uniforms-extra.json"
+  },
+  "audit": [
+    {
+      "id": "hyunsol-crystal",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "hyunsol-ending",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "hyunsol-moment-01",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "hyunsol-moment-02",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "hyunsol-moment-03",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "hyunsol-moment-04",
+      "uniformStatus": "delegated/root",
+      "anatomyStatus": "not-requested",
+      "note": "Visible mismatched ordinary-student clothing; root owns scoped correction and final QA."
+    },
+    {
+      "id": "hyunsol-moment-05",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "hyunsol-moment-06",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "hyunsol-moment-07",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "hyunsol-moment-08",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "hyunsol-moment-09",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "hyunsol-moment-10",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "junyeon-moment-01",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "junyeon-moment-02",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "junyeon-moment-03",
+      "uniformStatus": "delegated/root",
+      "anatomyStatus": "not-requested",
+      "note": "Visible mismatched ordinary-student clothing; root owns scoped correction and final QA."
+    },
+    {
+      "id": "junyeon-moment-04",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "junyeon-moment-05",
+      "uniformStatus": "delegated/root",
+      "anatomyStatus": "not-requested",
+      "note": "Visible mismatched ordinary-student clothing; root owns scoped correction and final QA."
+    },
+    {
+      "id": "junyeon-moment-06",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "junyeon-moment-07",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "junyeon-moment-08",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "junyeon-moment-09",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "junyeon-moment-10",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "Parent's completed neck repair retained; no ordinary student uniform correction needed."
+    },
+    {
+      "id": "memory-cues",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "memory-meeting",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "memory-reservation",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "memory-time",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "Named main cast only, no ordinary student uniform to replace."
+    },
+    {
+      "id": "minhyuk-ending",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "minhyuk-moment-01",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "minhyuk-moment-02",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "minhyuk-moment-03",
+      "uniformStatus": "edited",
+      "anatomyStatus": "not-requested",
+      "note": "Rear-left student and seated right students standardized; main heroine council uniform unchanged."
+    },
+    {
+      "id": "minhyuk-moment-04",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "minhyuk-moment-05",
+      "uniformStatus": "edited",
+      "anatomyStatus": "not-requested",
+      "note": "Distant seated readers standardized, including white-sleeve/vest mismatch; main heroine council uniform unchanged."
+    },
+    {
+      "id": "minhyuk-moment-06",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "minhyuk-moment-07",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "minhyuk-moment-08",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "Expanded individual review: navy shoulders and white shirt collars remain coherent; burgundy visible areas are auditorium chair backs, not uniforms."
+    },
+    {
+      "id": "minhyuk-moment-09",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "minhyuk-moment-10",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "minhyuk-rain",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "Distant umbrella silhouettes do not show an identifiable uniform mismatch; preserved."
+    },
+    {
+      "id": "seoyul-ending",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "seoyul-moment-01",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "seoyul-moment-02",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "seoyul-moment-03",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "seoyul-moment-04",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "Expanded individual review: distant corridor figure has dark navy outerwear; no visible uniform mismatch requiring edits."
+    },
+    {
+      "id": "seoyul-moment-05",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "seoyul-moment-06",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "seoyul-moment-07",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "seoyul-moment-08",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "seoyul-moment-09",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "seoyul-moment-10",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "seoyul-sketch",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taehun-atlas",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taehun-ending",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taehun-moment-01",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taehun-moment-02",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "edited",
+      "note": "No background ordinary students; corrected only misplaced left arm/phantom hand."
+    },
+    {
+      "id": "taehun-moment-03",
+      "uniformStatus": "edited",
+      "anatomyStatus": "not-requested",
+      "note": "Background student blazers and skirts standardized; cafeteria staff clothing and cropped foreground companion deliberately preserved."
+    },
+    {
+      "id": "taehun-moment-04",
+      "uniformStatus": "edited",
+      "anatomyStatus": "not-requested",
+      "note": "Three distant corridor students standardized; foreground heroine unchanged."
+    },
+    {
+      "id": "taehun-moment-05",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taehun-moment-06",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taehun-moment-07",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "edited",
+      "note": "No background ordinary students; modest wider framing now shows both complete ankles and shoes with natural shin alignment and floor support."
+    },
+    {
+      "id": "taehun-moment-08",
+      "uniformStatus": "edited",
+      "anatomyStatus": "not-requested",
+      "note": "Two distant computer-room students standardized where visible; seated rear orientations and blur preserved."
+    },
+    {
+      "id": "taehun-moment-09",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taehun-moment-10",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taewoo-ending",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taewoo-hand",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "Reflection belongs to the heroine, not an ordinary background student; outside this uniform correction scope."
+    },
+    {
+      "id": "taewoo-moment-01",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taewoo-moment-02",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taewoo-moment-03",
+      "uniformStatus": "delegated/root",
+      "anatomyStatus": "not-requested",
+      "note": "Visible mismatched ordinary-student clothing; root owns scoped correction and final QA."
+    },
+    {
+      "id": "taewoo-moment-04",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taewoo-moment-05",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "Dancers on a monitor are performance/video content, not the surrounding ordinary student crowd; preserved."
+    },
+    {
+      "id": "taewoo-moment-06",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "Visible cropped foreground companion is not a background ordinary student; preserved."
+    },
+    {
+      "id": "taewoo-moment-07",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taewoo-moment-08",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taewoo-moment-09",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    },
+    {
+      "id": "taewoo-moment-10",
+      "uniformStatus": "reviewed-no-change",
+      "anatomyStatus": "not-requested",
+      "note": "No identifiable ordinary-student uniform mismatch requiring correction in review; main cast and foreground companions preserved."
+    }
+  ],
+  "edits": [
+    {
+      "id": "taehun-moment-02",
+      "scope": "Correct Taehun's misplaced left arm only",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target. Repair ONLY the girl's LEFT ARM anatomy. Her left shoulder is on the VIEWER'S RIGHT. Draw that left arm naturally descending from that shoulder along her own left side, with a gentle elbow bend and a relaxed left hand beside her hip on the viewer's right. Remove the isolated phantom hand currently resting on the trolley handle at the viewer's left; the trolley handle should be empty. Keep exactly TWO arms and TWO hands: her right hand still holds the book in the existing position, her repaired left hand rests beside her left hip. Preserve her face, expression, hair braid, full clothing, legs, book, trolley, library shelves, camera framing, sunlight, dimensions, crisp anime linework and all other details. Do not redesign the character, add people, or change composition. This is only a small anatomical cleanup.",
+      "inputPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-02.png",
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-93e9905d-63e1-4132-919c-08b92d66f0fb.png",
+      "finalPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-02.png",
+      "backupPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/output/art-backups/v7/taehun-moment-02.png",
+      "visualCheck": "passed",
+      "outputReview": "No background ordinary students; corrected only misplaced left arm/phantom hand.",
+      "projectRelativeFinalPath": "public/assets/romance-cg/taehun-moment-02.png"
+    },
+    {
+      "id": "taehun-moment-07",
+      "scope": "Correct both ankles and planted feet, with modest camera pullback so both whole shoes remain inside frame",
+      "prompt": "Use case: precise-object-edit. Image 1 is the current edit target. Make a narrow framing-and-ankle correction ONLY. Pull the camera backward slightly, about 20 percent, so the SAME girl's entire body including BOTH complete ankles and BOTH whole loafers is visible, with a small margin of floor below the soles. Do not cut either foot at the lower frame. Show a stable natural standing stance: knees, shins, ankle joints and shoe directions anatomically coherent, both soles resting on the observatory floor, no twisted backward feet, crossed joints, floating shoe or dislocated ankle. Maintain her existing three-quarter rear body orientation and looking back over her shoulder, inviting open palm extended toward viewer. Keep her identity and face as closely as possible: same gentle shy smile, taupe side braid, violet eyes, muted lavender-gray cardigan, white collar, navy bow, dark plaid skirt, opaque dark tights, dark loafers, star accessories. Fully clothed ordinary teen school-life illustration, no sexualized pose or body emphasis. Preserve the original doorframe foreground, observatory room, covered telescope, red low safety lights, sunset window, stools, colors, crisp anime ink and cel shading, and original 16:9 horizontal aspect ratio. The only camera change is the modest wider framing required to show both whole shoes. Do not redesign her, change her hand gesture, add students, or introduce any new props.",
+      "inputPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-07.png",
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-04d522e7-02e1-4842-92f3-68a8a7b8661f.png",
+      "finalPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-07.png",
+      "backupPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/output/art-backups/v7/taehun-moment-07.png",
+      "visualCheck": "passed",
+      "outputReview": "Both complete shoes and ankles are now visible with floor margin. Knee-shin-ankle directions and soles form a natural supported stance. Same over-shoulder face, outstretched palm, cardigan, covered telescope, doorframe and red dusk atmosphere retained.",
+      "projectRelativeFinalPath": "public/assets/romance-cg/taehun-moment-07.png",
+      "inputGeneratedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-fa8af6f9-b639-4f49-923b-8e14214901e3.png",
+      "previousAttempts": [
+        {
+          "prompt": "Use case: precise-object-edit. Image 1 is the edit target. Correct ONLY the lower legs, ankles and feet of the standing girl. The visible rear loafer is twisted backward relative to its shin; redraw a normal ankle joint and shoe aligned with that leg and knee, with the sole naturally resting flat on the observatory floor. Both legs should support her standing weight with relaxed knees, not extreme ankle rotation or broken joints. Keep exactly two legs and two feet. Preserve her torso, reaching arm and hand, face, smile, hair, uniform, telescope, room, lighting, camera angle and framing. Maintain the existing crop of the nearer leg rather than changing the whole composition. Keep the anime ink/cel-shading style. Do not alter other anatomy or add objects.",
+          "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-fa8af6f9-b639-4f49-923b-8e14214901e3.png",
+          "visualCheck": "superseded after follow-up QA: nearer ankle and shoe remained outside original crop"
+        }
+      ]
+    },
+    {
+      "id": "minhyuk-moment-03",
+      "scope": "Unify only visible ordinary background student uniforms",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target. Change ONLY the ordinary background students' clothing: the rear-view girl behind the counter on the far left and the seated boys on the right. They currently wear white council-style tops and burgundy ties/ribbons. The dark-skinned heroine in the large foreground with a long black ponytail, white ornate council jacket, burgundy bow and red/gold armband is NOT an ordinary student: leave her entire unique outfit untouched, along with the orange and food tray. All edited ordinary students must wear the same school uniform: white collared shirt under a dark NAVY BLAZER with sleeves (not a cardigan, sailor uniform, vest or white council jacket); a plain navy necktie only where the front of their neck is visible; charcoal trousers or a modest knee-length plain charcoal pleated skirt where the lower body is visible. Keep people who face away facing away; do not invent visible ties or details hidden by occlusion. Keep original depth blur. Preserve the principal heroine completely: face, hair, skin tone, expression, body pose, hands, her own unique outfit and accessories. Preserve camera framing, aspect ratio, room, props, lighting, all people positions and crisp anime ink/cel-shading. This is only a small background costume continuity edit. No new people, words or logos.",
+      "inputPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/minhyuk-moment-03.png",
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-68ea2c0a-bc68-4d2e-90f5-bd0f801cb8f2.png",
+      "finalPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/minhyuk-moment-03.png",
+      "backupPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/output/art-backups/v7/minhyuk-moment-03.png",
+      "visualCheck": "passed",
+      "outputReview": "Rear-left student and seated right students standardized; main heroine council uniform unchanged.",
+      "projectRelativeFinalPath": "public/assets/romance-cg/minhyuk-moment-03.png"
+    },
+    {
+      "id": "minhyuk-moment-05",
+      "scope": "Unify only visible ordinary background student uniforms",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target. Change ONLY the clothes of the seated ordinary student readers in the distant background, especially the girl on the left with exposed white shirt sleeves and a navy vest. Give her a long-sleeved dark navy blazer over the white collar. Other visible seated readers should match where clothing can be seen. The large main girl in foreground is Minhyuk: keep her white ornate council jacket, gold buttons, red/gold armband, navy skirt and her entire body and pose unchanged. Keep book trolley and library unchanged. All edited ordinary students must wear the same school uniform: white collared shirt under a dark NAVY BLAZER with sleeves (not a cardigan, sailor uniform, vest or white council jacket); a plain navy necktie only where the front of their neck is visible; charcoal trousers or a modest knee-length plain charcoal pleated skirt where the lower body is visible. Keep people who face away facing away; do not invent visible ties or details hidden by occlusion. Keep original depth blur. Preserve the principal heroine completely: face, hair, skin tone, expression, body pose, hands, her own unique outfit and accessories. Preserve camera framing, aspect ratio, room, props, lighting, all people positions and crisp anime ink/cel-shading. This is only a small background costume continuity edit. No new people, words or logos.",
+      "inputPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/minhyuk-moment-05.png",
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-8ef0744f-541b-420e-90a9-9a1e0c73b12a.png",
+      "finalPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/minhyuk-moment-05.png",
+      "backupPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/output/art-backups/v7/minhyuk-moment-05.png",
+      "visualCheck": "passed",
+      "outputReview": "Distant seated readers standardized, including white-sleeve/vest mismatch; main heroine council uniform unchanged.",
+      "projectRelativeFinalPath": "public/assets/romance-cg/minhyuk-moment-05.png"
+    },
+    {
+      "id": "taehun-moment-03",
+      "scope": "Unify only visible ordinary background student uniforms",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target. Change ONLY the ordinary distant student crowd clothing behind the main braided girl, especially the two girls standing on the right in pale gray/lavender cardigans and plaid skirts. The main girl holding the star bread tray must keep her lavender-gray cardigan, navy bow, star brooch and plaid skirt unchanged. The adult cafeteria worker on the LEFT wearing a kitchen cap and apron is NOT a student; keep that worker's clothes unchanged. Also preserve the large cropped companion shoulder at extreme RIGHT foreground exactly as it is. All edited ordinary students must wear the same school uniform: white collared shirt under a dark NAVY BLAZER with sleeves (not a cardigan, sailor uniform, vest or white council jacket); a plain navy necktie only where the front of their neck is visible; charcoal trousers or a modest knee-length plain charcoal pleated skirt where the lower body is visible. Keep people who face away facing away; do not invent visible ties or details hidden by occlusion. Keep original depth blur. Preserve the principal heroine completely: face, hair, skin tone, expression, body pose, hands, her own unique outfit and accessories. Preserve camera framing, aspect ratio, room, props, lighting, all people positions and crisp anime ink/cel-shading. This is only a small background costume continuity edit. No new people, words or logos.",
+      "inputPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-03.png",
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-dc90f2aa-d1ce-4ddd-8aeb-926ec8b26eb9.png",
+      "finalPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-03.png",
+      "backupPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/output/art-backups/v7/taehun-moment-03.png",
+      "visualCheck": "passed",
+      "outputReview": "Background student blazers and skirts standardized; cafeteria staff clothing and cropped foreground companion deliberately preserved.",
+      "projectRelativeFinalPath": "public/assets/romance-cg/taehun-moment-03.png"
+    },
+    {
+      "id": "taehun-moment-04",
+      "scope": "Unify only visible ordinary background student uniforms",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target. Change ONLY the clothing of the three distant ordinary student figures walking along the corridor at the far right behind the heroine, including the cropped figure on the right edge. They currently have pale lavender/gray cardigans. The large braided girl at the cloud noticeboard in the foreground is the main heroine: keep her lavender cardigan, bow, star brooch, notebook and entire body unchanged. All edited ordinary students must wear the same school uniform: white collared shirt under a dark NAVY BLAZER with sleeves (not a cardigan, sailor uniform, vest or white council jacket); a plain navy necktie only where the front of their neck is visible; charcoal trousers or a modest knee-length plain charcoal pleated skirt where the lower body is visible. Keep people who face away facing away; do not invent visible ties or details hidden by occlusion. Keep original depth blur. Preserve the principal heroine completely: face, hair, skin tone, expression, body pose, hands, her own unique outfit and accessories. Preserve camera framing, aspect ratio, room, props, lighting, all people positions and crisp anime ink/cel-shading. This is only a small background costume continuity edit. No new people, words or logos.",
+      "inputPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-04.png",
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-87593b2a-614f-4caa-a6e5-e09bc0290928.png",
+      "finalPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-04.png",
+      "backupPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/output/art-backups/v7/taehun-moment-04.png",
+      "visualCheck": "passed",
+      "outputReview": "Three distant corridor students standardized; foreground heroine unchanged.",
+      "projectRelativeFinalPath": "public/assets/romance-cg/taehun-moment-04.png"
+    },
+    {
+      "id": "taehun-moment-08",
+      "scope": "Unify only visible ordinary background student uniforms",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target. Change ONLY the clothing of the two distant seated students at computer desks behind the heroine, especially the left background student with a pale-gray shirt/cardigan. Their visible upper backs and shoulders should be dark navy blazer fabric with a white shirt collar where visible. They must remain seated with backs/side heads toward the viewer, blurred at the same depth. Preserve the foreground girl completely, including her gray cardigan, braid, star pins, pose, notebook, skeptical expression and screen weather graph. All edited ordinary students must wear the same school uniform: white collared shirt under a dark NAVY BLAZER with sleeves (not a cardigan, sailor uniform, vest or white council jacket); a plain navy necktie only where the front of their neck is visible; charcoal trousers or a modest knee-length plain charcoal pleated skirt where the lower body is visible. Keep people who face away facing away; do not invent visible ties or details hidden by occlusion. Keep original depth blur. Preserve the principal heroine completely: face, hair, skin tone, expression, body pose, hands, her own unique outfit and accessories. Preserve camera framing, aspect ratio, room, props, lighting, all people positions and crisp anime ink/cel-shading. This is only a small background costume continuity edit. No new people, words or logos.",
+      "inputPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-08.png",
+      "generatedPath": "C:/Users/User/.codex/generated_images/01a1023d-a5bb-75b2-86b5-7639280c75b3/exec-3dc47b0c-5dd0-407e-a145-e20aa72b1c14.png",
+      "finalPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/romance-cg/taehun-moment-08.png",
+      "backupPath": "C:/Users/User/Documents/Codex/2026-09-19/x20-5/output/art-backups/v7/taehun-moment-08.png",
+      "visualCheck": "passed",
+      "outputReview": "Two distant computer-room students standardized where visible; seated rear orientations and blur preserved.",
+      "projectRelativeFinalPath": "public/assets/romance-cg/taehun-moment-08.png"
+    }
+  ]
+}
