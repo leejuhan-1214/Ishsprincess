@@ -4,7 +4,7 @@ import {romancePeople,type RPerson,type RState,type RChoice} from '../src/romanc
 import {memoryEvidence,romanceTrialRounds,romanceSequence} from '../src/data/romanceMystery';
 import {getHangoutScene} from '../src/data/romanceStory';
 import {hasHangoutAvailable} from '../src/data/romanceHangouts';
-import {respondToActivity,conveneTrial} from '../src/engine/romance';
+import {respondToActivity,conveneTrial,pendingMainEvents} from '../src/engine/romance';
 import {newRomance,currentRomanceScene,romanceLines,advanceRomance,chooseRomance,nextRomance,selectFocus,startHangout,completeRomanceActivity,availableMemories,inspectMemory,submitArgument,continueArgument,submitReconstruction,setVerdict,restoreRomance,personLocation,choiceOrder,junyeonCap,junyeonRomanceEligible} from '../src/engine/romance';
 import {ROMANCE_STORAGE_PREFIX,saveRomance,loadRomance,listRomanceSaves} from '../src/engine/romanceStorage';
 
@@ -108,6 +108,66 @@ test('memories require their actual scene, place and prerequisite but never acti
  assert.ok(!availableMemories(found).some(c=>c.id===second.id),'later act is still required');
  const end=read(nextRomance(found));assert.equal(end.act,2);assert.strictEqual(nextRomance(end),end,'the second memory cannot be skipped');
  const ready=collectOpen(end);assert.notStrictEqual(nextRomance(ready),ready);
+});
+
+test('every act waits for its main conversation and each due event, while optional dates and games stay optional',()=>{
+ let s=newRomance('차근차근',35),guard=0,checked=0;
+ while(s.phase!=='trial'){
+  assert.ok(guard++<30);
+  assert.equal(s.phase,'story');
+  const before=nextRomance(s);assert.strictEqual(before,s,'unread main dialogue cannot be skipped');
+  s=read(s);
+  if(s.phase==='trial')break;
+  assert.equal(s.phase,'map');
+  const due=pendingMainEvents(s);
+  assert.deepEqual(due.map(event=>event.id),memoryEvidence.filter(clue=>!s.clues.includes(clue.id)&&(clue.chapter<s.chapter||(clue.chapter===s.chapter&&clue.unlockAct<=s.act))).map(clue=>clue.id));
+  if(due.length){
+   checked++;assert.strictEqual(nextRomance(s),s,'a due encounter cannot be postponed into the next act');
+   assert.ok(due.every(event=>!/(재판|5장|흑막|방준연)/.test(event.label)));
+  }
+  s=collectOpen({...s,actions:0});
+  assert.equal(s.actions,0,'required encounters do not spend or require free-time actions');
+  assert.deepEqual(pendingMainEvents(s),[]);
+  s=nextRomance(s);
+  if(s.phase==='focus')s=selectFocus(s,null);
+ }
+ assert.equal(checked,8,'each of the eight gradual discoveries has its own progression gate');
+ assert.ok(s.flags.includes('read:main-5-1'));assert.ok(s.flags.includes('trial:convened'));
+ assert.ok(!s.flags.some(flag=>flag.startsWith('activity:')||flag.startsWith('read:hangout-')),'the main path never requires optional romance or activities');
+});
+
+test('older maps recover missing current conversations and overdue records instead of skipping or softlocking',()=>{
+ const base=newRomance('이어하기',12);
+ const unread=restoreRomance({...base,phase:'map',line:0});assert.ok(unread);
+ assert.equal(unread.phase,'story');assert.equal(unread.sceneKey,'main-1-1');
+ const late:RState={...base,phase:'map',chapter:2,act:0,sceneKey:'main-3-1',actions:0,flags:['read:main-3-1']};
+ let s=restoreRomance(late);assert.ok(s);assert.equal(s.phase,'map');
+ assert.equal(pendingMainEvents(s).length,4);assert.strictEqual(nextRomance(s),s);
+ s=collectOpen(s);assert.equal(s.clues.length,4);assert.equal(s.actions,0);
+ assert.equal(nextRomance(s).act,1);
+ const focus:RState={...late,phase:'focus',chapter:1,act:2,sceneKey:'main-2-3',flags:['read:main-2-3']};
+ assert.strictEqual(selectFocus(focus,'world'),focus);
+ const recoveredFocus=restoreRomance(focus);assert.ok(recoveredFocus);assert.equal(recoveredFocus.phase,'map');
+ const ready=collectOpen(recoveredFocus),chooser=nextRomance(ready);assert.equal(chooser.phase,'focus');
+ assert.equal(selectFocus(chooser,'world').chapter,2);
+ const unreadFocus=restoreRomance({...ready,phase:'focus',flags:[]});assert.ok(unreadFocus);
+ assert.equal(unreadFocus.phase,'story');assert.equal(unreadFocus.sceneKey,'main-2-3');
+});
+
+test('legacy briefings replay the class conversation without duplicate rewards, then flow directly into trial',()=>{
+ const base=newRomance('모여앉기',9);
+ const old:RState={...base,chapter:4,act:0,phase:'trial-briefing',sceneKey:'main-5-1',clues:memoryEvidence.map(clue=>clue.id),flags:['read:main-5-1','choice:main-5-1:main-option-1']};
+ const recovered=restoreRomance(old);assert.ok(recovered);
+ assert.equal(recovered.phase,'story');assert.equal(recovered.line,0);assert.equal(recovered.sceneKey,'main-5-1');
+ assert.strictEqual(nextRomance(recovered),recovered);
+ const trial=read(recovered);assert.equal(trial.phase,'trial');assert.ok(trial.flags.includes('trial:convened'));
+ assert.deepEqual(trial.bonds,old.bonds,'replaying a previously read discussion cannot farm relationship effects');
+ const clueOnly=restoreRomance({...old,phase:'trial',flags:[]});assert.ok(clueOnly);
+ assert.equal(clueOnly.phase,'story');assert.ok(!clueOnly.flags.includes('trial:convened'));
+ assert.equal(read(clueOnly).phase,'trial');
+ const legacyMap=restoreRomance({...old,phase:'map'});assert.ok(legacyMap);
+ const continued=nextRomance(legacyMap);assert.equal(continued.phase,'story');assert.equal(continued.sceneKey,'main-5-1');
+ assert.equal(read(continued).phase,'trial');
 });
 
 test('same-map visits and activities award once, retain the selected location and survive saves',()=>{

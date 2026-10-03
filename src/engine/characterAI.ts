@@ -104,6 +104,7 @@ function eventIntro(ctx:TalkContext,kind:EventKind):Line[]{
 }
 
 const locationTopics:Record<LocationId,string[]>={
+ hallway:['창가에서 나눈 인사','계단을 내려가며 이어진 이야기'],
  gate:['오늘 하루에 남은 말','집에 가기 전 확인하고 싶은 약속'],classroom:['칠판에 남은 역할표','오늘 바뀐 발표 순서'],
  garden:['바람에 날린 메모','점심시간에 못다 한 말'],cafeteria:['마지막 남은 디저트','같이 앉을 자리'],
  library:['반납일이 겹친 책','책갈피에 적힌 한 문장'],chemistry:['실험 기록의 빈칸','안전표에 누락된 단계'],
@@ -123,6 +124,7 @@ const aftermaths:Record<ChoiceMood,string[]>={
 };
 
 const locationGesture:Record<LocationId,string>={
+ hallway:'통행을 막지 않도록 창가 쪽으로 한 걸음 물러난다',
  gate:'버스 전광판과 내 얼굴을 번갈아 확인한다',classroom:'칠판에 남은 역할표 옆으로 의자를 당긴다',garden:'바람에 들리는 메모를 손바닥으로 눌러 둔다',
  cafeteria:'맞은편의 빈 의자에서 가방을 치운다',library:'펼친 책 위에 조용히 책갈피를 놓는다',chemistry:'보안경과 실험대의 안전선을 먼저 확인한다',
  media:'편집 화면을 멈추고 원본 재생 위치를 가리킨다',computer:'공동 파일을 복구본으로 연 뒤 키보드에서 손을 뗀다',observatory:'관측일지의 시각과 구름량을 먼저 적는다',

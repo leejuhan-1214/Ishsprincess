@@ -61,15 +61,16 @@ test('the first meeting earns an optional activity; follow-up is uninterrupted a
  assert.ok(followup.flags.includes('read:hangout-world-1-v2'));
 });
 
-test('awareness grows from played scenes; a final trial needs records and an explicit convening step',()=>{
+test('awareness grows from played scenes; a final trial follows the class conversation rather than a briefing screen',()=>{
  const s=newRomance('기록',3),stages=['read:main-1-1','read:main-1-2','read:main-2-2','read:main-3-2','read:main-4-2','read:main-5-1'];
  assert.equal(new Set(stages.map(after=>awareness({...s,flags:[after]}).title)).size,6);
  assert.strictEqual(conveneTrial(s),s);
  const briefing:RState={...s,chapter:4,phase:'trial-briefing',sceneKey:'main-5-1',flags:['read:main-5-1'],clues:memoryEvidence.map(c=>c.id)};
  assert.strictEqual(conveneTrial({...briefing,clues:[]}).phase,'trial-briefing');
- assert.strictEqual(conveneTrial({...briefing,flags:[]}).phase,'trial-briefing');
- const trial=conveneTrial(briefing);assert.equal(trial.phase,'trial');assert.ok(trial.flags.includes('trial:convened'));
- assert.ok(restoreRomance(briefing));
+ assert.strictEqual(conveneTrial({...briefing,flags:[]}).phase,'story');
+ const discussion=conveneTrial(briefing);assert.equal(discussion.phase,'story');
+ const trial=finishDialogue(discussion);assert.equal(trial.phase,'trial');assert.ok(trial.flags.includes('trial:convened'));
+ assert.equal(restoreRomance(briefing)?.phase,'story');
  const opening=getMainScene(4,0,s).lines.map(l=>l.text).join('\n');
  assert.match(opening,/취소/);assert.match(opening,/선생님|담임/);assert.match(opening,/확인/);
 });
@@ -119,7 +120,8 @@ test('festival-eve choices keep every focused farewell partner through replies, 
    assert.ok(speakers.every(speaker=>speaker===person),person+': response must not switch classmates');
    assert.ok(choice.effects?.length);
    assert.ok(choice.effects?.every(effect=>effect.person===person),person+': reward belongs to the addressed person');
-   assert.ok(choice.response.every(line=>line.location==='walk'));
+   assert.equal(scene.lines.at(-1)?.location,'hallway');
+   assert.ok(choice.response.every(line=>line.location===scene.lines.at(-1)?.location));
    replies.add(choice.response.map(line=>line.text).join('\n'));
    const applied=chooseRomance({...state,line:scene.lines.length},choice.id);
    assert.deepEqual(applied.response,choice.response);

@@ -69,6 +69,7 @@ export function bondAvailable(state:ClassroomState,id:ExtraId,chapter:number){
  return chapter>=0&&chapter<=4&&!waiting&&!state.bonds[id].days.includes(chapter)&&state.active===null;
 }
 const bondMeetingSpots:Record<LocationId,string>={
+ hallway:'복도 창가의 휴식 자리',
  gate:'통행을 막지 않는 쉼터',classroom:'비어 있는 창가 자리',garden:'벤치',cafeteria:'비어 있는 식탁',library:'목소리를 낮춰 이야기할 수 있는 열람 자리',
  chemistry:'실험대와 분리된 휴식 자리',media:'사용하지 않는 편집 작업대 옆',computer:'비어 있는 작업 자리',observatory:'관측 장비와 떨어진 준비 자리',
  band:'앰프를 끈 휴식 자리',art:'마른 작업탁 옆',dance:'연습 동선을 벗어난 휴식 자리',auditorium:'리허설 동선을 벗어난 객석',roof:'난간과 떨어진 휴식 벤치',walk:'길을 비켜 마련된 쉼터',

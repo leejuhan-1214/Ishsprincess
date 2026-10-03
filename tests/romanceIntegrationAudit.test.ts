@@ -73,8 +73,9 @@ test('second meetings have their own conversation and no extra-game loop, and a 
 
 test('the final trial requires the class conversation and cannot start just because a save has eight clues',()=>{
  const base=mapFor(4),briefing:RState={...base,act:0,verdict:'pending',phase:'trial-briefing',sceneKey:'main-5-1',flags:[]};
- assert.strictEqual(conveneTrial(briefing),briefing);
+ const unread=conveneTrial(briefing);assert.equal(unread.phase,'story');assert.ok(!unread.flags.includes('trial:convened'));
  const agreed={...briefing,flags:['read:main-5-1']};
- const trial=conveneTrial(agreed);assert.equal(trial.phase,'trial');assert.ok(trial.flags.includes('trial:convened'));
+ const discussion=conveneTrial(agreed);assert.equal(discussion.phase,'story');
+ const trial=readEncounter(discussion,0);assert.equal(trial.phase,'trial');assert.ok(trial.flags.includes('trial:convened'));
  assert.strictEqual(conveneTrial({...agreed,clues:agreed.clues.slice(1)}).phase,'trial-briefing');
 });

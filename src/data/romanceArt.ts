@@ -13,12 +13,12 @@ export function artById(id?:string){return romanceArt.find(art=>art.id===id);}
 export function artPath(id:string){return `assets/romance-cg/${id}.png`;}
 export function awareness(s:RState){
  const stages=[
-  {title:'아직은, 조금 서툰 새 학기',text:'새 얼굴과 첫 약속. 어떤 사람인지 알아가는 중이다.',after:'read:main-1-1'},
-  {title:'같은 약속, 서로 다른 시간',text:'세계와 내 쪽지의 시간이 달랐다. 아직은 옮겨 적다 생긴 실수일 수도 있다.',after:'read:main-1-2'},
-  {title:'우연이라고 넘기기엔',text:'태우의 예약까지 어긋났다. 지난 쪽지와 비슷하다고, 친구들이 먼저 이야기를 꺼냈다.',after:'read:main-2-2'},
-  {title:'각자 탓인 줄 알았던 오후',text:'세 장소로 갈라진 안내를 함께 비교했다. 이제 듣기만 한 말은 당사자에게 다시 묻기로 했다.',after:'read:main-3-2'},
-  {title:'수정했는데도 돌아온 옛 안내',text:'승인된 새 큐시트 대신 옛 버전이 배포됐다. 준비 실수만으로 설명되지 않는 기록이 남았다.',after:'read:main-4-2'},
-  {title:'오늘의 무대를 지키기 위해',text:'공연 취소 요청까지 도착했다. 선생님과 친구들 앞에서 사실과 추측을 나누어 확인하기로 했다.',after:'read:main-5-1'},
+  {title:'첫 약속',text:'친구들과 페어 준비를 시작했다.',after:'read:main-1-1'},
+  {title:'엇갈린 시간',text:'같은 약속 쪽지에 다른 시간이 적혀 있었다.',after:'read:main-1-2'},
+  {title:'바뀐 예약',text:'태우의 연습실 예약도 안내와 달랐다.',after:'read:main-2-2'},
+  {title:'세 곳의 안내',text:'같은 모임인데 기다린 장소가 달랐다.',after:'read:main-3-2'},
+  {title:'남아 있던 옛 순서',text:'승인본이 준비된 뒤에도 옛 큐시트가 배포됐다.',after:'read:main-4-2'},
+  {title:'원본을 펼치며',text:'함께 겪은 일을 원본과 맞춰 보기로 했다.',after:'read:main-5-1'},
  ];
  return [...stages].reverse().find(stage=>s.flags.includes(stage.after))??stages[0];
 }

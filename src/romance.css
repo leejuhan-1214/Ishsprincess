@@ -18,6 +18,14 @@
 @media(max-width:600px){.romance-map .campus-heading{padding:0;border:0;margin:0 0 8px}.romance-map .campus-heading small{display:none}.romance-map .campus-heading b{font-size:15px}.romance-map .campus-filters{display:flex;flex-wrap:nowrap;gap:5px;overflow-x:auto;position:relative;top:auto;padding:0 0 4px;margin:0 0 7px}.romance-map .campus-filters button{font-size:10px;padding:6px 8px;white-space:nowrap;flex:none}.romance-map .campus-zone>header{padding:6px 0}.romance-map .campus-place{padding:9px}.romance-map .campus-place-title b{font-size:11px}}
 .romance-app .activity-card{color:#263b3a}.romance-app .activity-card .primary{color:#fff7eb}
 .romance-mobile-submit{display:none}
+.romance-title form .r-primary{margin-top:14px}
+.romance-line>span{justify-content:flex-end}
+.romance-portrait-card>.school-portrait{height:100%}
+.romance-pending-events{flex:1;min-width:0;display:flex;justify-content:flex-end}
+.romance-pending-events>button{display:flex;align-items:center;gap:6px;min-width:0;max-width:100%;padding:8px 10px;background:#302736;border:1px solid #87758b;color:#ffe0aa;font-size:11px;text-align:left}
+.romance-pending-events>button>svg{flex:none}.romance-pending-events>button>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.romance-map-footer>.r-primary{flex:none}
+@media(max-width:600px){.romance-pending-events>button{font-size:10px;padding:7px 6px}.romance-pending-events>button>svg{width:12px;height:12px}.romance-portrait-card>.school-portrait{height:100%}}
 .romance-stage.has-event-art{display:block;background:#100f19;overflow:hidden;border:1px solid #b38a95}
 .has-event-art .romance-scene-title{position:absolute;top:8px;left:8px;z-index:2;padding:5px 10px;max-width:45%;opacity:.92;border-left-width:2px}
 .has-event-art .romance-scene-title>span,.has-event-art .romance-scene-title>p{display:none}

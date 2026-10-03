@@ -1,7 +1,7 @@
 export type CharacterId = 'world' | 'junyeon' | 'hyunsol' | 'taewoo' | 'taehun' | 'seoyul';
 export type StatKey = 'affection' | 'trust' | 'jealousy' | 'special';
 export type GlobalKey = 'harmony' | 'fair' | 'reputation' | 'ethics' | 'safety';
-export type LocationId = 'gate' | 'classroom' | 'garden' | 'cafeteria' | 'library' | 'chemistry' | 'media' | 'computer' | 'observatory' | 'band' | 'art' | 'dance' | 'auditorium' | 'roof' | 'walk';
+export type LocationId = 'gate' | 'classroom' | 'hallway' | 'garden' | 'cafeteria' | 'library' | 'chemistry' | 'media' | 'computer' | 'observatory' | 'band' | 'art' | 'dance' | 'auditorium' | 'roof' | 'walk';
 export type Line = { speaker: CharacterId | 'juhan' | 'minhyuk' | 'alter' | 'player' | 'narrator' | 'teacher' | 'student'; text: string };
 export type Effect = { target: CharacterId | 'global'; stat: StatKey | GlobalKey; amount: number };
 export type Choice = { id: string; text: string; response: Line[]; effects: Effect[]; flags?: string[]; label?: string };

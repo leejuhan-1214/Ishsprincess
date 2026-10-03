@@ -22,7 +22,7 @@ import {SchoolBondScene} from './SchoolBondScene';
 import {schoolActivity} from './data/extraDaily';
 import {FieldInvestigation,InvestigationBrief} from './FieldInvestigation';
 
-const asset=(name:string)=>`${import.meta.env.BASE_URL}assets/${name}.webp`;
+const asset=(name:string)=>`${import.meta.env.BASE_URL}assets/${name}.${name.startsWith('locations/')?'png':'webp'}`;
 const label=(speaker:Line['speaker'],name:string)=>speaker==='player'?name:speaker==='narrator'?'':speaker==='teacher'?'담임 선생님':speaker==='student'?'1반 친구':speaker==='alter'?'얼터에고':schoolById[speaker].name;
 type Panel='none'|'settings'|'save'|'load'|'backlog'|'journal'|'gallery'|'cast'|'menu';
 type Options={speed:number;volume:number;sound:boolean;showStats:boolean};

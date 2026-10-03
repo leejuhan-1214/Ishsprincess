@@ -7,6 +7,7 @@ const castOf=(scene:Scene)=>[...new Set(scene.lines.map(l=>l.speaker).filter((s)
 
 type SceneMove={key:string;label:string;text:string;player:string;reply:string;kind:'observe'|'prototype'|'perform'};
 const sceneMoves:Record<LocationId,SceneMove[]>={
+ hallway:[{key:'window-pause',label:'창가',text:'복도 창가에서 잠깐 걸음을 멈춘다.',player:'다음 수업 전까지 조금만 이야기할까?',reply:'응. 창가 쪽으로 가자.',kind:'observe'}],
  gate:[
   {key:'route-map',label:'동선지도',text:'학교 앱 지도에 각자의 이동 경로를 색이 다른 선으로 겹친다.',player:'말로만 찾지 말고 우리가 어디서 엇갈렸는지 선으로 보자.',reply:'같은 학교인데도 전혀 다른 하루를 걷고 있었네.',kind:'observe'},
   {key:'sixty-sec',label:'60초',text:'서로의 첫인상을 60초 음성 메모로 남기고 졸업식 날 열기로 한다.',player:'지금의 오해까지 봉인해 두자. 나중에 들으면 우리가 얼마나 달라졌는지 알겠지.',reply:'미래의 내가 부끄러워할 것 같은데… 그래서 더 해 보고 싶어.',kind:'perform'},

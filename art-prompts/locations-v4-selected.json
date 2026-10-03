@@ -1,0 +1,56 @@
+{
+  "mode": "built-in image_gen",
+  "refinement": "Roof: remove only the tiny pale emblem in the top-right sky. Preserve architecture, furnishings, lighting and framing.",
+  "assets": [
+    {
+      "id": "garden",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-b5da023a-9a31-48fd-b427-57bcbfd340d6.png",
+      "target": "public/assets/locations/garden.png"
+    },
+    {
+      "id": "cafeteria",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-bacbf25a-5f94-4d5e-8db0-26f4cb229b47.png",
+      "target": "public/assets/locations/cafeteria.png"
+    },
+    {
+      "id": "gate",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-1f207d55-fa2b-4594-afbb-7ab01dbd5389.png",
+      "target": "public/assets/locations/gate.png"
+    },
+    {
+      "id": "library",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-32d7c0b0-bba6-471b-9fcd-7d20773a924d.png",
+      "target": "public/assets/locations/library.png"
+    },
+    {
+      "id": "media",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-00d0ac1f-e22c-45d6-8dd6-e069e1df3966.png",
+      "target": "public/assets/locations/media.png"
+    },
+    {
+      "id": "art",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-cac17ea2-5564-473d-b1a4-af96787fb54a.png",
+      "target": "public/assets/locations/art.png"
+    },
+    {
+      "id": "auditorium",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-4f826844-369c-44a9-b33c-d3298a64f5bb.png",
+      "target": "public/assets/locations/auditorium.png"
+    },
+    {
+      "id": "roof",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-cad45283-445b-4764-bd5d-3dde2d46499b.png",
+      "target": "public/assets/locations/roof.png"
+    },
+    {
+      "id": "walk",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-30140717-14a5-4727-9230-d5d9d5b729c1.png",
+      "target": "public/assets/locations/walk.png"
+    },
+    {
+      "id": "hallway",
+      "source": "C:\\Users\\User\\.codex\\generated_images\\01a0b9df-b0ed-7391-85a7-d2d21c8fb739\\exec-d6e878fe-43cf-44da-86f4-0dab501e0939.png",
+      "target": "public/assets/locations/hallway.png"
+    }
+  ]
+}

@@ -85,7 +85,9 @@ export function chooseRomance(s:RState,choiceId:string):RState{
  if(s.phase!=='story'||s.response!==null)return s;
  const scene=currentRomanceScene(s),choice=scene.choices.find(c=>c.id===choiceId);
  if(s.line<scene.lines.length||!choice||!allowedChoice(s,choice)||s.flags.includes(`choice:${s.sceneKey}:${choice.id}`))return s;
- const changed=effects(s,choice.effects),next=addHistory({...changed,line:0,response:choice.response,flags:uniq([...changed.flags,`choice:${s.sceneKey}:${choice.id}`,...(choice.flags??[])])},{speaker:'player',text:choice.text});
+ // A legacy save may replay its already completed class conversation. Let the
+ // player read and answer it again without awarding its relationship effects twice.
+ const changed=s.flags.includes(`read:${scene.id}`)?s:effects(s,choice.effects),next=addHistory({...changed,line:0,response:choice.response,flags:uniq([...changed.flags,`choice:${s.sceneKey}:${choice.id}`,...(choice.flags??[])])},{speaker:'player',text:choice.text});
  return choice.response.length?next:finishScene(next,scene);
 }
 export function advanceRomance(s:RState):RState{
@@ -118,16 +120,28 @@ function finishScene(s:RState,scene:RScene):RState{
   return {...next,phase:'ending',ending:`${decision??`friendship:${s.focus??'class'}`}:${s.verdict}`};
  }
  next={...next,actions:2,visited:[],visitor:null};
- if(s.chapter===4&&s.act===0&&s.verdict==='pending'&&allMemories(next))return {...next,phase:'trial-briefing',trialRound:0,trialFeedback:null,trialOrder:[]};
+ if(s.chapter===4&&s.act===0&&s.verdict==='pending'&&allMemories(next))return beginTrial(next);
  return {...next,phase:'map'};
 }
 function allMemories(s:RState):boolean{return memoryEvidence.every(c=>s.clues.includes(c.id));}
-function chapterMemories(s:RState):boolean{return memoryEvidence.filter(c=>c.chapter<=s.chapter).every(c=>s.clues.includes(c.id));}
+/** Only unfinished events whose moment has already arrived; never expose a future chapter. */
+export function pendingMainEvents(s:RState):{id:string;location:LocationId;label:string}[]{
+ return memoryEvidence.filter(c=>!s.clues.includes(c.id)&&(c.chapter<s.chapter||(c.chapter===s.chapter&&c.unlockAct<=s.act)))
+  .map(c=>({id:c.id,location:c.location,label:`${locations.find(place=>place.id===c.location)!.name}에서 확인하기`}));
+}
+function replayClassConversation(s:RState):RState{
+ return enterScene({...s,visitor:null,trialRound:0,trialFeedback:null,trialOrder:[],flags:s.flags.filter(flag=>!flag.startsWith('choice:main-5-1:'))},'main','main-5-1');
+}
+function beginTrial(s:RState):RState{
+ return {...s,phase:'trial',trialRound:0,trialFeedback:null,trialOrder:[],flags:uniq([...s.flags,'trial:convened'])};
+}
 export function nextRomance(s:RState):RState{
  if(s.phase!=='map'||!s.flags.includes(`read:${getMainScene(s.chapter,s.act,s).id}`))return s;
- if(s.chapter===4&&s.act===0&&s.verdict==='pending')return allMemories(s)?{...s,phase:'trial-briefing',trialRound:0,trialFeedback:null,trialOrder:[]}:s;
+ if(pendingMainEvents(s).length)return s;
+ // New games arrive at the trial from finishScene. A legacy map save still
+ // needs the discussion on screen instead of jumping straight into debate.
+ if(s.chapter===4&&s.act===0&&s.verdict==='pending')return replayClassConversation(s);
  if(s.act<2)return enterScene({...s,act:s.act+1,date:dates[s.chapter][s.act+1],visitor:null},'main');
- if(!chapterMemories(s))return s;
  if(s.chapter===1)return {...s,phase:'focus'};
  if(s.chapter<4)return enterScene({...s,chapter:s.chapter+1,act:0,date:dates[s.chapter+1][0],visitor:null},'main');
  if(s.verdict==='pending')return s;
@@ -135,7 +149,7 @@ export function nextRomance(s:RState):RState{
  return enterScene({...s,date:'후일담 · 4주 뒤',visitor:null},'finale');
 }
 export function selectFocus(s:RState,id:RPerson|null):RState{
- if(s.phase!=='focus'||s.chapter!==1||s.act!==2||!(id===null||isPerson(id)))return s;
+ if(s.phase!=='focus'||s.chapter!==1||s.act!==2||!(id===null||isPerson(id))||pendingMainEvents(s).length||!s.flags.includes('read:main-2-3'))return s;
  return enterScene({...s,focus:id,chapter:2,act:0,visitor:null,date:dates[2][0],flags:uniq([...s.flags,`focus:${id??'none'}`])},'main');
 }
 export function startHangout(s:RState,id:RPerson,location:LocationId,_activity=false):RState{
@@ -156,8 +170,8 @@ export function completeRomanceActivity(s:RState,score:number):RState{
  return finishScene({...next,flags:uniq([...next.flags,`activity:${s.sceneKey}`,`activity-score:${s.sceneKey}:${value}`])},currentRomanceScene(s));
 }
 export function conveneTrial(s:RState):RState{
- if(s.phase!=='trial-briefing'||s.chapter!==4||s.act!==0||s.verdict!=='pending'||!allMemories(s)||!s.flags.includes('read:main-5-1'))return s;
- return {...s,phase:'trial',trialRound:0,trialFeedback:null,trialOrder:[],flags:uniq([...s.flags,'trial:convened'])};
+ if(s.phase!=='trial-briefing'||s.chapter!==4||s.act!==0||s.verdict!=='pending'||!allMemories(s))return s;
+ return replayClassConversation(s);
 }
 export function availableMemories(s:RState,location?:LocationId):RClue[]{
  if(s.phase!=='map')return [];
@@ -228,6 +242,14 @@ export function restoreRomance(value:unknown):RState|null{
   // Edition 2 launched activities before the encounter. Resume those saves at
   // the conversation, rather than silently marking its unread story complete.
   if(restored.phase==='activity'&&!restored.flags.some(flag=>flag.startsWith(`choice:${restored.sceneKey}:`))){restored.phase='story';restored.line=0;restored.response=null;}
+  // The old standalone briefing gave away the destination and could skip the
+  // conversation. Recover it as the actual scene; never infer consent from clues.
+  if(restored.phase==='trial-briefing'||(restored.phase==='trial'&&!restored.flags.includes('read:main-5-1')))return replayClassConversation(restored);
+  if(restored.phase==='trial'&&!restored.flags.includes('trial:convened'))restored.flags.push('trial:convened');
+  // Old saves could reach a focus chooser or map before finishing a due event.
+  // Keep the chapter in place and let the player complete that event for free.
+  if(restored.phase==='focus'&&(pendingMainEvents(restored).length||!restored.flags.includes('read:main-2-3')))restored.phase='map';
+  if(restored.phase==='map'&&!restored.flags.includes(`read:${getMainScene(restored.chapter,restored.act,restored).id}`))return enterScene({...restored,visitor:null},'main');
   if(restored.mode==='discovery'&&!memoryEvidence.some(c=>`discover-${c.id}`===restored.sceneKey))return null;
   if(restored.mode==='discovery'&&restored.phase==='story'&&!availableMemories({...restored,phase:'map'},restored.location).some(c=>`discover-${c.id}`===restored.sceneKey))return null;
   const scene=currentRomanceScene(restored),lines=romanceLines(restored);
