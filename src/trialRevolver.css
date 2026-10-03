@@ -27,6 +27,7 @@
 .trial-revolver>header b{font-size:14px;display:block;line-height:1.4}
 .trial-revolver>header small{font-size:9px;display:block;margin-top:3px;color:#cec1dc}
 .trial-revolver>header>span{font:700 11px monospace;white-space:nowrap;color:#fff0bf}
+.revolver-touch-select{display:none}
 .revolver-assembly{display:grid;grid-template-columns:minmax(120px,.85fr) minmax(0,1.15fr);align-items:center;gap:14px;flex:1;min-height:0;padding:14px;overflow:hidden}
 .revolver-loader{min-width:0;display:flex;flex-direction:column;align-items:center;gap:12px}
 .revolver-cylinder{position:relative;isolation:isolate;width:min(100%,205px);aspect-ratio:1;border:3px solid #aca1b5;border-radius:50%;background:radial-gradient(circle,#3a3248 0 21%,#0d0b13 22% 24%,#55485e 25% 53%,#201b2c 54% 68%,#7f708b 69% 70%,#292131 71%);box-shadow:inset 0 0 0 5px #17131d,0 9px 0 #0a0810,0 12px 25px #0006}
@@ -164,4 +165,29 @@
  .revolver-rotor,.revolver-chamber{transition:none}
  .rebuttal-burst,.rebuttal-slash,.rebuttal-word{animation:none}
  .rebuttal-slash{transform:translateY(-50%) rotate(-5deg);opacity:.97}.rebuttal-word{transform:rotate(-5deg)}
+}
+/* Native selection is a full-sized alternative to the small drum chambers. */
+@media(max-width:720px),(pointer:coarse),(max-width:950px) and (max-height:500px){
+ .trial-revolver>header{gap:7px;padding:6px 8px}
+ .trial-revolver>header>svg{flex:none}
+ .trial-revolver>header>div>b,.trial-revolver>header>div>small{display:none}
+ .trial-revolver .revolver-touch-select{display:block;width:100%;max-width:100%;min-width:0;min-height:44px;padding:8px 27px 8px 9px;border:1px solid #9b83a9;border-radius:5px;background:#302439;color:#fff4e6;font-family:inherit;font-size:16px;line-height:1.4;font-weight:400;touch-action:manipulation}
+ .revolver-touch-select:focus-visible{outline:3px solid #ffe17a;outline-offset:-3px}
+ .revolver-touch-select:disabled{opacity:.65}
+ .trial-revolver button{touch-action:manipulation}
+ .trial-revolver .revolver-navigation{min-height:44px;height:44px;gap:7px}
+ .trial-revolver .revolver-navigation button{height:44px;width:44px;min-width:44px;min-height:44px}
+ .trial-revolver .loaded-evidence-image{min-height:44px}
+ .trial-revolver .loaded-evidence-copy{overscroll-behavior:contain;touch-action:pan-y}
+}
+@media(max-width:600px),(pointer:coarse),(max-width:950px) and (max-height:500px){
+ /* Override the older fixed 125px portrait drum after the component is imported.
+    In a 225px card the drum must shrink before its 44px navigation buttons do. */
+ .romance-app .romance-trial .trial-revolver{padding:0}
+ .romance-app .romance-trial .trial-revolver>header{margin:0;padding:5px 6px}
+ .romance-trial .trial-revolver .revolver-assembly{grid-template-columns:100px minmax(0,1fr);gap:9px;padding:6px}
+ .romance-trial .trial-revolver .revolver-cylinder{width:min(100%,125px,max(0px,calc(100cqh - 54px)));height:auto}
+ .romance-trial .trial-revolver .revolver-chamber{width:26%;height:auto}
+ .romance-trial .trial-revolver .revolver-hub{width:auto;height:auto}
+ .romance-trial .trial-revolver .loaded-evidence-image{min-height:44px}
 }

@@ -1,4 +1,4 @@
-import {useEffect,useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {Download,ZoomIn,ZoomOut} from 'lucide-react';
 import {evidenceVisuals,type EvidenceVisual} from './data/evidenceVisuals';
 import './evidenceViewer.css';
@@ -6,7 +6,9 @@ import './evidenceViewer.css';
 /** Shared by location inspections and the collected-evidence notebook. */
 export function EvidenceViewer({evidenceId,visual:override}:{evidenceId:string;visual?:EvidenceVisual}){
  const [zoomed,setZoomed]=useState(false);
+ const viewport=useRef<HTMLDivElement>(null);
  useEffect(()=>setZoomed(false),[evidenceId]);
+ useEffect(()=>{if(viewport.current){viewport.current.scrollLeft=0;viewport.current.scrollTop=0;}},[evidenceId,zoomed]);
  const visual=override??evidenceVisuals[evidenceId];
  if(!visual)return null;
  const source=`${import.meta.env.BASE_URL}${visual.image}`;
@@ -20,7 +22,7 @@ export function EvidenceViewer({evidenceId,visual:override}:{evidenceId:string;v
     <a href={source} download={`${visual.id}.svg`}><Download size={18}/> 이미지 저장</a>
    </div>
   </div>
-  <div className={`evidence-viewer-scroll${zoomed?' is-zoomed':''}`} tabIndex={zoomed?0:undefined}
+  <div ref={viewport} className={`evidence-viewer-scroll${zoomed?' is-zoomed':''}`} tabIndex={zoomed?0:undefined}
    role={zoomed?'region':undefined} aria-label={zoomed?'확대된 증거 자료. 스크롤해서 모든 부분을 볼 수 있습니다.':undefined}>
    <img src={source} alt={visual.alt} width={1200} height={820} draggable={false}/>
   </div>

@@ -11,3 +11,23 @@
 .evidence-viewer figcaption{padding:9px 13px;line-height:1.6;font-size:11px;color:#d6cddb;background:#1b1927}
 .evidence-viewer figcaption span{color:#ffe482}
 @media(max-width:600px){.evidence-viewer-toolbar{align-items:flex-start;flex-direction:column;gap:7px;padding:10px}.evidence-viewer-toolbar button,.evidence-viewer-toolbar a{min-height:44px}.evidence-viewer-toolbar>div{width:100%}.evidence-viewer-scroll{max-height:55vh}.evidence-viewer figcaption{font-size:11px}}
+/* Pan the document inside its viewport; never let its zoom widen the page. */
+.evidence-viewer,.evidence-viewer-toolbar,.evidence-viewer-toolbar>div{min-width:0;max-width:100%;box-sizing:border-box}
+.evidence-viewer-scroll{min-width:0;touch-action:pan-x pan-y pinch-zoom;-webkit-overflow-scrolling:touch}
+.evidence-viewer-toolbar button,.evidence-viewer-toolbar a{touch-action:manipulation}
+@media(max-width:600px),(pointer:coarse){
+ .evidence-viewer-toolbar{padding:8px;gap:6px}
+ .evidence-viewer-toolbar>span{font-size:11px}
+ .evidence-viewer-toolbar>div{gap:6px}
+ .evidence-viewer-toolbar button,.evidence-viewer-toolbar a{flex:1;min-height:44px;padding:7px;font-size:12px;white-space:nowrap}
+ .evidence-viewer-scroll{max-height:52dvh}
+ .evidence-viewer-scroll.is-zoomed img{width:200%;min-width:0}
+}
+@media(max-height:500px) and (orientation:landscape){
+ .evidence-viewer-toolbar{flex-direction:row;align-items:center;padding:5px 8px}
+ .evidence-viewer-toolbar>span{display:none}
+ .evidence-viewer-toolbar>div{justify-content:flex-end}
+ .evidence-viewer-toolbar button,.evidence-viewer-toolbar a{flex:none;min-height:44px}
+ .evidence-viewer-scroll{max-height:48dvh}
+ .evidence-viewer figcaption{padding:6px 9px}
+}

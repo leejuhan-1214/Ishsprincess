@@ -22,3 +22,7 @@ await import('../tests/romanceIntegrationAudit.test.ts');
 await import('../tests/romanceSpoilers.test.ts');
 await import('../tests/romanceUI.test.ts');
 await import('../tests/locationBackgrounds.test.ts');
+await import('../tests/mobileCampus.test.ts');
+await import('../tests/mobileActivities.test.ts');
+await import('../tests/mobileViewport.test.ts');
+await import('../tests/mobileLayout.test.ts');

@@ -18,6 +18,11 @@ export function CampusMap({selected,students,locked,onSelect,discoveries={}}:Pro
  const [filter,setFilter]=useState('all');
  const count=students.filter(s=>s.available).length;
  return <div className="campus-directory">
+  <div className="campus-mobile-location"><MapPin size={18} aria-hidden="true"/><select aria-label="갈 장소" value={selected} onChange={event=>{setFilter('all');onSelect(event.target.value as LocationId);}}>{zones.map(zone=><optgroup key={zone.id} label={zone.name}>{locations.filter(place=>zone.places.includes(place.id)).map(place=>{
+   const people=students.filter(person=>person.place===place.id&&person.available).map(person=>person.name);
+   const detail=[locked(place.id)?'잠김':'',discoveries[place.id]?'확인할 기록':'',...people].filter(Boolean).join(' · ');
+   return <option key={place.id} value={place.id}>{place.name}{detail?` · ${detail}`:''}</option>;
+  })}</optgroup>)}</select></div>
   <div className="campus-heading"><span><b>학교 지도</b></span><i><Users size={15}/>{count}명</i></div>
   <div className="campus-filters" role="group" aria-label="지도 구역 필터">{[{id:'all',name:'전체'},{id:'people',name:'친구'},{id:'clues',name:'확인할 곳'},...zones].map(zone=><button key={zone.id} aria-pressed={filter===zone.id} onClick={()=>setFilter(zone.id)}>{zone.name}</button>)}</div>
   <div className="campus-zones">{zones.filter(z=>filter==='all'||filter==='people'||filter==='clues'||filter===z.id).map(zone=>{
@@ -29,6 +34,6 @@ export function CampusMap({selected,students,locked,onSelect,discoveries={}}:Pro
    })}</div></section>;
   })}</div>
   {filter==='people'&&!count&&<p className="campus-empty">지금 만날 수 있는 친구가 없어요.</p>}
-  {filter==='clues'&&!Object.keys(discoveries).length&&<p className="campus-empty">새로 확인할 기록이 없어요.</p>}
+  {filter==='clues'&&!Object.values(discoveries).some(value=>!!value)&&<p className="campus-empty">새로 확인할 기록이 없어요.</p>}
  </div>;
 }

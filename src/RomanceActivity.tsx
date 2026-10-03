@@ -15,16 +15,17 @@ export default function RomanceActivity({person,chapter,encounter,seed,paused=fa
 }
 function ActivitySession({activity,paused,onFinish}:{activity:RomanceActivityData;paused:boolean;onFinish:(score:number)=>void}){
  const [result,setResult]=useState<Result|null>(null),[attempt,setAttempt]=useState(0),[hidden,setHidden]=useState(document.hidden);
- const finished=useRef(false),settled=useRef(false),heading=useRef<HTMLHeadingElement>(null);
+ const finished=useRef(false),settled=useRef(false),heading=useRef<HTMLHeadingElement>(null),scroll=useRef<HTMLDivElement>(null);
  const suspended=paused||hidden;
  useEffect(()=>{heading.current?.focus({preventScroll:true});const watch=()=>setHidden(document.hidden);document.addEventListener('visibilitychange',watch);return()=>document.removeEventListener('visibilitychange',watch);},[]);
+ useEffect(()=>{if(result&&scroll.current)scroll.current.scrollTop=scroll.current.scrollHeight;},[result]);
  function settle(ok:boolean,detail=''){if(suspended||settled.current||finished.current)return;settled.current=true;setResult({ok,detail});}
  function finish(score:number){if(suspended||finished.current)return;finished.current=true;onFinish(score);}
- function retry(){if(suspended||finished.current)return;settled.current=false;setResult(null);setAttempt(value=>value+1);}
+ function retry(){if(suspended||finished.current)return;settled.current=false;setResult(null);setAttempt(value=>value+1);if(scroll.current)scroll.current.scrollTop=0;}
  return <section className="romance-together" aria-label={`${names[activity.person]}와 ${activity.title}`}>
   <div className="rt-card">
    <header className="rt-header"><span className="rt-kicker"><Heart size={14}/>AFTER SCHOOL / 둘이 해 보는 일</span><span className="rt-person">{names[activity.person]}</span><h2 ref={heading} tabIndex={-1}>{activity.title}</h2><span className="rt-kind">{activityKindNames[activity.task.kind]} · 선택 활동</span></header>
-   <div className="rt-scroll">
+   <div className="rt-scroll" ref={scroll}>
     <p className="rt-invitation">{activity.invitation}</p>
     <p className="rt-goal">{activity.goal}</p>
     {suspended&&<p className="rt-pause" role="status"><Pause size={15}/>잠시 멈췄어요. 돌아오면 이어 할 수 있어요.</p>}

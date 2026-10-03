@@ -10,5 +10,5 @@ export function portraitAsset(id:SchoolId){
 }
 export function SchoolPortrait({id,className=''}:{id:SchoolId;className?:string}){
  const [width,height]=portraitDimensions[id];
- return <div role="img" aria-label={schoolById[id].name} className={`portrait school-portrait ${className}`} style={{'--portrait-ratio':`${width} / ${height}`,backgroundImage:`url(${portraitAsset(id)})`,backgroundSize:'cover',backgroundPosition:'center 12%'} as CSSProperties}/>;
+ return <div role="img" aria-label={schoolById[id].name} className={`portrait school-portrait ${className}`} style={{'--portrait-ratio':`${width} / ${height}`,'--portrait-aspect':width/height,backgroundImage:`url(${portraitAsset(id)})`,backgroundSize:'cover',backgroundPosition:'center 12%'} as CSSProperties}/>;
 }

@@ -19,7 +19,7 @@ export function TrialRevolver({evidence,selected,disabled,onSelect,onInspect,vis
  if(!item||!visual)return null;
  const choose=(offset:number)=>onSelect(evidence[(current+offset+evidence.length)%evidence.length].id);
  return <section className="trial-revolver" aria-label="증거 말 탄환">
-  <header><Crosshair size={17}/><div><b>말 탄환</b><small>자료를 골라 발언의 모순에 제시하세요</small></div><span>{current+1} / {evidence.length}</span></header>
+  <header><Crosshair size={17}/><div><b>말 탄환</b><small>자료를 골라 발언의 모순에 제시하세요</small><select className="revolver-touch-select" aria-label="장전할 증거 선택" value={selected??''} disabled={disabled} onChange={event=>onSelect(event.target.value)}><option value="" disabled>증거 선택</option>{evidence.map(entry=><option key={entry.id} value={entry.id}>{entry.name}</option>)}</select></div><span>{current+1} / {evidence.length}</span></header>
   <div className="revolver-assembly">
    <div className="revolver-loader">
     <div className="revolver-cylinder" role="group" aria-label="회전 약실에서 증거 선택" style={{'--cylinder-turn':`${rotation.current}deg`,'--cylinder-counter-turn':`${-rotation.current}deg`} as CSSProperties} onKeyDown={event=>{if(disabled||!['ArrowLeft','ArrowRight'].includes(event.key))return;event.preventDefault();choose(event.key==='ArrowRight'?1:-1);}}>
