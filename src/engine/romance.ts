@@ -9,6 +9,7 @@ import {hasHangoutAvailable} from '../data/romanceHangouts';
 import {hasRomanceActivity} from '../data/romanceActivities';
 import {artById} from '../data/romanceArt';
 import {momentForScene} from '../data/romanceIllustrationMoments';
+import {TRIAL_EXPERIENCE_EDITION,isPreludeComplete,isSupportComplete,normalizeTrialExperience} from './trialExperience';
 
 const clamp=(n:number,max=100)=>Math.max(0,Math.min(max,n));
 const isPerson=(v:unknown):v is RPerson=>typeof v==='string'&&(romancePeople as readonly string[]).includes(v);
@@ -138,7 +139,7 @@ function replayClassConversation(s:RState):RState{
  return enterScene({...s,visitor:null,trialRound:0,trialFeedback:null,trialOrder:[],flags:s.flags.filter(flag=>!flag.startsWith('choice:main-5-1:'))},'main','main-5-1');
 }
 function beginTrial(s:RState):RState{
- return {...s,phase:'trial',trialRound:0,trialFeedback:null,trialOrder:[],flags:uniq([...s.flags,'trial:convened'])};
+ return {...s,phase:'trial',trialRound:0,trialFeedback:null,trialOrder:[],flags:uniq([...s.flags.filter(flag=>!flag.startsWith('trial-experience:')),'trial:convened',TRIAL_EXPERIENCE_EDITION])};
 }
 export function nextRomance(s:RState):RState{
  if(s.phase!=='map'||!s.flags.includes(`read:${getMainScene(s.chapter,s.act,s).id}`))return s;
@@ -191,7 +192,7 @@ export function inspectMemory(s:RState,id:string):RState{
  return enterScene({...s,visitor:null,location:clue.location},'discovery',`discover-${id}`);
 }
 export function submitArgument(s:RState,claimId:string,evidenceId:string):RState{
- if(s.phase!=='trial'||s.trialFeedback||s.trialRound>=romanceTrialRounds.length)return s;
+ if(s.phase!=='trial'||s.trialFeedback||s.trialRound>=romanceTrialRounds.length||!isPreludeComplete(s))return s;
  const round=romanceTrialRounds[s.trialRound];
  if(!round.claims.some(c=>c.id===claimId)||!s.clues.includes(evidenceId))return s;
  const ok=round.target===claimId&&round.evidence===evidenceId;
@@ -199,10 +200,11 @@ export function submitArgument(s:RState,claimId:string,evidenceId:string):RState
 }
 export function continueArgument(s:RState):RState{
  if(s.phase!=='trial'||!s.trialFeedback)return s;
- return {...s,trialRound:s.trialRound+(s.trialFeedback.ok?1:0),trialFeedback:null};
+ if(s.trialFeedback.ok&&!isSupportComplete(s))return s;
+ return {...normalizeTrialExperience(s),trialRound:s.trialRound+(s.trialFeedback.ok?1:0),trialFeedback:null};
 }
 export function submitReconstruction(s:RState,order:string[]):RState{
- if(s.phase!=='trial'||s.trialRound!==romanceTrialRounds.length||s.trialFeedback)return s;
+ if(s.phase!=='trial'||s.trialRound!==romanceTrialRounds.length||s.trialFeedback||!isPreludeComplete(s))return s;
  if(order.length!==romanceSequence.length||new Set(order).size!==order.length||order.some(id=>!romanceSequence.some(item=>item.id===id)))return s;
  const ok=romanceSequence.every((item,index)=>item.id===order[index]);
  if(!ok)return {...s,trialOrder:[...order],trialFeedback:{ok:false,text:'처음 어긋난 쪽지부터 페어 전야의 배포까지, 일어난 순서를 다시 살펴보자.'}};
@@ -246,7 +248,7 @@ export function restoreRomance(value:unknown):RState|null{
    if(!bond||typeof bond.affection!=='number'||!Number.isFinite(bond.affection)||typeof bond.trust!=='number'||!Number.isFinite(bond.trust)||!int(s.visits?.[id],0,10000))return null;
    bonds[id]={affection:clamp(bond.affection,id==='junyeon'?junyeonCap(s):100),trust:clamp(bond.trust)};visits[id]=s.visits[id];
   }
-  const restored:RState={...s,name:s.name.trim(),bonds,visits,flags:uniq(s.flags),clues:uniq(s.clues),visited:uniq(s.visited),trialOrder:[...s.trialOrder],backlog:s.backlog.map(line=>({...line})),response:s.response?.map(line=>({...line}))??null,trialFeedback:s.trialFeedback?{...s.trialFeedback}:null};
+  const restored:RState=normalizeTrialExperience({...s,name:s.name.trim(),bonds,visits,flags:uniq(s.flags),clues:uniq(s.clues),visited:uniq(s.visited),trialOrder:[...s.trialOrder],backlog:s.backlog.map(line=>({...line})),response:s.response?.map(line=>({...line}))??null,trialFeedback:s.trialFeedback?{...s.trialFeedback}:null});
   // A finale already on screen must keep its old text/choice cursor. Earlier
   // v2 saves instead enter the new finale and earn memories from saved choices.
   if(restored.mode==='finale'&&!restored.flags.includes('edition:earned-routes')&&!restored.flags.includes('legacy:finale'))restored.flags.push('legacy:finale');

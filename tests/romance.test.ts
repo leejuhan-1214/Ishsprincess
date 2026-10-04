@@ -7,6 +7,8 @@ import {hasHangoutAvailable} from '../src/data/romanceHangouts';
 import {respondToActivity,conveneTrial,pendingMainEvents} from '../src/engine/romance';
 import {newRomance,currentRomanceScene,romanceLines,advanceRomance,chooseRomance,nextRomance,selectFocus,startHangout,completeRomanceActivity,availableMemories,inspectMemory,submitArgument,continueArgument,submitReconstruction,setVerdict,restoreRomance,personLocation,choiceOrder,junyeonCap,junyeonRomanceEligible} from '../src/engine/romance';
 import {ROMANCE_STORAGE_PREFIX,saveRomance,loadRomance,listRomanceSaves} from '../src/engine/romanceStorage';
+import {TRIAL_EXPERIENCE_EDITION} from '../src/engine/trialExperience';
+import {completeTrialRound} from './helpers/trial';
 
 function read(s:RState,prefer?:(choices:RChoice[],s:RState)=>RChoice,activity:'skip'|'play'|'pause'='skip'):RState{
  let guard=0;
@@ -47,7 +49,7 @@ function reachTrial(focus:RPerson|null='world'):RState{
  return s;
 }
 function resolve(s:RState,verdict:'exclude'|'forgive'):RState{
- for(const round of romanceTrialRounds){s=submitArgument(s,round.target,round.evidence);assert.equal(s.trialFeedback?.ok,true);s=continueArgument(s);}
+ for(const _round of romanceTrialRounds)s=completeTrialRound(s);
  s=submitReconstruction(s,romanceSequence.map(item=>item.id));assert.equal(s.mode,'revelation');
  s=read(s);assert.equal(s.phase,'verdict');return setVerdict(s,verdict);
 }
@@ -220,8 +222,10 @@ test('Junyeon romance requires every condition independently and a friendship-on
  assert.equal(laterRomance.ending,'romance:junyeon:forgive');
 });
 
-test('trial mistakes preserve relationships and feedback until acknowledged; malformed submissions do nothing',()=>{
- let s=reachTrial('seoyul');const first=romanceTrialRounds[0],wrong=first.claims.find(c=>c.id!==first.target)!;
+test('legacy trial mistakes preserve relationships and feedback until acknowledged; malformed submissions do nothing',()=>{
+ const reached=reachTrial('seoyul');
+ let s={...reached,flags:reached.flags.filter(flag=>flag!==TRIAL_EXPERIENCE_EDITION)};
+ const first=romanceTrialRounds[0],wrong=first.claims.find(c=>c.id!==first.target)!;
  assert.ok(wrong);const before=structuredClone(s.bonds);
  assert.strictEqual(submitArgument(s,'invalid',first.evidence),s);
  s=submitArgument(s,wrong.id,first.evidence);assert.equal(s.trialFeedback?.ok,false);assert.deepEqual(s.bonds,before);

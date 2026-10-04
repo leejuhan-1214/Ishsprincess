@@ -6,7 +6,8 @@ import {routeChoiceFlags} from '../src/data/romanceRouteTraits';
 import {getFinaleScene} from '../src/data/romanceStory';
 import {hasHangoutAvailable} from '../src/data/romanceHangouts';
 import {memoryEvidence,romanceTrialRounds,romanceSequence} from '../src/data/romanceMystery';
-import {newRomance,currentRomanceScene,advanceRomance,chooseRomance,nextRomance,selectFocus,startHangout,personLocation,respondToActivity,completeRomanceActivity,availableMemories,inspectMemory,submitArgument,continueArgument,submitReconstruction,setVerdict,restoreRomance} from '../src/engine/romance';
+import {newRomance,currentRomanceScene,advanceRomance,chooseRomance,nextRomance,selectFocus,startHangout,personLocation,respondToActivity,completeRomanceActivity,availableMemories,inspectMemory,submitReconstruction,setVerdict,restoreRomance} from '../src/engine/romance';
+import {completeTrialRound} from './helpers/trial';
 
 const heroes=romancePeople.filter((id):id is RHero=>id!=='junyeon');
 function prepared(person:RHero):RState{
@@ -18,27 +19,30 @@ function prepared(person:RHero):RState{
  flags.push(`route:${person}:commitment`);
  return{...base,focus:person,chapter:4,act:2,mode:'finale',sceneKey:`finale-${person}-exclude`,verdict:'exclude',flags,bonds:{...base.bonds,[person]:{affection:82,trust:78}},clues:memoryEvidence.map(clue=>clue.id)};
 }
-function read(initial:RState,policy:'earned'|'first'='earned',play=false):RState{
+function read(initial:RState,policy:'earned'|'no-promises'='earned',play=false):RState{
  let s=initial,guard=0;
  while(s.phase==='story'){
   assert.ok(guard++<500);
   const scene=currentRomanceScene(s);
   if(s.response===null&&s.line>=scene.lines.length&&scene.choices.length){
-   const choose=(choices:RChoice[])=>policy==='first'?choices[0]:choices.find(choice=>choice.flags?.some(flag=>flag.endsWith(':commitment')))??choices.find(choice=>choice.flags?.some(flag=>/^route:/.test(flag)))??choices[0];
+   const choose=(choices:RChoice[])=>{
+    const candidates=policy==='no-promises'?choices.filter(choice=>!choice.flags?.some(flag=>flag.endsWith(':commitment'))):choices;
+    return candidates.find(choice=>choice.flags?.some(flag=>flag.endsWith(':commitment')))??candidates.find(choice=>choice.flags?.some(flag=>/^route:/.test(flag)))??candidates[0];
+   };
    s=chooseRomance(s,choose(scene.choices).id);
   }else s=advanceRomance(s);
  }
  if(s.phase==='activity-invite')s=play?completeRomanceActivity(respondToActivity(s,true),3):respondToActivity(s,false);
  return s;
 }
-function playToFinale(person:RHero,policy:'earned'|'first',play=false):RState{
+function playToFinale(person:RHero,policy:'earned'|'no-promises',play=false):RState{
  let s=newRomance('차근차근',19),guard=0;
  while(s.mode!=='finale'){
   assert.ok(guard++<120);
   if(s.phase==='story'){s=read(s,policy,play);continue;}
   if(s.phase==='focus'){s=selectFocus(s,person);continue;}
   if(s.phase==='trial'){
-   for(const round of romanceTrialRounds){s=continueArgument(submitArgument(s,round.target,round.evidence));}
+   for(const _round of romanceTrialRounds)s=completeTrialRound(s);
    s=read(submitReconstruction(s,romanceSequence.map(item=>item.id)),policy);
    assert.equal(s.phase,'verdict');s=setVerdict(s,'exclude');continue;
   }
@@ -51,7 +55,7 @@ function playToFinale(person:RHero,policy:'earned'|'first',play=false):RState{
  return s;
 }
 
-test('each heroine has an earned playable romance without minigames; choosing every first answer with perfect games is insufficient',()=>{
+test('each heroine has an earned playable romance without minigames; high scores without an explicit promise are insufficient',()=>{
  for(const person of heroes){
   const earned=playToFinale(person,'earned');
   assert.ok(heroineRomanceEligible(earned,person),`${person}: considered choices must have a reachable route without minigames: ${JSON.stringify(routeProgress(earned,person))}, ${JSON.stringify(earned.bonds[person])}`);
@@ -60,9 +64,12 @@ test('each heroine has an earned playable romance without minigames; choosing ev
   assert.ok(selected.flags.includes(`mutual:${person}`));
   selected=read(selected);assert.equal(selected.phase,'ending');assert.equal(selected.ending,`romance:${person}:exclude`);
   assert.equal(getEndingSummary(selected).image,`${person}-ending`);
-  const first=playToFinale(person,'first',true);
-  assert.equal(heroineRomanceEligible(first,person),false,`${person}: highest-score farming and the first button cannot imply commitment`);
-  assert.ok(!currentRomanceScene(first).choices.some(choice=>choice.id==='romance'));
+  const uncommitted=playToFinale(person,'no-promises',true),progress=routeProgress(uncommitted,person);
+  assert.ok(uncommitted.bonds[person].affection>=64&&uncommitted.bonds[person].trust>=60);
+  assert.ok(progress.early&&progress.late&&progress.chapters.length>=3&&progress.memories.length>=3);
+  assert.equal(progress.committed,false);
+  assert.equal(heroineRomanceEligible(uncommitted,person),false,`${person}: high scores and attentive memories cannot imply an unchosen commitment`);
+  assert.ok(!currentRomanceScene(uncommitted).choices.some(choice=>choice.id==='romance'));
  }
 });
 

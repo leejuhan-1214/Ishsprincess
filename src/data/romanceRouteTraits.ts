@@ -17,11 +17,13 @@ const missed:Record<RPerson,number[]>={world:[1,2,2,0,0],hyunsol:[1,2,0,0,0],tae
 const promiseIndex:Record<RPerson,number>={world:1,hyunsol:1,taewoo:2,taehun:1,seoyul:2,juhan:1,minhyuk:2,junyeon:2};
 export function routeChoiceFlags(person:RPerson,chapterIndex:number,visit:1|2,optionIndex:number):string[]{
  if(person==='junyeon'||chapterIndex<0||chapterIndex>4)return[];
- const earns=visit===1?optionIndex!==missed[person][chapterIndex]:optionIndex!==(missed[person][chapterIndex]+1)%3;
+ // Returning the calculator and arranging another meeting is Hyunsol's
+ // explicit invitation to meet without a pretext, including in saved choices.
+ const hyunsolInvitation=person==='hyunsol'&&chapterIndex===4&&visit===1&&optionIndex===0;
+ const earns=hyunsolInvitation||(visit===1?optionIndex!==missed[person][chapterIndex]:optionIndex!==(missed[person][chapterIndex]+1)%3);
  const flags=earns?[`route:${person}:${chapterIndex+1}:${keys[person][chapterIndex]}`]:[];
- // A chosen ordinary future together matters more than a repeatedly selected
- // first button. These options explicitly propose a meeting, not ownership.
- if(visit===1&&chapterIndex===3&&optionIndex===promiseIndex[person])flags.push(`route:${person}:commitment`);
+ // These answers explicitly propose another meeting together.
+ if(hyunsolInvitation||(visit===1&&chapterIndex===3&&optionIndex===promiseIndex[person]))flags.push(`route:${person}:commitment`);
  return flags;
 }
 

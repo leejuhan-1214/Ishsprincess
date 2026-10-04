@@ -8,17 +8,17 @@ import RomanceActivity from './RomanceActivity';
 import {RomanceEnding} from './RomanceEnding';
 import {activeSceneArt,revealedCount} from './engine/dialoguePresentation';
 import {EvidenceViewer} from './EvidenceViewer';
-import {TrialRevolver,RebuttalBurst} from './TrialRevolver';
+import {RebuttalBurst} from './TrialRevolver';
+import {RomanceTrialExperience} from './RomanceTrialExperience';
 import {hasHangoutAvailable,getHangoutScene} from './data/romanceHangouts';
 import {momentForScene} from './data/romanceIllustrationMoments';
 import {romanceArt,artById,artPath,artOriginalPath,awareness} from './data/romanceArt';
 import {getRomanceActivity} from './data/romanceActivities';
 import {music} from './engine/audio';
 import {bindGameViewport} from './engine/mobileViewport';
-import {shuffleChoices} from './engine/choiceOrder';
-import {newRomance,currentRomanceScene,romanceLines,advanceRomance,chooseRomance,nextRomance,selectFocus,startHangout,completeRomanceActivity,respondToActivity,pendingMainEvents,availableMemories,inspectMemory,submitArgument,continueArgument,submitReconstruction,setVerdict,personLocation,choiceOrder} from './engine/romance';
+import {newRomance,currentRomanceScene,romanceLines,advanceRomance,chooseRomance,nextRomance,selectFocus,startHangout,completeRomanceActivity,respondToActivity,pendingMainEvents,availableMemories,inspectMemory,setVerdict,personLocation,choiceOrder} from './engine/romance';
 import {saveRomance,loadRomance,listRomanceSaves,type RomanceSlot} from './engine/romanceStorage';
-import {memoryEvidence,romanceTrialRounds,romanceSequence} from './data/romanceMystery';
+import {memoryEvidence} from './data/romanceMystery';
 import {romancePeople,type RPerson,type RState} from './romanceTypes';
 import type {LocationId} from './types';
 import type {EvidenceVisual} from './data/evidenceVisuals';
@@ -54,7 +54,7 @@ export default function RomanceGame(){
  const galleryPreview=useRef<HTMLElement>(null);
  const [settings,setSettings]=useState(()=>{const v=getStored<Record<string,unknown>>('settings',{});return {speed:[0,12,24,45].includes(Number(v?.speed))?Number(v.speed):24,music:v?.music===true,volume:typeof v?.volume==='number'?Math.max(0,Math.min(.8,v.volume)):.35};});
  const [toast,setToast]=useState(''),[notebookId,setNotebookId]=useState<string|null>(null),[inspectId,setInspectId]=useState<string|null>(null);
- const [selectedClaim,setSelectedClaim]=useState<string|null>(null),[loaded,setLoaded]=useState<string|null>(null),[burst,setBurst]=useState(0),[session,setSession]=useState(0);
+ const [burst,setBurst]=useState(0),[session,setSession]=useState(0);
  const [overwrite,setOverwrite]=useState<string|null>(null),[titlePerson,setTitlePerson]=useState<RPerson>('world');
  const saveWarned=useRef(false),stateRef=useRef(game);stateRef.current=game;
  const scene=game?currentRomanceScene(game):null,lines=game?romanceLines(game):[];
@@ -62,8 +62,6 @@ export default function RomanceGame(){
  const lineKey=game?`${game.sceneKey}:${game.response?'r':'l'}:${game.line}:${raw?.speaker??''}:${text}`:'';
  const visible=revealedCount(reveal,lineKey,text.length,settings.speed===0);
  const setVisible=(count:number)=>setReveal({key:lineKey,count});
- const order=game?.trialOrder??[];
- const setOrder=(value:string[]|((current:string[])=>string[]))=>setGame(s=>s?{...s,trialOrder:typeof value==='function'?value(s.trialOrder):value}:s);
  const choosing=!!game&&game.phase==='story'&&!game.response&&game.line>=lines.length&&!!scene?.choices.length;
  const choices=game&&scene?choiceOrder(game,scene.choices):[];
  const portrait=raw&&romancePeople.includes(raw.speaker as RPerson)?raw.speaker as RPerson:game?.visitor??lines.slice(0,(game?.line??0)+1).reverse().find(l=>romancePeople.includes(l.speaker as RPerson))?.speaker as RPerson|undefined;
@@ -80,11 +78,6 @@ export default function RomanceGame(){
  const onSite=students.filter(s=>s.place===place);
  const notebook=memoryEvidence.filter(c=>game?.clues.includes(c.id));
  const note=notebook.find(c=>c.id===notebookId)??notebook[0];
- const activeRound=game?romanceTrialRounds[game.trialRound]:undefined;
- const claimOrder=game&&activeRound?shuffleChoices(activeRound.claims,`${game.seed}:${activeRound.id}:claims`).map(x=>x.value):[];
- const sequenceOrder=game?shuffleChoices(romanceSequence,`${game.seed}:reconstruction`).map(x=>x.value):[];
- const trialEvidence=notebook.map(c=>({id:c.id,name:c.name,location:c.location,description:c.description,inspection:[]}));
- const visuals=Object.fromEntries(memoryEvidence.map(c=>[c.id,visualFor(c.id)!]));
  const visualLine=raw??(choosing?scene?.lines.at(-1):undefined);
  const currentArt=artById(activeSceneArt(lines,game?.line??0)),thought=game?awareness(game):null;
  const encounter:1|2=game?.sceneKey.includes('-v2:')?2:1;
@@ -106,7 +99,6 @@ export default function RomanceGame(){
  function load(slot:string){const saved=loadRomance(asSlot(slot));if(!saved){tell('저장 파일을 불러올 수 없어요.');return;}setGame(saved.state);setSession(v=>v+1);setPlace(saved.state.location);setAuto(false);closePanel();tell('불러왔어요.');}
  function save(slot:string){if(!game)return;if(loadRomance(asSlot(slot))&&overwrite!==slot){setOverwrite(slot);return;}if(saveRomance(asSlot(slot),game)){closePanel();tell(`${slot}번 슬롯에 저장했어요.`);}else tell('브라우저 저장 공간을 확인해 주세요.');}
  function next(){if(!game)return;if(pendingEvents.length){setPlace(pendingEvents[0].location);tell(pendingEvents[0].label);return;}const value=nextRomance(game);if(value===game){tell('진행 중인 이야기를 마쳐 주세요.');return;}setGame(value);setPlace('classroom');}
- function argue(){if(!game||!selectedClaim||!loaded)return;const next=submitArgument(game,selectedClaim,loaded);setGame(next);if(next!==game&&next.trialFeedback?.ok)setBurst(n=>n+1);}
  function fullscreen(){if(document.fullscreenElement)void document.exitFullscreen().catch(()=>tell('전체화면을 종료하지 못했어요.'));else if(document.documentElement.requestFullscreen)void document.documentElement.requestFullscreen().catch(()=>tell('이 브라우저에서는 전체화면을 지원하지 않아요.'));else tell('이 브라우저에서는 전체화면을 지원하지 않아요.');}
  useEffect(()=>{if(!game)return;if(!saveRomance('auto',game)&&!saveWarned.current){saveWarned.current=true;tell('자동 저장을 하지 못했어요. 저장 공간을 확인해 주세요.');}},[game]);
  useEffect(()=>{persist('read',read);},[read]);
@@ -118,9 +110,7 @@ export default function RomanceGame(){
  useEffect(()=>{if(hidden||panel!=='none'||inspectId||!text||settings.speed===0||visible>=text.length)return;const t=setTimeout(()=>setReveal({key:lineKey,count:Math.min(visible+1,text.length)}),settings.speed);return()=>clearTimeout(t);},[lineKey,visible,text,settings.speed,hidden,panel,inspectId]);
  useEffect(()=>{if(!auto||hidden||panel!=='none'||inspectId||game?.phase!=='story'||choosing||visible<text.length)return;const t=setTimeout(step,Math.max(1300,text.length*30));return()=>clearTimeout(t);},[auto,hidden,panel,inspectId,lineKey,visible,choosing,game?.phase]);
  useEffect(()=>{if(toast){const t=setTimeout(()=>setToast(''),4300);return()=>clearTimeout(t);}},[toast]);
- useEffect(()=>{setSelectedClaim(null);setLoaded(null);},[game?.trialRound,game?.phase,session]);
  useEffect(()=>{if(game?.phase==='map')setPlace(game.location);},[game?.phase,game?.sceneKey]);
- useEffect(()=>{if(game?.trialFeedback)document.querySelector('.romance-trial-feedback')?.scrollIntoView({block:'nearest'});},[game?.trialFeedback]);
  useEffect(()=>{if(game?.phase==='ending'&&game.ending&&!collected.includes(game.ending)){const all=[...collected,game.ending];setCollected(all);persist('endings',all);}},[game?.phase,game?.ending]);
  useEffect(()=>{const listener=(e:KeyboardEvent)=>{if(e.key==='Escape'){e.preventDefault();if(inspectId)setInspectId(null);else if(panel!=='none')closePanel();else open('menu');return;}if(panel!=='none'||inspectId||e.ctrlKey||e.metaKey||e.altKey||(e.target instanceof HTMLElement&&e.target.closest('input,textarea,select,button,a')))return;if(game?.phase==='story'&&(e.key===' '||e.key==='Enter')){e.preventDefault();step();}else if(choosing&&/^[1-9]$/.test(e.key)){const c=choices[Number(e.key)-1];if(c){e.preventDefault();mutate(s=>chooseRomance(s,c.value.id));}}};window.addEventListener('keydown',listener);return()=>window.removeEventListener('keydown',listener);});
 
@@ -141,7 +131,7 @@ export default function RomanceGame(){
    {game.phase==='activity-invite'&&game.visitor&&<section className="romance-invitation" inert={panel!=='none'}><SchoolPortrait id={game.visitor}/><div><h1>{invitation?.title}</h1><p>{invitation?.invitation}</p><div className="romance-inline"><button className="r-primary" onClick={()=>mutate(s=>respondToActivity(s,true))}>함께하기<ArrowRight size={17}/></button><button className="r-secondary" onClick={()=>mutate(s=>respondToActivity(s,false))}>다음에 할래</button></div></div></section>}
    {game.phase==='activity'&&game.visitor&&<RomanceActivity key={`${session}:${game.sceneKey}`} person={game.visitor} chapter={game.chapter} encounter={encounter} seed={game.seed} paused={panel!=='none'||!!inspectId} onFinish={score=>mutate(s=>completeRomanceActivity(s,score))}/>}
 
-   {game.phase==='trial'&&<section className="romance-trial" inert={panel!=='none'||!!inspectId}><header><span className="romance-kicker">학급재판</span><h1>{activeRound?activeRound.title:'우리가 겪은 일을 순서대로'}</h1></header>{activeRound?<div className="romance-trial-body"><div className="romance-claims"><h2>확인할 발언</h2>{claimOrder.map((c,i)=><button key={c.id} disabled={!!game.trialFeedback} aria-pressed={selectedClaim===c.id} onClick={()=>setSelectedClaim(c.id)}><small>{i+1} / {label(c.speaker)}</small><p>{fmt(c.text)}</p></button>)}{game.trialFeedback?<div className={`romance-trial-feedback ${game.trialFeedback.ok?'correct':''}`} role="status"><b>{game.trialFeedback.ok?'확인된 사실':'다시 살펴볼 부분'}</b><p>{game.trialFeedback.text}</p><button className="r-primary" onClick={()=>mutate(continueArgument)}>계속<ArrowRight size={16}/></button></div>:<button className="r-primary" disabled={!selectedClaim||!loaded} onClick={argue}>증거 제시<ArrowRight size={17}/></button>}</div><TrialRevolver evidence={trialEvidence} selected={loaded} disabled={!!game.trialFeedback} onSelect={setLoaded} onInspect={setInspectId} visuals={visuals}/><div className="romance-mobile-submit">{game.trialFeedback?<button className="r-primary" onClick={()=>mutate(continueArgument)}>계속<ArrowRight size={16}/></button>:<button className="r-primary" disabled={!selectedClaim||!loaded} onClick={argue}>증거 제시<ArrowRight size={17}/></button>}</div></div>:<div className="romance-reconstruction"><p>일어난 순서대로 놓아 주세요.</p><div className="romance-sequence-slots">{Array.from({length:4},(_,i)=><div key={i}><b>{i+1}</b><span>{romanceSequence.find(x=>x.id===order[i])?.text??'기록 선택'}</span></div>)}</div><div className="romance-sequence-options">{sequenceOrder.map(s=><button key={s.id} disabled={order.includes(s.id)||!!game.trialFeedback} onClick={()=>setOrder(v=>[...v,s.id])}>{s.text}</button>)}</div>{game.trialFeedback?<div role="status" className="romance-trial-feedback"><p>{game.trialFeedback.text}</p><button className="r-primary" onClick={()=>{mutate(continueArgument);setOrder([]);}}>계속</button></div>:<div className="romance-inline"><button className="r-secondary" onClick={()=>setOrder([])}>다시 놓기</button><button className="r-primary" disabled={order.length!==4} onClick={()=>mutate(s=>submitReconstruction(s,order))}>확인</button></div>}</div>}</section>}
+   {game.phase==='trial'&&<RomanceTrialExperience key={`trial-${session}`} game={game} paused={panel!=='none'||!!inspectId||hidden} onChange={setGame} onInspect={setInspectId} onRebuttal={()=>setBurst(n=>n+1)}/>}
 
    {game.phase==='verdict'&&<section className="romance-verdict" inert={panel!=='none'}><h1>이제, 어떤 관계로 남을까?</h1><div><button onClick={()=>mutate(s=>setVerdict(s,'exclude'))}><h2>프로젝트에서는 여기까지 하자.</h2><p>개인적인 약속은 끝낸다. 잘못된 안내를 바로잡는 일은 선생님과 계속해 줘.</p><ArrowRight size={19}/></button><button onClick={()=>mutate(s=>setVerdict(s,'forgive'))}><h2>바꾼 것부터 바로잡아 줘.</h2><p>선생님과 약속한 역할부터 다시 해 보자. 내 마음까지 곧바로 돌아오진 않겠지만.</p><ArrowRight size={19}/></button></div></section>}
 

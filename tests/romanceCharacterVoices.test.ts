@@ -4,7 +4,6 @@ import {newRomance} from '../src/engine/romance';
 import {getMainScene} from '../src/data/romanceStory';
 import {getHangoutScene} from '../src/data/romanceHangouts';
 import {characterAsides,characterMoments} from '../src/data/romanceCharacterMoments';
-import {routeChoiceFlags} from '../src/data/romanceRouteTraits';
 import {romancePeople,type RHero} from '../src/romanceTypes';
 
 const heroes=romancePeople.filter((person):person is RHero=>person!=='junyeon');
@@ -83,15 +82,17 @@ test('main character check-ins have distinct lines across chapters and preserve 
  assert.match(characterMoments.minhyuk.text,/완장|반장|계산/);
 });
 
-test('private promises are not awarded by always selecting the first hangout answer',()=>{
+test('private promises follow explicit invitations, including Hyunsol arranging another meeting without the calculator',()=>{
  for(const hero of heroes){
-  const allFirst=Array.from({length:5},(_,chapter)=>[...routeChoiceFlags(hero,chapter,1,0),...routeChoiceFlags(hero,chapter,2,0)]).flat();
-  assert.ok(!allFirst.includes(`route:${hero}:commitment`));
   const state={...newRomance('봄',43),chapter:3,focus:hero};
   const scene=getHangoutScene(hero,state,'classroom');
   const promises=scene.choices.filter(choice=>choice.flags?.includes(`route:${hero}:commitment`));
   assert.equal(promises.length,1);
   assert.notEqual(promises[0].id,'option-1');
+  const last=getHangoutScene(hero,{...state,chapter:4,flags:[...state.flags,`read:hangout-${hero}-1-v1`]},'garden');
+  const laterPromises=last.choices.filter(choice=>choice.flags?.includes(`route:${hero}:commitment`));
+  assert.equal(laterPromises.length,hero==='hyunsol'?1:0);
+  if(hero==='hyunsol')assert.equal(laterPromises[0].text,'계산기는 돌려주고 다음 만남을 정한다.');
  }
 });
 

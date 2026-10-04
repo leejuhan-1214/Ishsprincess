@@ -31,3 +31,5 @@ await import('../tests/romanceCharacterVoices.test.ts');
 await import('../tests/dialoguePresentation.test.ts');
 await import('../tests/illustration-moments.test.ts');
 await import('../tests/artRevision.test.ts');
+await import('../tests/hyunsolPromise.test.ts');
+await import('../tests/trialExperience.test.ts');

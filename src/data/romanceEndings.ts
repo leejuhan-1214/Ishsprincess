@@ -551,7 +551,10 @@ c|그 장면이 없던 일이 되는 건 아니야. 오늘 이후를 어떻게 �
 n|좋아한다는 말과 같은 미래를 고른다는 말 사이에는, 아직 함께 보내지 않은 시간이 있었다.`;
  const choices:RScene['choices']=[{id:'friendship',text:'연인이 아니라 친구로 만나고 싶다는 내 마음을 말한다.',response:lines(f.friend,person,s.name),flags:[`friendship:${person}`]},{id:'own-path',text:'좋았던 시간을 남기고 개인적인 약속은 여기서 마무리한다.',response:lines(f.distance,person,s.name),flags:[`distance:${person}`]}];
  if(progress.eligible)choices.unshift({id:'romance',text:'나도 같은 마음이라고, 연인으로 만나고 싶다고 말한다.',response:lines(f.romance,person,s.name,`${person}-ending`),flags:[`romance:${person}`,`mutual:${person}`]});
- else if(!weak)choices.unshift({id:'not-yet',text:'더 알아가고 싶지만 아직 약속할 수 없는 마음도 솔직히 말한다.',response:lines(f.wait,person,s.name),flags:[`unresolved:${person}`]});
+ // A corrected saved invitation can unlock romance before an answer, but a
+ // response already chosen in that save must still restore and finish intact.
+ const continuingUnresolved=person==='hyunsol'&&s.response!==null&&s.flags.includes(`choice:${s.sceneKey}:not-yet`);
+ if(!weak&&(!progress.eligible||continuingUnresolved))choices.unshift({id:'not-yet',text:'더 알아가고 싶지만 아직 약속할 수 없는 마음도 솔직히 말한다.',response:lines(f.wait,person,s.name),flags:[`unresolved:${person}`]});
  const distant=progress.chapters.length<2,briefPlace=person==='taehun'?'library':person==='hyunsol'?'chemistry':f.place;
  return{id:`finale-${person}-${s.verdict}`,title:progress.eligible?f.title:weak?f.distanceTitle:f.openTitle,location:distant?briefPlace:f.place,lines:lines(`${distant?briefAcquaintance[person]:f.intro}\n${progress.eligible?f.close:unresolved}`,person,s.name),choices};
 }
