@@ -14,7 +14,7 @@ let original=0,preview=0;
 for(let start=0;start<names.length;start+=4){
  await Promise.all(names.slice(start,start+4).map(async name=>{
   const src=join(source,name),dest=join(out,name.replace(/\.png$/,'.webp'));
-  await sharp(src).resize({width:1440,withoutEnlargement:true}).webp({quality:86,effort:5}).toFile(dest);
+  await sharp(src).resize({width:1920,withoutEnlargement:true}).webp({quality:94,effort:5,smartSubsample:true}).toFile(dest);
   original+=(await stat(src)).size;preview+=(await stat(dest)).size;
  }));
 }
