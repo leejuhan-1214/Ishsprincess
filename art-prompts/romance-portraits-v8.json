@@ -1,0 +1,155 @@
+{
+  "date": "2026-10-27",
+  "revision": "2026-10-27-romance-v8",
+  "mode": "built-in image_gen edit; one call per character",
+  "scope": "Eight shared character portraits; existing narrative CGs retained.",
+  "backup": "output/character-design-restore-2026-10-27/before (workspace outside deployment directory)",
+  "characters": [
+    {
+      "id": "world",
+      "name": "전세계",
+      "prompt": "Use case: style-transfer.\nAsset type: production individual character portrait for the existing Korean school romance visual novel RE:ACTION.\nPrimary request: restore the gentle original romance visual-novel character design and art direction shown in the six-panel reference sheet. Delicate fine brown-gray contours, softly blended pastel shading, subtle watercolor-like finish, natural muted clothing colors, luminous expressive anime eyes, understated cheek color, airy light on hair, approachable school-life mood. Match the original sheet's illustrator and face proportions closely. No heavy black outlines, hard angular cel shadows, jagged graphic hatching, theatrical horror expressions, black haze, panel background, frame, lettering, or watermark.\nComposition: ONE girl only, portrait orientation, entire hair crown and both shoulders, torso down to hips, all visible hands and essential prop inside the canvas, small clean margin. Preserve her recognizable hair, face, clothing, accessories, personality, and natural body proportions. Ordinary fully clothed school-age female character, nonsexual, no exaggerated anatomy.\nOutput: transparent-background PNG with a clean natural silhouette, portrait approximately 1024x1536. No other characters.\nSubject and input roles: Image 1 is the ORIGINAL DESIGN AND STYLE REFERENCE. Isolate and faithfully restore ONLY the FIRST girl on the far left: Jeon Segye, long softly wavy near-black plum hair, violet eyes, deep red rose above one ear, navy blazer with restrained gold edging over a white school shirt and large black ribbon. Her chin rests lightly on one hand as in her original pose; her smile is quietly confident, affectionate and a little possessive, never frightening. Preserve her original gentle face and hair volume; do not copy the newer dark gothic redraw.",
+      "references": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/cast.webp"
+      ],
+      "selectedSource": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-b8037503-87e6-4e10-8b92-1c778d449aae.png",
+      "destination": "public/assets/mystery/cast-world.png",
+      "qa": {
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "hasAlpha": true,
+        "visual": "Inspected generated original: original character identity, soft romance style, characteristic clothing and props, coherent visible hands, no text or extra characters."
+      }
+    },
+    {
+      "id": "junyeon",
+      "name": "방준연",
+      "prompt": "Use case: style-transfer.\nAsset type: production individual character portrait for the existing Korean school romance visual novel RE:ACTION.\nPrimary request: restore the gentle original romance visual-novel character design and art direction shown in the six-panel reference sheet. Delicate fine brown-gray contours, softly blended pastel shading, subtle watercolor-like finish, natural muted clothing colors, luminous expressive anime eyes, understated cheek color, airy light on hair, approachable school-life mood. Match the original sheet's illustrator and face proportions closely. No heavy black outlines, hard angular cel shadows, jagged graphic hatching, theatrical horror expressions, black haze, panel background, frame, lettering, or watermark.\nComposition: ONE girl only, portrait orientation, entire hair crown and both shoulders, torso down to hips, all visible hands and essential prop inside the canvas, small clean margin. Preserve her recognizable hair, face, clothing, accessories, personality, and natural body proportions. Ordinary fully clothed school-age female character, nonsexual, no exaggerated anatomy.\nOutput: transparent-background PNG with a clean natural silhouette, portrait approximately 1024x1536. No other characters.\nSubject and input roles: Image 1 is the ORIGINAL DESIGN AND STYLE REFERENCE. Isolate and faithfully restore ONLY the SECOND girl from the left: Bang Junyeon, soft shoulder-length chestnut-brown hair with bangs and slightly curled ends, round thin glasses, shy blue-gray eyes, oversized sage-green cardigan over white collared school shirt, charcoal pleated skirt. Both hands hug a dark green chemistry research notebook to her chest, as in the reference. Quiet reserved slight smile. Preserve her original full face and ordinary build.",
+      "references": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/cast.webp"
+      ],
+      "selectedSource": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-3159dc85-6af3-42e1-aa5d-caeae3770a2c.png",
+      "destination": "public/assets/mystery/cast-junyeon.png",
+      "qa": {
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "hasAlpha": true,
+        "visual": "Inspected generated original: original character identity, soft romance style, characteristic clothing and props, coherent visible hands, no text or extra characters."
+      }
+    },
+    {
+      "id": "hyunsol",
+      "name": "최현솔",
+      "prompt": "Use case: style-transfer.\nAsset type: production individual character portrait for the existing Korean school romance visual novel RE:ACTION.\nPrimary request: restore the gentle original romance visual-novel character design and art direction shown in the six-panel reference sheet. Delicate fine brown-gray contours, softly blended pastel shading, subtle watercolor-like finish, natural muted clothing colors, luminous expressive anime eyes, understated cheek color, airy light on hair, approachable school-life mood. Match the original sheet's illustrator and face proportions closely. No heavy black outlines, hard angular cel shadows, jagged graphic hatching, theatrical horror expressions, black haze, panel background, frame, lettering, or watermark.\nComposition: ONE girl only, portrait orientation, entire hair crown and both shoulders, torso down to hips, all visible hands and essential prop inside the canvas, small clean margin. Preserve her recognizable hair, face, clothing, accessories, personality, and natural body proportions. Ordinary fully clothed school-age female character, nonsexual, no exaggerated anatomy.\nOutput: transparent-background PNG with a clean natural silhouette, portrait approximately 1024x1536. No other characters.\nSubject and input roles: Image 1 is the ORIGINAL DESIGN AND STYLE REFERENCE. Isolate and faithfully restore ONLY the THIRD girl from the left: Choi Hyunsol, straight glossy black chin-length bob with blunt bangs, calm dark gray eyes, white laboratory coat over a white collared school shirt, teal necktie and charcoal waistcoat. Arms folded naturally as in her original pose, with composed analytical mildly unimpressed expression. Preserve her original soft face; no extra props or safety goggles.",
+      "references": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/cast.webp"
+      ],
+      "selectedSource": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-bee768ce-5b5c-4117-90ff-efdc6933e8cf.png",
+      "destination": "public/assets/mystery/cast-hyunsol.png",
+      "qa": {
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "hasAlpha": true,
+        "visual": "Inspected generated original: original character identity, soft romance style, characteristic clothing and props, coherent visible hands, no text or extra characters."
+      }
+    },
+    {
+      "id": "taewoo",
+      "name": "김태우",
+      "prompt": "Use case: style-transfer.\nAsset type: production individual character portrait for the existing Korean school romance visual novel RE:ACTION.\nPrimary request: restore the gentle original romance visual-novel character design and art direction shown in the six-panel reference sheet. Delicate fine brown-gray contours, softly blended pastel shading, subtle watercolor-like finish, natural muted clothing colors, luminous expressive anime eyes, understated cheek color, airy light on hair, approachable school-life mood. Match the original sheet's illustrator and face proportions closely. No heavy black outlines, hard angular cel shadows, jagged graphic hatching, theatrical horror expressions, black haze, panel background, frame, lettering, or watermark.\nComposition: ONE girl only, portrait orientation, entire hair crown and both shoulders, torso down to hips, all visible hands and essential prop inside the canvas, small clean margin. Preserve her recognizable hair, face, clothing, accessories, personality, and natural body proportions. Ordinary fully clothed school-age female character, nonsexual, no exaggerated anatomy.\nOutput: transparent-background PNG with a clean natural silhouette, portrait approximately 1024x1536. No other characters.\nSubject and input roles: Image 1 is the ORIGINAL DESIGN AND STYLE REFERENCE. Isolate and faithfully restore ONLY the FOURTH girl from the left: Kim Taewoo, auburn-brown high ponytail, warm brown eyes, bright confident open smile, blue varsity jacket with ivory sleeves over a plain white crewneck athletic shirt and charcoal school skirt. One hand naturally raised behind her head as in the original reference, other arm relaxed. Energetic school dance-club girl. Preserve original face and ordinary body proportions.",
+      "references": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/cast.webp"
+      ],
+      "selectedSource": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-20375b96-dd74-467e-ba27-50404adc1d95.png",
+      "destination": "public/assets/mystery/cast-taewoo.png",
+      "qa": {
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "hasAlpha": true,
+        "visual": "Inspected generated original: original character identity, soft romance style, characteristic clothing and props, coherent visible hands, no text or extra characters."
+      }
+    },
+    {
+      "id": "taehun",
+      "name": "고태훈",
+      "prompt": "Use case: style-transfer.\nAsset type: production individual character portrait for the existing Korean school romance visual novel RE:ACTION.\nPrimary request: restore the gentle original romance visual-novel character design and art direction shown in the six-panel reference sheet. Delicate fine brown-gray contours, softly blended pastel shading, subtle watercolor-like finish, natural muted clothing colors, luminous expressive anime eyes, understated cheek color, airy light on hair, approachable school-life mood. Match the original sheet's illustrator and face proportions closely. No heavy black outlines, hard angular cel shadows, jagged graphic hatching, theatrical horror expressions, black haze, panel background, frame, lettering, or watermark.\nComposition: ONE girl only, portrait orientation, entire hair crown and both shoulders, torso down to hips, all visible hands and essential prop inside the canvas, small clean margin. Preserve her recognizable hair, face, clothing, accessories, personality, and natural body proportions. Ordinary fully clothed school-age female character, nonsexual, no exaggerated anatomy.\nOutput: transparent-background PNG with a clean natural silhouette, portrait approximately 1024x1536. No other characters.\nSubject and input roles: Image 1 is the ORIGINAL DESIGN AND STYLE REFERENCE. Isolate and faithfully restore ONLY the FIFTH girl from the left: Go Taehun, soft gray-brown hair with bangs gathered in a long loose side braid, gentle gray eyes, sage-green cable-knit sleeveless vest over white collared school blouse with narrow black ribbon. Both hands hold a muted blue journal with a small botanical/star design at her chest as in the original pose. Thoughtful slightly bashful expression, earth-science and literature enthusiast.",
+      "references": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/cast.webp"
+      ],
+      "selectedSource": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-1939f8a6-b1be-4f89-808b-d4bf8d44d8ec.png",
+      "destination": "public/assets/mystery/cast-taehun.png",
+      "qa": {
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "hasAlpha": true,
+        "visual": "Inspected generated original: original character identity, soft romance style, characteristic clothing and props, coherent visible hands, no text or extra characters."
+      }
+    },
+    {
+      "id": "seoyul",
+      "name": "이서율",
+      "prompt": "Use case: style-transfer.\nAsset type: production individual character portrait for the existing Korean school romance visual novel RE:ACTION.\nPrimary request: restore the gentle original romance visual-novel character design and art direction shown in the six-panel reference sheet. Delicate fine brown-gray contours, softly blended pastel shading, subtle watercolor-like finish, natural muted clothing colors, luminous expressive anime eyes, understated cheek color, airy light on hair, approachable school-life mood. Match the original sheet's illustrator and face proportions closely. No heavy black outlines, hard angular cel shadows, jagged graphic hatching, theatrical horror expressions, black haze, panel background, frame, lettering, or watermark.\nComposition: ONE girl only, portrait orientation, entire hair crown and both shoulders, torso down to hips, all visible hands and essential prop inside the canvas, small clean margin. Preserve her recognizable hair, face, clothing, accessories, personality, and natural body proportions. Ordinary fully clothed school-age female character, nonsexual, no exaggerated anatomy.\nOutput: transparent-background PNG with a clean natural silhouette, portrait approximately 1024x1536. No other characters.\nSubject and input roles: Image 1 is the ORIGINAL DESIGN AND STYLE REFERENCE. Isolate and faithfully restore ONLY the SIXTH girl on the far right: Lee Seoyul, short softly tousled mauve-purple wavy bob, small pale yellow-green flower hairpin, gentle lively eyes, cream/pale-yellow cardigan over white collared shirt and dark school ribbon. Head tilted with cheek supported by one natural hand and the wooden acoustic guitar partly visible against her torso as in the original design. Playful imaginative warm smile. Preserve her distinctive original face.",
+      "references": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/cast.webp"
+      ],
+      "selectedSource": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-a83d2f92-6fe1-4813-a83e-811e5467e138.png",
+      "destination": "public/assets/mystery/cast-seoyul.png",
+      "qa": {
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "hasAlpha": true,
+        "visual": "Inspected generated original: original character identity, soft romance style, characteristic clothing and props, coherent visible hands, no text or extra characters."
+      }
+    },
+    {
+      "id": "juhan",
+      "name": "이주한",
+      "prompt": "Use case: style-transfer.\nAsset type: production individual character portrait for the existing Korean school romance visual novel RE:ACTION.\nPrimary request: restore the gentle original romance visual-novel character design and art direction shown in the six-panel reference sheet. Delicate fine brown-gray contours, softly blended pastel shading, subtle watercolor-like finish, natural muted clothing colors, luminous expressive anime eyes, understated cheek color, airy light on hair, approachable school-life mood. Match the original sheet's illustrator and face proportions closely. No heavy black outlines, hard angular cel shadows, jagged graphic hatching, theatrical horror expressions, black haze, panel background, frame, lettering, or watermark.\nComposition: ONE girl only, portrait orientation, entire hair crown and both shoulders, torso down to hips, all visible hands and essential prop inside the canvas, small clean margin. Preserve her recognizable hair, face, clothing, accessories, personality, and natural body proportions. Ordinary fully clothed school-age female character, nonsexual, no exaggerated anatomy.\nOutput: transparent-background PNG with a clean natural silhouette, portrait approximately 1024x1536. No other characters.\nSubject and input roles: Image 1 is the CHARACTER IDENTITY/CLOTHING edit target; Image 2 is the ORIGINAL ROMANCE ART STYLE reference. Restyle only Lee Juhan into the soft original romance visual-novel illustration style. Preserve female identity, long tousled chestnut half-up hair, little white flower/circuit hairpin, sleepy teal eyes, subtle under-eye tiredness, oversized teal/charcoal gaming hoodie over white collared shirt and navy tie, headset around neck. Keep the handheld game console in one natural hand, other hand lightly at an earcup, both hands anatomically coherent. A tiny shy relaxed smile; recognizable reclusive all-night gamer and Gunpla enthusiast. Slightly simplify folds and decorative lines to match the soft six-panel reference. Keep full clothing and ordinary proportions.",
+      "references": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-juhan.png",
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/cast.webp"
+      ],
+      "selectedSource": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-b3ceb9ba-f291-431f-bab2-0a1dd4ef1715.png",
+      "destination": "public/assets/mystery/cast-juhan.png",
+      "qa": {
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "hasAlpha": true,
+        "visual": "Inspected generated original: original character identity, soft romance style, characteristic clothing and props, coherent visible hands, no text or extra characters."
+      }
+    },
+    {
+      "id": "minhyuk",
+      "name": "황민혁",
+      "prompt": "Use case: style-transfer.\nAsset type: production individual character portrait for the existing Korean school romance visual novel RE:ACTION.\nPrimary request: restore the gentle original romance visual-novel character design and art direction shown in the six-panel reference sheet. Delicate fine brown-gray contours, softly blended pastel shading, subtle watercolor-like finish, natural muted clothing colors, luminous expressive anime eyes, understated cheek color, airy light on hair, approachable school-life mood. Match the original sheet's illustrator and face proportions closely. No heavy black outlines, hard angular cel shadows, jagged graphic hatching, theatrical horror expressions, black haze, panel background, frame, lettering, or watermark.\nComposition: ONE girl only, portrait orientation, entire hair crown and both shoulders, torso down to hips, all visible hands and essential prop inside the canvas, small clean margin. Preserve her recognizable hair, face, clothing, accessories, personality, and natural body proportions. Ordinary fully clothed school-age female character, nonsexual, no exaggerated anatomy.\nOutput: transparent-background PNG with a clean natural silhouette, portrait approximately 1024x1536. No other characters.\nSubject and input roles: Image 1 is the CHARACTER IDENTITY/CLOTHING edit target; Image 2 is the ORIGINAL ROMANCE ART STYLE reference. Restyle only Hwang Minhyuk into the soft original romance visual-novel illustration style. Preserve FEMALE identity and her rich DARK BROWN skin tone, black high ponytail, earnest eyebrows, alert but approachable face. Keep ivory stand-collar school committee uniform with navy piping, brass buttons, braided shoulder cord, burgundy ribbon, crimson armband and the tabbed regulations notebook under one arm. Other hand held in a calm open-palm pause gesture, anatomically coherent five fingers. Soften her stern expression to a dedicated class representative addressing a friend, small composed mouth rather than shouting. Keep detailed school committee identity, naturally proportioned. No skin lightening.",
+      "references": [
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/mystery/cast-minhyuk.png",
+        "C:/Users/User/Documents/Codex/2026-09-19/x20-5/deploy/Ishsprincess/public/assets/cast.webp"
+      ],
+      "selectedSource": "C:/Users/User/.codex/generated_images/01a0b9df-b0ed-7391-85a7-d2d21c8fb739/exec-4c83f20a-e7df-451e-b391-5da9c4e1b1fb.png",
+      "destination": "public/assets/mystery/cast-minhyuk.png",
+      "qa": {
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "hasAlpha": true,
+        "visual": "Inspected generated original: original character identity, soft romance style, characteristic clothing and props, coherent visible hands, no text or extra characters."
+      }
+    }
+  ]
+}
